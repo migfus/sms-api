@@ -50,10 +50,10 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { usePostSummary } from '@/store/post/PostSummaryStore';
+import { usePostPublicStore } from '@/store/post/PostPublicStore';
 import moment from 'moment';
 
-const $post = usePostSummary();
+const $post = usePostPublicStore();
 
 onMounted(() => {
   $post.GetAPI();

@@ -4,8 +4,8 @@ import axios from 'axios'
 import { useSessionStorage } from '@vueuse/core'
 
 export const useEventPublicStore = defineStore('store/EventPublicStore', () => {
-  const eventCount = useSessionStorage('EventPublic/eventCount', 0)
-  const content = useSessionStorage('EventPublic/content', [])
+  const eventCount = useSessionStorage('event/EventPublic/eventCount', 0)
+  const content = useSessionStorage('event/EventPublic/content', [])
   const params = reactive({
     currentDate: '',
   })

@@ -2,7 +2,7 @@ import { reactive } from "vue";
 import { defineStore } from "pinia";
 import { $DebugInfo } from '@/helpers/Debug'
 
-export const useNotificationStore = defineStore("system-notification", () => {
+export const useNotificationStore = defineStore("system/NotificationStore", () => {
   $DebugInfo('notification');
 
   const content = reactive({

@@ -5,11 +5,11 @@ import { $Err, $DebugInfo } from '@/helpers/Debug'
 import { notify } from 'notiwind'
 import { useStorage } from '@vueuse/core'
 
-export const useAuthStore = defineStore("auth-auth", () => {
+export const useAuthStore = defineStore("auth/AuthStore", () => {
   $DebugInfo('AuthStore');
 
-  const token = useStorage('token', '');
-  const content = useStorage('content', {});
+  const token = useStorage('auth/AuthStore/token', '');
+  const content = useStorage('auth/AuthStore/content', {});
   const config = reactive({
     loading: false,
   })

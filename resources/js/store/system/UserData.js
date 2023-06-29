@@ -1,8 +1,8 @@
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 
-export const useUserData = defineStore('system-userData', () => {
-  const content = useStorage('user-data', {
+export const useUserData = defineStore('system/UserData', () => {
+  const content = useStorage('system/UserData/content', {
     focusedHistory: [],
     windowSize: {},
     bluetoothDevices: [],

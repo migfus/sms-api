@@ -51,8 +51,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { usePostSummary } from '@/store/post/PostSummaryStore'
+import { usePostPublicStore } from '@/store/post/PostPublicStore'
 import moment from 'moment'
 
-const $postSummary = usePostSummary();
+const $postSummary = usePostPublicStore();
 </script>

@@ -4,8 +4,8 @@ import { useSessionStorage } from '@vueuse/core'
 import axios from 'axios'
 import { $Err } from '@/helpers/Debug'
 
-export const useJobPublicStore = defineStore('job-jobPublic', () => {
-  const content = useSessionStorage('job-public', []);
+export const useJobPublicStore = defineStore('job/JobPublicStore', () => {
+  const content = useSessionStorage('job/JobPublicStore/content', []);
   const result = ref([]);
   const config = reactive({
     loading: false,

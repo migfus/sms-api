@@ -2,7 +2,7 @@ import { ref, defineComponent, h  } from "vue";
 import { defineStore } from "pinia";
 import { $DebugInfo } from '@/helpers/Debug'
 
-export const useNavigationStore = defineStore("system-pages", () => {
+export const useNavigationStore = defineStore("system/NavigationStore", () => {
   $DebugInfo('pagesStore');
 
   const pages = [

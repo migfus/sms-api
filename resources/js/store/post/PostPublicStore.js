@@ -3,8 +3,8 @@ import { reactive } from 'vue'
 import { useStorage } from '@vueuse/core'
 import axios from 'axios'
 
-export const usePostSummary = defineStore('post-summary', () => {
-  const content = useStorage('post-summary', []);
+export const usePostPublicStore = defineStore('post/PostPublicStore', () => {
+  const content = useStorage('post/PostPublicStore/content', []);
 
   const config = reactive({
 
