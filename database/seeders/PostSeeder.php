@@ -8,8 +8,10 @@ use Illuminate\Database\Seeder;
 class PostSeeder extends Seeder
 {
   public function run(): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
         'user_id' => 1,
         'post_category_id' => 1,
         'active' => 1,
@@ -18,6 +20,7 @@ class PostSeeder extends Seeder
         'cover'   => 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
       ],
       [
+        'id' => $snowflake->next(),
         'user_id' => 1,
         'post_category_id' => 2,
         'active' => 1,
@@ -26,6 +29,7 @@ class PostSeeder extends Seeder
         'cover'   => 'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
       ],
       [
+        'id' => $snowflake->next(),
         'user_id' => 1,
         'post_category_id' => 2,
         'active' => 1,

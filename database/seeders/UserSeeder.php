@@ -11,16 +11,18 @@ use Carbon\Carbon;
 class UserSeeder extends Seeder
 {
   public function run(): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
         'last_name' => '[Last]',
         'first_name' => '[First]',
         'mid_name' => '[mid]',
         'ext_name' => 'Jr',
-        'civil_status_id' => \App\Models\CivilStatus::find(1)->first()->id, // single
+        'civil_status_id' => \App\Models\CivilStatus::get()->first()->id, // single
         'birth_day' => Carbon::now(),
         'birth_place_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
-        'blood_type_id' => \App\Models\BloodType::find(1)->first()->id, // O+
+        'blood_type_id' => \App\Models\BloodType::get()->first()->id, // O+
         'sex' => 1,
         'height' => 1.6,
         'weight' => 65.1,
@@ -46,10 +48,10 @@ class UserSeeder extends Seeder
 
     $data = [
       [
+        'id' => $snowflake->next(),
         'person_id' => 1,
         'email' => 'admin@gmail.com',
         'password'=> Hash::make('12345678'),
-
         'avatar'   => 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
       ],
     ];
@@ -61,7 +63,9 @@ class UserSeeder extends Seeder
   }
 
   private function CreateNumber($personID): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     \App\Models\MobileNumber::create([
+      'id' => $snowflake->next(),
       'user_id' => $personID,
       'allow_notify' => 1,
       'number' => rand(0, 999999999),
@@ -69,26 +73,29 @@ class UserSeeder extends Seeder
   }
 
   private function CreateExperience($personID): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
         'position' => 'Clerk',
         'company' => 'Central Mindanao University',
         'from' => '2018-10-28',
         'to' => null,
-        'work_status_id' => \App\Models\WorkStatus::find(1)->first()->id, // Job Order
+        'work_status_id' => \App\Models\WorkStatus::get()->first()->id, // Job Order
         'salary' => 11000,
         'salary_type_id' => 2,
         // [1] hourly, [2] daily, [3] monthly
         'is_government' => 1,
       ],
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
         'position' => 'OJT',
         'company' => 'Central Mindanao University',
         'from' => '2018-06-01',
         'to' => '2018-10-27',
-        'work_status_id' => \App\Models\WorkStatus::find(5)->first()->id, // On Call
+        'work_status_id' => \App\Models\WorkStatus::get()->skip(2)->first()->id, // On Call
         'salary' => 5000,
         'salary_type_id' => 3,
         // [1] hourly, [2] daily, [3] monthly
@@ -102,10 +109,12 @@ class UserSeeder extends Seeder
   }
 
   private function CreateEducation($personID): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
-        'level' => \App\Models\EducationLevel::where('id', 1)->first()->id, // primary
+        'level' => \App\Models\EducationLevel::get()->first()->id, // primary
         'school' => 'Valencia City Central School',
         'degree' => null,
         'from' => '2006-01-01',
@@ -114,8 +123,9 @@ class UserSeeder extends Seeder
         'honors' => null,
       ],
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
-        'level' => \App\Models\EducationLevel::where('id', 2)->first()->id, // secondary
+        'level' => \App\Models\EducationLevel::get()->skip(1)->first()->id, // secondary
         'school' => 'Irene B. Antonio',
         'degree' => null,
         'from' => '2010-01-01',
@@ -124,8 +134,9 @@ class UserSeeder extends Seeder
         'honors' => null,
       ],
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
-        'level' => \App\Models\EducationLevel::where('id', 4)->first()->id, // tertiary
+        'level' => \App\Models\EducationLevel::get()->skip(2)->first()->id, // tertiary
         'school' => 'Central Mindanao University',
         'degree' => 'Bachelor of Information Technology',
         'from' => '2014-05-06',
@@ -141,8 +152,10 @@ class UserSeeder extends Seeder
   }
 
   private function CreateEligibility($personID): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
         'name' => 'EDPSE Eligibility',
         'address_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
@@ -159,8 +172,11 @@ class UserSeeder extends Seeder
   }
 
   private function CreateVoluntary($personID): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
+        'person_id' => $personID,
         'name' => 'Voluntary Involvement',
         'from' => '2022-02-02',
         'to' => '2022-02-02',
@@ -175,14 +191,16 @@ class UserSeeder extends Seeder
   }
 
   private function CreateSeminar($personID): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
         'name' => 'Seminar 1',
         'from' => '2022-02-02',
         'to' => '2022-02-02',
         'hours' => 2,
-        'seminar_type_id' => \App\Models\SeminarType::find(1)->first()->id, // managerial
+        'seminar_type_id' => \App\Models\SeminarType::get()->first()->id, // managerial
         'sponsor' => 'SponsorMan',
       ]
     ];
@@ -193,8 +211,10 @@ class UserSeeder extends Seeder
   }
 
   private function CreateSkill($personID): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
         'name' => 'Singing Shit',
         'recognition' => 'tapalado',
@@ -207,13 +227,16 @@ class UserSeeder extends Seeder
   }
 
   private function CreateFile($personID): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
         'filename' => 'Document1.docx',
         'url' => 'http://somehting.com'
       ],
       [
+        'id' => $snowflake->next(),
         'person_id' => $personID,
         'filename' => 'ExcelProject.xlsx',
         'url' => 'http://excelinhere.com'

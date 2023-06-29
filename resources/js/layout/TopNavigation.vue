@@ -56,7 +56,7 @@
               ]"
             >
               Calendar
-              <div class="relative inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">{{ $event.eventCount }}</div>
+              <div class="relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">{{ $event.eventCount }}</div>
             </RouterLink>
 
             <RouterLink :to="{ name: 'faqs'}" :class="[$route.name == 'faqs' ?
@@ -86,8 +86,8 @@
               >
                 <span>More</span>
                 <ChevronDownIcon :class="[open ? 'text-gray-600' : 'text-gray-400', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" />
-                <div class="absolute hidden md:inline-flex lg:hidden items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">{{  $event.eventCount }}</div>
-                <div class="absolute md:hidden inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">{{ $event.eventCount + $job.content.length }}</div>
+                <div class="absolute hidden md:inline-flex lg:hidden items-center justify-center w-6 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">{{  $event.eventCount }}</div>
+                <div class="absolute md:hidden inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">{{ $event.eventCount + $job.content.length }}</div>
               </PopoverButton>
 
               <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
@@ -142,7 +142,7 @@
             <DisclosureButton style="width: 100%; text-align: left;">
               {{ row.name }}
               <div v-if="row.link.name == 'job-listing' && $job.content.length > 0" class="relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-amber-400 rounded-full -top-2 right-1">{{ $job.content.length }}</div>
-              <div v-if="row.link.name == 'calendar'" class="relative inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">20</div>
+              <div v-if="row.link.name == 'calendar'" class="relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">20</div>
             </DisclosureButton>
 
         </RouterLink>

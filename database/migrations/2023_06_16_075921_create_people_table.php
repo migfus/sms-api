@@ -13,10 +13,10 @@ return new class extends Migration
       $table->string('first_name');
       $table->string('mid_name');
       $table->string('ext_name');
-      $table->integer('civil_status_id')->unsigned();
+      $table->bigInteger('civil_status_id')->unsigned();
       $table->date('birth_day');
       $table->integer('birth_place_id')->unsigned();
-      $table->integer('blood_type_id')->unsigned(); //
+      $table->bigInteger('blood_type_id')->unsigned(); //
       $table->boolean('sex')->default(1);
       $table->decimal('height', 5, 2);
       $table->decimal('weight', 5, 2);

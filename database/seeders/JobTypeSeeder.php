@@ -8,10 +8,20 @@ use Illuminate\Database\Seeder;
 class JobTypeSeeder extends Seeder
 {
   public function run(): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
-      ['name' => 'Faculty'],
-      ['name' => 'Staff'],
-      ['name' => 'Research'],
+      [
+        'id' => $snowflake->next(),
+        'name' => 'Faculty'
+      ],
+      [
+        'id' => $snowflake->next(),
+        'name' => 'Staff'
+      ],
+      [
+        'id' => $snowflake->next(),
+        'name' => 'Research'
+      ],
     ];
 
     foreach($data as $row) {

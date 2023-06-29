@@ -9,7 +9,7 @@ return new class extends Migration
   public function up(): void {
     Schema::create('files', function (Blueprint $table) {
       $table->id();
-      $table->integer('person_id')->unsinged();
+      $table->bigInteger('person_id')->unsinged();
       $table->string('filename');
       $table->string('url');
       $table->timestamps();

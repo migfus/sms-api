@@ -9,7 +9,7 @@ return new class extends Migration
   public function up(): void {
     Schema::create('job_departments', function (Blueprint $table) {
       $table->id();
-      $table->integer('user_id')->unsinged();
+      $table->bigInteger('user_id')->unsinged();
       $table->string('name');
       $table->timestamps();
     });

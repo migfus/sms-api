@@ -8,11 +8,24 @@ use Illuminate\Database\Seeder;
 class JobStatusSeeder extends Seeder
 {
   public function run(): void {
+    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
-      ['name' => 'Job Order'],
-      ['name' => 'Contractual'],
-      ['name' => 'Temporary'],
-      ['name' => 'Permanent'],
+      [
+        'id' => $snowflake->next(),
+        'name' => 'Job Order'
+      ],
+      [
+        'id' => $snowflake->next(),
+        'name' => 'Contractual'
+      ],
+      [
+        'id' => $snowflake->next(),
+        'name' => 'Temporary'
+      ],
+      [
+        'id' => $snowflake->next(),
+        'name' => 'Permanent'
+      ],
     ];
 
     foreach($data as $row) {

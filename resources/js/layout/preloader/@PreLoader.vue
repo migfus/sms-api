@@ -17,13 +17,13 @@
 <script setup>
 import { usePreLoader } from '@/store/system/PreLoader'
 
-import HomePage from './HomePage.vue';
-import AboutPage from './AboutPage.vue';
-import ContactPage from './ContactPage.vue';
-import AuthPage from './AuthPage.vue';
-import JobListingPage from './JobListingPage.vue';
-import CalendarPage from './CalendarPage.vue';
-import FAQPage from './FAQPage.vue';
+import HomePage from './HomePageLoader.vue';
+import AboutPage from './AboutPageLoader.vue';
+import ContactPage from './ContactPageLoader.vue';
+import AuthPage from './AuthPageLoader.vue';
+import JobListingPage from './JobListingPageLoader.vue';
+import CalendarPage from './CalendarPageLoader.vue';
+import FAQPage from './FAQPageLoader.vue';
 
 const $preLoader = usePreLoader();
 </script>

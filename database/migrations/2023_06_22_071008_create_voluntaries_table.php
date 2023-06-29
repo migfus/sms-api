@@ -9,6 +9,7 @@ return new class extends Migration
   public function up(): void {
     Schema::create('voluntaries', function (Blueprint $table) {
       $table->id();
+      $table->bigInteger('person_id')->unsigned();
       $table->string('name');
       $table->date('from');
       $table->date('to')->nullable();

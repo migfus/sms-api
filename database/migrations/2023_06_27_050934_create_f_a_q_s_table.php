@@ -11,8 +11,8 @@ return new class extends Migration
       $table->id();
       $table->string('email')->nullable();
       $table->decimal('phone', 10, 0)->nullable();
-      $table->integer('answer_user_id')->unsigned();
-      $table->integer('approved_user_id')->unsigned()->nullable();
+      $table->bigInteger('answer_user_id')->unsigned();
+      $table->bigInteger('approved_user_id')->unsigned()->nullable();
       $table->string('question');
       $table->string('answer');
       $table->integer('points')->default(0)->unsinged();
