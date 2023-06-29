@@ -1,42 +1,59 @@
 <template>
-  <div class="">
-    <div class="bg-white my-5 mx-auto max-w-7xl py-4 sm:px-6 px-8 sm:rounded-3xl shadow">
-      <FullCalendar :options='calendarOptions' >
-        <template v-slot:eventContent='arg'>
-          <b>{{ arg.event.title }}</b>
-        </template>
-      </FullCalendar>
+  <div class="mx-auto max-w-3xl lg:max-w-7xl px-4 sm:px-6 my-4">
+      <div class="grid grid-cols-3 gap-4 items-start">
+
+      <div class="bg-white mx-auto max-w-7xl py-4 sm:px-6 px-8 rounded-lg shadow col-span-3 lg:col-span-1 w-full">
+        <h2 class="font-semibold">Upcoming Events</h2>
+        <ul class="mt-4">
+          <li v-for="(row, idx) in $event.content" :key="row.id" :class="['px-4 py-2 rounded-xl mb-2']" :style="[`background-color: ${row.backgroundColor}`, `color: ${row.textColor}`]">
+            <span v-if="moment(row.start).unix() > moment().unix() && idx < 10">
+              {{ `${moment(row.start).format('MM/DD/YYYY')} - ${row.title}`}}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-white mx-auto max-w-7xl py-4 sm:px-6 px-8 rounded-lg shadow col-span-3 lg:col-span-2 w-full">
+        <FullCalendar ref="fullCalendar" :options='calendarOptions'>
+          <template v-slot:eventContent='arg'>
+            <b class="mx-2 truncate w-full text-ellipsis rounded-xl">{{ arg.event.title }}</b>
+          </template>
+        </FullCalendar>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction';
+import moment from 'moment'
+import { useEventPublicStore } from '@/store/event/EventPublicStore';
+
+const $event = useEventPublicStore();
+const fullCalendar = ref(); // ref="fullCalendar"
 
 const calendarOptions = ref({
-  plugins: [dayGridPlugin],
+  plugins: [dayGridPlugin, interactionPlugin],
   initialView: 'dayGridMonth',
-  events: [
-    {
-      "title": "Event",
-      "start": "2023-06-17T09:00:00",
-      "end": "2023-06-17T18:00:00",
-      'display':'block',
-      'backgroundColor': '#FCD34D',
-      'textColor': '#000',
-      'borderColor': '#FCD34D'
-    },
-    {
-      "title": "Event2",
-      "start": "2023-06-18T09:00:00",
-      "end": "2023-06-18T18:00:00",
-      'display':'block',
-      'backgroundColor': '#16A34A',
-      'textColor': '#eee',
-      'borderColor': '#16A34A'
-    },
-  ],
+  events: [],
+  eventsSet: async (event) => {
+    if($event.config.count == 0) {
+      $event.params.currentDate = moment(fullCalendar.value.getApi().getDate()).format('YYYY-MM-DD')
+      await $event.GetAPI()
+      $event.config.count = 3
+      calendarOptions.value.events = $event.content
+    }
+    $event.config.count--;
+  },
+
+});
+
+onMounted(async () => {
+  await $event.GetAPI();
+  calendarOptions.value.events = $event.content
 });
 </script>

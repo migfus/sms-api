@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
         JobLocationSeeder::class,
         JobSeeder::class,
         FAQSeeder::class,
+        EventCategorySeeder::class,
+        EventSeeder::class,
         // EligibilitySeeder::class,
 
         UserSeeder::class,

@@ -19,6 +19,7 @@
         "@fawmi/vue-google-maps": "^0.9.79",
         "@fullcalendar/core": "^6.1.8",
         "@fullcalendar/daygrid": "^6.1.8",
+        "@fullcalendar/interaction": "^6.1.8",
         "@fullcalendar/vue3": "^6.1.8",
         "@headlessui/vue": "^1.7.13",
         "@heroicons/vue": "^2.0.18",

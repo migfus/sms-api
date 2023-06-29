@@ -56,7 +56,7 @@
               ]"
             >
               Calendar
-              <div class="relative inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">20</div>
+              <div class="relative inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">{{ $event.eventCount }}</div>
             </RouterLink>
 
             <RouterLink :to="{ name: 'faqs'}" :class="[$route.name == 'faqs' ?
@@ -86,8 +86,8 @@
               >
                 <span>More</span>
                 <ChevronDownIcon :class="[open ? 'text-gray-600' : 'text-gray-400', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" />
-                <div class="absolute hidden md:inline-flex lg:hidden items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">20</div>
-                <div class="absolute md:hidden inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">40</div>
+                <div class="absolute hidden md:inline-flex lg:hidden items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">{{  $event.eventCount }}</div>
+                <div class="absolute md:hidden inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">{{ $event.eventCount + $job.content.length }}</div>
               </PopoverButton>
 
               <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
@@ -102,7 +102,7 @@
 
                       <RouterLink :to="{name: 'calendar'}" class="lg:hidden -m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
                         <span class="text-base font-medium text-gray-900">Calendar</span>
-                        <div class="relative inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">20</div>
+                        <div class="relative inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">{{ $event.eventCount }}</div>
                       </RouterLink>
 
                       <RouterLink :to="{name: 'faqs'}" class="lg:hidden -m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
@@ -162,6 +162,7 @@ import { useRoute } from 'vue-router';
 import { useAuthStore } from '@/store/auth/AuthStore'
 import { usePreLoader } from '@/store/system/PreLoader';
 import { useJobPublicStore } from '@/store/job/JobPublicStore';
+import { useEventPublicStore } from '@/store/event/EventPublicStore';
 
 import HeaderBanner from '@/layout/HeaderBanner.vue';
 import PreLoader from '@/layout/preloader/@PreLoader.vue';
@@ -173,4 +174,5 @@ const $nav = useNavigationStore();
 const $route = useRoute();
 const $preLoader = usePreLoader();
 const $job = useJobPublicStore();
+const $event = useEventPublicStore();
 </script>

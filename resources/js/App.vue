@@ -15,6 +15,7 @@ import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import Data from '@/Data'
 import { useJobPublicStore } from '@/store/job/JobPublicStore';
+import { useEventPublicStore } from '@/store/event/EventPublicStore';
 Data();
 
 import NotificationsSection from './components/Notifications.vue';
@@ -24,8 +25,10 @@ import FooterLayout from '@/layout/Footer.vue';
 
 const $route = useRoute();
 const $job = useJobPublicStore();
+const $event = useEventPublicStore();
 
 onMounted(() => {
   $job.GetAPI()
+  $event.GetCountAPI()
 });
 </script>
