@@ -1,4 +1,4 @@
-import { ref, defineComponent, h  } from "vue";
+import { ref, defineComponent, h, shallowRef  } from "vue";
 import { defineStore } from "pinia";
 import { $DebugInfo } from '@/helpers/Debug'
 
@@ -47,7 +47,7 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
     },
   ]
   // BUG
-  const social = [
+  const social = shallowRef([
     {
       name: 'Facebook',
       href: '#',
@@ -62,7 +62,7 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
           ]),
       }),
     },
-  ]
+  ])
 
   const faqs: Array<faqsInt> = [
     {

@@ -11,17 +11,17 @@ class EducationLevelSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298007426868,
         'user_id' => 1,
         'name' => 'Primary',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298007426869,
         'user_id' => 1,
         'name' => 'Secondary',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298007426870,
         'user_id' => 1,
         'name' => 'Vocational',
       ],

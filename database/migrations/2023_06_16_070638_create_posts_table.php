@@ -9,7 +9,7 @@ return new class extends Migration
   public function up(): void {
     Schema::create('posts', function (Blueprint $table) {
       $table->id();
-      $table->integer('post_category_id')->unsigned();
+      $table->bigInteger('post_category_id')->unsigned();
       $table->bigInteger('user_id')->unsigned();
       $table->boolean('active')->default(0);
       $table->string('title');

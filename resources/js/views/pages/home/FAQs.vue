@@ -9,7 +9,7 @@
         </div>
         <div class="mt-10 lg:col-span-7 lg:mt-0">
           <dl class="space-y-10">
-            <div v-for="faq in faqs" :key="faq.question">
+            <div v-for="faq in $faq.content" :key="`${faq.id}`">
               <dt class="text-base font-semibold leading-7 text-gray-900">{{ faq.question }}</dt>
               <dd class="mt-2 text-base leading-7 text-gray-600">{{ faq.answer }}</dd>
             </div>
@@ -21,22 +21,13 @@
 </template>
 
 <script setup lang="ts">
-const faqs = [
-  {
-    question: 'How do you make holy water?',
-    answer:
-      'You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.',
-  },
-  {
-    question: 'How do you make holy water?',
-    answer:
-      'You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.',
-  },
-  {
-    question: 'How do you make holy water?',
-    answer:
-      'You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.',
-  },
-  // More questions...
-]
+import { onMounted } from 'vue'
+import { useFaqPublicStore } from '@/store/faq/FaqPublicStore'
+
+const $faq = useFaqPublicStore();
+
+onMounted(() => {
+  $faq.params.search = ''
+  $faq.GetAPI()
+})
 </script>

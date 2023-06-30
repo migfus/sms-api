@@ -11,42 +11,42 @@ class BloodTypeSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
+        'id' => 562170295142717710,
         'user_id' => 1,
         'name'    => 'O+',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170295142717711,
         'user_id' => 1,
         'name'    => 'O-',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170295142717712,
         'user_id' => 1,
         'name'    => 'A+',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170295142717713,
         'user_id' => 1,
         'name'    => 'A-',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170295142717714,
         'user_id' => 1,
         'name'    => 'B+',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170295142717715,
         'user_id' => 1,
         'name'    => 'B-',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170295142717716,
         'user_id' => 1,
         'name'    => 'AB+',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170295142717717,
         'user_id' => 1,
         'name'    => 'AB-',
       ],

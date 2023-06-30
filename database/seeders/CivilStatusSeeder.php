@@ -11,22 +11,22 @@ class CivilStatusSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
+        'id' => 562170297889986620,
         'user_id' => 1,
         'name'    => 'Single',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170297889986621,
         'user_id' => 1,
         'name'    => 'Married',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170297889986622,
         'user_id' => 1,
         'name'    => 'Separated',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170297889986623,
         'user_id' => 1,
         'name'    => 'Widowed',
       ],

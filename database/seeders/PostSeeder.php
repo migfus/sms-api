@@ -12,8 +12,8 @@ class PostSeeder extends Seeder
     $data = [
       [
         'id' => $snowflake->next(),
-        'user_id' => 1,
-        'post_category_id' => 1,
+        'user_id' => \App\Models\User::get()->first()->id,
+        'post_category_id' => \App\Models\PostCategory::get()->first()->id,
         'active' => 1,
         'title'   => 'Lorem Ipsum',
         'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
@@ -21,8 +21,8 @@ class PostSeeder extends Seeder
       ],
       [
         'id' => $snowflake->next(),
-        'user_id' => 1,
-        'post_category_id' => 2,
+        'user_id' => \App\Models\User::get()->first()->id,
+        'post_category_id' => \App\Models\PostCategory::get()->skip(1)->first()->id,
         'active' => 1,
         'title'   => 'Lorem Ipsum',
         'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
@@ -30,8 +30,8 @@ class PostSeeder extends Seeder
       ],
       [
         'id' => $snowflake->next(),
-        'user_id' => 1,
-        'post_category_id' => 2,
+        'user_id' => \App\Models\User::get()->first()->id,
+        'post_category_id' => \App\Models\PostCategory::get()->first()->id,
         'active' => 1,
         'title'   => 'Lorem Ipsum',
         'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',

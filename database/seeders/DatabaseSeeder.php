@@ -12,8 +12,6 @@ class DatabaseSeeder extends Seeder
         AddressSQL::class,
 
         BloodTypeSeeder::class,
-        PostCategorySeeder::class,
-        PostSeeder::class,
         RoleAndPermissionsSeeder::class,
         CivilStatusSeeder::class,
         WorkStatusSeeder::class,
@@ -31,6 +29,9 @@ class DatabaseSeeder extends Seeder
         // EligibilitySeeder::class,
 
         UserSeeder::class,
+
+        PostCategorySeeder::class,
+        PostSeeder::class,
       ]);
     }
 }

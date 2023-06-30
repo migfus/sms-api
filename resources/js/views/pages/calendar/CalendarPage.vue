@@ -6,7 +6,7 @@
         <h2 class="font-semibold">Upcoming Events</h2>
         <ul class="mt-4">
           <li v-for="(row, idx) in $event.content" :key="row.id" :class="['px-4 py-2 rounded-xl mb-2']" :style="[`background-color: ${row.backgroundColor}`, `color: ${row.textColor}`]">
-            <span v-if="moment(row.start).unix() > moment().unix() && idx < 10">
+            <span v-if="moment(row.start).format('YYYYMMDD') >= moment().format('YYYYMMDD')">
               {{ `${moment(row.start).format('MM/DD/YYYY')} - ${row.title}`}}
             </span>
           </li>

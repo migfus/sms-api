@@ -39,7 +39,7 @@ export const useEventPublicStore = defineStore('store/EventPublicStore', () => {
   async function GetAPI() {
     config.loading = true
     try {
-      let { data: { data }} = await axios.get('/api/event-public', { params: params })
+      let { data: { data }} = await axios.get('/api/public/event', { params: params })
       content.value = data.map(row => {
           return {
             title: `${row.event_category.name} - ${row.title}`,
@@ -64,7 +64,7 @@ export const useEventPublicStore = defineStore('store/EventPublicStore', () => {
 
   async function GetCountAPI() {
     try {
-      let { data: { count}} = await axios.get('/api/event-public/count')
+      let { data: { count}} = await axios.get('/api/public/event/count')
       eventCount.value = count
     }
     catch(err) {

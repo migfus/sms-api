@@ -56,6 +56,7 @@ import moment from 'moment';
 const $post = usePostPublicStore();
 
 onMounted(() => {
+  $post.params.search = ''
   $post.GetAPI();
 });
 </script>

@@ -4,6 +4,8 @@ import { usePreLoader } from "@/store/system/PreLoader";
 import ability from '@/Ability';
 import { $Log } from '@/helpers/Debug';
 
+import { useFaqPublicStore } from "@/store/faq/FaqPublicStore";
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -266,6 +268,7 @@ const TITLE = "CMU | HRMO";
 router.beforeEach(async (to, from) => {
   const $load = usePreLoader();
   const $auth = useAuthStore();
+
   $load.config.loading = true
   $load.config.to = to.name
 
@@ -280,7 +283,6 @@ router.beforeEach(async (to, from) => {
     ])
   }
 
-  $Log('Route Permissions Updated', '')
   // const $auth = useAuthStore();
 
   // if ($auth.token == "" && to.name !== "login") {
