@@ -11,18 +11,18 @@ class EventCategorySeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298397498532,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Holiday',
         'bg_color' => '16A34A',
         'text_color' => 'fff',
-        'user_id' => 1,
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298397498533,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Event',
         'bg_color' => 'FBBF24',
         'text_color' => '000',
-        'user_id' => 1,
       ]
     ];
 

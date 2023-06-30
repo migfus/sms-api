@@ -11,13 +11,13 @@ class JobLocationSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298246501053,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'CMU',
       ],
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298246501054,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'CSC, Malaybalay',
       ],
     ];

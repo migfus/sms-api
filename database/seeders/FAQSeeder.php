@@ -11,36 +11,36 @@ class FAQSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
-        'answer_user_id' => 1,
+        'id' => 562170298342971710,
+        'answer_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'approved_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'question' => 'Proident nostrud magna enim irure reprehenderit in ut aliqua officia mollit nulla.',
         'answer' => 'Ullamco velit aliquip ex ad. Mollit eu reprehenderit nisi laboris excepteur eiusmod ex incididunt labore ut incididunt cillum minim. Lorem id velit sunt aliqua veniam commodo. Ad elit ipsum do minim.',
         'points' => 100,
-        'approved_user_id' => 1,
       ],
       [
-        'id' => $snowflake->next(),
-        'answer_user_id' => 1,
+        'id' => 562170298342971711,
+        'answer_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'approved_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'question' => 'Pariatur duis aliqua qui occaecat occaecat cillum esse elit consectetur.',
         'answer' => 'Sunt ullamco velit est adipisicing mollit eiusmod fugiat enim consectetur magna. Commodo veniam minim minim ex reprehenderit nulla. Nostrud consectetur ex voluptate ea deserunt anim ex pariatur ullamco anim consectetur ex enim. ',
         'points' => 102,
-        'approved_user_id' => 1,
       ],
       [
-        'id' => $snowflake->next(),
-        'answer_user_id' => 1,
+        'id' => 562170298342971712,
+        'answer_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'approved_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'question' => 'Veniam ad mollit aute in enim velit ad proident duis anim excepteur sint fugiat occaecat.',
         'answer' => 'Adipisicing aute ullamco dolore duis velit deserunt duis esse qui mollit fugiat sit consectetur sit. Fugiat et fugiat ipsum eu pariatur. Labore proident Lorem aliqua in anim eu sint est. Voluptate sint sit deserunt excepteur id sit.',
         'points' => 103,
-        'approved_user_id' => 1,
       ],
       [
-        'id' => $snowflake->next(),
-        'answer_user_id' => 1,
+        'id' => 562170298342971713,
+        'answer_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'approved_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'question' => 'Incididunt laboris consectetur duis voluptate sunt nulla amet.',
         'answer' => 'Minim ut et fugiat pariatur aute laborum occaecat minim ea fugiat. Magna cillum sint tempor eiusmod veniam consectetur fugiat ea sit enim adipisicing. Est sint Lorem cupidatat velit voluptate ut aliquip ea nisi reprehenderit exercitation ex eu velit.',
         'points' => 104,
-        'approved_user_id' => 1,
       ],
     ];
 

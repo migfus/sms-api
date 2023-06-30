@@ -11,18 +11,18 @@ class SeminarTypeSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298074537243,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Managerial'
       ],
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298074537244,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Supervisory'
       ],
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298074537245,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Technical'
       ],
     ];

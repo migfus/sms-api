@@ -11,13 +11,13 @@ class PostCategorySeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298925980667,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'News'
       ],
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298925980668,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Updates',
       ],
     ];

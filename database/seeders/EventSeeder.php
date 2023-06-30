@@ -12,17 +12,17 @@ class EventSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
-        'event_category_id' => \App\Models\EventCategory::get()->first()->id, // HOliday
+        'id' => 562170298431053281,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'event_category_id' => \App\Models\EventCategory::where('id', 562170298397498532)->first()->id, // HOliday
         'title' => 'Buenas Deas sheess',
         'start' => Carbon::now()->add(3, 'day'),
         'end' => Carbon::now()->add(4, 'day'),
       ],
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
-        'event_category_id' => \App\Models\EventCategory::get()->skip(1)->first()->id, // Event
+        'id' => 562170298435246529,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'event_category_id' => \App\Models\EventCategory::where('id', 562170298397498533)->first()->id, // Event
         'title' => 'CMU Event',
         'start' => Carbon::now()->add(1, 'day'),
         'end' => Carbon::now()->add(3, 'day'),

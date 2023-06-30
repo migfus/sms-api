@@ -14,28 +14,28 @@ class WorkStatusSeeder extends Seeder
       $snowflake = app('Kra8\Snowflake\Snowflake');
       $data = [
         [
-          'id' => $snowflake->next(),
-          'user_id' => 1,
+          'id' => 562170297944513802,
+          'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'Job Order',
         ],
         [
-          'id' => $snowflake->next(),
-          'user_id' => 1,
+          'id' => 562170297944513803,
+          'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'Contractual',
         ],
         [
-          'id' => $snowflake->next(),
-          'user_id' => 1,
+          'id' => 562170297944513804,
+          'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'Temporary',
         ],
         [
-          'id' => $snowflake->next(),
-          'user_id' => 1,
+          'id' => 562170297944513805,
+          'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'Permanent',
         ],
         [
-          'id' => $snowflake->next(),
-          'user_id' => 1,
+          'id' => 562170297944513806,
+          'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'On-Call',
         ],
       ];

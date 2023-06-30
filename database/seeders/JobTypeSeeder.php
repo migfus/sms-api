@@ -11,15 +11,15 @@ class JobTypeSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298171006199,
         'name' => 'Faculty'
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298171006200,
         'name' => 'Staff'
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298171006201,
         'name' => 'Research'
       ],
     ];

@@ -11,19 +11,19 @@ class JobStatusSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298120672848,
         'name' => 'Job Order'
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298120672849,
         'name' => 'Contractual'
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298120672850,
         'name' => 'Temporary'
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298120672851,
         'name' => 'Permanent'
       ],
     ];

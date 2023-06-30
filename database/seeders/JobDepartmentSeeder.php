@@ -11,13 +11,13 @@ class JobDepartmentSeeder extends Seeder
     $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298208755294,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name'    => 'College of Nursing',
       ],
       [
-        'id' => $snowflake->next(),
-        'user_id' => 1,
+        'id' => 562170298208755295,
+        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name'    => 'College of Engineering',
       ],
     ];
