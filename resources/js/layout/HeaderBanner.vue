@@ -12,7 +12,7 @@
           </p>
         </div>
         <div class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
-          <a @click="alert = 'removed'" href="#" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-primary-600 shadow-sm hover:bg-indigo-50">Learn more</a>
+          <a @click="" href="#" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-primary-600 shadow-sm hover:bg-indigo-50">Learn more</a>
         </div>
         <div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
           <button @click="isRemoved = true" type="button" class="-mr-1 flex rounded-md p-2 hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2">
@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 import { MegaphoneIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { useStorage } from '@vueuse/core'
 

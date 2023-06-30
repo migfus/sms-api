@@ -45,17 +45,26 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue'
 import { PaperAirplaneIcon, HeartIcon } from '@heroicons/vue/20/solid';
 
-const params = reactive({
+interface paramsInt {
+  question: string,
+  email: string,
+  phone: string,
+}
+interface configInt {
+  submitted: boolean,
+}
+
+const params = reactive<paramsInt>({
   question: '',
   email: '',
   phone: '',
 });
 
-const config = reactive({
+const config = reactive<configInt>({
   submitted: false,
 });
 </script>

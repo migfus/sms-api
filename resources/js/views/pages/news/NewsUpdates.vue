@@ -25,7 +25,7 @@
             </div>
             <div class="mt-6 flex items-center">
               <div class="flex-shrink-0">
-                <a :href="post.user.id">
+                <a :href="`${post.user.id}`">
                   <span class="sr-only">{{ post.user.email }}</span>
                   <img class="h-10 w-10 rounded-full" :src="post.user.avatar" alt="" />
                 </a>
@@ -48,7 +48,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { usePostPublicStore } from '@/store/post/PostPublicStore'

@@ -38,10 +38,18 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { CheckIcon } from '@heroicons/vue/20/solid'
 
-const tiers = [
+interface tiersInt {
+  name: string,
+  href: string,
+  priceMonthly: number,
+  description: string,
+  includedFeatures: Array<string>
+}
+
+const tiers: Array<tiersInt> = [
   {
     name: 'Jasper',
     href: '#',

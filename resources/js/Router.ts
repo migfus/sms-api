@@ -5,14 +5,7 @@ import ability from '@/Ability';
 import { $Log } from '@/helpers/Debug';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.APP_URL),
-  scrollBehavior(to, from, savedPosition) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({ left: 0, top: 0, behavior: 'smooth' })
-      }, 500)
-    })
-  },
+  history: createWebHistory(),
   routes: [
     // NOTE PAGES
     {
@@ -287,7 +280,7 @@ router.beforeEach(async (to, from) => {
     ])
   }
 
-  $Log('Route Permissions Updated', $auth.content.permissions)
+  $Log('Route Permissions Updated', '')
   // const $auth = useAuthStore();
 
   // if ($auth.token == "" && to.name !== "login") {

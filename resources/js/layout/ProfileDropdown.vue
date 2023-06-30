@@ -39,7 +39,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang='ts'>
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/store/auth/AuthStore'

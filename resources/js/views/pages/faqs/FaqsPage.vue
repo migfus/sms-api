@@ -28,17 +28,24 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import axios from 'axios'
 import { onMounted, reactive, ref, watch } from 'vue';
 import { throttle } from 'lodash';
 
 import FaqForm from './FaqForm.vue'
 
-const config = reactive({
+interface configInt {
+  loading: boolean,
+}
+interface paramsInt {
+  search: string,
+}
+
+const config = reactive<configInt>({
   loading: false,
 })
-const params = reactive({
+const params = reactive<paramsInt>({
   search: '',
 })
 

@@ -25,7 +25,7 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -40,7 +40,7 @@ const calendarOptions = ref({
   plugins: [dayGridPlugin, interactionPlugin],
   initialView: 'dayGridMonth',
   events: [],
-  eventsSet: async (event) => {
+  eventsSet: async () => {
     if($event.config.count == 0) {
       $event.params.currentDate = moment(fullCalendar.value.getApi().getDate()).format('YYYY-MM-DD')
       await $event.GetAPI()

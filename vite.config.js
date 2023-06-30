@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     vue(),
     laravel([
-      'resources/js/app.js',
+      'resources/js/app.ts',
     ]),
   ],
   resolve: {

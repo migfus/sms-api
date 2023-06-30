@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const faqs = [
   {
     question: 'How do you make holy water?',

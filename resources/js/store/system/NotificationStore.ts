@@ -2,20 +2,29 @@ import { reactive } from "vue";
 import { defineStore } from "pinia";
 import { $DebugInfo } from '@/helpers/Debug'
 
+interface contentInt {
+  name: String,
+  content: string,
+  status: String,
+}
+interface configInt {
+  show: Boolean,
+}
+
 export const useNotificationStore = defineStore("system/NotificationStore", () => {
   $DebugInfo('notification');
 
-  const content = reactive({
+  const content = reactive<contentInt>({
     name: '',
     content: '',
     status: 'danger',
   })
 
-  const config = reactive({
+  const config = reactive<configInt>({
     show: false,
   })
 
-  function Show(name, _content, status = 'danger') {
+  function Show(name: String, _content , status:String = 'danger') {
     Object.assign(content, {
       name: name,
       content: _content,

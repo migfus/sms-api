@@ -62,14 +62,19 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useAuthStore } from '@/store/auth/AuthStore';
 import { reactive } from 'vue';
 import { ArrowPathRoundedSquareIcon } from '@heroicons/vue/20/solid'
 
+interface inputInt {
+  email: string,
+  password: string,
+}
+
 const $auth = useAuthStore();
 
-const input = reactive({
+const input = reactive<inputInt>({
   email: '',
   password: '',
 });

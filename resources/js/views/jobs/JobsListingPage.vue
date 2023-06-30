@@ -82,7 +82,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useJobPublicStore } from '@/store/job/JobPublicStore';
 import { ArrowPathIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 

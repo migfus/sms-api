@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { usePreLoader } from '@/store/system/PreLoader'
 
 import HomePage from './HomePageLoader.vue';

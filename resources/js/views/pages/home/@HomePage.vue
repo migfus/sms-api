@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import CarouselSection from './Carousel.vue'
 // import PricingSection from './PricingSection.vue'
 import FAQsSection from './FAQs.vue'

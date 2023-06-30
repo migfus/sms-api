@@ -2,7 +2,7 @@
   <div class="overflow-hidden bg-white shadow sm:rounded-md">
     <ul role="list" class="divide-y divide-gray-200">
 
-      <li v-for="position in content" :key="position.id">
+      <li v-for="position in content" :key="position">
         <div class="
           -translate-x-full
           animate-[shimmer_2s_infinite]
@@ -55,7 +55,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const content = ref([1]);

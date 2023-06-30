@@ -19,16 +19,16 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Pages</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in navigation.pages" :key="item.name">
-                  <RouterLink :to="item.link" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
+                <li v-for="item in navigation.pages" :key="`${item.name}`">
+                  <RouterLink :to="`${item.link}`" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
                 </li>
               </ul>
             </div>
             <div class="mt-10 md:mt-0">
               <h3 class="text-sm font-semibold leading-6 text-gray-900">FAQs</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in $nav.faqs" :key="item.name">
-                  <RouterLink :to="item.link" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
+                <li v-for="item in $nav.faqs" :key="`${item.name}`">
+                  <RouterLink :to="`${item.link}`" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
                 </li>
               </ul>
             </div>
@@ -37,8 +37,8 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Posts</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in $nav.posts" :key="item.name">
-                  <RouterLink :to="item.link" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
+                <li v-for="item in $nav.posts" :key="`${item.name}`">
+                  <RouterLink :to="`${item.link}`" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
                 </li>
               </ul>
             </div>
@@ -60,7 +60,7 @@
   </footer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useNavigationStore } from '@/store/system/NavigationStore';
 
 const $nav = useNavigationStore();

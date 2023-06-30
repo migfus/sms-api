@@ -3,13 +3,37 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import { useSessionStorage } from '@vueuse/core'
 
+interface paramsInt {
+  currentDate: String,
+}
+interface configInt {
+  loading: boolean,
+  count: number
+}
+interface contentInt {
+  event_category: {
+    name: String,
+  }
+  title: String,
+  start: string,
+  end: String,
+  display: String,
+  backgroundColor: String,
+  textColor: String,
+  borderColor: String,
+  eventEnd: Boolean,
+  eventTime: Boolean,
+  eventClick: Function,
+  id: number,
+}
+
 export const useEventPublicStore = defineStore('store/EventPublicStore', () => {
-  const eventCount = useSessionStorage('event/EventPublic/eventCount', 0)
-  const content = useSessionStorage('event/EventPublic/content', [])
-  const params = reactive({
+  const eventCount = useSessionStorage<Number>('event/EventPublic/eventCount', 0)
+  const content = useSessionStorage<Array<contentInt>>('event/EventPublic/content', [])
+  const params = reactive<paramsInt>({
     currentDate: '',
   })
-  const config = reactive({
+  const config = reactive<configInt>({
     loading: false,
     count: 3
   })

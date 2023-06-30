@@ -131,28 +131,39 @@
   <CancelProcessedPrompt :open="openPrompt"/>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ArrowRightCircleIcon, XMarkIcon, PaperAirplaneIcon, CheckCircleIcon } from '@heroicons/vue/20/solid';
 import { ref, reactive} from 'vue'
 
 import ActivityCard from './ActivityCard.vue'
 import CancelProcessedPrompt from './CancelProcessedPrompt.vue';
 
+interface formInt {
+  subject: string,
+  message: string,
+  contact: string,
+  attachements?: Array<attachementsInt>,
+}
+interface attachementsInt {
+  name: string,
+  id: number
+}
+
 const status = ref(0); // [0] = not applied, [1] = fill-up,, [2] = applied
 const openPrompt = ref(false);
-const form = reactive({
+const form = reactive<formInt>({
   subject: '',
   message: '',
   contact: '',
   attachements: null,
 });
 
-function AttachFiles(event) {
+function AttachFiles(event: any) {
   form.attachements = Array.from(event.target.files)
   console.log(form)
 }
 
-function RemoveRow(idx) {
+function RemoveRow(idx: number) {
   console.log(form.attachements)
   form.attachements.splice(idx, 1)
 }

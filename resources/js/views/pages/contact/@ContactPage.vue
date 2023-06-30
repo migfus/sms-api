@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Banner from './Banner.vue'
 
 import AddressSection from './Address.vue'

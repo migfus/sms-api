@@ -14,17 +14,25 @@
           <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
           </svg>
-          <a :href="page.href" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700" :aria-current="page.current ? 'page' : undefined">{{ page.name }}</a>
+          <a :href="`${page.link}`" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700" :aria-current="page.current ? 'page' : undefined">{{ page.name }}</a>
         </div>
       </li>
     </ol>
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { HomeIcon } from '@heroicons/vue/20/solid'
 
-const pages = [
-  { name: 'Home', link: {name: 'home'}, },
+interface pagesInt {
+  name: string,
+  link: {
+    name: string,
+  },
+  current: boolean,
+}
+
+const pages:Array<pagesInt> = [
+  { name: 'Home', link: {name: 'home'}, current: false },
 ];
 </script>

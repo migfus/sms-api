@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useJobPublicStore } from '@/store/job/JobPublicStore';
 import { useRoute } from 'vue-router';
 import { reactive } from 'vue';
@@ -57,7 +57,7 @@ const $job = useJobPublicStore();
 const $route = useRoute();
 
 const data = reactive({
-  ...$job.content.filter((row) => row.id == $route.params.id)[0]
+  ...$job.content.filter((row) => row.id == Number($route.params.id))[0]
 });
 
 useTitle(`${data.title} | CMU HRMO`);

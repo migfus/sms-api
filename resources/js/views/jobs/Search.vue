@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useJobPublicStore } from '@/store/job/JobPublicStore';
 
 const $job = useJobPublicStore();

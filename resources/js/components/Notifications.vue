@@ -46,7 +46,7 @@
   </NotificationGroup>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { NotificationGroup, Notification, } from "notiwind"
 import { ExclamationCircleIcon } from '@heroicons/vue/24/outline'
 import { XMarkIcon } from '@heroicons/vue/20/solid'

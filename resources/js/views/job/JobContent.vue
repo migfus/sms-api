@@ -60,7 +60,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lant="ts">
 import moment from 'moment';
 import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/vue/20/solid';
 

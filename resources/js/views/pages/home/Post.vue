@@ -16,7 +16,7 @@
           <div class="flex flex-1 flex-col justify-between bg-white/90 backdrop-blur-lg p-6">
             <div class="flex-1">
               <p class="text-sm font-medium text-primary-600">
-                <a :href="row.id" class="hover:underline">{{ row.category.name }}</a>
+                <a :href="`${row.id}`" class="hover:underline">{{ row.category.name }}</a>
               </p>
               <RouterLink :to="{name: 'post', params: {id: row.id}}" href="row.id" class="mt-2 block">
                 <p class="text-xl font-semibold text-gray-900">{{ row.title }}</p>
@@ -25,14 +25,14 @@
             </div>
             <div class="mt-6 flex items-center">
               <div class="flex-shrink-0">
-                <a :href="row.id">
+                <a :href="`${row.id}`">
                   <span class="sr-only">{{ row.user.email }}</span>
                   <img class="h-10 w-10 rounded-full" :src="row.user.avatar" alt="" />
                 </a>
               </div>
               <div class="ml-3">
                 <p class="text-sm font-medium text-gray-900">
-                  <a :href="row.id" class="hover:underline">{{ row.user.email }}</a>
+                  <a :href="`${row.id}`" class="hover:underline">{{ row.user.email }}</a>
                 </p>
                 <div class="flex space-x-1 text-sm text-gray-500">
                   <time :datetime="row.created_at">{{ moment(row.created_at).format('MMM DD YYYY') }}</time>
@@ -48,7 +48,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from 'vue';
 import { usePostPublicStore } from '@/store/post/PostPublicStore';
 import moment from 'moment';

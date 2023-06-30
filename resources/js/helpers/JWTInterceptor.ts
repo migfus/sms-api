@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useAuthStore } from "@/store/auth/AuthStore";
-import { $DebugInfo, $Log} from '@/helpers/debug';
+import { $DebugInfo, $Log } from '@/helpers/Debug';
 import { notify } from "notiwind"
 
 export default function JWTInterceptor() {
@@ -18,7 +18,7 @@ export default function JWTInterceptor() {
     (response) => {
       if (response.data.auth) {
         $auth.content = response.data.auth;
-        $Log("Role Updated", {response});
+        $Log("Role Updated", '');
       }
       return response;
   },

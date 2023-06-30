@@ -35,16 +35,22 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref, reactive } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
+
+interface contentInt {
+  title: string,
+  content: string,
+  cover: string,
+}
 
 const $route = useRoute();
 const config = reactive({
   loading: false
 })
-const content = ref({})
+const content = ref<contentInt>(null)
 
 async function ShowAPI() {
   config.loading = true

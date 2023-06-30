@@ -4,10 +4,41 @@ import { useSessionStorage } from '@vueuse/core'
 import axios from 'axios'
 import { $Err } from '@/helpers/Debug'
 
+interface contentInt {
+  job_location: {
+    name: String,
+  },
+  job_department: {
+    name: String,
+  },
+  job_status: {
+    name: String,
+  },
+  job_type: {
+    name: String,
+  },
+  title: String,
+  id: number,
+  unposted_at: string,
+  description: string,
+}
+interface resultInt {
+
+}
+interface configInt {
+  loading: boolean,
+}
+interface paramsInt {
+  search: String,
+  selectedLocation: Array<String>,
+  selectedDepartments: Array<string>,
+  selectedTypes: Array<string>,
+  selectedStatus: Array<string>,
+}
 export const useJobPublicStore = defineStore('job/JobPublicStore', () => {
-  const content = useSessionStorage('job/JobPublicStore/content', []);
-  const result = ref([]);
-  const config = reactive({
+  const content = useSessionStorage<Array<contentInt>>('job/JobPublicStore/content', []);
+  const result = ref<Array<resultInt>>([]);
+  const config = reactive<configInt>({
     loading: false,
   })
   const params = reactive({

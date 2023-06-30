@@ -46,7 +46,7 @@
                 <CalendarIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                 <p>
                   Closing on
-                  <time :datetime="position.closeDate">{{ moment(position.unposted_at).format('MMM DD, YYYY') }}</time>
+                  <time :datetime="position.unposted_at">{{ moment(position.unposted_at).format('MMM DD, YYYY') }}</time>
                 </p>
               </div>
             </div>
@@ -65,7 +65,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { CalendarIcon, MapPinIcon, UsersIcon, FaceFrownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { useJobPublicStore } from '@/store/job/JobPublicStore';
 import moment from 'moment'

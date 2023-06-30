@@ -2,10 +2,27 @@ import { ref, defineComponent, h  } from "vue";
 import { defineStore } from "pinia";
 import { $DebugInfo } from '@/helpers/Debug'
 
+interface pagesInt {
+  name: String,
+  link: {
+    name: String,
+  }
+}
+// BUG
+interface socialInt {
+  name: String,
+  href: String,
+  // icon: Component,
+}
+interface faqsInt {
+  name: String,
+  link: String,
+}
+
 export const useNavigationStore = defineStore("system/NavigationStore", () => {
   $DebugInfo('pagesStore');
 
-  const pages = [
+  const pages: Array<pagesInt> = [
     {
       name: 'Home',
       link: { name: 'home'},
@@ -31,7 +48,7 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
       link: { name: 'news'}
     },
   ]
-
+  // BUG
   const social = [
     {
       name: 'Facebook',
@@ -49,7 +66,7 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
     },
   ]
 
-  const faqs = [
+  const faqs: Array<faqsInt> = [
     {
       name: 'Registration',
       link: '/faqs'
@@ -64,7 +81,7 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
     },
   ]
 
-  const posts = [
+  const posts: Array<faqsInt> = [
     {
       name: 'Post 1',
       link: '/faqs'
