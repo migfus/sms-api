@@ -26,17 +26,17 @@ class EducationLevelSeeder extends Seeder
         'name' => 'Vocational',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298007426871,
         'user_id' => 1,
         'name' => 'College',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298007426872,
         'user_id' => 1,
         'name' => 'Masteral',
       ],
       [
-        'id' => $snowflake->next(),
+        'id' => 562170298007426873,
         'user_id' => 1,
         'name' => 'Doctoral',
       ],
