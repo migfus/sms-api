@@ -41,7 +41,7 @@ import { useAuthStore } from '@/store/auth/AuthStore';
 import { reactive } from 'vue';
 
 interface inputInt {
-  email: string;
+  email: string
 }
 
 const $auth = useAuthStore();

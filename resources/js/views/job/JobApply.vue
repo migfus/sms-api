@@ -139,13 +139,13 @@ import ActivityCard from './ActivityCard.vue'
 import CancelProcessedPrompt from './CancelProcessedPrompt.vue';
 
 interface formInt {
-  subject: string,
-  message: string,
-  contact: string,
-  attachements?: Array<attachementsInt>,
+  subject: string
+  message: string
+  contact: string
+  attachements?: Array<attachementsInt>
 }
 interface attachementsInt {
-  name: string,
+  name: string
   id: number
 }
 

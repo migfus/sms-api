@@ -5,35 +5,27 @@ import axios from 'axios'
 import { $Err } from '@/helpers/Debug'
 
 interface contentInt {
-  job_location: {
-    name: String,
-  },
-  job_department: {
-    name: String,
-  },
-  job_status: {
-    name: String,
-  },
-  job_type: {
-    name: String,
-  },
-  title: String,
-  id: number,
-  unposted_at: string,
-  description: string,
+  job_location: { name: String }
+  job_department: { name: String }
+  job_status: { name: String }
+  job_type: { name: String }
+  title: String
+  id: number
+  unposted_at: string
+  description: string
 }
 interface resultInt {
 
 }
 interface configInt {
-  loading: boolean,
+  loading: boolean
 }
 interface paramsInt {
-  search: String,
-  selectedLocation: Array<String>,
-  selectedDepartments: Array<string>,
-  selectedTypes: Array<string>,
-  selectedStatus: Array<string>,
+  search: String
+  selectedLocation: Array<String>
+  selectedDepartments: Array<string>
+  selectedTypes: Array<string>
+  selectedStatus: Array<string>
 }
 export const useJobPublicStore = defineStore('job/JobPublicStore', () => {
   const content = useSessionStorage<Array<contentInt>>('job/JobPublicStore/content', []);

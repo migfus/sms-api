@@ -63,8 +63,8 @@ import { reactive } from 'vue';
 const $auth = useAuthStore();
 
 interface InputInt {
-  email: string,
-  password: string,
+  email: string
+  password: string
 }
 const input = reactive<InputInt>({
   email: 'admin@gmail.com',

@@ -26,9 +26,9 @@
 
 <script setup lang="ts">
 interface peopleInt {
-  name: string,
-  role: string,
-  imageUrl: string,
+  name: string
+  role: string
+  imageUrl: string
 }
 
 const people: Array<peopleInt> = [

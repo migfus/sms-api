@@ -3,12 +3,12 @@ import { defineStore } from "pinia";
 import { $DebugInfo } from '@/helpers/Debug'
 
 interface contentInt {
-  name: String,
-  content: string,
-  status: String,
+  name: String
+  content: string
+  status: String
 }
 interface configInt {
-  show: Boolean,
+  show: Boolean
 }
 
 export const useNotificationStore = defineStore("system/NotificationStore", () => {

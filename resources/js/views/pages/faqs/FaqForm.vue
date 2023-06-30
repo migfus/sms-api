@@ -50,12 +50,12 @@ import { reactive } from 'vue'
 import { PaperAirplaneIcon, HeartIcon } from '@heroicons/vue/20/solid';
 
 interface paramsInt {
-  question: string,
-  email: string,
-  phone: string,
+  question: string
+  email: string
+  phone: string
 }
 interface configInt {
-  submitted: boolean,
+  submitted: boolean
 }
 
 const params = reactive<paramsInt>({

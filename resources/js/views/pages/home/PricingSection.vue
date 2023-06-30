@@ -42,10 +42,10 @@
 import { CheckIcon } from '@heroicons/vue/20/solid'
 
 interface tiersInt {
-  name: string,
-  href: string,
-  priceMonthly: number,
-  description: string,
+  name: string
+  href: string
+  priceMonthly: number
+  description: string
   includedFeatures: Array<string>
 }
 

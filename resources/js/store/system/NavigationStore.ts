@@ -3,20 +3,18 @@ import { defineStore } from "pinia";
 import { $DebugInfo } from '@/helpers/Debug'
 
 interface pagesInt {
-  name: String,
-  link: {
-    name: String,
-  }
+  name: String
+  link: { name: String }
 }
 // BUG
 interface socialInt {
-  name: String,
-  href: String,
+  name: String
+  href: String
   // icon: Component,
 }
 interface faqsInt {
-  name: String,
-  link: String,
+  name: String
+  link: String
 }
 
 export const useNavigationStore = defineStore("system/NavigationStore", () => {

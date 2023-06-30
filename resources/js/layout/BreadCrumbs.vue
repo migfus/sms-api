@@ -25,11 +25,9 @@
 import { HomeIcon } from '@heroicons/vue/20/solid'
 
 interface pagesInt {
-  name: string,
-  link: {
-    name: string,
-  },
-  current: boolean,
+  name: string;
+  link: { name: string };
+  current: boolean;
 }
 
 const pages:Array<pagesInt> = [

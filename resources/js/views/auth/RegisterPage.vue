@@ -68,8 +68,8 @@ import { reactive } from 'vue';
 import { ArrowPathRoundedSquareIcon } from '@heroicons/vue/20/solid'
 
 interface inputInt {
-  email: string,
-  password: string,
+  email: string
+  password: string
 }
 
 const $auth = useAuthStore();

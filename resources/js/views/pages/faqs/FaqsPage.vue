@@ -36,10 +36,10 @@ import { throttle } from 'lodash';
 import FaqForm from './FaqForm.vue'
 
 interface configInt {
-  loading: boolean,
+  loading: boolean
 }
 interface paramsInt {
-  search: string,
+  search: string
 }
 
 const config = reactive<configInt>({

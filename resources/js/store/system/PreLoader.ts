@@ -3,8 +3,8 @@ import { reactive } from 'vue'
 import type { RouteRecordName } from 'vue-router'
 
 interface configInt {
-  loading: boolean,
-  to: RouteRecordName,
+  loading: boolean
+  to: RouteRecordName
 }
 
 export const usePreLoader = defineStore('system/PreLoader', () => {

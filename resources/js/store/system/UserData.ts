@@ -4,16 +4,16 @@ import { defineStore } from 'pinia'
 interface contentInt {
   focusedHistory: Array<String>
   windowSize: {
-    height: Number,
-    width: Number,
+    height: Number
+    width: Number
   },
   bluetoothDevices: Array<String>,
   preferredLanguage: Array<String>,
-  pixelRatio: Number,
+  pixelRatio: Number
   coords: {
-    altitude: Number,
-    longitude: Number,
-  },
+    altitude: Number
+    longitude: Number
+  }
 }
 
 export const useUserData = defineStore('system/UserData', () => {

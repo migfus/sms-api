@@ -4,27 +4,25 @@ import axios from 'axios'
 import { useSessionStorage } from '@vueuse/core'
 
 interface paramsInt {
-  currentDate: String,
+  currentDate: String
 }
 interface configInt {
-  loading: boolean,
+  loading: boolean
   count: number
 }
 interface contentInt {
-  event_category: {
-    name: String,
-  }
-  title: String,
-  start: string,
-  end: String,
-  display: String,
-  backgroundColor: String,
-  textColor: String,
-  borderColor: String,
-  eventEnd: Boolean,
-  eventTime: Boolean,
-  eventClick: Function,
-  id: number,
+  event_category: { name: String }
+  title: String
+  start: string
+  end: String
+  display: String
+  backgroundColor: String
+  textColor: String
+  borderColor: String
+  eventEnd: Boolean
+  eventTime: Boolean
+  eventClick: Function
+  id: number
 }
 
 export const useEventPublicStore = defineStore('store/EventPublicStore', () => {

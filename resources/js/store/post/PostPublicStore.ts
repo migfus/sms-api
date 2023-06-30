@@ -4,19 +4,17 @@ import { useStorage } from '@vueuse/core'
 import axios from 'axios'
 
 interface contentInt {
-  id: number,
-  title: string,
-  cover: string,
-  category: {
-    name: string,
-  },
-  content: string,
+  id: number
+  title: string
+  cover: string
+  category: { name: string }
+  content: string
   user: {
-    id: number,
-    email: string,
-    avatar: string,
-  },
-  created_at: string,
+    id: number
+    email: string
+    avatar: string
+  }
+  created_at: string
 }
 interface configInt {
 

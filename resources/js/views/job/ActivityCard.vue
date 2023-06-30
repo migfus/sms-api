@@ -143,24 +143,24 @@
 import { ChatBubbleLeftEllipsisIcon, PaperAirplaneIcon, TagIcon, DocumentTextIcon } from '@heroicons/vue/20/solid';
 
 interface activityIn {
-  id: number,
-  type: string,
+  id: number
+  type: string
   person: {
-    name: string,
-    href: string,
+    name: string
+    href: string
   },
   assigned: {
-    name: string,
-    href: string,
+    name: string
+    href: string
   },
-  date: string,
-  imageUrl: string,
+  date: string
+  imageUrl: string
   tags: Array<tagsInt>
 }
 interface tagsInt {
-  href: string,
-  color: string,
-  name: string,
+  href: string
+  color: string
+  name: string
 }
 
 const activity: Array<activityIn> = [
