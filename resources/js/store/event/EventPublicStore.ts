@@ -25,7 +25,7 @@ interface contentInt {
   id: number
 }
 
-export const useEventPublicStore = defineStore('store/EventPublicStore', () => {
+export const useEventPublicStore = defineStore('event/EventPublicStore', () => {
   const eventCount = useSessionStorage<Number>('event/EventPublic/eventCount', 0)
   const content = useSessionStorage<Array<contentInt>>('event/EventPublic/content', [])
   const params = reactive<paramsInt>({

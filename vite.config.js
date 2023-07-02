@@ -18,6 +18,6 @@ export default defineConfig({
   },
   // NOTE remove console.log
   esbuild: {
-    drop: ['console', 'debugger'],
+    // drop: ['console', 'debugger'],
   },
 });

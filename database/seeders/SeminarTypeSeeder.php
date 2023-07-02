@@ -8,20 +8,19 @@ use Illuminate\Database\Seeder;
 class SeminarTypeSeeder extends Seeder
 {
   public function run(): void {
-    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => 562170298074537243,
+        'id' => 549719216912249,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Managerial'
       ],
       [
-        'id' => 562170298074537244,
+        'id' => 549719216924775,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Supervisory'
       ],
       [
-        'id' => 562170298074537245,
+        'id' => 549719216936296,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Technical'
       ],

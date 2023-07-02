@@ -11,30 +11,29 @@ class WorkStatusSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void {
-      $snowflake = app('Kra8\Snowflake\Snowflake');
       $data = [
         [
-          'id' => 562170297944513802,
+          'id' => 549720216082390,
           'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'Job Order',
         ],
         [
-          'id' => 562170297944513803,
+          'id' => 549720216095137,
           'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'Contractual',
         ],
         [
-          'id' => 562170297944513804,
+          'id' => 549720216102557,
           'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'Temporary',
         ],
         [
-          'id' => 562170297944513805,
+          'id' => 549720216109951,
           'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'Permanent',
         ],
         [
-          'id' => 562170297944513806,
+          'id' => 549720216124830,
           'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
           'name' => 'On-Call',
         ],

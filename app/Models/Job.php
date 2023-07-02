@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kra8\Snowflake\HasShortflakePrimary;
 
 class Job extends Model
 {
-  use HasFactory;
+  use HasFactory, HasShortflakePrimary;
 
   public function JobLocation() {
     return $this->belongsTo(JobLocation::class, 'job_location_id');

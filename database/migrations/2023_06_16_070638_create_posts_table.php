@@ -8,7 +8,7 @@ return new class extends Migration
 {
   public function up(): void {
     Schema::create('posts', function (Blueprint $table) {
-      $table->id();
+      $table->bigInteger('id')->unsigned()->primary();
       $table->bigInteger('post_category_id')->unsigned();
       $table->bigInteger('user_id')->unsigned();
       $table->boolean('active')->default(0);

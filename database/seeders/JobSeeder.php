@@ -8,15 +8,14 @@ use Illuminate\Database\Seeder;
 class JobSeeder extends Seeder
 {
   public function run(): void {
-    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => 562170298288444730,
+        'id' => 549718390787165,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
-        'job_location_id' => \App\Models\JobLocation::where('id', 562170298246501053)->first()->id, // CMU,
-        'job_type_id' => \App\Models\JobType::where('id', 562170298171006199)->first()->id, // faculty
-        'job_status_id' => \App\Models\JobStatus::where('id', 562170298120672848)->first()->id, // Job Order
-        'job_department_id' => \App\Models\JobDepartment::where('id', 562170298208755294)->first()->id, // College of Nursing
+        'job_location_id' => \App\Models\JobLocation::where('id', 549718062930975)->first()->id, // CMU,
+        'job_type_id' => \App\Models\JobType::where('id', 549718712245638)->first()->id, // faculty
+        'job_status_id' => \App\Models\JobStatus::where('id', 549718506430213)->first()->id, // Job Order
+        'job_department_id' => \App\Models\JobDepartment::where('id', 549717969211197)->first()->id, // College of Nursing
         'title' => 'Administrative Aide III',
         'requirements' => 'Requirements are idk',
         'responsibilities' => 'my responsibilities are you know',
@@ -26,12 +25,12 @@ class JobSeeder extends Seeder
         'unposted_at' => '2023-06-25',
       ],
       [
-        'id' => 562170298301028637,
+        'id' => 549718390797331,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
-        'job_location_id' => \App\Models\JobLocation::where('id', 562170298246501054)->first()->id, // CSC, Malaybalay,
-        'job_type_id' => \App\Models\JobType::where('id', 562170298171006200)->first()->id, // staff
-        'job_status_id' => \App\Models\JobStatus::where('id', 562170298120672851)->first()->id, // Permanent idk
-        'job_department_id' => \App\Models\JobDepartment::where('id', 562170298208755295)->first()->id, // College of Engineering
+        'job_location_id' => \App\Models\JobLocation::where('id', 549718062943377)->first()->id, // CSC, Malaybalay,
+        'job_type_id' => \App\Models\JobType::where('id', 549718712254629)->first()->id, // staff
+        'job_status_id' => \App\Models\JobStatus::where('id', 549718506460392)->first()->id, // Permanent idk
+        'job_department_id' => \App\Models\JobDepartment::where('id', 549717969218065)->first()->id, // College of Engineering
         'title' => 'Clerical Aide III',
         'requirements' => 'Requirements are idk',
         'responsibilities' => 'my responsibilities are you know',

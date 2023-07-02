@@ -11,10 +11,12 @@
         "kra8/laravel-snowflake": "^2.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
+        "laravel/telescope": "^4.15",
         "laravel/tinker": "^2.8",
         "spatie/laravel-permission": "^5.10"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.8",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",

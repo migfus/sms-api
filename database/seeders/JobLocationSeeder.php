@@ -8,15 +8,14 @@ use Illuminate\Database\Seeder;
 class JobLocationSeeder extends Seeder
 {
   public function run(): void {
-    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => 562170298246501053,
+        'id' => 549718062930975,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'CMU',
       ],
       [
-        'id' => 562170298246501054,
+        'id' => 549718062943377,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'CSC, Malaybalay',
       ],

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative bg-white py-16 sm:py-24">
+  <div v-if="false" class="relative bg-white py-16 sm:py-24">
     <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
       <div class="relative sm:py-16 lg:py-0">
         <div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
@@ -55,8 +55,9 @@ const content = ref<contentInt>(null)
 async function ShowAPI() {
   config.loading = true
   try {
-    let { data: {data} } = await axios.get(`/api/post/${$route.params.id}`)
+    let { data: {data} } = await axios.get(`/api/public/post/${$route.params.id}`)
     content.value = data
+    console.log(data)
   }
   catch(err) {
     console.log(err)

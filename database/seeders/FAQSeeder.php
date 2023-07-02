@@ -8,10 +8,9 @@ use Illuminate\Database\Seeder;
 class FAQSeeder extends Seeder
 {
   public function run(): void {
-    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => 562170298342971710,
+        'id' => 549717769433411,
         'answer_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'approved_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'question' => 'Proident nostrud magna enim irure reprehenderit in ut aliqua officia mollit nulla.',
@@ -19,7 +18,7 @@ class FAQSeeder extends Seeder
         'points' => 100,
       ],
       [
-        'id' => 562170298342971711,
+        'id' => 549717769449759,
         'answer_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'approved_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'question' => 'Pariatur duis aliqua qui occaecat occaecat cillum esse elit consectetur.',
@@ -27,7 +26,7 @@ class FAQSeeder extends Seeder
         'points' => 102,
       ],
       [
-        'id' => 562170298342971712,
+        'id' => 549717769466666,
         'answer_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'approved_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'question' => 'Veniam ad mollit aute in enim velit ad proident duis anim excepteur sint fugiat occaecat.',
@@ -35,7 +34,7 @@ class FAQSeeder extends Seeder
         'points' => 103,
       ],
       [
-        'id' => 562170298342971713,
+        'id' => 549717769479859,
         'answer_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'approved_user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'question' => 'Incididunt laboris consectetur duis voluptate sunt nulla amet.',

@@ -8,35 +8,34 @@ use Illuminate\Database\Seeder;
 class EducationLevelSeeder extends Seeder
 {
   public function run(): void {
-    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => 562170298007426868,
+        'id' => 549717181106559,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Primary',
       ],
       [
-        'id' => 562170298007426869,
+        'id' => 549717181120481,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Secondary',
       ],
       [
-        'id' => 562170298007426870,
+        'id' => 549717181124844,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Vocational',
       ],
       [
-        'id' => 562170298007426871,
+        'id' => 549717181133505,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'College',
       ],
       [
-        'id' => 562170298007426872,
+        'id' => 549717181143755,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Masteral',
       ],
       [
-        'id' => 562170298007426873,
+        'id' => 549717181150779,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name' => 'Doctoral',
       ],

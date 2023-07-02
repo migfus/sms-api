@@ -8,25 +8,24 @@ use Illuminate\Database\Seeder;
 class CivilStatusSeeder extends Seeder
 {
   public function run(): void {
-    $snowflake = app('Kra8\Snowflake\Snowflake');
     $data = [
       [
-        'id' => 562170297889986620,
+        'id' => 549717001907709,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name'    => 'Single',
       ],
       [
-        'id' => 562170297889986621,
+        'id' => 549717001913612,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name'    => 'Married',
       ],
       [
-        'id' => 562170297889986622,
+        'id' => 549717001921661,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name'    => 'Separated',
       ],
       [
-        'id' => 562170297889986623,
+        'id' => 549717001931074,
         'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
         'name'    => 'Widowed',
       ],
