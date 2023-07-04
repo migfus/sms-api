@@ -67,7 +67,7 @@ const router = createRouter({
       }
     },
     {
-    path: '/post/:id',
+    path: '/news/:id',
     name: 'post',
       component: () => import('@/views/pages/news/PostPage.vue'),
       meta: {
@@ -129,6 +129,26 @@ const router = createRouter({
       path: "/dashboard",
       name: "dashboard",
       component: () => import("@/views/dashboard/DashboardPage.vue"),
+      meta: {
+        sideBar: true,
+        title: "Dashboard",
+        auth: true,
+      },
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: () => import("@/views/dashboard/ProfilePage.vue"),
+      meta: {
+        sideBar: true,
+        title: "Dashboard",
+        auth: true,
+      },
+    },
+    {
+      path: "/documents",
+      name: "documents",
+      component: () => import("@/views/dashboard/DocumentPage.vue"),
       meta: {
         sideBar: true,
         title: "Dashboard",
@@ -272,16 +292,7 @@ router.beforeEach(async (to, from) => {
   $load.config.loading = true
   $load.config.to = to.name
 
-  if($auth.token && $auth.content) {
-    ability.update([
-      ...$auth.content.permissions.map((str) => {
-        return {
-          action: str.split(' ')[0],
-          subject: str.split(' ')[1],
-        }
-      })
-    ])
-  }
+  $auth.UpdateAbility()
 
   // const $auth = useAuthStore();
 

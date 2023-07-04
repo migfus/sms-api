@@ -6,7 +6,7 @@
     <SideNavigation v-if="$route.meta.sideBar"/>
     <TopNavigation v-else/>
 
-    <FooterLayout />
+
   </div>
 </template>
 
@@ -21,7 +21,6 @@ Data();
 import NotificationsSection from './components/Notifications.vue';
 import TopNavigation from '@/layout/TopNavigation.vue';
 import SideNavigation from '@/layout/SideNavigation.vue';
-import FooterLayout from '@/layout/Footer.vue';
 
 const $route = useRoute();
 const $job = useJobPublicStore();

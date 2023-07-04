@@ -1,20 +1,22 @@
 <template>
   <nav class="flex border-b border-gray-200 bg-white" aria-label="Breadcrumb">
-    <ol role="list" class="mx-auto flex w-full max-w-screen-xl space-x-4 px-4 sm:px-6 lg:px-8">
+    <ol role="list" class="mx-auto flex w-full max-w-full space-x-4 px-4 sm:px-6 lg:px-8">
       <li class="flex">
         <div class="flex items-center">
           <RouterLink :to="{ name: 'dashboard'}" class="text-gray-400 hover:text-gray-500">
-            <HomeIcon class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+            <WindowIcon class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
             <span class="sr-only">Home</span>
           </RouterLink>
         </div>
       </li>
-      <li v-for="page in pages" :key="page.name" class="flex">
+      <li class="flex">
         <div class="flex items-center">
           <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
           </svg>
-          <a :href="`${page.link}`" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700" :aria-current="page.current ? 'page' : undefined">{{ page.name }}</a>
+          <RouterLink v-if="$route.name != 'dashboard'" :to="{name: $route.name}" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">
+            {{ $route.name.toString().charAt(0).toUpperCase() + $route.name.toString().slice(1) }}
+          </RouterLink>
         </div>
       </li>
     </ol>
@@ -22,15 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { HomeIcon } from '@heroicons/vue/20/solid'
+import { HomeIcon, WindowIcon } from '@heroicons/vue/20/solid'
+import { useRoute } from 'vue-router'
 
-interface pagesInt {
-  name: string;
-  link: { name: string };
-  current: boolean;
-}
-
-const pages:Array<pagesInt> = [
-  { name: 'Home', link: {name: 'home'}, current: false },
-];
+const $route = useRoute();
 </script>

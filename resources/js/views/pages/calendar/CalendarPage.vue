@@ -5,8 +5,8 @@
       <div class="bg-white mx-auto max-w-7xl py-4 sm:px-6 px-8 rounded-lg shadow col-span-3 lg:col-span-1 w-full">
         <h2 class="font-semibold">Upcoming Events</h2>
         <ul class="my-4">
-          <li v-for="(row, idx) in $event.content" :key="row.id">
-            <span v-if="moment(row.start).format('YYYYMMDD') >= moment().format('YYYYMMDD')" :class="['px-4 py-2 rounded-xl mb-2']" :style="[`background-color: ${row.backgroundColor}`, `color: ${row.textColor}`]">
+          <li v-for="(row, idx) in $event.content" :key="row.id" class="px-4 py-2 rounded-xl mb-2">
+            <span v-if="moment(row.start).format('YYYYMMDD') >= moment().format('YYYYMMDD')" :class="['']" :style="[`background-color: ${row.backgroundColor}`, `color: ${row.textColor}`]">
               {{ `${moment(row.start).format('MM/DD/YYYY')} - ${row.title}`}}
             </span>
           </li>

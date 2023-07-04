@@ -17,8 +17,6 @@ class Post extends Model
     'cover',
   ];
 
-  public $incrementing = false;
-
   public function category() {
     return $this->belongsTo(PostCategory::class, 'post_category_id');
   }

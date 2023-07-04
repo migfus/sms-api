@@ -17,11 +17,10 @@ export default function JWTInterceptor() {
   axios.interceptors.response.use(
     (response) => {
       if (response.data.auth) {
-        $auth.content = response.data.auth;
-        $Log("Role Updated", '');
+        $auth.UpdateData(response.data)
       }
       return response;
-  },
+    },
     (error) => {
       if(axios.isCancel(error)) {
         $Log('Interceptor','Cancelled')

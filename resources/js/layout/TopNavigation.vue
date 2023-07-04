@@ -152,6 +152,8 @@
 
   <PreLoader v-if="$preLoader.config.loading"/>
   <RouterView v-else></RouterView>
+
+  <FooterLayout />
 </template>
 
 <script setup lang='ts'>
@@ -166,9 +168,8 @@ import { useEventPublicStore } from '@/store/event/EventPublicStore';
 
 import HeaderBanner from '@/layout/HeaderBanner.vue';
 import PreLoader from '@/layout/preloader/@PreLoader.vue';
-
-
 import ProfileDropdown from './ProfileDropdown.vue';
+import FooterLayout from './Footer.vue'
 
 const $nav = useNavigationStore();
 const $route = useRoute();

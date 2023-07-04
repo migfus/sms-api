@@ -26,19 +26,25 @@
                 </div>
               </TransitionChild>
               <div class="flex flex-shrink-0 items-center px-4">
-                <img class="h-8 w-auto" src="/images/logo.png" alt="Your Company" />
+                <object class="h-8 w-auto" data="/images/logo.svg" alt="HRMO" />
               </div>
               <div class="mt-5 h-0 flex-1 overflow-y-auto">
                 <nav class="space-y-1 px-2">
-                  <a v-for="item in navigation" :key="item.name" :href="item.href"
+                  <RouterLink v-for="item in navigation" :key="item.name" :to="{name: item.link}"
                     @click="sidebarOpen = false"
-                    :class="[item.current ? 'bg-gray-700 text-gray-50' : 'text-gray-300 hover:bg-gray-600 hover:text-gray-50', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']"
+                    :class="[$route.name == item.link ? 'bg-gray-700 text-gray-50' : 'text-gray-300 hover:bg-gray-600 hover:text-gray-50', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']"
                   >
-                    <component :is="item.icon"
-                      :class="[item.current ? 'text-gray-100' : 'text-gray-400 group-hover:text-gray-300', 'mr-4 flex-shrink-0 h-6 w-6']" aria-hidden="true"
+                    <div v-if="item.line" class="relative">
+                      <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                        <div class="w-full border-t border-white" />
+                      </div>
+                    </div>
+                    <component v-else :is="item.icon"
+                      :class="[$route.name == item.link ? 'text-gray-100' : 'text-gray-400 group-hover:text-gray-300', 'mr-4 flex-shrink-0 h-6 w-6']" aria-hidden="true"
                     />
                     {{ item.name }}
-                  </a>
+                    <div v-if="item.count" :class="[item.count.color, 'relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold rounded-full -top-2 _right-1']">{{ item.count.number }}</div>
+                  </RouterLink>
                 </nav>
               </div>
             </DialogPanel>
@@ -54,15 +60,25 @@
     <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex flex-grow flex-col overflow-y-auto border-gray-200 bg-gray-800 pt-5">
-        <div class="flex flex-shrink-0 items-center px-4">
-          <img class="h-8 w-auto" src="/images/logo.png" alt="Your Company" />
-        </div>
+        <RouterLink :to="{name: 'home'}" class="flex flex-shrink-0 items-center px-4">
+          <object class="h-8 w-auto" data="/images/logo.svg" alt="Your Company" />
+          <p class="ml-4 font-semibold text-white">HRMO | CMU</p>
+        </RouterLink>
         <div class="mt-5 flex flex-grow flex-col">
           <nav class="flex-1 space-y-1 px-2 pb-4">
-            <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-700 text-gray-50' : 'text-gray-300 hover:bg-gray-600 hover:text-gray-50', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
-              <component :is="item.icon" :class="[item.current ? 'text-gray-100' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
+            <RouterLink v-for="item in navigation" :key="item.name" :to="{name:item.link}" :class="[$route.name == item.link ? 'bg-gray-700 text-gray-50' : 'text-gray-300 hover:bg-gray-600 hover:text-gray-50', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
+
+              <div v-if="item.line" class="relative">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                  <div class="w-full border-t border-white" />
+                </div>
+              </div>
+              <component v-else :is="item.icon" :class="[$route.name == item.link ? 'text-gray-100' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
               {{ item.name }}
-            </a>
+              <div v-if="item.count" :class="[item.count.color, 'relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold rounded-full -top-2 _right-1']">{{ item.count.number }}</div>
+            </RouterLink>
+
+
           </nav>
         </div>
       </div>
@@ -87,27 +103,8 @@
             </form>
           </div>
           <div class="ml-4 flex items-center md:ml-6">
-            <button type="button" class="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-              <span class="sr-only">View notifications</span>
-              <BellIcon class="h-6 w-6" aria-hidden="true" />
-            </button>
-
             <!-- Profile dropdown -->
-            <Menu as="div" class="relative ml-3">
-              <div>
-                <MenuButton class="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-                  <span class="sr-only">Open user menu</span>
-                  <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                </MenuButton>
-              </div>
-              <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                    <a :href="item.href" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{ item.name }}</a>
-                  </MenuItem>
-                </MenuItems>
-              </transition>
-            </Menu>
+            <ProfileDropdown />
           </div>
         </div>
       </div>
@@ -115,23 +112,27 @@
       <main class="flex-1">
         <BreadCrumbs />
         <div class="py-6">
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-
-
-          </div>
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+          <div class="mx-auto max-w-full px-4 sm:px-6 md:px-8">
 
             <PreLoader v-if="$preLoader.config.loading"/>
             <RouterView v-else></RouterView>
 
+
+
           </div>
         </div>
+
+        <FooterLayout :sideBar="true"/>
       </main>
     </div>
+
+
   </div>
+
 </template>
 
 <script setup lang='ts'>
+import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 import {
   Dialog,
@@ -147,28 +148,101 @@ import {
   Bars3BottomLeftIcon,
   BellIcon,
   CalendarIcon,
-  ChartBarIcon,
   FolderIcon,
   HomeIcon,
   InboxIcon,
   UsersIcon,
   XMarkIcon,
+  InformationCircleIcon,
+  QueueListIcon,
+  CheckCircleIcon,
+  MegaphoneIcon,
+  SquaresPlusIcon,
+  WindowIcon
 } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { usePreLoader } from '@/store/system/PreLoader'
+import { useEventPublicStore } from '@/store/event/EventPublicStore';
+import { useJobPublicStore } from '@/store/job/JobPublicStore'
 
 import BreadCrumbs from '@/layout/BreadCrumbs.vue';
 import HeaderBanner from '@/layout/HeaderBanner.vue';
 import PreLoader from '@/layout/preloader/@PreLoader.vue';
+import ProfileDropdown from './ProfileDropdown.vue'
+import FooterLayout from './Footer.vue'
 
 const $preLoader = usePreLoader();
+const $route = useRoute();
+const $event = useEventPublicStore();
+const $job = useJobPublicStore();
+
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+  {
+    name: 'Dashboard',
+    link: 'dashboard',
+    icon: WindowIcon,
+    count: null,
+  },
+  {
+    name: 'Profile',
+    link: 'profile',
+    icon: SquaresPlusIcon,
+    count: null,
+  },
+  {
+    name: 'Documents',
+    link: 'documents',
+    icon: FolderIcon,
+    count: null
+  },
+
+  {
+    name: 'Pages',
+    line: true,
+    count: null
+  },
+  {
+    name: 'Home',
+    link: 'home',
+    icon: HomeIcon,
+    count: null
+  },
+  {
+    name: 'About',
+    link: 'about',
+    icon: InformationCircleIcon,
+    count: null
+  },
+  {
+    name: 'Job Listing',
+    link: 'job-listing',
+    icon: QueueListIcon,
+    count: {
+      number: $job.content.length,
+      color: 'text-black bg-amber-400'
+    }
+  },
+  {
+    name: 'Calendar',
+    link: 'calendar',
+    icon: CalendarIcon,
+    count: {
+      number: $event.eventCount,
+      color: 'text-black bg-gradient-to-r from-primary-500 to-amber-200'
+    }
+  },
+  {
+    name: 'FAQs',
+    link: 'faqs',
+    icon: CheckCircleIcon,
+    count: null,
+  },
+  {
+    name: 'News & Update',
+    link: 'news',
+    icon: MegaphoneIcon,
+    count: null,
+  },
 ]
 
 const userNavigation = [

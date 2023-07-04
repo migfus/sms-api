@@ -18,7 +18,7 @@ class PostPublicController extends Controller
   }
 
   private function IndexAll() {
-    $data = Post::select('id')->where('active', true)->with([])->get();
+    $data = Post::where('active', true)->with(['category', 'user'])->get();
 
     return response()->json(['data' => $data]);
   }

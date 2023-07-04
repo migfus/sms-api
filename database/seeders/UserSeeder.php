@@ -14,10 +14,10 @@ class UserSeeder extends Seeder
     $data = [
       [
         'id' => $_ENV['SEEDER_PERSON_ID'], //admin [first user],
-        'last_name' => '[Last]',
-        'first_name' => '[First]',
-        'mid_name' => '[mid]',
-        'ext_name' => 'Jr',
+        'last_name' => 'Admin',
+        'first_name' => '',
+        'mid_name' => '',
+        'ext_name' => '',
         'civil_status_id' => \App\Models\CivilStatus::get()->first()->id, // single
         'birth_day' => Carbon::now(),
         'birth_place_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
@@ -27,9 +27,9 @@ class UserSeeder extends Seeder
         'weight' => 65.1,
         'address_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
         'address' => 'Bonifacion Street, Poblacion',
-        'gsis_id' => 'GSIS - 12305349045',
-        'pagibig_id' => 'pagibig - 12305349045',
-        'tin_id' => 'tin',
+        'gsis_id' => null,
+        'pagibig_id' => null,
+        'tin_id' => null,
       ]
     ];
 
@@ -56,7 +56,8 @@ class UserSeeder extends Seeder
     ];
 
     foreach($data as $row) {
-      \App\Models\User::create($row);
+      \App\Models\User::create($row)
+        ->assignRole('admin');
     }
   }
 

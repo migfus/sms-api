@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-white" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto max-w-7xl px-6 pb-8 pt-4 sm:pt-24 lg:px-8 lg:pt-32">
+    <div :class="[$props.sideBar ? 'max-w-full' : 'max-w-7xl ', 'mx-auto px-6 pb-8 pt-4 sm:pt-24 lg:px-8 lg:pt-32']">
       <div class="xl:grid xl:grid-cols-3 xl:gap-8">
         <div class="space-y-6">
           <object class="h-48" data="/images/logo-anim.svg" alt="Company name" />
@@ -64,6 +64,12 @@
 import { useNavigationStore } from '@/store/system/NavigationStore';
 
 const $nav = useNavigationStore();
+const $props = defineProps({
+  sideBar: {
+    default: false,
+    type: Boolean,
+  }
+})
 
 const navigation = {
   pages: $nav.pages,

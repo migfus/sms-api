@@ -1,12 +1,43 @@
-import { ref, reactive } from "vue";
+import { ref, reactive, toRaw } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
 import { $Err, $DebugInfo } from '@/helpers/Debug'
 import { notify } from 'notiwind'
-import { useStorage } from '@vueuse/core'
+import { useStorage, StorageSerializers } from '@vueuse/core'
+import ability from '@/Ability';
 
 interface contentInt {
-  permissions: Array<string>;
+  auth: {
+    avatar: string,
+    email: string,
+    created_at: string,
+    roles: Array<{
+      name: string
+    }>
+    person: {
+      addres: string,
+      address_id: number,
+      birth_day: string,
+      birth_place_id: number,
+      blood_type_id: number,
+      civil_status_id: number,
+      created_at: string,
+      ext_name: string,
+      last_name: string,
+      first_name: string,
+      mid_name: string,
+      gsis_id: string,
+      height: number,
+      id: number,
+      pagibig_id: string,
+      sex: boolean,
+      tin_id: string,
+      weight: string,
+    },
+  },
+  ip: string,
+  permissions: Array<string>,
+  token: string,
 }
 interface configInt {
   loading: boolean;
@@ -21,8 +52,11 @@ interface InputInt {
 export const useAuthStore = defineStore("auth/AuthStore", () => {
   $DebugInfo('AuthStore');
 
-  const token = useStorage<String>('auth/AuthStore/token', '');
-  const content = useStorage<contentInt>('auth/AuthStore/content', null);
+  const _token = useStorage<String>('auth/AuthStore/token', null, localStorage);
+  const _content = useStorage<contentInt>('auth/AuthStore/content', null, localStorage, {serializer: StorageSerializers.object});
+
+  const token = ref(toRaw(_token));
+  const content = ref(toRaw(_content));
   const config = reactive<configInt>({
     loading: false,
     status: '',
@@ -33,12 +67,10 @@ export const useAuthStore = defineStore("auth/AuthStore", () => {
   async function LoginAPI(input: InputInt) {
     config.loading = true
     try{
-      console.log(input)
       let { data: { data }} = await axios.post('/api/login', input)
-      content.value = data
-      token.value = data.token
-      localStorage.setItem('auth', JSON.stringify(data))
-      localStorage.setItem('token', JSON.stringify(data.token))
+      UpdateData(data)
+
+      console.log(data)
       //@ts-ignore
       this.router.push({ name: 'dashboard'})
     }
@@ -97,8 +129,33 @@ export const useAuthStore = defineStore("auth/AuthStore", () => {
     this.router.push({ name: 'login'})
   }
 
-  function UpdateLocalStorage() {
-    localStorage.setItem('auth', JSON.stringify(content.value))
+  function UpdateData(data:any) {
+    token.value = data.token
+    content.value = data
+    _token.value = data.token
+    _content.value = data
+  }
+
+  function UpdateAbility() {
+    if(content.value) {
+      ability.update([
+        ...content.value.permissions.map((str) => {
+          return {
+            action: str.split(' ')[0],
+            subject: str.split(' ')[1],
+          }
+        })
+      ])
+    }
+    else {
+      ability.update([
+        {
+          action: 'show',
+          subject: 'login',
+        }
+      ])
+    }
+
   }
 
   return {
@@ -106,11 +163,12 @@ export const useAuthStore = defineStore("auth/AuthStore", () => {
     config,
     token,
 
-    UpdateLocalStorage,
     ConfirmRecoveryAPI,
     ChangePasswordAPI,
     LoginAPI,
     RecoveryAPI,
     Logout,
+    UpdateData,
+    UpdateAbility,
   }
 });
