@@ -22,6 +22,8 @@ class Controller extends BaseController
         'auth' => [
           'ip' => $_SERVER['REMOTE_ADDR'],
           'auth' => $auth,
+          // 'token'=> $auth->createToken('token idk wv')->plainTextToken,
+          'permissions' => $auth->getAllPermissions()->pluck('name'),
         ]
       ];
     }

@@ -23,4 +23,7 @@ Route::group(['prefix' => 'public', 'as' => 'public.'], function() {
 
 
 Route::middleware('auth:sanctum')->group(function () {
+  Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
+    Route::apiResource('/document', \App\Http\Controllers\DocumentAuthController::class)->only(['index', 'destroy', 'store']);
+  });
 });

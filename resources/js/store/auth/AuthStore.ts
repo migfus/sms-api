@@ -69,8 +69,9 @@ export const useAuthStore = defineStore("auth/AuthStore", () => {
     try{
       let { data: { data }} = await axios.post('/api/login', input)
       UpdateData(data)
+      _token.value = data.token
+      token.value = data.token
 
-      console.log(data)
       //@ts-ignore
       this.router.push({ name: 'dashboard'})
     }
@@ -130,9 +131,7 @@ export const useAuthStore = defineStore("auth/AuthStore", () => {
   }
 
   function UpdateData(data:any) {
-    token.value = data.token
     content.value = data
-    _token.value = data.token
     _content.value = data
   }
 

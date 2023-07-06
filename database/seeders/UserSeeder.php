@@ -213,12 +213,14 @@ class UserSeeder extends Seeder
       [
         'person_id' => $personID,
         'filename' => 'Document1.docx',
-        'url' => 'http://somehting.com'
+        'url' => 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+        'size' => 123,
       ],
       [
         'person_id' => $personID,
         'filename' => 'ExcelProject.xlsx',
-        'url' => 'http://excelinhere.com'
+        'url' => 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+        'size' => 456,
       ],
     ];
 

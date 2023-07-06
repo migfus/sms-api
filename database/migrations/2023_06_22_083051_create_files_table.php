@@ -12,6 +12,7 @@ return new class extends Migration
       $table->bigInteger('person_id')->unsinged();
       $table->string('filename');
       $table->string('url');
+      $table->integer('size');
       $table->timestamps();
     });
   }

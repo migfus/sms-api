@@ -44,10 +44,14 @@ class RoleAndPermissionsSeeder extends Seeder
     Permission::create(['name' => 'destroy person']);
 
     // NOTE DASHBOARD
-    Permission::create(['name' => 'index dashboard']);
-    Permission::create(['name' => 'store dashboard']);
-    Permission::create(['name' => 'update dashboard']);
-    Permission::create(['name' => 'destroy dashboard']);
+    // Permission::create(['name' => 'index dashboard']);
+    // Permission::create(['name' => 'store dashboard']);
+    // Permission::create(['name' => 'update dashboard']);
+    // Permission::create(['name' => 'destroy dashboard']);
+
+    // NOTE PROFILE
+    Permission::create(['name' => 'index profile']);
+    Permission::create(['name' => 'removeFile profile']);
 
     $role = Role::create(['name' => 'Admin']);
     $role->givePermissionTo([
@@ -56,7 +60,8 @@ class RoleAndPermissionsSeeder extends Seeder
       'index faq',      'store faq',      'update faq',      'destroy faq',
       'index event',    'store event',    'update event',    'destroy event',
       'index person',   'store person',   'update person',   'destroy person',
-      'index dashboard','store dashboard','update dashboard','destroy dashboard',
+      // 'index dashboard','store dashboard','update dashboard','destroy dashboard',
+      'index profile', 'removeFile profile',
     ]);
 
     $role = Role::create(['name' => 'Staff']);
@@ -66,12 +71,14 @@ class RoleAndPermissionsSeeder extends Seeder
       'index faq',      'store faq',      'update faq',
       'index event',    'store event',    'update event',
       'index person',   'store person',   'update person',
-      'index dashboard','store dashboard','update dashboard','destroy dashboard',
+      // 'index dashboard','store dashboard','update dashboard','destroy dashboard',
+      'index profile', 'removeFile profile',
     ]);
 
     $role = Role::create(['name' => 'Applicant']);
     $role->givePermissionTo([
-      'index dashboard','store dashboard','update dashboard','destroy dashboard',
+      // 'index dashboard','store dashboard','update dashboard','destroy dashboard',
+      'index profile', 'removeFile profile',
     ]);
   }
 }

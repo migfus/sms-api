@@ -153,6 +153,7 @@ const router = createRouter({
         sideBar: true,
         title: "Dashboard",
         auth: true,
+        resource: 'profile',
       },
     },
     // NOTE TRANSACTIONS
@@ -285,7 +286,7 @@ const router = createRouter({
 });
 const TITLE = "CMU | HRMO";
 
-router.beforeEach(async (to, from) => {
+router.beforeEach(async (to, from, next) => {
   const $load = usePreLoader();
   const $auth = useAuthStore();
 
@@ -293,6 +294,14 @@ router.beforeEach(async (to, from) => {
   $load.config.to = to.name
 
   $auth.UpdateAbility()
+
+  const canNavigate = to.matched.some(row => {
+    if(row.meta.resource) {
+      // @ts-ignore
+      return ability.can(row.meta.action || 'index', row.meta.resource)
+    }
+    return true;
+  })
 
   // const $auth = useAuthStore();
 
@@ -314,7 +323,11 @@ router.beforeEach(async (to, from) => {
   //     return false
   //   }
   // }
+  if(!canNavigate) {
+    next(new Error('Route Disabled (no permission)'))
+  }
 
+  next()
 });
 
 router.afterEach((to) => {
