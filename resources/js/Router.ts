@@ -148,12 +148,23 @@ const router = createRouter({
     {
       path: "/documents",
       name: "documents",
-      component: () => import("@/views/dashboard/DocumentPage.vue"),
+      component: () => import("@/views/dashboard/auth/documents/DocumentPage.vue"),
       meta: {
         sideBar: true,
         title: "Dashboard",
         auth: true,
         resource: 'profile',
+      },
+    },
+    {
+      path: "/users",
+      name: "users",
+      component: () => import("@/views/dashboard/auth/users/UserPage.vue"),
+      meta: {
+        sideBar: true,
+        title: "Users",
+        auth: true,
+        resource: 'user',
       },
     },
     // NOTE TRANSACTIONS

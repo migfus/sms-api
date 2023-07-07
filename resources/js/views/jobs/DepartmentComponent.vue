@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-w-lg mt-4">
+    <div v-if="departments.size > 0" class="max-w-lg mt-4">
       <label for="search" class="block text-primary-600 font-medium text-sm">Departments/Offices</label>
       <div class="mt-2 space-y-3">
         <div v-for="row in departments" class="flex items-center">

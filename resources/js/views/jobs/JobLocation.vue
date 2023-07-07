@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-w-lg mt-4">
+    <div v-if="locations.size > 0" class="max-w-lg mt-4">
       <label for="search" class="block text-primary-600 font-medium text-sm">Work Location</label>
       <div class="mt-2 space-y-3">
         <div v-for="row in locations" class="flex items-center">

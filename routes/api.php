@@ -26,4 +26,6 @@ Route::middleware('auth:sanctum')->group(function () {
   Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
     Route::apiResource('/document', \App\Http\Controllers\DocumentAuthController::class)->only(['index', 'destroy', 'store']);
   });
+
+  Route::apiResource('/users', \App\Http\Controllers\UserController::class)->only(['index']);
 });

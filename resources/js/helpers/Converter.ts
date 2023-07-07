@@ -18,3 +18,7 @@ export const convertFileOrExt = (filename: string, extension:boolean = false) =>
     return filename.split('.').slice(0, -1).join('.')
   }
 }
+
+export const convertName = (person: {last_name: string, first_name: string, mid_name: string, ext_name: string}) => {
+  return `${person.last_name}, ${person.first_name} ${person.mid_name} ${person.ext_name}`
+}

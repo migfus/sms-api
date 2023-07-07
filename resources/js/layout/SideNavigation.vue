@@ -195,6 +195,12 @@ const navigation = [
     icon: FolderIcon,
     count: null
   },
+  {
+    name: 'Users',
+    link: 'users',
+    icon: UsersIcon,
+    count: null
+  },
 
   {
     name: 'Pages',
