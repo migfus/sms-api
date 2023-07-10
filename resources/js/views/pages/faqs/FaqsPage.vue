@@ -13,10 +13,12 @@
 
         <div class="mt-6 col-span-3 lg:col-span-1">
           <dl class="sm:grid sm:grid-cols-1 sm:gap-x-6 sm:gap-y-4 sm:space-y-4">
-            <div v-for="row in $faq.content" :key="row.id">
-              <dt class="text-base font-semibold leading-7 text-gray-900">{{ row.question }}</dt>
-              <dd class="mt-2 text-base leading-7 text-gray-600">{{ row.answer }}</dd>
-            </div>
+            <DataTransition>
+              <div v-for="row in $faq.content" :key="row.id">
+                <dt class="text-base font-semibold leading-7 text-gray-900">{{ row.question }}</dt>
+                <dd class="mt-2 text-base leading-7 text-gray-600">{{ row.answer }}</dd>
+              </div>
+            </DataTransition>
           </dl>
         </div>
       </div>
@@ -33,6 +35,7 @@ import { throttle } from 'lodash';
 import { useFaqPublicStore } from '@/store/faq/FaqPublicStore';
 
 import FaqForm from './FaqForm.vue'
+import DataTransition from '@/components/transitions/DataTransition.vue'
 
 const $faq = useFaqPublicStore();
 

@@ -17,7 +17,7 @@ interface configInt {
 }
 
 export const useDocumentAuthStore = defineStore('auth/DocumentAuthStore', () => {
-  const content = useStorage<Array<contentInt>>('auth/DocumentAuthStore/content', null, localStorage, { serializer: StorageSerializers.object})
+  const content = useStorage<Array<contentInt>>('auth/DocumentAuthStore/content', [], sessionStorage, { serializer: StorageSerializers.object})
   const config = reactive<configInt>({
     loading: false,
     deleteID: null,

@@ -167,6 +167,17 @@ const router = createRouter({
         resource: 'user',
       },
     },
+      {
+        path: "/user/:id",
+        name: "users",
+        component: () => import("@/views/dashboard/auth/users/UserPage.vue"),
+        meta: {
+          sideBar: true,
+          title: "Users",
+          auth: true,
+          resource: 'user',
+        },
+      },
     // NOTE TRANSACTIONS
     // {
     //   path: "/transactions-all",

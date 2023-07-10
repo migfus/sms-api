@@ -1,3 +1,6 @@
+import { useAddressStore } from '@/store/system/AddressStore'
+const $address = useAddressStore()
+
 export const formatBytes = (bytes: number, decimals:number = 2) => {
   if (!+bytes) return '0 Bytes'
 
@@ -21,4 +24,18 @@ export const convertFileOrExt = (filename: string, extension:boolean = false) =>
 
 export const convertName = (person: {last_name: string, first_name: string, mid_name: string, ext_name: string}) => {
   return `${person.last_name}, ${person.first_name} ${person.mid_name} ${person.ext_name}`
+}
+
+export const sexIDToText = (sex: boolean) => sex ? 'Male' : 'Female'
+
+export const addressIDToFull = (id: number) => {
+  for (let i = 0; $address.content.length > i; i++) {
+    const province = $address.content[i];
+    for (let f = 0; province.cities.length > f; f++) {
+      if (province.cities[f].id == id) {
+        return `${province.cities[f].name}, ${province.name} ${province.cities[f].zipcode}`;
+      }
+    }
+  }
+  return null;
 }

@@ -8,6 +8,7 @@ import ability from '@/Ability';
 
 interface contentInt {
   auth: {
+    id: number,
     avatar: string,
     email: string,
     created_at: string,

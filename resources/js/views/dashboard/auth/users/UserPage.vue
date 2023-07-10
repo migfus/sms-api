@@ -4,22 +4,26 @@
   <div v-if="$user.content" class="overflow-hidden bg-white shadow rounded-xl">
     <ul role="list" class="divide-y divide-gray-200">
 
-      <IndividualUser v-for="row in $user.content.data" :data="row"/>
+      <DataTransition>
+        <IndividualUser v-for="row in $user.content.data" :data="row" :key="row.id"/>
+      </DataTransition>
 
     </ul>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useUserStore } from '@/store/users/UserStore'
 import { onMounted } from 'vue'
 
 import IndividualUser from './IndividualUser.vue'
 import MenuCard from './MenuCard.vue'
+import DataTransition from '@/components/transitions/DataTransition.vue'
 
 const $user = useUserStore();
 
+
 onMounted(() => {
   $user.GetAPI()
-});
+})
 </script>

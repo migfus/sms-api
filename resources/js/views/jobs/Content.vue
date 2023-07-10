@@ -21,46 +21,49 @@
         </div>
       </li>
 
-      <li v-for="position in $job.filterJobs" :key="position.id">
-        <RouterLink :to="`job/${position.id}`" class="block hover:bg-gray-50">
-          <div class="px-4 py-4 sm:px-6">
-            <div class="flex items-center justify-between">
-              <p class="truncate text-sm font-medium text-primary-600">{{ position.title }}</p>
-              <div class="ml-2 flex flex-shrink-0">
-                <p class="inline-flex rounded-full bg-amber-100 px-2 text-xs font-semibold leading-5 text-amber-800 mr-2">{{ position.job_status.name }}</p>
-                <p class="inline-flex rounded-full bg-primary-100 px-2 text-xs font-semibold leading-5 text-primary-800">{{ position.job_type.name }}</p>
+      <DataTransition>
+        <li v-for="position in $job.filterJobs" :key="position.id">
+          <RouterLink :to="`job/${position.id}`" class="block hover:bg-gray-50">
+            <div class="px-4 py-4 sm:px-6">
+              <div class="flex items-center justify-between">
+                <p class="truncate text-sm font-medium text-primary-600">{{ position.title }}</p>
+                <div class="ml-2 flex flex-shrink-0">
+                  <p class="inline-flex rounded-full bg-amber-100 px-2 text-xs font-semibold leading-5 text-amber-800 mr-2">{{ position.job_status.name }}</p>
+                  <p class="inline-flex rounded-full bg-primary-100 px-2 text-xs font-semibold leading-5 text-primary-800">{{ position.job_type.name }}</p>
+                </div>
               </div>
-            </div>
-            <div class="mt-2 sm:flex sm:justify-between">
-              <div class="sm:flex">
-                <p class="flex items-center text-sm text-gray-500">
-                  <UsersIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                  {{ position.job_department.name }}
-                </p>
-                <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
-                  <MapPinIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                  {{ position.job_location.name }}
-                </p>
+              <div class="mt-2 sm:flex sm:justify-between">
+                <div class="sm:flex">
+                  <p class="flex items-center text-sm text-gray-500">
+                    <UsersIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                    {{ position.job_department.name }}
+                  </p>
+                  <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
+                    <MapPinIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                    {{ position.job_location.name }}
+                  </p>
+                </div>
+                <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                  <CalendarIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                  <p>
+                    Closing on
+                    <time :datetime="position.unposted_at">{{ moment(position.unposted_at).format('MMM DD, YYYY') }}</time>
+                  </p>
+                </div>
               </div>
-              <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                <CalendarIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                <p>
-                  Closing on
-                  <time :datetime="position.unposted_at">{{ moment(position.unposted_at).format('MMM DD, YYYY') }}</time>
-                </p>
-              </div>
-            </div>
 
 
-            <div class="mt-2 grid grid-cols-2 bg-gray-100 text-gray-600 rounded-lg px-2 py-2">
-              <div class="text-sm">
-                <b>Description:</b>
-                <p>{{ position.description }}</p>
+              <div class="mt-2 grid grid-cols-2 bg-gray-100 text-gray-600 rounded-lg px-2 py-2">
+                <div class="text-sm">
+                  <b>Description:</b>
+                  <p>{{ position.description }}</p>
+                </div>
               </div>
             </div>
-          </div>
-        </RouterLink>
-      </li>
+          </RouterLink>
+        </li>
+      </DataTransition>
+
     </ul>
   </div>
 </template>
@@ -69,6 +72,8 @@
 import { CalendarIcon, MapPinIcon, UsersIcon, FaceFrownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { useJobPublicStore } from '@/store/job/JobPublicStore';
 import moment from 'moment'
+
+import DataTransition from '@/components/transitions/DataTransition.vue'
 
 const $job = useJobPublicStore();
 </script>

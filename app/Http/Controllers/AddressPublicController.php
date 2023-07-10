@@ -15,7 +15,7 @@ class AddressPublicController extends Controller
       $cities = DB::table('address_cities')->where('province_id', '=', $row->id)->orderBy('name')->get();
       $out[$index] = ['id' => $row->id, 'name' => $row->name, 'cities' => []];
       foreach($cities as $row2) {
-        $out[$index]['cities'][] = ['id' => $row2->id, 'name' => $row2->name];
+        $out[$index]['cities'][] = ['id' => $row2->id, 'name' => $row2->name, 'zipcode' => $row2->zipcode];
       }
       $index++;
     }

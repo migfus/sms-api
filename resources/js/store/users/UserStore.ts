@@ -1,6 +1,6 @@
 import { ref, reactive } from 'vue'
 import { defineStore} from 'pinia'
-import { useStorage } from '@vueuse/core'
+import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
 
 interface configInt {
@@ -16,7 +16,7 @@ export const useUserStore = defineStore('users/UserStore', () => {
   const config = reactive<configInt>({
     loading: false
   })
-  const content = useStorage('users/UserStore/content', null, sessionStorage)
+  const content = useStorage('users/UserStore/content', [], sessionStorage, {serializer: StorageSerializers.object})
   const params = reactive<paramsInt>({
     search: '',
     dateRange: ['', ''],

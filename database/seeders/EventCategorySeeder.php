@@ -11,14 +11,14 @@ class EventCategorySeeder extends Seeder
     $data = [
       [
         'id' => 549717375739226,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'Holiday',
         'bg_color' => '16A34A',
         'text_color' => 'fff',
       ],
       [
         'id' => 549717375753077,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'Event',
         'bg_color' => 'FBBF24',
         'text_color' => '000',

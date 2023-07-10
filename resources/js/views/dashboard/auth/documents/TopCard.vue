@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useDocumentAuthStore } from '@/store/auth/DocumentAuthStore'
+import { useDocumentAuthStore } from '@/store/files/DocumentAuthStore'
 import { formatBytes } from '@/helpers/Converter'
 import { PlusIcon } from '@heroicons/vue/20/solid'
 

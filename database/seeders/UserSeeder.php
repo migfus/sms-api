@@ -7,13 +7,15 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\Person;
+use App\Models\User;
 
 class UserSeeder extends Seeder
 {
   public function run(): void {
     $data = [
       [
-        'id' => $_ENV['SEEDER_PERSON_ID'], //admin [first user],
+        'id' => $_ENV['SEEDER_PERSON_ADMIN_ID'], //admin [first user],
         'last_name' => 'Admin',
         'first_name' => '',
         'mid_name' => '',
@@ -30,7 +32,45 @@ class UserSeeder extends Seeder
         'gsis_id' => null,
         'pagibig_id' => null,
         'tin_id' => null,
-      ]
+      ],
+      [
+        'id' => $_ENV['SEEDER_PERSON_STAFF_ID'], //staff [first user],
+        'last_name' => 'Staff',
+        'first_name' => '',
+        'mid_name' => '',
+        'ext_name' => '',
+        'civil_status_id' => \App\Models\CivilStatus::get()->first()->id, // single
+        'birth_day' => Carbon::now(),
+        'birth_place_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
+        'blood_type_id' => \App\Models\BloodType::get()->first()->id, // O+
+        'sex' => 1,
+        'height' => 1.6,
+        'weight' => 65.1,
+        'address_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
+        'address' => 'Bonifacion Street, Poblacion',
+        'gsis_id' => null,
+        'pagibig_id' => null,
+        'tin_id' => null,
+      ],
+      [
+        'id' => $_ENV['SEEDER_PERSON_APPLICANT_ID'], //applicant [first user],
+        'last_name' => 'Belonio',
+        'first_name' => 'Schwarzenegger',
+        'mid_name' => 'Reposposa',
+        'ext_name' => '',
+        'civil_status_id' => \App\Models\CivilStatus::get()->first()->id, // single
+        'birth_day' => Carbon::now(),
+        'birth_place_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
+        'blood_type_id' => \App\Models\BloodType::get()->first()->id, // O+
+        'sex' => 1,
+        'height' => 1.6,
+        'weight' => 65.1,
+        'address_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
+        'address' => 'Bonifacion Street, Poblacion',
+        'gsis_id' => null,
+        'pagibig_id' => null,
+        'tin_id' => null,
+      ],
     ];
 
     foreach($data as $row) {
@@ -45,20 +85,33 @@ class UserSeeder extends Seeder
       $this->CreateFile($person->id);
     }
 
-    $data = [
+    User::create(
       [
-        'id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
-        'person_id' => $_ENV['SEEDER_PERSON_ID'],
+        'id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
+        'person_id' => $_ENV['SEEDER_PERSON_ADMIN_ID'],
         'email' => 'admin@gmail.com',
         'password'=> Hash::make('12345678'),
         'avatar'   => 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
       ],
-    ];
-
-    foreach($data as $row) {
-      \App\Models\User::create($row)
-        ->assignRole('admin');
-    }
+    )->assignRole('Admin');
+    User::create(
+      [
+        'id' => $_ENV['SEEDER_USER_STAFF_ID'], //staff [first user],
+        'person_id' => $_ENV['SEEDER_PERSON_STAFF_ID'],
+        'email' => 'staff@gmail.com',
+        'password'=> Hash::make('12345678'),
+        'avatar'   => 'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg',
+      ],
+    )->assignRole('Staff');
+    User::create(
+      [
+        'id' => $_ENV['SEEDER_USER_APPLICANT_ID'], //applicant [first user],
+        'person_id' => $_ENV['SEEDER_PERSON_APPLICANT_ID'],
+        'email' => 'applicant@gmail.com',
+        'password'=> Hash::make('12345678'),
+        'avatar'   => 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000',
+      ],
+    )->assignRole('Applicant');
   }
 
   private function CreateNumber($personID): void {

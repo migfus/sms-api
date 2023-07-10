@@ -1,7 +1,7 @@
 import { ref, reactive } from 'vue';
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import { useSessionStorage } from '@vueuse/core'
+import { useSessionStorage, useStorage, StorageSerializers } from '@vueuse/core'
 
 interface paramsInt {
   currentDate: String
@@ -26,8 +26,8 @@ interface contentInt {
 }
 
 export const useEventPublicStore = defineStore('event/EventPublicStore', () => {
-  const eventCount = useSessionStorage<Number>('event/EventPublic/eventCount', 0)
-  const content = useSessionStorage<Array<contentInt>>('event/EventPublic/content', [])
+  const eventCount = useStorage<Number>('event/EventPublic/eventCount', 0)
+  const content = useStorage<Array<contentInt>>('event/EventPublic/content', [], sessionStorage, {serializer: StorageSerializers.object})
   const params = reactive<paramsInt>({
     currentDate: '',
   })

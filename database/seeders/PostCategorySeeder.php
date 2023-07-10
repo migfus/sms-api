@@ -11,12 +11,12 @@ class PostCategorySeeder extends Seeder
     $data = [
       [
         'id' => 549718929043076,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'News'
       ],
       [
         'id' => 549718929052672,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'Updates',
       ],
     ];

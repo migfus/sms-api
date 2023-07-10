@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
-import { useStorage } from '@vueuse/core'
+import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
 
 interface contentInt {
@@ -24,7 +24,7 @@ interface paramsInt {
 }
 
 export const usePostPublicStore = defineStore('post/PostPublicStore', () => {
-  const content = useStorage<Array<contentInt>>('post/PostPublicStore/content', []);
+  const content = useStorage<Array<contentInt>>('post/PostPublicStore/content', [], sessionStorage, {serializer: StorageSerializers.object});
   const config = reactive<configInt>({
     loading: false
   });

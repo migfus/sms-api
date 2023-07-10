@@ -1,6 +1,6 @@
 import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
-import { useSessionStorage } from '@vueuse/core'
+import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
 import { $Err } from '@/helpers/Debug'
 
@@ -21,7 +21,7 @@ interface configInt {
 }
 
 export const useJobPublicStore = defineStore('job/JobPublicStore', () => {
-  const content = useSessionStorage<Array<contentInt>>('job/JobPublicStore/content', []);
+  const content = useStorage<Array<contentInt>>('job/JobPublicStore/content', [], sessionStorage, {serializer: StorageSerializers.object});
   const result = ref<Array<resultInt>>([]);
   const config = reactive<configInt>({
     loading: false,

@@ -11,12 +11,12 @@ class JobLocationSeeder extends Seeder
     $data = [
       [
         'id' => 549718062930975,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'CMU',
       ],
       [
         'id' => 549718062943377,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'CSC, Malaybalay',
       ],
     ];

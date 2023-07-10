@@ -11,22 +11,22 @@ class CivilStatusSeeder extends Seeder
     $data = [
       [
         'id' => 549717001907709,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name'    => 'Single',
       ],
       [
         'id' => 549717001913612,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name'    => 'Married',
       ],
       [
         'id' => 549717001921661,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name'    => 'Separated',
       ],
       [
         'id' => 549717001931074,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name'    => 'Widowed',
       ],
     ];

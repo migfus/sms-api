@@ -23,16 +23,21 @@ class UserController extends Controller
 
       $data;
 
-      if(count($req->dateRange) > 1) {
-        $data = User::with(['person'])
+      // NOTE DATE FILTERING (OPTIONAL)
+      if($req->dateRange[0] && $req->dateRange[1]) {
+        $data = User::with(['person.civil_status', 'person.blood_type', 'roles'])
           ->where('created_at', '>=', Carbon::parse($req->dateRange[0]))
           ->where('created_at', '<=', Carbon::parse($req->dateRange[1]));
       }
       else {
-        $data = User::with(['person']);
+        $data = User::with(['person.civil_status', 'person.blood_type', 'roles']);
       }
 
+      // NOTE SEARCH/FILTERING
       switch($req->filter) {
+        case 'Role':
+          $data->where('email', 'LIKE', '%'.$req->search.'%');
+          break;
         case 'Email':
           $data->where('email', 'LIKE', '%'.$req->search.'%');
           break;
@@ -42,7 +47,6 @@ class UserController extends Controller
               ->orWhere('first_name', 'LIKE', '%'.$req->search.'%');
           });
       }
-
 
 
       return response()->json([

@@ -11,17 +11,17 @@ class SeminarTypeSeeder extends Seeder
     $data = [
       [
         'id' => 549719216912249,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'Managerial'
       ],
       [
         'id' => 549719216924775,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'Supervisory'
       ],
       [
         'id' => 549719216936296,
-        'user_id' => $_ENV['SEEDER_USER_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
         'name' => 'Technical'
       ],
     ];
