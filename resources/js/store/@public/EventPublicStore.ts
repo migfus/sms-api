@@ -1,16 +1,16 @@
-import { ref, reactive } from 'vue';
+import { reactive } from 'vue';
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import { useSessionStorage, useStorage, StorageSerializers } from '@vueuse/core'
+import { useStorage, StorageSerializers } from '@vueuse/core'
 
-interface paramsInt {
+interface TParams {
   currentDate: String
 }
-interface configInt {
+interface TConfig {
   loading: boolean
   count: number
 }
-interface contentInt {
+interface TContent {
   event_category: { name: String }
   title: String
   start: string
@@ -25,13 +25,14 @@ interface contentInt {
   id: number
 }
 
-export const useEventPublicStore = defineStore('event/EventPublicStore', () => {
-  const eventCount = useStorage<Number>('event/EventPublic/eventCount', 0)
-  const content = useStorage<Array<contentInt>>('event/EventPublic/content', [], sessionStorage, {serializer: StorageSerializers.object})
-  const params = reactive<paramsInt>({
+const title = `event/EventPublicStore`
+export const useEventPublicStore = defineStore(title, () => {
+  const eventCount = useStorage<Number>(`${title}/eventCount`, 0)
+  const content = useStorage<Array<TContent>>(`${title}/content`, [], sessionStorage, {serializer: StorageSerializers.object})
+  const params = reactive<TParams>({
     currentDate: '',
   })
-  const config = reactive<configInt>({
+  const config = reactive<TConfig>({
     loading: false,
     count: 3
   })

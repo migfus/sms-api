@@ -2,37 +2,36 @@ import { reactive } from 'vue'
 import { defineStore} from 'pinia'
 import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
+import type { TGQuery } from '../GlobalType'
 
-interface configInt {
+interface TConfig {
   loading: boolean
   loadingDestroy: boolean
   open: boolean
   deleteID: number
 }
-interface paramsInt {
-  search: string
-  dateRange: Array<string>,
-  filter: string,
-}
 
-export const useUserStore = defineStore('users/UserStore', () => {
-  const config = reactive<configInt>({
+const title = `users/UserStore`
+export const useUserStore = defineStore(title, () => {
+  const config = reactive<TConfig>({
     loading: false,
     loadingDestroy: false,
     open: false,
     deleteID: null,
   })
-  const content = useStorage('users/UserStore/content', [], sessionStorage, {serializer: StorageSerializers.object})
-  const params = reactive<paramsInt>({
+  const content = useStorage(`${title}/content`, [], sessionStorage, {serializer: StorageSerializers.object})
+  const query = reactive<TGQuery>({
     search: '',
-    dateRange: ['', ''],
+    start: null,
+    end: null,
+    sort: `ASC`,
     filter: 'Name',
   })
 
   async function GetAPI() {
     config.loading = true
     try {
-      let { data: {data}} = await axios.get('/api/users', {params: params})
+      let { data: {data}} = await axios.get('/api/users', {params: query})
       // NOTE Insert [open] value for open/close details toggle
       const contentData = data.data
       contentData.map(row => {
@@ -72,7 +71,7 @@ export const useUserStore = defineStore('users/UserStore', () => {
   return {
     config,
     content,
-    params,
+    query,
 
     GetAPI,
     toggleOpen,

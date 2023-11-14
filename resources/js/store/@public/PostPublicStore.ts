@@ -2,8 +2,9 @@ import { defineStore } from 'pinia'
 import { reactive } from 'vue'
 import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
+import type { TGConfig, TGQuery } from "../GlobalType"
 
-interface contentInt {
+interface TContent {
   id: number
   title: string
   cover: string
@@ -16,26 +17,22 @@ interface contentInt {
   }
   created_at: string
 }
-interface configInt {
-  loading: boolean
-}
-interface paramsInt {
-  search: string
-}
 
-export const usePostPublicStore = defineStore('post/PostPublicStore', () => {
-  const content = useStorage<Array<contentInt>>('post/PostPublicStore/content', [], sessionStorage, {serializer: StorageSerializers.object});
-  const config = reactive<configInt>({
+const title = `post/PostPublicStore`
+export const usePostPublicStore = defineStore(title, () => {
+  const content = useStorage<Array<TContent>>(`${title}/content`, [], sessionStorage, {serializer: StorageSerializers.object});
+  const config = reactive<TGConfig>({
     loading: false
   });
-  const params = reactive<paramsInt>({
-    search: ''
+  const query = reactive<TGQuery>({
+    search: '',
+    sort: `ASC`
   })
 
   async function GetAPI() {
     config.loading = true
     try {
-      let { data: { data }} = await axios.get('/api/public/post', { params: params})
+      let { data: { data }} = await axios.get('/api/public/post', { params: query})
       content.value = data;
     }
     catch(err) {
@@ -47,7 +44,7 @@ export const usePostPublicStore = defineStore('post/PostPublicStore', () => {
   return {
     config,
     content,
-    params,
+    query,
 
     GetAPI,
   }

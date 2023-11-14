@@ -1,71 +1,43 @@
-import { ref, reactive, toRaw } from "vue";
-import { defineStore } from "pinia";
-import axios from "axios";
-import { $Err, $DebugInfo } from '@/helpers/Debug'
+import { ref, reactive, toRaw } from "vue"
+import { defineStore } from "pinia"
+import axios from "axios"
 import { notify } from 'notiwind'
 import { useStorage, StorageSerializers } from '@vueuse/core'
-import ability from '@/Ability';
+import ability from '@/Ability'
+import type { TGAuth } from "../GlobalType"
 
-interface contentInt {
-  auth: {
-    id: number,
-    avatar: string,
-    email: string,
-    created_at: string,
-    roles: Array<{
-      name: string
-    }>
-    person: {
-      addres: string,
-      address_id: number,
-      birth_day: string,
-      birth_place_id: number,
-      blood_type_id: number,
-      civil_status_id: number,
-      created_at: string,
-      ext_name: string,
-      last_name: string,
-      first_name: string,
-      mid_name: string,
-      gsis_id: string,
-      height: number,
-      id: number,
-      pagibig_id: string,
-      sex: boolean,
-      tin_id: string,
-      weight: string,
-    },
-  },
-  ip: string,
-  permissions: Array<string>,
-  token: string,
+interface TContent {
+  auth: TGAuth
+  ip: string
+  permissions: Array<string>
+  token: string
 }
-interface configInt {
-  loading: boolean;
-  status: string;
-  confirm: string;
+interface TConfig {
+  loading: boolean
+  status: string
+  confirm: string
 }
-interface InputInt {
-  email: string;
-  password: string;
+interface TInput {
+  email: string
+  password: string
 }
 
-export const useAuthStore = defineStore("auth/AuthStore", () => {
-  $DebugInfo('AuthStore');
+const title = `auth/AuthStore`
+export const useAuthStore = defineStore(title, () => {
 
-  const _token = useStorage<String>('auth/AuthStore/token', null, localStorage);
-  const _content = useStorage<contentInt>('auth/AuthStore/content', null, localStorage, {serializer: StorageSerializers.object});
+  const _token = useStorage<String>(`${title}/token`, null, localStorage)
+  const _content = useStorage<TContent>(`${title}/content`, null, localStorage, {serializer: StorageSerializers.object})
 
-  const token = ref(toRaw(_token));
-  const content = ref(toRaw(_content));
-  const config = reactive<configInt>({
+  const token = ref(toRaw(_token))
+  const content = ref(toRaw(_content))
+  const config = reactive<TConfig>({
     loading: false,
     status: '',
     confirm: '',
   })
 
   // SECTION API
-  async function LoginAPI(input: InputInt) {
+  async function LoginAPI(input: TInput) {
     config.loading = true
     try{
       let { data: { data }} = await axios.post('/api/login', input)
@@ -88,29 +60,29 @@ export const useAuthStore = defineStore("auth/AuthStore", () => {
     config.loading = false
   }
 
-  async function RecoveryAPI(input: InputInt) {
+  async function RecoveryAPI(input: TInput) {
     config.loading = true
     try {
       let { data: { data }} = await axios.post('/api/recovery', input)
       config.status = data
     }
     catch(e) {
-      $Err('RecoveryAPI Error', '')
+      console.error('RecoveryAPI Error', '')
     }
     config.loading = false
   }
 
-  async function ConfirmRecoveryAPI(input: InputInt) {
+  async function ConfirmRecoveryAPI(input: TInput) {
     try {
       let { data: { data }} = await axios.post('/api/recovery-confirm', input)
       config.confirm = data
     }
     catch(e) {
-      $Err('ConfirmRecoveryAPI Error', '')
+      console.error('ConfirmRecoveryAPI Error', '')
     }
   }
 
-  async function ChangePasswordAPI(input: InputInt) {
+  async function ChangePasswordAPI(input: TInput) {
     try {
       let { data: { data }} = await axios.post('/api/change-password-recovery', input)
       if(data) {
@@ -119,7 +91,7 @@ export const useAuthStore = defineStore("auth/AuthStore", () => {
       }
     }
     catch(e) {
-      $Err('ChangePasswordAPI Error', '')
+      console.error('ChangePasswordAPI Error', '')
     }
   }
 
@@ -131,7 +103,7 @@ export const useAuthStore = defineStore("auth/AuthStore", () => {
     this.router.push({ name: 'login'})
   }
 
-  function UpdateData(data:any) {
+  function UpdateData(data: TContent) {
     content.value = data
     _content.value = data
   }

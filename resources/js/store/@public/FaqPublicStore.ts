@@ -1,8 +1,9 @@
 import { ref, reactive } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import type { TGConfig, TGQuery } from "../GlobalType"
 
-interface contentInt {
+interface TContent {
   category: { name: string }
   content: string
   cover: string
@@ -13,20 +14,16 @@ interface contentInt {
   question: string
   answer: string
 }
-interface configInt {
-  loading: boolean
-}
-interface paramsInt {
-  search: string,
-}
 
-export const useFaqPublicStore = defineStore('faq/FaqPublicStore', () => {
-  const content = ref<Array<contentInt>>([])
-  const config = reactive<configInt>({
+const title = `faq/FaqPublicStore`
+export const useFaqPublicStore = defineStore(title, () => {
+  const content = ref<Array<TContent>>([])
+  const config = reactive<TGConfig>({
     loading: false,
   })
-  const params = reactive<paramsInt>({
-    search: '',
+  const params = reactive<TGQuery>({
+    search: ``,
+    sort: `ASC`
   })
 
   async function GetAPI() {

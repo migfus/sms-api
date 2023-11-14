@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
 
-interface contentInt {
+interface TContent {
   id: number
   created_at: string
   filename: string
@@ -11,14 +11,15 @@ interface contentInt {
   url: string
   size: number
 }
-interface configInt {
+interface TConfig {
   loading: boolean
   deleteID?: number
 }
 
-export const useDocumentAuthStore = defineStore('auth/DocumentAuthStore', () => {
-  const content = useStorage<Array<contentInt>>('auth/DocumentAuthStore/content', [], sessionStorage, { serializer: StorageSerializers.object})
-  const config = reactive<configInt>({
+const title = `auth/DocumentAuthStore`
+export const useDocumentAuthStore = defineStore(title, () => {
+  const content = useStorage<Array<TContent>>(`${title}/content`, [], sessionStorage, { serializer: StorageSerializers.object})
+  const config = reactive<TConfig>({
     loading: false,
     deleteID: null,
   })

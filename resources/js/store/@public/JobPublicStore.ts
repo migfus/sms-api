@@ -2,9 +2,9 @@ import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
-import { $Err } from '@/helpers/Debug'
+import type { TGConfig } from "../GlobalType"
 
-interface contentInt {
+interface TContent {
   job_location: { name: String }
   job_department: { name: String }
   job_status: { name: String }
@@ -14,19 +14,17 @@ interface contentInt {
   unposted_at: string
   description: string
 }
-interface resultInt {
-}
-interface configInt {
-  loading: boolean
+interface TResult {
 }
 
-export const useJobPublicStore = defineStore('job/JobPublicStore', () => {
-  const content = useStorage<Array<contentInt>>('job/JobPublicStore/content', [], sessionStorage, {serializer: StorageSerializers.object});
-  const result = ref<Array<resultInt>>([]);
-  const config = reactive<configInt>({
+const title = `job/JobPublicStore`
+export const useJobPublicStore = defineStore(title, () => {
+  const content = useStorage<Array<TContent>>(`${title}/content`, [], sessionStorage, {serializer: StorageSerializers.object});
+  const result = ref<Array<TResult>>([]);
+  const config = reactive<TGConfig>({
     loading: false,
   })
-  const params = reactive({
+  const query = reactive({
     search: '',
     selectedLocation: [],
     selectedDepartments: [],
@@ -36,11 +34,11 @@ export const useJobPublicStore = defineStore('job/JobPublicStore', () => {
 
   const filterJobs = computed(() => {
     return content.value
-      .filter((row) => params.selectedLocation.includes(row.job_location.name))
-      .filter((row) => params.selectedDepartments.includes(row.job_department.name))
-      .filter((row) => params.selectedStatus.includes(row.job_status.name))
-      .filter((row) => params.selectedTypes.includes(row.job_type.name))
-      .filter((row) => row.title.toLowerCase().indexOf(params.search.toLowerCase()) !== -1)
+      .filter((row) => query.selectedLocation.includes(row.job_location.name))
+      .filter((row) => query.selectedDepartments.includes(row.job_department.name))
+      .filter((row) => query.selectedStatus.includes(row.job_status.name))
+      .filter((row) => query.selectedTypes.includes(row.job_type.name))
+      .filter((row) => row.title.toLowerCase().indexOf(query.search.toLowerCase()) !== -1)
   })
 
   async function GetAPI() {
@@ -48,16 +46,16 @@ export const useJobPublicStore = defineStore('job/JobPublicStore', () => {
     try {
       let { data: { data }} = await axios.get('/api/public/job')
       content.value = data
-      ParamsInit()
+      QueryInit()
     }
     catch (err) {
-      $Err('useJobPublicStore GetAPI Error', err);
+      console.error('useJobPublicStore GetAPI Error', err);
     }
     config.loading = false
   }
 
-  function ParamsInit() {
-    Object.assign(params, {
+  function QueryInit() {
+    Object.assign(query, {
       search: '',
       selectedLocation:    [...new Set(content.value.map(row => row.job_location.name))],
       selectedDepartments: [...new Set(content.value.map(row => row.job_department.name))],
@@ -70,16 +68,14 @@ export const useJobPublicStore = defineStore('job/JobPublicStore', () => {
     GetAPI()
   }
 
-
   return {
     content,
     config,
-    params,
+    query,
     result,
     filterJobs,
 
     GetAPI,
     Reset,
   }
-
 });
