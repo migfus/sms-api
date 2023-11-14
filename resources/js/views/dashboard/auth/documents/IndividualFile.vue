@@ -60,7 +60,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { CodeBracketIcon, EllipsisVerticalIcon, XMarkIcon, } from '@heroicons/vue/20/solid'
 import { formatBytes, convertFileOrExt } from '@/helpers/Converter'
 import { toRefs } from 'vue'
-import { useDocumentAuthStore } from '@/store/files/DocumentAuthStore'
+import { useDocumentAuthStore } from '@/store/@applicant/DocumentAuthStore'
 import { useAbility } from '@casl/vue'
 
 import DeletePrompt from './DeletePrompt.vue'

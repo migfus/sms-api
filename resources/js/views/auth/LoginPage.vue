@@ -57,8 +57,8 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '@/store/auth/AuthStore';
-import { reactive } from 'vue';
+import { useAuthStore } from '@/store/@auth/AuthStore'
+import { reactive } from 'vue'
 
 const $auth = useAuthStore();
 

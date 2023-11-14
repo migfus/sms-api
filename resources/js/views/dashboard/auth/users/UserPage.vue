@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from '@/store/users/UserStore'
+import { useUserStore } from '@/store/@staff/UserStore'
 import { onMounted } from 'vue'
 
 import IndividualUser from './IndividualUser.vue'

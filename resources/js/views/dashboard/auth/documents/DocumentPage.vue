@@ -42,13 +42,13 @@
 </template>
 
 <script setup lang='ts'>
-import { useDocumentAuthStore } from '@/store/files/DocumentAuthStore'
+import { useDocumentAuthStore } from '@/store/@applicant/DocumentAuthStore'
 import { onMounted } from 'vue'
 import { PlusIcon } from '@heroicons/vue/20/solid'
 
 import IndividualFile from './IndividualFile.vue'
 import TopCard from './TopCard.vue'
-import ButtonComp from '@/components/form/ButtonComp.vue'
+import ButtonComp from '@/components/form/AppButton.vue'
 import DataTransition from '@/components/transitions/DataTransition.vue'
 
 const $doc = useDocumentAuthStore();

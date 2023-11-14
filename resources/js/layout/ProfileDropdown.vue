@@ -56,10 +56,10 @@
 
 <script setup lang='ts'>
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { useRouter } from 'vue-router';
-import { useAuthStore } from '@/store/auth/AuthStore'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/store/@auth/AuthStore'
 import { BellIcon, WindowIcon, XMarkIcon, FolderIcon, SquaresPlusIcon } from '@heroicons/vue/24/outline'
 
-const $router = useRouter();
-const $auth = useAuthStore();
+const $router = useRouter()
+const $auth = useAuthStore()
 </script>

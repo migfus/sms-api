@@ -118,7 +118,6 @@
             <RouterView v-else></RouterView>
 
 
-
           </div>
         </div>
 
@@ -137,10 +136,6 @@ import { ref } from 'vue'
 import {
   Dialog,
   DialogPanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
@@ -162,19 +157,19 @@ import {
 } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { usePreLoader } from '@/store/system/PreLoader'
-import { useEventPublicStore } from '@/store/event/EventPublicStore';
-import { useJobPublicStore } from '@/store/job/JobPublicStore'
+import { useEventPublicStore } from '@/store/@public/EventPublicStore'
+import { useJobPublicStore } from '@/store/@public/JobPublicStore'
 
-import BreadCrumbs from '@/layout/BreadCrumbs.vue';
-import HeaderBanner from '@/layout/HeaderBanner.vue';
-import PreLoader from '@/layout/preloader/@PreLoader.vue';
+import BreadCrumbs from '@/layout/BreadCrumbs.vue'
+import HeaderBanner from '@/layout/HeaderBanner.vue'
+import PreLoader from '@/layout/preloader/@PreLoader.vue'
 import ProfileDropdown from './ProfileDropdown.vue'
 import FooterLayout from './Footer.vue'
 
-const $preLoader = usePreLoader();
-const $route = useRoute();
-const $event = useEventPublicStore();
-const $job = useJobPublicStore();
+const $preLoader = usePreLoader()
+const $route = useRoute()
+const $event = useEventPublicStore()
+const $job = useJobPublicStore()
 
 const navigation = [
   {
@@ -249,12 +244,6 @@ const navigation = [
     icon: MegaphoneIcon,
     count: null,
   },
-]
-
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
 ]
 
 const sidebarOpen = ref(false);

@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { HomeIcon, WindowIcon } from '@heroicons/vue/20/solid'
+import { WindowIcon } from '@heroicons/vue/20/solid'
 import { useRoute } from 'vue-router'
 
 const $route = useRoute();

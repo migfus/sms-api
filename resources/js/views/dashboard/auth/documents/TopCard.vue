@@ -22,11 +22,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useDocumentAuthStore } from '@/store/files/DocumentAuthStore'
+import { useDocumentAuthStore } from '@/store/@applicant/DocumentAuthStore'
 import { formatBytes } from '@/helpers/Converter'
 import { PlusIcon } from '@heroicons/vue/20/solid'
 
-import ButtonComp from '@/components/form/ButtonComp.vue'
+import ButtonComp from '@/components/form/AppButton.vue'
 
 const $doc = useDocumentAuthStore();
 const size = computed(() => $doc.content.reduce((sum, item) => sum + parseInt(item.size.toFixed()), 0))

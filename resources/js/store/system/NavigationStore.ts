@@ -1,6 +1,5 @@
-import { ref, defineComponent, h, shallowRef  } from "vue";
-import { defineStore } from "pinia";
-import { $DebugInfo } from '@/helpers/Debug'
+import { defineComponent, h, shallowRef  } from "vue"
+import { defineStore } from "pinia"
 
 interface pagesInt {
   name: String
@@ -18,7 +17,6 @@ interface faqsInt {
 }
 
 export const useNavigationStore = defineStore("system/NavigationStore", () => {
-  $DebugInfo('pagesStore');
 
   const pages: Array<pagesInt> = [
     {

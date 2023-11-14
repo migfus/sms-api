@@ -1,10 +1,8 @@
 import axios from "axios";
-import { useAuthStore } from "@/store/auth/AuthStore";
-import { $DebugInfo, $Log } from '@/helpers/Debug';
+import { useAuthStore } from "@/store/@auth/AuthStore"
 import { notify } from "notiwind"
 
 export default function JWTInterceptor() {
-  $DebugInfo('JWT Interceptor')
   const $auth = useAuthStore();
 
   axios.interceptors.request.use(config => {
@@ -24,7 +22,7 @@ export default function JWTInterceptor() {
     },
     (error) => {
       if(axios.isCancel(error)) {
-        $Log('Interceptor','Cancelled')
+        console.error('Interceptor','Cancelled')
         return true;
       }
       else {

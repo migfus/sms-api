@@ -38,9 +38,9 @@
 <script setup>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ExclamationTriangleIcon, XMarkIcon, ArrowLeftIcon } from '@heroicons/vue/24/outline'
-import { useUserStore } from '@/store/users/UserStore'
+import { useUserStore } from '@/store/@staff/UserStore'
 
-import ButtonComp from '@/components/form/ButtonComp.vue'
+import ButtonComp from '@/components/form/AppButton.vue'
 
 const $user = useUserStore();
 </script>

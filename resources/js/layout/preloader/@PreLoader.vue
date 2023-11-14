@@ -1,29 +1,44 @@
 <template>
-  <div>
-    <HomePage v-if="$preLoader.config.to == 'home'"/>
-    <AboutPage v-if="$preLoader.config.to == 'about'"/>
-    <ContactPage v-if="$preLoader.config.to == 'contact'"/>
-    <AuthPage v-if="
-      $preLoader.config.to == 'login' ||
-      $preLoader.config.to == 'forgot' ||
-      $preLoader.config.to == 'register'
-    "/>
-    <JobListingPage v-if="$preLoader.config.to == 'job-listing'"/>
-    <CalendarPage v-if="$preLoader.config.to == 'calendar'"/>
-    <FAQPage v-if="$preLoader.config.to == 'faqs'"/>
+  <div class="flex justify-center">
+    <div v-if="$preLoader.config.loading" class="loader my-10">
+    </div>
   </div>
+
 </template>
 
 <script setup lang="ts">
 import { usePreLoader } from '@/store/system/PreLoader'
 
-import HomePage from './HomePageLoader.vue';
-import AboutPage from './AboutPageLoader.vue';
-import ContactPage from './ContactPageLoader.vue';
-import AuthPage from './AuthPageLoader.vue';
-import JobListingPage from './JobListingPageLoader.vue';
-import CalendarPage from './CalendarPageLoader.vue';
-import FAQPage from './FAQPageLoader.vue';
-
 const $preLoader = usePreLoader();
 </script>
+
+<style scoped>
+.loader {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .loader::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset: 0px;
+      border-radius: 50%;
+      border: 5px solid #008242;
+      animation: prixClipFix 2s linear infinite ;
+    }
+
+    @keyframes rotate {
+      100%   {transform: rotate(360deg)}
+    }
+
+    @keyframes prixClipFix {
+        0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+        25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+        50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+        75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+        100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+    }
+</style>

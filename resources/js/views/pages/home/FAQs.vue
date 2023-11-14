@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useFaqPublicStore } from '@/store/faq/FaqPublicStore'
+import { useFaqPublicStore } from '@/store/@public/FaqPublicStore'
 
 const $faq = useFaqPublicStore();
 

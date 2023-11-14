@@ -3,11 +3,11 @@
     <div class="grid grid-cols-3 gap-x-4">
 
       <div class="col-span-3 lg:col-span-1 mb-4">
-        <TextInputComp v-model="$user.params.search" placeholder="Search"/>
+        <TextInputComp v-model="$user.query.search" placeholder="Search"/>
       </div>
 
       <div class="col-span-3 lg:col-span-1 mb-4">
-        <SelectInputComp v-model="$user.params.filter">
+        <SelectInputComp v-model="$user.query.filter">
           <option value="Name">Name</option>
           <option value="Email">Email</option>
           <option value="Role">Role</option>
@@ -15,7 +15,7 @@
       </div>
 
       <div class="col-span-3 lg:col-span-1 mb-4">
-        <VueDatePicker v-model="$user.params.dateRange" range model-type="MM/dd/yyyy" date-picker :hide-navigation="['time']" placeholder="Date Range">
+        <VueDatePicker v-model="$user.query.start" range model-type="MM/dd/yyyy" date-picker :hide-navigation="['time']" placeholder="Date Range">
         </VueDatePicker>
       </div>
 
@@ -46,19 +46,19 @@
 
 <script setup lang='ts'>
 import { PlusIcon, PrinterIcon, ArrowPathIcon, StopIcon, QueueListIcon } from '@heroicons/vue/20/solid'
-import { useUserStore } from '@/store/users/UserStore'
-import VueDatePicker from '@vuepic/vue-datepicker';
+import { useUserStore } from '@/store/@staff/UserStore'
+import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import { watch, ref } from 'vue'
 import { throttle } from 'lodash'
 
-import ButtonComp from '@/components/form/ButtonComp.vue'
-import TextInputComp from '@/components/form/TextInputComp.vue';
-import SelectInputComp from '@/components/form/SelectInputComp.vue';
+import ButtonComp from '@/components/form/AppButton.vue'
+import TextInputComp from '@/components/form/AppTextInput.vue'
+import SelectInputComp from '@/components/form/AppSelectInput.vue'
 
 const $user = useUserStore();
 
-watch($user.params, throttle(() => {
+watch($user.query, throttle(() => {
   $user.GetAPI()
 }, 1000))
 </script>

@@ -11,7 +11,6 @@ export const useAddressStore = defineStore(title, () => {
     try {
       let { data } = await axios.get('/api/public/address')
       content.value = data
-      console.error(data)
     }
     catch(err) {
       console.error(err)

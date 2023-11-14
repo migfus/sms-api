@@ -49,14 +49,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { usePostPublicStore } from '@/store/post/PostPublicStore';
-import moment from 'moment';
+import { onMounted } from 'vue'
+import { usePostPublicStore } from '@/store/@public/PostPublicStore'
+import moment from 'moment'
 
 const $post = usePostPublicStore();
 
 onMounted(() => {
-  $post.params.search = ''
+  $post.query.search = ''
   $post.GetAPI();
 });
 </script>

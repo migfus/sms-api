@@ -44,14 +44,14 @@
 </template>
 
 <script setup lang="ts">
-import { useJobPublicStore } from '@/store/job/JobPublicStore';
-import { useRoute } from 'vue-router';
-import { reactive } from 'vue';
-import { ArrowLeftCircleIcon } from '@heroicons/vue/20/solid';
+import { useJobPublicStore } from '@/store/@public/JobPublicStore'
+import { useRoute } from 'vue-router'
+import { reactive } from 'vue'
+import { ArrowLeftCircleIcon } from '@heroicons/vue/20/solid'
 import { useTitle } from '@vueuse/core'
 import JobApply from './JobApply.vue'
 
-import JobContent from './JobContent.vue';
+import JobContent from './JobContent.vue'
 
 const $job = useJobPublicStore();
 const $route = useRoute();

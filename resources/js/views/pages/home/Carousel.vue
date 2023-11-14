@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang='ts'>
-import { useJobPublicStore } from '@/store/job/JobPublicStore';
+import { useJobPublicStore } from '@/store/@public/JobPublicStore'
 
 const $job = useJobPublicStore();
 </script>

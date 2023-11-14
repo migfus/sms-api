@@ -96,15 +96,15 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs, ref } from 'vue'
+import { toRefs } from 'vue'
 import moment from 'moment'
 import { convertName } from '@/helpers/Converter'
 import { XMarkIcon, ChevronRightIcon, ChevronUpIcon, PencilSquareIcon, CalendarIcon, InformationCircleIcon } from '@heroicons/vue/20/solid'
 import { sexIDToText, addressIDToFull } from '@/helpers/Converter'
-import { useAuthStore } from '@/store/auth/AuthStore'
-import { useUserStore } from '@/store/users/UserStore'
+import { useAuthStore } from '@/store/@auth/AuthStore'
+import { useUserStore } from '@/store/@staff/UserStore'
 
-import ButtonComp from '@/components/form/ButtonComp.vue'
+import ButtonComp from '@/components/form/AppButton.vue'
 
 const $auth = useAuthStore();
 const $user = useUserStore();

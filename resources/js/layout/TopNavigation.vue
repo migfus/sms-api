@@ -158,22 +158,21 @@
 
 <script setup lang='ts'>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Popover, PopoverPanel, PopoverButton } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon, ChevronDownIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/vue/24/outline'
 import { useNavigationStore } from '@/store/system/NavigationStore'
-import { useRoute } from 'vue-router';
-import { useAuthStore } from '@/store/auth/AuthStore'
-import { usePreLoader } from '@/store/system/PreLoader';
-import { useJobPublicStore } from '@/store/job/JobPublicStore';
-import { useEventPublicStore } from '@/store/event/EventPublicStore';
+import { useRoute } from 'vue-router'
+import { usePreLoader } from '@/store/system/PreLoader'
+import { useJobPublicStore } from '@/store/@public/JobPublicStore'
+import { useEventPublicStore } from '@/store/@public/EventPublicStore'
 
-import HeaderBanner from '@/layout/HeaderBanner.vue';
-import PreLoader from '@/layout/preloader/@PreLoader.vue';
-import ProfileDropdown from './ProfileDropdown.vue';
+import HeaderBanner from '@/layout/HeaderBanner.vue'
+import PreLoader from '@/layout/preloader/@PreLoader.vue'
+import ProfileDropdown from './ProfileDropdown.vue'
 import FooterLayout from './Footer.vue'
 
-const $nav = useNavigationStore();
-const $route = useRoute();
-const $preLoader = usePreLoader();
-const $job = useJobPublicStore();
-const $event = useEventPublicStore();
+const $nav = useNavigationStore()
+const $route = useRoute()
+const $preLoader = usePreLoader()
+const $job = useJobPublicStore()
+const $event = useEventPublicStore()
 </script>

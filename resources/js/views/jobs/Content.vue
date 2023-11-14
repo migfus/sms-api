@@ -5,7 +5,7 @@
       <li v-if="$job.content.length == 0">
         <div class="block hover:bg-gray-50">
           <div class="px-4 py-4 sm:px-6">
-            <div v-if="$job.params.search == '' && $job.config.loading == false" class="flex items-center justify-center">
+            <div v-if="$job.query.search == '' && $job.config.loading == false" class="flex items-center justify-center">
               <p class="truncate text-sm font-medium text-primary-600 item-center">
                 Sorry it seems empty today.
               </p>
@@ -70,7 +70,7 @@
 
 <script setup lang="ts">
 import { CalendarIcon, MapPinIcon, UsersIcon, FaceFrownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-import { useJobPublicStore } from '@/store/job/JobPublicStore';
+import { useJobPublicStore } from '@/store/@public/JobPublicStore'
 import moment from 'moment'
 
 import DataTransition from '@/components/transitions/DataTransition.vue'

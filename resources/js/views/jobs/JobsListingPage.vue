@@ -83,13 +83,13 @@
 </template>
 
 <script setup lang="ts">
-import { useJobPublicStore } from '@/store/job/JobPublicStore';
+import { useJobPublicStore } from '@/store/@public/JobPublicStore'
 import { ArrowPathIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 
 import SearchComponent from './Search.vue'
 import JobLocation from './JobLocation.vue'
 import DepartmentComponent from './DepartmentComponent.vue'
-import NotifyMeNewListingComponent from './NotifyMeNewListing.vue';
+import NotifyMeNewListingComponent from './NotifyMeNewListing.vue'
 import ContentSection from './Content.vue'
 import JobStatusComponent from './JobStatus.vue'
 import TypeComponent from './Type.vue'

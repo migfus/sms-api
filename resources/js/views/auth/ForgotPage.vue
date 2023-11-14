@@ -2,7 +2,7 @@
   <div class='h-full'>
     <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 col-start-1 col-span-3 lg:col-span-1 lg:col-start-2">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img class="mx-auto h-24 w-auto" src="/images/logo.png" alt="Your Company" />
+        <img class="mx-auto h-24 w-auto" :src="logo" alt="Your Company" />
         <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Recover your account</h2>
       </div>
 
@@ -37,8 +37,9 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '@/store/auth/AuthStore';
-import { reactive } from 'vue';
+import { useAuthStore } from '@/store/@auth/AuthStore'
+import { reactive } from 'vue'
+import logo from '@/assets/images/logo.png'
 
 interface inputInt {
   email: string

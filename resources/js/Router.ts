@@ -1,10 +1,9 @@
-import { createRouter, createWebHistory } from "vue-router";
-import { useAuthStore } from "@/store/auth/AuthStore";
-import { usePreLoader } from "@/store/system/PreLoader";
-import ability from '@/Ability';
-import { $Log } from '@/helpers/Debug';
+import { createRouter, createWebHistory } from "vue-router"
+import { useAuthStore } from "@/store/@auth/AuthStore"
+import { usePreLoader } from "@/store/system/PreLoader"
+import ability from '@/Ability'
 
-import { useFaqPublicStore } from "@/store/faq/FaqPublicStore";
+import { useFaqPublicStore } from "@/store/@public/FaqPublicStore"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -306,11 +305,12 @@ const router = createRouter({
     },
   ],
 });
-const TITLE = "CMU | HRMO";
 
+
+const TITLE = "CMU HRMO"
 router.beforeEach(async (to, from, next) => {
-  const $load = usePreLoader();
-  const $auth = useAuthStore();
+  const $load = usePreLoader()
+  const $auth = useAuthStore()
 
   $load.config.loading = true
   $load.config.to = to.name

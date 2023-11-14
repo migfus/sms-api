@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { usePostPublicStore } from '@/store/post/PostPublicStore'
+import { usePostPublicStore } from '@/store/@public/PostPublicStore'
 import moment from 'moment'
 
 import DataTransition from '@/components/transitions/DataTransition.vue'

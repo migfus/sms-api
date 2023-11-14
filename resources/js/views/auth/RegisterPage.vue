@@ -63,9 +63,8 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '@/store/auth/AuthStore';
-import { reactive } from 'vue';
-import { ArrowPathRoundedSquareIcon } from '@heroicons/vue/20/solid'
+import { useAuthStore } from '@/store/@auth/AuthStore'
+import { reactive } from 'vue'
 
 interface inputInt {
   email: string
