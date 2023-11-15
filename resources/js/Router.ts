@@ -104,11 +104,25 @@ const router = createRouter({
 
     {
       path: "/register",
-      name: "register",
-      component: () => import("@/views/register.vue"),
-      meta: {
-        title: "Register",
-      },
+      children: [
+        {
+          path: ``,
+          name: "register",
+          component: () => import("@/views/register/index.vue"),
+          meta: {
+            title: "Register",
+          },
+        },
+        {
+          path: `fill`,
+          name: `fill-register`,
+          component: () => import("@/views/register/fill.vue"),
+          meta: {
+            title: "Fill Up",
+          },
+        }
+      ]
+
     },
 
     {

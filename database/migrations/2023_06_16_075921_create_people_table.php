@@ -11,8 +11,8 @@ return new class extends Migration
       $table->id();
       $table->string('last_name');
       $table->string('first_name');
-      $table->string('mid_name');
-      $table->string('ext_name');
+      $table->string('mid_name')->nullable();
+      $table->string('ext_name')->nullable();
       $table->bigInteger('civil_status_id')->unsigned();
       $table->date('birth_day');
       $table->integer('birth_place_id')->unsigned();
