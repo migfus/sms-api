@@ -49,9 +49,9 @@ import { useRoute } from 'vue-router'
 import { reactive } from 'vue'
 import { ArrowLeftCircleIcon } from '@heroicons/vue/20/solid'
 import { useTitle } from '@vueuse/core'
-import JobApply from './JobApply.vue'
+import JobApply from './[id]/JobApply.vue'
 
-import JobContent from './JobContent.vue'
+import JobContent from './[id]/JobContent.vue'
 
 const $job = useJobPublicStore();
 const $route = useRoute();

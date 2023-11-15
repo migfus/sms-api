@@ -86,13 +86,13 @@
 import { useJobPublicStore } from '@/store/@public/JobPublicStore'
 import { ArrowPathIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 
-import SearchComponent from './Search.vue'
-import JobLocation from './JobLocation.vue'
-import DepartmentComponent from './DepartmentComponent.vue'
-import NotifyMeNewListingComponent from './NotifyMeNewListing.vue'
-import ContentSection from './Content.vue'
-import JobStatusComponent from './JobStatus.vue'
-import TypeComponent from './Type.vue'
+import SearchComponent from './components/Search.vue'
+import JobLocation from './components/JobLocation.vue'
+import DepartmentComponent from './components/DepartmentComponent.vue'
+import NotifyMeNewListingComponent from './components/NotifyMeNewListing.vue'
+import ContentSection from './components/Content.vue'
+import JobStatusComponent from './components/JobStatus.vue'
+import TypeComponent from './components/Type.vue'
 
 const $job = useJobPublicStore();
 </script>

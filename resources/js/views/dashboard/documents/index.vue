@@ -46,8 +46,8 @@ import { useDocumentAuthStore } from '@/store/@applicant/DocumentAuthStore'
 import { onMounted } from 'vue'
 import { PlusIcon } from '@heroicons/vue/20/solid'
 
-import IndividualFile from './IndividualFile.vue'
-import TopCard from './TopCard.vue'
+import IndividualFile from './components/IndividualFile.vue'
+import TopCard from './components/TopCard.vue'
 import ButtonComp from '@/components/form/AppButton.vue'
 import DataTransition from '@/components/transitions/DataTransition.vue'
 

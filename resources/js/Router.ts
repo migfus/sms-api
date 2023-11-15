@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHistory, isNavigationFailure, NavigationFailureType } from "vue-router"
 import { useAuthStore } from "@/store/@auth/AuthStore"
 import { usePreLoader } from "@/store/system/PreLoader"
 import ability from '@/Ability'
@@ -12,293 +12,189 @@ const router = createRouter({
     {
       path: "/",
       name: 'home',
-      component: () => import('@/views/pages/home/@HomePage.vue'),
+      component: () => import('@/views/index/index.vue'),
       meta: {
         title: 'Home',
       }
     },
+
     {
       path: "/about",
       name: 'about',
-      component: () => import('@/views/pages/about/@AboutPage.vue'),
+      component: () => import('@/views/about/index.vue'),
       meta: {
         title: 'About',
       }
     },
+
     {
       path: '/job-listing',
-      name: 'job-listing',
-      component: () => import('@/views/jobs/JobsListingPage.vue'),
-      meta: {
-        title: 'Job Listing'
-      }
+      children: [
+        {
+          path: '',
+          name: 'job-listing',
+          component: () => import('@/views/job-listing/index.vue'),
+          meta: {
+            title: 'Job Listing'
+          },
+        },
+
+        {
+          path: ':id',
+          name: 'job-view',
+          component: () => import('@/views/job-listing/[id].vue'),
+          meta: {
+            title: 'Job Listing'
+          },
+        }
+      ]
     },
-    {
-      path: '/job/:id',
-      name: 'job-view',
-      component: () => import('@/views/job/JobViewPage.vue'),
-      meta: {
-        title: 'Job'
-      }
-    },
+
     {
       path: '/calendar',
       name: 'calendar',
-      component: () => import('@/views/pages/calendar/CalendarPage.vue'),
+      component: () => import('@/views/calendar.vue'),
       meta: {
         title: 'Calendar'
       }
     },
+
     {
       path: '/faqs',
       name: 'faqs',
-      component: () => import('@/views/pages/faqs/FaqsPage.vue'),
+      component: () => import('@/views/faqs/index.vue'),
       meta: {
         title: 'FAQs'
       }
     },
+
     {
     path: '/news',
-    name: 'news',
-      component: () => import('@/views/pages/news/NewsUpdates.vue'),
-      meta: {
-        title: 'News & Updates'
-      }
+    children:[
+      {
+        path: '',
+        name: 'news',
+        component: () => import('@/views/news/index.vue'),
+        meta: {
+          title: 'News & Updates'
+        },
+      },
+
+      {
+        path: ':id',
+        name: 'post',
+          component: () => import('@/views/news/[id].vue'),
+          meta: {
+            title: 'Post'
+          }
+      },
+    ]
     },
-    {
-    path: '/news/:id',
-    name: 'post',
-      component: () => import('@/views/pages/news/PostPage.vue'),
-      meta: {
-        title: 'Post'
-      }
-    },
+
 
     // NOTE AUTH =================================================================
     {
       path: "/login",
       name: "login",
-      component: () => import("@/views/auth/LoginPage.vue"),
+      component: () => import("@/views/login.vue"),
       meta: {
         title: "Login",
       },
     },
+
     {
       path: "/register",
       name: "register",
-      component: () => import("@/views/auth/RegisterPage.vue"),
+      component: () => import("@/views/register.vue"),
       meta: {
         title: "Register",
       },
     },
+
     {
       path: "/forgot",
       name: "forgot",
-      component: () => import("@/views/auth/ForgotPage.vue"),
+      component: () => import("@/views/forgot.vue"),
       meta: {
         title: "Forgot Password",
       },
     },
-    // {
-    //   path: "/forgot/fill",
-    //   name: "forgot-recovery",
-    //   component: () => import("@/views/auth/RecoveryPage.vue"),
-    //   meta: {
-    //     title: "Recovery",
-    //   },
-    // },
-    // {
-    //   path: "/register",
-    //   name: "register",
-    //   component: () => import("@/views/auth/RegisterPage.vue"),
-    //   meta: {
-    //     title: "Register",
-    //   },
-    // },
-    // {
-    //   path: "/register/fill",
-    //   name: "register-fill",
-    //   component: () => import("@/views/auth/RegisterFillPage.vue"),
-    //   meta: {
-    //     title: "Register",
-    //   },
-    // },
+
     // NOTE DASHBOARD
     {
       path: "/dashboard",
-      name: "dashboard",
-      component: () => import("@/views/dashboard/DashboardPage.vue"),
-      meta: {
-        sideBar: true,
-        title: "Dashboard",
-        auth: true,
-      },
-    },
-    {
-      path: "/profile",
-      name: "profile",
-      component: () => import("@/views/dashboard/ProfilePage.vue"),
-      meta: {
-        sideBar: true,
-        title: "Dashboard",
-        auth: true,
-      },
-    },
-    {
-      path: "/documents",
-      name: "documents",
-      component: () => import("@/views/dashboard/auth/documents/DocumentPage.vue"),
-      meta: {
-        sideBar: true,
-        title: "Dashboard",
-        auth: true,
-        resource: 'profile',
-      },
-    },
-    {
-      path: "/users",
-      name: "users",
-      component: () => import("@/views/dashboard/auth/users/UserPage.vue"),
-      meta: {
-        sideBar: true,
-        title: "Users",
-        auth: true,
-        resource: 'user',
-      },
-    },
-      {
-        path: "/user/:id",
-        name: "user",
-        component: () => import("@/views/dashboard/auth/user/UserPage.vue"),
-        meta: {
-          sideBar: true,
-          title: "Users",
-          auth: true,
-          resource: 'user',
+      children: [
+        {
+          path: '',
+          name: "dashboard",
+          component: () => import("@/views/dashboard/index.vue"),
+          meta: {
+            sideBar: true,
+            title: "Dashboard",
+            auth: true,
+          },
         },
-      },
-    // NOTE TRANSACTIONS
-    // {
-    //   path: "/transactions-all",
-    //   name: "transactions-all",
-    //   component: () => import("@/views/transaction/AllTransactionPage.vue"),
-    //   meta: {
-    //     title: "Transactions",
-    //     // role: 5, //admin
-    //     auth: true,
-    //     sideBar: true,
-    //   },
-    // },
-    // {
-    //   path: "/overdue",
-    //   name: "overdue",
-    //   component: () => import("@/views/users/overdue/OverduePage.vue"),
-    //   meta: {
-    //     title: "Overdue",
-    //     role: 5, //admin
-    //     auth: true,
-    //     sideBar: true,
-    //   },
-    // },
-    // NOTE PLANS
-    // {
-    //   path: "/plans",
-    //   name: "plans",
-    //   component: () => import("@/views/plans/PlanPage.vue"),
-    //   meta: {
-    //     title: "Plans' Management",
-    //     role: 2, //admin
-    //     auth: true,
-    //     sideBar: true,
-    //   },
-    // },
-    // NOTE USERS
-    // {
-    //   path: '/users/clients',
-    //   name: 'users-clients',
-    //   component: () => import("@/views/users/clients/ClientPage.vue"),
-    //   meta: {
-    //     title: 'Clients Management',
-    //     // role: 5,
-    //     auth: true,
-    //     sideBar: true,
-    //   }
-    // },
-    // {
-    //   path: '/users/overdue',
-    //   name: 'users-overdue',
-    //   component: () => import("@/views/users/overdue/OverduePage.vue"),
-    //   meta: {
-    //     title: 'Overdue Management',
-    //     // role: 5,
-    //     auth: true,
-    //     sideBar: true,
-    //   }
-    // },
-    // {
-    //   path: "/users/list",
-    //   name: "users-list",
-    //   component: () => import("@/views/users/users/UsersPage.vue"),
-    //   meta: {
-    //     title: "Users' Management",
-    //     role: 2, //admin
-    //     auth: true,
-    //     sideBar: true,
-    //   },
-    // },
-    // {
-    //   path: "/users/roles",
-    //   name: "users-roles",
-    //   component: () => import("@/views/users/roles/RolePage.vue"),
-    //   meta: {
-    //     title: "User's Roles",
-    //     role: 2, //admin
-    //     auth: true,
-    //     sideBar: true,
-    //   },
-    // },
-    // {
-    //   path: '/user/:id',
-    //   name: 'user',
-    //   component: () => import("@/views/user/UserPage.vue"),
-    //   meta: {
-    //     title: "User Details",
-    //     // role: 5,
-    //     auth: true,
-    //     sideBar: true,
-    //   }
-    // },
-    // NOTE CLIENTS
-    // {
-    //   path: "/clients",
-    //   name: "clients-list",
-    //   component: () => import("@/views/clients/ClientPage.vue"),
-    //   meta: {
-    //     title: "Users' Management",
-    //     role: 5, //client only
-    //     auth: true,
-    //     sideBar: true,
-    //   },
-    // },
-    // NOTE ACCOUNT SETTINGS
-    // {
-    //   path: "/account-settings",
-    //   name: "account-settings",
-    //   component: () =>
-    //     import(
-    //       "@/views/account-settings/AccountSettingsPage.vue"
-    //     ),
-    //   meta: {
-    //     title: "Account Settings",
-    //     auth: true,
-    //     sideBar: true,
-    //   },
-    // },
+
+        {
+          path: "profile",
+          name: "profile",
+          component: () => import("@/views/dashboard/profile.vue"),
+          meta: {
+            sideBar: true,
+            title: "Dashboard",
+            auth: true,
+          },
+        },
+
+        {
+          path: "documents",
+          name: "documents",
+          component: () => import("@/views/dashboard/documents/index.vue"),
+          meta: {
+            sideBar: true,
+            title: "Dashboard",
+            auth: true,
+            resource: 'profile',
+          },
+        },
+
+        {
+          path: "users",
+          children: [
+            {
+              path: '',
+              name: "users",
+              component: () => import("@/views/dashboard/users/index.vue"),
+              meta: {
+                sideBar: true,
+                title: "Users",
+                auth: true,
+                resource: 'user',
+              },
+            },
+            {
+              path: ":id",
+              name: "user",
+              component: () => import("@/views/dashboard/users/[id].vue"),
+              meta: {
+                sideBar: true,
+                title: "Users",
+                auth: true,
+                resource: 'user',
+              },
+            },
+          ]
+
+        },
+      ]
+    },
+
+
     // NOTE OTHER
     {
       path: "/:pathMatch(.*)*",
       name: 'error',
-      component: () => import("@/views/pages/ErrorPage.vue"),
+      component: () => import("@/views/[error].vue"),
       meta: {
         title: "Page not Found!",
       },
@@ -352,11 +248,12 @@ router.beforeEach(async (to, from, next) => {
   next()
 });
 
-router.afterEach((to) => {
+router.afterEach((to, from, failure) => {
+
   const $load = usePreLoader()
   $load.config.loading = false
 
   document.title = to.meta.title ? `${to.meta.title} | ${TITLE}` : "";
-});
+})
 
 export default router;
