@@ -30,21 +30,21 @@
               </div>
               <div class="mt-5 h-0 flex-1 overflow-y-auto">
                 <nav class="space-y-1 px-2">
-                  <RouterLink v-for="item in navigation" :key="item.name" :to="{name: item.link}"
-                    @click="sidebarOpen = false"
-                    :class="[$route.name == item.link ? 'bg-gray-700 text-gray-50' : 'text-gray-300 hover:bg-gray-600 hover:text-gray-50', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']"
-                  >
-                    <div v-if="item.line" class="relative">
-                      <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                        <div class="w-full border-t border-white" />
-                      </div>
-                    </div>
-                    <component v-else :is="item.icon"
-                      :class="[$route.name == item.link ? 'text-gray-100' : 'text-gray-400 group-hover:text-gray-300', 'mr-4 flex-shrink-0 h-6 w-6']" aria-hidden="true"
-                    />
-                    {{ item.name }}
-                    <div v-if="item.count" :class="[item.count.color, 'relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold rounded-full -top-2 _right-1']">{{ item.count.number }}</div>
-                  </RouterLink>
+
+                  <!-- SECTION MOBILE NAV -->
+                  <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')"> Dashboard </AppSidebarNav>
+                  <AppSidebarNav linkName="profile" :icon="UsersIcon" :disabled="!can('index', 'profile')"> Prolife </AppSidebarNav>
+                  <!-- <AppSidebarNav linkName="profile" :icon="WindowIcon"> Account Settings </AppSidebarNav> -->
+
+                  <h3 class="mb-1 px-3 text-sm font-medium text-gray-100 mt-4" id="projects-headline">Pages</h3>
+
+                  <AppSidebarNav linkName="home" :icon="HomeIcon"> Home </AppSidebarNav>
+                  <AppSidebarNav linkName="about" :icon="InformationCircleIcon"> About </AppSidebarNav>
+                  <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)"> Job Listing </AppSidebarNav>
+                  <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)"> Calendar </AppSidebarNav>
+                  <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon"> FAQs </AppSidebarNav>
+                  <AppSidebarNav linkName="news" :icon="MegaphoneIcon"> News & Updates </AppSidebarNav>
+
                 </nav>
               </div>
             </DialogPanel>
@@ -66,17 +66,20 @@
         </RouterLink>
         <div class="mt-5 flex flex-grow flex-col">
           <nav class="flex-1 space-y-1 px-2 pb-4">
-            <RouterLink v-for="item in navigation" :key="item.name" :to="{name:item.link}" :class="[$route.name == item.link ? 'bg-gray-700 text-gray-50' : 'text-gray-300 hover:bg-gray-600 hover:text-gray-50', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
 
-              <div v-if="item.line" class="relative">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                  <div class="w-full border-t border-white" />
-                </div>
-              </div>
-              <component v-else :is="item.icon" :class="[$route.name == item.link ? 'text-gray-100' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
-              {{ item.name }}
-              <div v-if="item.count" :class="[item.count.color, 'relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold rounded-full -top-2 _right-1']">{{ item.count.number }}</div>
-            </RouterLink>
+            <!-- SECTION DESKTOP NAV -->
+            <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')"> Dashboard </AppSidebarNav>
+            <AppSidebarNav linkName="profile" :icon="UsersIcon" :disabled="!can('index', 'profile')"> Profile </AppSidebarNav>
+            <!-- <AppSidebarNav linkName="account-settings" :icon="Cog6ToothIcon" :disabled="!can('index', 'auth')"> Account Settings </AppSidebarNav> -->
+
+            <h3 class="mb-1 px-3 text-sm font-medium text-gray-100 mt-4" id="projects-headline">Pages</h3>
+
+            <AppSidebarNav linkName="home" :icon="HomeIcon"> Home </AppSidebarNav>
+            <AppSidebarNav linkName="about" :icon="InformationCircleIcon"> About </AppSidebarNav>
+            <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)"> Job Listing </AppSidebarNav>
+            <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)"> Calendar </AppSidebarNav>
+            <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon"> FAQs </AppSidebarNav>
+            <AppSidebarNav linkName="news" :icon="MegaphoneIcon"> News & Updates </AppSidebarNav>
 
 
           </nav>
@@ -153,98 +156,26 @@ import {
   CheckCircleIcon,
   MegaphoneIcon,
   SquaresPlusIcon,
-  WindowIcon
+  WindowIcon,
+BriefcaseIcon
 } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { usePreLoader } from '@/store/system/PreLoader'
 import { useEventPublicStore } from '@/store/@public/EventPublicStore'
 import { useJobPublicStore } from '@/store/@public/JobPublicStore'
+import { useAbility } from '@casl/vue'
 
 import BreadCrumbs from '@/layout/BreadCrumbs.vue'
 import HeaderBanner from '@/layout/HeaderBanner.vue'
 import PreLoader from '@/layout/preloader/@PreLoader.vue'
 import ProfileDropdown from './ProfileDropdown.vue'
 import FooterLayout from './Footer.vue'
+import AppSidebarNav from '@/components/AppSidebarNav.vue'
 
 const $preLoader = usePreLoader()
-const $route = useRoute()
 const $event = useEventPublicStore()
 const $job = useJobPublicStore()
-
-const navigation = [
-  {
-    name: 'Dashboard',
-    link: 'dashboard',
-    icon: WindowIcon,
-    count: null,
-  },
-  {
-    name: 'Profile',
-    link: 'profile',
-    icon: SquaresPlusIcon,
-    count: null,
-  },
-  {
-    name: 'Documents',
-    link: 'documents',
-    icon: FolderIcon,
-    count: null
-  },
-  {
-    name: 'Users',
-    link: 'users',
-    icon: UsersIcon,
-    count: null
-  },
-
-  {
-    name: 'Pages',
-    line: true,
-    count: null
-  },
-  {
-    name: 'Home',
-    link: 'home',
-    icon: HomeIcon,
-    count: null
-  },
-  {
-    name: 'About',
-    link: 'about',
-    icon: InformationCircleIcon,
-    count: null
-  },
-  {
-    name: 'Job Listing',
-    link: 'job-listing',
-    icon: QueueListIcon,
-    count: {
-      number: $job.content.length,
-      color: 'text-black bg-amber-400'
-    }
-  },
-  {
-    name: 'Calendar',
-    link: 'calendar',
-    icon: CalendarIcon,
-    count: {
-      number: $event.eventCount,
-      color: 'text-black bg-gradient-to-r from-primary-500 to-amber-200'
-    }
-  },
-  {
-    name: 'FAQs',
-    link: 'faqs',
-    icon: CheckCircleIcon,
-    count: null,
-  },
-  {
-    name: 'News & Update',
-    link: 'news',
-    icon: MegaphoneIcon,
-    count: null,
-  },
-]
+const { can } =  useAbility();
 
 const sidebarOpen = ref(false);
 </script>

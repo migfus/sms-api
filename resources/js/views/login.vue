@@ -67,7 +67,7 @@ interface InputInt {
   password: string
 }
 const input = reactive<InputInt>({
-  email: 'admin@gmail.com',
+  email: 'staff@gmail.com',
   password: '12345678',
 });
 </script>
