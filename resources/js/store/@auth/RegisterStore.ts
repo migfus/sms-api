@@ -48,6 +48,13 @@ export const useRegisterStore = defineStore(title, () => {
 
       console.log('RegisterAPI', data)
       params.value = ResetParams()
+
+      notify({
+        group: "success",
+        title: "Registration Successful",
+        text: 'You can now login using your account.'
+      }, 5000)
+
       //@ts-ignore
       this.router.push({ name: 'login'})
     }

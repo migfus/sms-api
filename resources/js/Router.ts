@@ -160,13 +160,89 @@ const router = createRouter({
 
         {
           path: "profile",
-          name: "profile",
-          component: () => import("@/views/dashboard/profile/index.vue"),
-          meta: {
-            sideBar: true,
-            title: "Dashboard",
-            auth: true,
-          },
+          children: [
+            {
+              path: '',
+              name: "profile",
+              component: () => import("@/views/dashboard/profile/index.vue"),
+              meta: {
+                sideBar: true,
+                title: "Dashboard",
+                auth: true,
+              },
+            },
+            {
+              path: 'education',
+              name: "profile-education",
+              component: () => import("@/views/dashboard/profile/education.vue"),
+              meta: {
+                sideBar: true,
+                title: "Education",
+                auth: true,
+              },
+            },
+            {
+              path: 'eligibilities',
+              name: "profile-eligibilities",
+              component: () => import("@/views/dashboard/profile/eligibilities.vue"),
+              meta: {
+                sideBar: true,
+                title: "Eligibilities",
+                auth: true,
+              },
+            },
+            {
+              path: 'experience',
+              name: "profile-experience",
+              component: () => import("@/views/dashboard/profile/experience.vue"),
+              meta: {
+                sideBar: true,
+                title: "Experience",
+                auth: true,
+              },
+            },
+            {
+              path: 'voluntaries',
+              name: "profile-voluntaries",
+              component: () => import("@/views/dashboard/profile/voluntaries.vue"),
+              meta: {
+                sideBar: true,
+                title: "Voluntaries",
+                auth: true,
+              },
+            },
+            {
+              path: 'seminars',
+              name: "profile-seminars",
+              component: () => import("@/views/dashboard/profile/seminars.vue"),
+              meta: {
+                sideBar: true,
+                title: "Seminars",
+                auth: true,
+              },
+            },
+            {
+              path: 'skills',
+              name: "profile-skills",
+              component: () => import("@/views/dashboard/profile/skills.vue"),
+              meta: {
+                sideBar: true,
+                title: "Skills",
+                auth: true,
+              },
+            },
+            {
+              path: 'mobile',
+              name: "profile-mobile",
+              component: () => import("@/views/dashboard/profile/mobile.vue"),
+              meta: {
+                sideBar: true,
+                title: "Mobile Numbers",
+                auth: true,
+              },
+            },
+          ]
+
         },
 
         {

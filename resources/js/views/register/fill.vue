@@ -1,9 +1,9 @@
 <template>
   <div class='h-full'>
-    <div class="grid min-h-full justify-center py-12">
+    <div class="grid min-h-full justify-center py-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-md mb-8">
-        <object class="mx-auto h-40 w-auto" data="/images/logo-anim.svg" alt="Your Company" />
-        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Lastly Fill-Up</h2>
+        <!-- <object class="mx-auto h-40 w-auto" data="/images/logo-anim.svg" alt="Your Company" /> -->
+        <h2 class="text-center text-3xl font-bold tracking-tight text-gray-900">Lastly Fill-Up</h2>
       </div>
 
       <Form v-slot="{ errors }" :validation-schema="schema" @submit="$register.RegisterAPI()">
@@ -12,7 +12,7 @@
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
-                    <p class="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
+                    <p class="mt-1 text-sm text-gray-500">These information are required by the HRMO, CMU.</p>
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">
 
@@ -88,11 +88,11 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <AppInput v-model="$register.params.height" placeholder="Height (meter)" name="height" :errors="errors"/>
+                            <AppInput v-model="$register.params.height" :placeholder="`Height (meter)${foot_inch}`" name="height" :errors="errors"/>
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <AppInput v-model="$register.params.weight" placeholder="Weight (kilo)" name="weight" :errors="errors"/>
+                            <AppInput v-model="$register.params.weight" :placeholder="`Weight (kilo)${pound}`" name="weight" :errors="errors"/>
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
@@ -139,7 +139,7 @@ import * as Yup from 'yup'
 import { Form, configure } from 'vee-validate'
 import { useRouter } from 'vue-router'
 import { useAddressStore } from '@/store/system/AddressStore'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 import AppButton from '@/components/form/AppButton.vue'
 import AppInput from '@/components/form/AppInput.vue'
@@ -171,4 +171,16 @@ const schema = Yup.object({
 
 const bday_province_id = ref(16)
 const address_province_id = ref(16)
+const foot_inch = computed(() => {
+  if($register.params.height > 0)
+    return ` - ${Math.floor($register.params.height * 3.28084)}' ${Math.floor((($register.params.height * 3.28084) - Math.floor($register.params.height * 3.28084))*12)}"`
+
+  return ''
+})
+const pound = computed(() => {
+  if($register.params.weight > 0)
+    return ` - ${Math.floor($register.params.weight * 2.20462)} lb`
+
+  return ''
+})
 </script>
