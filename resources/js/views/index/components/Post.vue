@@ -54,9 +54,4 @@ import { usePostPublicStore } from '@/store/@public/PostPublicStore'
 import moment from 'moment'
 
 const $post = usePostPublicStore();
-
-onMounted(() => {
-  $post.query.search = ''
-  $post.GetAPI();
-});
 </script>

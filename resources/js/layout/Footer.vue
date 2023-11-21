@@ -46,7 +46,7 @@
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
               <ul role="list" class="mt-6 space-y-4">
                 <li v-for="item in navigation.legal" :key="item.name">
-                  <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</a>
+                  <RouterLink :to="{ name: item.href }" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
                 </li>
               </ul>
             </div>
@@ -87,9 +87,9 @@ const navigation = {
     { name: 'Partners', href: '#' },
   ],
   legal: [
-    { name: 'Claim', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
+    { name: 'Terms & Agreement', href: 'terms-agreement' },
+    { name: 'Privacy', href: 'home' },
+    { name: 'Terms', href: 'home' },
   ],
 };
 </script>

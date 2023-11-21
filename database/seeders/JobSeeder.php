@@ -12,7 +12,7 @@ class JobSeeder extends Seeder
     $data = [
       [
         'id' => 549718390787165,
-        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_STAFF_ID'], //admin [first user],
         'job_location_id' => \App\Models\JobLocation::where('id', 549718062930975)->first()->id, // CMU,
         'job_type_id' => \App\Models\JobType::where('id', 549718712245638)->first()->id, // faculty
         'job_status_id' => \App\Models\JobStatus::where('id', 549718506430213)->first()->id, // Job Order
@@ -27,7 +27,7 @@ class JobSeeder extends Seeder
       ],
       [
         'id' => 549718390797331,
-        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_STAFF_ID'], //admin [first user],
         'job_location_id' => \App\Models\JobLocation::where('id', 549718062943377)->first()->id, // CSC, Malaybalay,
         'job_type_id' => \App\Models\JobType::where('id', 549718712254629)->first()->id, // staff
         'job_status_id' => \App\Models\JobStatus::where('id', 549718506460392)->first()->id, // Permanent idk

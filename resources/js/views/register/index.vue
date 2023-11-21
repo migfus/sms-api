@@ -24,7 +24,7 @@
             <div class="flex items-center justify-between">
               <div class="flex items-center">
                 <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
-                <label for="remember-me" class="ml-2 block text-sm text-gray-900">Agree to <b class="text-gray-500">Terms & Agreement</b></label>
+                <label for="remember-mee" class="ml-2 block text-sm text-gray-900">Agree to <RouterLink :to="{name: 'terms-agreement'}" class="text-gray-500 font-bold">Terms & Agreement</RouterLink></label>
               </div>
 
               <div class="text-sm">

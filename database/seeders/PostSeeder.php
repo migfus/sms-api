@@ -11,7 +11,7 @@ class PostSeeder extends Seeder
     $data = [
       [
         'id' => 549719100815648,
-        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_STAFF_ID'], //admin [first user],
         'post_category_id' => \App\Models\PostCategory::where('id', 549718929043076)->first()->id, //news
         'active' => 1,
         'title'   => 'Lorem Ipsum',
@@ -20,7 +20,7 @@ class PostSeeder extends Seeder
       ],
       [
         'id' => 549719100826776,
-        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_STAFF_ID'], //admin [first user],
         'post_category_id' => \App\Models\PostCategory::where('id', 549718929052672)->first()->id, // updates
         'active' => 1,
         'title'   => 'Lorem Ipsum',
@@ -29,7 +29,7 @@ class PostSeeder extends Seeder
       ],
       [
         'id' => 549719100837584,
-        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_STAFF_ID'], //admin [first user],
         'post_category_id' => \App\Models\PostCategory::where('id', 549718929043076)->first()->id, //news
         'active' => 1,
         'title'   => 'Lorem Ipsum',

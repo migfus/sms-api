@@ -14,19 +14,22 @@ import { useRoute } from 'vue-router'
 import { useJobPublicStore } from '@/store/@public/JobPublicStore'
 import { useEventPublicStore } from '@/store/@public/EventPublicStore'
 import { useAddressStore } from './store/system/AddressStore'
+import { usePostPublicStore } from './store/@public/PostPublicStore'
 
 import NotificationsSection from './components/AppNotifications.vue'
 import TopNavigation from '@/layout/TopNavigation.vue'
 import SideNavigation from '@/layout/SideNavigation.vue'
 
-const $route = useRoute();
-const $job = useJobPublicStore();
-const $event = useEventPublicStore();
-const $address = useAddressStore();
+const $route = useRoute()
+const $job = useJobPublicStore()
+const $event = useEventPublicStore()
+const $address = useAddressStore()
+const $post = usePostPublicStore()
 
 onMounted(() => {
   $job.GetAPI()
   $event.GetCountAPI()
   $address.GetAPI()
+  $post.GetAPI()
 });
 </script>

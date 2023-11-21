@@ -69,26 +69,35 @@ const router = createRouter({
     },
 
     {
-    path: '/news',
-    children:[
-      {
-        path: '',
-        name: 'news',
-        component: () => import('@/views/news/index.vue'),
-        meta: {
-          title: 'News & Updates'
-        },
-      },
-
-      {
-        path: ':id',
-        name: 'post',
-          component: () => import('@/views/news/[id].vue'),
+      path: '/news',
+      children:[
+        {
+          path: '',
+          name: 'news',
+          component: () => import('@/views/news/index.vue'),
           meta: {
-            title: 'Post'
-          }
-      },
-    ]
+            title: 'News & Updates'
+          },
+        },
+
+        {
+          path: ':id',
+          name: 'post',
+            component: () => import('@/views/news/[id].vue'),
+            meta: {
+              title: 'Post'
+            }
+        },
+      ]
+    },
+
+    {
+      path: '/terms-agreement',
+      name: 'terms-agreement',
+      component: () => import('@/views/terms-agreement.vue'),
+      meta: {
+        title: 'Terms & Agreement'
+      }
     },
 
 
@@ -152,7 +161,7 @@ const router = createRouter({
         {
           path: "profile",
           name: "profile",
-          component: () => import("@/views/dashboard/profile.vue"),
+          component: () => import("@/views/dashboard/profile/index.vue"),
           meta: {
             sideBar: true,
             title: "Dashboard",

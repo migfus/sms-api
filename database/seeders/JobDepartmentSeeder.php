@@ -11,12 +11,12 @@ class JobDepartmentSeeder extends Seeder
     $data = [
       [
         'id' => 549717969211197,
-        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_STAFF_ID'], //admin [first user],
         'name'    => 'College of Nursing',
       ],
       [
         'id' => 549717969218065,
-        'user_id' => $_ENV['SEEDER_USER_ADMIN_ID'], //admin [first user],
+        'user_id' => $_ENV['SEEDER_USER_STAFF_ID'], //admin [first user],
         'name'    => 'College of Engineering',
       ],
     ];
