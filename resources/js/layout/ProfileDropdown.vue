@@ -45,21 +45,24 @@
   </div>
 
   <div v-else class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-    <button @click="$router.push({name: 'login'})" class="ml-0 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-primary-600 px-4 py-2 text-base font-small text-white shadow-sm hover:bg-primary-700">
-      <span class="">Login</span>
-    </button>
-    <button @click="$router.push({name: 'register'})" class="ml-3 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-amber-400 px-4 py-2 text-base font-small text-black shadow-sm hover:bg-amber-700">
-      <span class="">Register</span>
-    </button>
+    <RouterLink :to="{name: 'login'}" class="ml-3 inline-flex items-center justify-center">
+      <AppButton>
+        Login
+      </AppButton>
+    </RouterLink>
+    <RouterLink :to="{name: 'register'}" class="ml-3 inline-flex items-center justify-center">
+      <AppButton color="warning">
+        Register
+      </AppButton>
+    </RouterLink>
   </div>
 </template>
 
 <script setup lang='ts'>
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/store/@auth/AuthStore'
 import { BellIcon, WindowIcon, XMarkIcon, FolderIcon, SquaresPlusIcon } from '@heroicons/vue/24/outline'
+import AppButton from '@/components/form/AppButton.vue'
 
-const $router = useRouter()
 const $auth = useAuthStore()
 </script>

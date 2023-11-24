@@ -11,7 +11,7 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
   Route::post('/login', 'Login');
   Route::post('/register', 'Register');
   Route::post('/forgot', 'Forgot');
-  Route::post('/recovery-confirm', 'ConfirmRecovery');
+  Route::post('/recovery', 'Recovery');
   Route::post('/change-password-recovery', 'ChangePasswordRecovery');
 });
 

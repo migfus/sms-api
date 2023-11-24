@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 use App\Models\User;
 use App\Models\Person;
+
+use App\Mail\ForgotPasswordMail;
 
 class AuthController extends Controller
 {
@@ -105,11 +109,57 @@ class AuthController extends Controller
 
   public function Forgot(Request $req) {
     $val = Validator::make($req->all(), [
-      'email' => 'required|email:exist:users,email',
+      'email' => 'required|email|exists:users,email',
     ]);
 
     if($val->fails()) {
       return $this->G_ValidatorFailResponse($val);
     }
+
+    $code = rand(0, 9999);
+    User::where('email', $req->email)->update(['remember_token' => $code]);
+
+    Mail::to($req->email)->send(new ForgotPasswordMail($req->email, $code));
+
+    return response()->json([
+      ...$this->G_ReturnDefault(),
+      'data' => true,
+    ], 200);
+  }
+
+  public function Recovery(Request $req) {
+    $val = Validator::make($req->all(), [
+      'code' => 'required',
+      'password' => 'required',
+    ]);
+
+    if($val->fails()) {
+      return $this->G_ValidatorFailResponse($val);
+    }
+
+    $user = User::where('remember_token', $req->code)
+      ->update([
+        'password' => Hash::make($req->password),
+        'email_verified_at' => Carbon::now(),
+        'remember_token' => null
+      ]);
+
+
+
+    if(!$user) {
+      return response()->json([
+        ...$this->G_ReturnDefault(),
+        'data' => false,
+      ], 200);
+    }
+
+    return response()->json([
+      ...$this->G_ReturnDefault(),
+      'data' => true,
+    ], 200);
+
+    return response()->json([
+      ...$this->G_ReturnDefault()
+    ]);
   }
 }

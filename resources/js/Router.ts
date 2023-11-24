@@ -142,6 +142,14 @@ const router = createRouter({
         title: "Forgot Password",
       },
     },
+    {
+      path: "/recovery",
+      name: "recovery",
+      component: () => import("@/views/recovery.vue"),
+      meta: {
+        title: "Recover Account",
+      },
+    },
 
     // NOTE DASHBOARD
     {
