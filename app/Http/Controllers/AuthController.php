@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+
 use App\Models\User;
 use App\Models\Person;
 
@@ -20,7 +21,10 @@ class AuthController extends Controller
       return $this->G_ValidatorFailResponse($val);
     }
 
-    $user = User::where('email', $req->email)->with('person')->first();
+    $user = User::where('email', $req->email)
+      ->with(['person'])
+      ->first()
+      ->makeHidden('email_verified_at', 'created_at', 'updated_at');
     if(!$user || !Hash::check($req->password, $user->password)) {
       return response()->json(['status' => false, 'message' => 'Invalid Credentials!'], 401);
     }
@@ -38,10 +42,31 @@ class AuthController extends Controller
     ], 200);
   }
 
+  public function Logout(Request $req) {
+    $req->user()->currentAccessToken()->delete();
+
+    return response()->json([
+      ...$this->G_ReturnDefault(),
+      'data' => true
+    ], 200);
+  }
+
   public function Register(Request $req) {
     $val = Validator::make($req->all(), [
-      'email' => 'required|email',
+      'email' => 'required|email|unique:users',
       'password' => 'required|min:8',
+
+      'last_name' => 'required',
+      'first_name' => 'required',
+      'civil_status_id' => 'required',
+      'birth_day' => 'required',
+      'birth_place_id' => 'required',
+      'blood_type_id' => 'required',
+
+      'height' => 'required',
+      'weight' => 'required',
+      'address_id' => 'required',
+      'address' => 'required',
     ]);
 
     if($val->fails()) {
@@ -74,7 +99,17 @@ class AuthController extends Controller
 
     return response()->json([
       ...$this->G_ReturnDefault(),
-      'data' => $user,
+      'data' => true,
     ], 200);
+  }
+
+  public function Forgot(Request $req) {
+    $val = Validator::make($req->all(), [
+      'email' => 'required|email:exist:users,email',
+    ]);
+
+    if($val->fails()) {
+      return $this->G_ValidatorFailResponse($val);
+    }
   }
 }

@@ -23,6 +23,8 @@ interface TContent {
   gsis_id: string
   pagibig_id: string
   tin_id: string
+
+  avatar: string
 }
 
 const title = `auth/PersonalStore`
@@ -31,6 +33,7 @@ export const usePersonalStore = defineStore(title, () => {
   const config = reactive<TGConfig>({
     loading: false,
   })
+  const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
 
   async function GetAPI() {
     config.loading = true
@@ -45,9 +48,35 @@ export const usePersonalStore = defineStore(title, () => {
     config.loading = false
   }
 
+  function InitParams() {
+    return {
+      last_name: '',
+      first_name: '',
+      mid_name: '',
+      ext_name: '',
+
+      civil_status_id: null,
+      birth_day: null,
+      birth_place_id: null,
+      blood_type_id: null,
+      sex: false,
+      height: null,
+      weight: null,
+      address_id: null,
+      address: '',
+
+      gsis_id: null,
+      pagibig_id: null,
+      tin_id: null,
+
+      avatar: null
+    }
+  }
+
   return {
     content,
     config,
+    params,
 
     GetAPI,
   }

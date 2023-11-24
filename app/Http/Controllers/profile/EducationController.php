@@ -1,26 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\profile;
 
 use Illuminate\Http\Request;
 
-use App\Models\FAQ;
-
-class FAQPublicController extends Controller
+class EducationController extends Controller
 {
-  public function index(Request $req) {
-    if($req->search) {
-      $data = FAQ::whereNotNull('approved_user_id')->where('question', 'LIKE', '%'.$req->search.'%')->orderBy('points', 'DESC')->limit(4)->get();
-    }
-    else {
-      $data = FAQ::whereNotNull('approved_user_id')->orderBy('points', 'DESC')->limit(4)->get();
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
     }
 
-    return response()->json([
-      ...$this->G_ReturnDefault(),
-      'data' => $data,
-    ], 200);
-  }
     /**
      * Store a newly created resource in storage.
      */
