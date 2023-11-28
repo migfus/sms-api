@@ -1,10 +1,13 @@
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
+import { notify } from 'notiwind'
 import type { TGConfig } from '../GlobalType'
+import { cityIDToProvinceID } from '@/helpers/Converter'
 
 interface TContent {
+  id: number
   last_name: string
   first_name: string
   mid_name: string
@@ -14,7 +17,7 @@ interface TContent {
   birth_day: Date
   birth_place_id: number
   blood_type_id: number
-  sex: boolean
+  sex: string
   height: number
   weight: number
   address_id: number
@@ -27,20 +30,28 @@ interface TContent {
   avatar: string
 }
 
-const title = `auth/PersonalStore`
+const title = `applicant/PersonalStore`
 export const usePersonalStore = defineStore(title, () => {
-  const content = useStorage<Array<TContent>>(`${title}/content`, [], sessionStorage, { serializer: StorageSerializers.object})
+  const content = useStorage<TContent>(`${title}/content`, null, sessionStorage, { serializer: StorageSerializers.object})
   const config = reactive<TGConfig>({
     loading: false,
   })
   const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
 
+  const bday_province_id = ref(16)
+  const address_province_id = ref(16)
+
   async function GetAPI() {
     config.loading = true
     try {
-      let { data: {data}} = await axios.get('/api/auth/profile/personal')
+      let { data: {data}} = await axios.get('/api/profile/personal')
+      bday_province_id.value = cityIDToProvinceID(data.birth_place_id)
+      address_province_id.value = cityIDToProvinceID(data.address_id)
+
       content.value = data
-      console.log(data)
+      params.value = data
+      params.value.sex = data.sex ? 'true' : 'false'
+
     }
     catch(err) {
       console.log(err)
@@ -48,8 +59,32 @@ export const usePersonalStore = defineStore(title, () => {
     config.loading = false
   }
 
+  async function UpdateAPI() {
+    config.loading = true
+    try {
+      let { data: {data}} = await axios.put(`/api/profile/personal/${params.value.id}`, params.value)
+      if(data) {
+        notify({
+          group: "success",
+          title: "Personal Info updated!",
+          text: 'The email may be mistype or not exist on this website.'
+        }, 5000)
+      }
+    }
+    catch(err) {
+      console.log(err)
+      notify({
+        group: "error",
+        title: "Error",
+        text: 'The inputs may be invalid or server error.'
+      }, 5000)
+    }
+    config.loading = false
+  }
+
   function InitParams() {
     return {
+      id: -1,
       last_name: '',
       first_name: '',
       mid_name: '',
@@ -59,7 +94,7 @@ export const usePersonalStore = defineStore(title, () => {
       birth_day: null,
       birth_place_id: null,
       blood_type_id: null,
-      sex: false,
+      sex: 'true',
       height: null,
       weight: null,
       address_id: null,
@@ -77,7 +112,10 @@ export const usePersonalStore = defineStore(title, () => {
     content,
     config,
     params,
+    bday_province_id,
+    address_province_id,
 
     GetAPI,
+    UpdateAPI,
   }
 })

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\profile;
 
+
+
 use Illuminate\Http\Request;
 
 class EducationController extends Controller

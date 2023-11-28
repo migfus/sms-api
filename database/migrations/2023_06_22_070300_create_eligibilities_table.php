@@ -9,7 +9,7 @@ return new class extends Migration
   public function up(): void {
     Schema::create('eligibilities', function (Blueprint $table) {
       $table->id();
-      $table->bigInteger('person_id');
+      $table->bigInteger('info_id');
       $table->string('name');
       $table->integer('address_id');
       $table->decimal('rating', 5, 2);

@@ -12,7 +12,7 @@ class DocumentAuthController extends Controller
     if($req->user()->hasPermissionTo('index profile')) {
       return response()->json([
         ...$this->G_ReturnDefault($req),
-        'data' => File::where('person_id', $req->user()->person_id)->get(),
+        'data' => File::where('info_id', $req->user()->info_id)->get(),
       ]);
     }
     return $this->G_UnauthorizedResponse();
@@ -22,7 +22,7 @@ class DocumentAuthController extends Controller
     if($req->user()->hasPermissionTo('removeFile profile')) {
       return response()->json([
         ...$this->G_ReturnDefault($req),
-        'data' => File::where('person_id', $req->user()->person_id)->where('id', $id)->delete(),
+        'data' => File::where('info_id', $req->user()->info_id)->where('id', $id)->delete(),
       ]);
     }
     return $this->G_UnauthorizedResponse();
@@ -31,7 +31,7 @@ class DocumentAuthController extends Controller
   public function store(Request $request) {
     if($req->user()->hasPermissionTo('store profile')) {
       $data = File::create([
-        'person_id' => $req->user()->person_id,
+        'info_id' => $req->user()->info_id,
         'filename' => $req->filename,
         'url' => $req->url,
         'size' => $req->size,

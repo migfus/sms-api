@@ -17,16 +17,16 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
 
 // NOTE PUBLICS API
 Route::group(['prefix' => 'public', 'as' => 'public.'], function() {
-  Route::get('/address',     [\App\Http\Controllers\AddressPublicController::class, 'index']);
-  Route::apiResource('/post', \App\Http\Controllers\PostPublicController::class)
+  Route::get('/address',     [\App\Http\Controllers\public\AddressPublicController::class, 'index']);
+  Route::apiResource('/post', \App\Http\Controllers\public\PostPublicController::class)
     ->only(['index', 'show']);
-  Route::apiResource('/job',  \App\Http\Controllers\JobPublicController::class)
-    ->only(['index', 'show']);
-  Route::apiResource('/faq',  \App\Http\Controllers\FAQPublicController::class)
-    ->only(['index', 'show']);
-  Route::apiResource('/event',\App\Http\Controllers\EventPublicController::class)
-    ->only(['index', 'show']);
-    Route::get('/event/count',[\App\Http\Controllers\EventPublicController::class, 'getCount']);
+  Route::apiResource('/job',  \App\Http\Controllers\public\JobPublicController::class)
+    ->only(['index']);
+  Route::apiResource('/faq',  \App\Http\Controllers\public\FAQPublicController::class)
+    ->only(['index']);
+  Route::apiResource('/event',\App\Http\Controllers\public\EventPublicController::class)
+    ->only(['index']);
+    Route::get('/event/count',[\App\Http\Controllers\public\EventPublicController::class, 'getCount']);
 });
 
 
@@ -35,22 +35,22 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // NOTE PROFILE API
     Route::group(['prefix' => 'profile', 'as' => 'profile.'], function() {
-      Route::apiResource('/personal',      \App\Http\Controllers\PersonalController::class)
-        ->only(['index']);
+      Route::apiResource('/personal',      \App\Http\Controllers\profile\PersonalController::class)
+        ->only(['index', 'update']);
 
-      Route::apiResource('/education',     \App\Http\Controllers\EducationController::class)
+      Route::apiResource('/education',     \App\Http\Controllers\profile\EducationController::class)
         ->only(['index']);
-      Route::apiResource('/eligibility',   \App\Http\Controllers\EligibilityController::class)
+      Route::apiResource('/eligibility',   \App\Http\Controllers\profile\EligibilityController::class)
         ->only(['index']);
-      Route::apiResource('/experience',    \App\Http\Controllers\ExperienceController::class)
+      Route::apiResource('/experience',    \App\Http\Controllers\profile\ExperienceController::class)
         ->only(['index']);
-      Route::apiResource('/mobile-number', \App\Http\Controllers\MobileNumberController::class)
+      Route::apiResource('/mobile-number', \App\Http\Controllers\profile\MobileNumberController::class)
         ->only(['index']);
-      Route::apiResource('/seminar',       \App\Http\Controllers\SeminarController::class)
+      Route::apiResource('/seminar',       \App\Http\Controllers\profile\SeminarController::class)
         ->only(['index']);
-      Route::apiResource('/skill',         \App\Http\Controllers\SkillController::class)
+      Route::apiResource('/skill',         \App\Http\Controllers\profile\SkillController::class)
         ->only(['index']);
-      Route::apiResource('/voluntary',     \App\Http\Controllers\VoluntaryController::class)
+      Route::apiResource('/voluntary',     \App\Http\Controllers\profile\VoluntaryController::class)
         ->only(['index']);
       Route::apiResource('/document', \App\Http\Controllers\DocumentAuthController::class)
         ->only(['index', 'destroy', 'store']);

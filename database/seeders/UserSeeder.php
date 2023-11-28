@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
     $data = [
       [
         'id' => $_ENV['SEEDER_PERSON_STAFF_ID'], //staff [first user],
+        'user_id' => $_ENV['SEEDER_PERSON_STAFF_ID'], //staff [first user],
         'last_name' => 'Staff',
         'first_name' => '',
         'mid_name' => '',
@@ -35,6 +36,7 @@ class UserSeeder extends Seeder
       ],
       [
         'id' => $_ENV['SEEDER_PERSON_APPLICANT_ID'], //applicant [first user],
+        'user_id' => $_ENV['SEEDER_PERSON_APPLICANT_ID'], //applicant [first user],
         'last_name' => 'Belonio',
         'first_name' => 'Schwarzenegger',
         'mid_name' => 'Reposposa',
@@ -55,21 +57,20 @@ class UserSeeder extends Seeder
     ];
 
     foreach($data as $row) {
-      $person = \App\Models\Person::create($row);
-      $this->CreateNumber($person->id);
-      $this->CreateExperience($person->id);
-      $this->CreateEducation($person->id);
-      $this->CreateEligibility($person->id);
-      $this->CreateVoluntary($person->id);
-      $this->CreateSeminar($person->id);
-      $this->CreateSkill($person->id);
-      $this->CreateFile($person->id);
+      $info = \App\Models\Info::create($row);
+      $this->CreateNumber($info->id);
+      $this->CreateExperience($info->id);
+      $this->CreateEducation($info->id);
+      $this->CreateEligibility($info->id);
+      $this->CreateVoluntary($info->id);
+      $this->CreateSeminar($info->id);
+      $this->CreateSkill($info->id);
+      $this->CreateFile($info->id);
     }
 
     User::create(
       [
         'id' => $_ENV['SEEDER_USER_STAFF_ID'], //staff [first user],
-        'person_id' => $_ENV['SEEDER_PERSON_STAFF_ID'],
         'email' => 'staff@gmail.com',
         'password'=> Hash::make('12345678'),
         'avatar'   => 'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg',
@@ -78,7 +79,6 @@ class UserSeeder extends Seeder
     User::create(
       [
         'id' => $_ENV['SEEDER_USER_APPLICANT_ID'], //applicant [first user],
-        'person_id' => $_ENV['SEEDER_PERSON_APPLICANT_ID'],
         'email' => 'applicant@gmail.com',
         'password'=> Hash::make('12345678'),
         'avatar'   => 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000',
@@ -86,18 +86,18 @@ class UserSeeder extends Seeder
     )->assignRole('Applicant');
   }
 
-  private function CreateNumber($personID): void {
+  private function CreateNumber($info_id): void {
     \App\Models\MobileNumber::create([
-      'person_id' => $personID,
+      'info_id' => $info_id,
       'allow_notify' => 1,
       'number' => rand(0, 999999999),
     ]);
   }
 
-  private function CreateExperience($personID): void {
+  private function CreateExperience($info_id): void {
     $data = [
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'position' => 'Clerk',
         'company' => 'Central Mindanao University',
         'work_status_id' => \App\Models\WorkStatus::get()->first()->id, // Job Order
@@ -109,7 +109,7 @@ class UserSeeder extends Seeder
         'to' => null,
       ],
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'position' => 'OJT',
         'company' => 'Central Mindanao University',
         'work_status_id' => \App\Models\WorkStatus::get()->skip(2)->first()->id, // On Call
@@ -127,10 +127,10 @@ class UserSeeder extends Seeder
     }
   }
 
-  private function CreateEducation($personID): void {
+  private function CreateEducation($info_id): void {
     $data = [
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'level' => \App\Models\EducationLevel::get()->first()->id, // primary
         'school' => 'Valencia City Central School',
         'degree' => null,
@@ -140,7 +140,7 @@ class UserSeeder extends Seeder
         'to' => '2010-01-01',
       ],
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'level' => \App\Models\EducationLevel::get()->skip(1)->first()->id, // secondary
         'school' => 'Irene B. Antonio',
         'degree' => null,
@@ -150,7 +150,7 @@ class UserSeeder extends Seeder
         'to' => '2014-01-01',
       ],
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'level' => \App\Models\EducationLevel::get()->skip(2)->first()->id, // tertiary
         'school' => 'Central Mindanao University',
         'degree' => 'Bachelor of Information Technology',
@@ -166,10 +166,10 @@ class UserSeeder extends Seeder
     }
   }
 
-  private function CreateEligibility($personID): void {
+  private function CreateEligibility($info_id): void {
     $data = [
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'name' => 'EDPSE Eligibility',
         'address_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
         'rating' => 84.5,
@@ -184,10 +184,10 @@ class UserSeeder extends Seeder
     }
   }
 
-  private function CreateVoluntary($personID): void {
+  private function CreateVoluntary($info_id): void {
     $data = [
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'hours' => 2,
         'position' => 'Support',
         'name' => 'Voluntary Involvement',
@@ -201,10 +201,10 @@ class UserSeeder extends Seeder
     }
   }
 
-  private function CreateSeminar($personID): void {
+  private function CreateSeminar($info_id): void {
     $data = [
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'seminar_type_id' => \App\Models\SeminarType::get()->first()->id, // managerial
         'name' => 'Seminar 1',
         'hours' => 2,
@@ -219,10 +219,10 @@ class UserSeeder extends Seeder
     }
   }
 
-  private function CreateSkill($personID): void {
+  private function CreateSkill($info_id): void {
     $data = [
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'name' => 'Singing Shit',
         'recognition' => 'tapalado',
       ]
@@ -233,16 +233,16 @@ class UserSeeder extends Seeder
     }
   }
 
-  private function CreateFile($personID): void {
+  private function CreateFile($info_id): void {
     $data = [
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'filename' => 'Document1.docx',
         'url' => 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
         'size' => 123,
       ],
       [
-        'person_id' => $personID,
+        'info_id' => $info_id,
         'filename' => 'ExcelProject.xlsx',
         'url' => 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
         'size' => 456,

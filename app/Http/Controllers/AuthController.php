@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 use App\Models\User;
-use App\Models\Person;
+use App\Models\Info;
 
 use App\Mail\ForgotPasswordMail;
 
@@ -26,7 +26,7 @@ class AuthController extends Controller
     }
 
     $user = User::where('email', $req->email)
-      ->with(['person'])
+      ->with(['info'])
       ->first()
       ->makeHidden('email_verified_at', 'created_at', 'updated_at');
     if(!$user || !Hash::check($req->password, $user->password)) {
@@ -77,7 +77,14 @@ class AuthController extends Controller
       return $this->G_ValidatorFailResponse($val);
     }
 
-    $person = Person::create([
+    $user = User::create([
+      'email' => $req->email,
+      'password' => Hash::make($req->password),
+      'avatar' => 'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg'
+    ])->assignRole('applicant');
+
+    $info = Info::create([
+      'user_id' => $user->id,
       'last_name' => $req->last_name,
       'first_name' => $req->first_name,
       'mid_name' => $req->mid_name == '' ? null : $req->mid_name,
@@ -92,14 +99,6 @@ class AuthController extends Controller
       'address_id' => $req->address_id,
       'address' => $req->address,
     ]);
-
-    $user = User::create([
-      'person_id' => $person->id,
-      'email' => $req->email,
-      'password' => Hash::make($req->password),
-      'avatar' => 'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg'
-    ])->assignRole('applicant');
-
 
     return response()->json([
       ...$this->G_ReturnDefault(),

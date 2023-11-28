@@ -51,6 +51,7 @@ class RoleAndPermissionsSeeder extends Seeder
 
     // NOTE PROFILE
     Permission::create(['name' => 'index profile']);
+    Permission::create(['name' => 'update profile']);
 
     $role = Role::create(['name' => 'Staff']);
     $role->givePermissionTo([
@@ -60,13 +61,13 @@ class RoleAndPermissionsSeeder extends Seeder
       // 'index event',    'store event',    'update event',
       // 'index person',   'store person',   'update person',
       // 'index dashboard','store dashboard','update dashboard','destroy dashboard',
-      'index profile'
+      'index profile', 'update profile'
     ]);
 
     $role = Role::create(['name' => 'Applicant']);
     $role->givePermissionTo([
       // 'index dashboard','store dashboard','update dashboard','destroy dashboard',
-      'index profile'
+      'index profile', 'update profile'
     ]);
   }
 }

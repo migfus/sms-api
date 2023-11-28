@@ -39,3 +39,15 @@ export const addressIDToFull = (id: number) => {
   }
   return null;
 }
+
+export const cityIDToProvinceID = (id: number) => {
+  for (let i = 0; $address.content.length > i; i++) {
+    const province = $address.content[i];
+    for (let f = 0; province.cities.length > f; f++) {
+      if (province.cities[f].id == id) {
+        return province.id
+      }
+    }
+  }
+  return -1;
+}

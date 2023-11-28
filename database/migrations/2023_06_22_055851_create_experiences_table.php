@@ -9,7 +9,7 @@ return new class extends Migration
   public function up(): void {
     Schema::create('experiences', function (Blueprint $table) {
       $table->id();
-      $table->bigInteger('person_id')->unsigned();
+      $table->bigInteger('info_id')->unsigned();
       $table->string('position');
       $table->string('company');
       $table->date('from');
