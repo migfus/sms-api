@@ -51,3 +51,7 @@ export const cityIDToProvinceID = (id: number) => {
   }
   return -1;
 }
+
+export const mobileToFormatted = (number: string) => {
+  return `+63 ${number.substring(0,3)} ${number.substring(3,6)} ${number.substring(6, number.length)}`
+}

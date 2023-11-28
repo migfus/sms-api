@@ -56,7 +56,7 @@ export const useRegisterStore = defineStore(title, () => {
       }, 5000)
 
       //@ts-ignore
-      this.router.push({ name: 'login'})
+      this.router.push({ name: 'login', params: { email: params.value.email }})
     }
     catch(e) {
       if(e.response.data.message != 'Invalid Input') {

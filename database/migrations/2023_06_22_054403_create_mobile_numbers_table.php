@@ -11,7 +11,7 @@ return new class extends Migration
       $table->id();
       $table->bigInteger('info_id')->unsigned();
       $table->boolean('allow_notify')->default(1);
-      $table->decimal('number', 10, 0);
+      $table->decimal('number', 10, 0)->unique();
       $table->timestamps();
     });
   }

@@ -31,6 +31,7 @@
         "@vuepic/vue-datepicker": "^5.4.0",
         "@vueuse/core": "^10.1.2",
         "heroicons": "^2.0.18",
+        "inputmask": "^5.0.9-beta.45",
         "lodash": "^4.17.21",
         "moment": "^2.29.4",
         "notiwind": "^2.0.1",

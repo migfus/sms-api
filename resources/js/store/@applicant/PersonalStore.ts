@@ -5,6 +5,7 @@ import axios from 'axios'
 import { notify } from 'notiwind'
 import type { TGConfig } from '../GlobalType'
 import { cityIDToProvinceID } from '@/helpers/Converter'
+import { useAuthStore } from '../@auth/AuthStore'
 
 interface TContent {
   id: number
@@ -29,6 +30,8 @@ interface TContent {
 
   avatar: string
 }
+
+const $auth = useAuthStore()
 
 const title = `applicant/PersonalStore`
 export const usePersonalStore = defineStore(title, () => {
@@ -64,10 +67,11 @@ export const usePersonalStore = defineStore(title, () => {
     try {
       let { data: {data}} = await axios.put(`/api/profile/personal/${params.value.id}`, params.value)
       if(data) {
+        $auth.content.auth.avatar = params.value.avatar
         notify({
           group: "success",
           title: "Personal Info updated!",
-          text: 'The email may be mistype or not exist on this website.'
+          text: 'Personal Info is now changed.'
         }, 5000)
       }
     }

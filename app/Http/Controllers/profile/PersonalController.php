@@ -71,9 +71,10 @@ class PersonalController extends Controller
       ]);
 
     if(!$info) {
-      return $this->G_ValidatorFailResponse([
-        fn() => ['Incorrect ID'],
-      ]);
+      return response()->json([
+        ...$this->G_ReturnDefault(),
+        'data' => false,
+      ], 200);
     }
 
     return response()->json([

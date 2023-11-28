@@ -9,4 +9,10 @@ use Kra8\Snowflake\HasShortflakePrimary;
 class MobileNumber extends Model
 {
     use HasFactory, HasShortflakePrimary;
+
+    protected $fillable = [
+      'info_id',
+      'allow_notify',
+      'number',
+    ];
 }

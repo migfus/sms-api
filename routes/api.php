@@ -45,7 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
       Route::apiResource('/experience',    \App\Http\Controllers\profile\ExperienceController::class)
         ->only(['index']);
       Route::apiResource('/mobile-number', \App\Http\Controllers\profile\MobileNumberController::class)
-        ->only(['index']);
+        ->only(['index', 'destroy', 'store', 'update']);
       Route::apiResource('/seminar',       \App\Http\Controllers\profile\SeminarController::class)
         ->only(['index']);
       Route::apiResource('/skill',         \App\Http\Controllers\profile\SkillController::class)

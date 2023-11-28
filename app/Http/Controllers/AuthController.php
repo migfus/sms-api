@@ -10,6 +10,7 @@ use Carbon\Carbon;
 
 use App\Models\User;
 use App\Models\Info;
+use App\Models\MobileNumber;
 
 use App\Mail\ForgotPasswordMail;
 
@@ -27,8 +28,7 @@ class AuthController extends Controller
 
     $user = User::where('email', $req->email)
       ->with(['info'])
-      ->first()
-      ->makeHidden('email_verified_at', 'created_at', 'updated_at');
+      ->first();
     if(!$user || !Hash::check($req->password, $user->password)) {
       return response()->json(['status' => false, 'message' => 'Invalid Credentials!'], 401);
     }
@@ -99,6 +99,14 @@ class AuthController extends Controller
       'address_id' => $req->address_id,
       'address' => $req->address,
     ]);
+
+    if($req->mobile) {
+      $mobile = MobileNumber::create([
+        'info_id' => $info->id,
+        'number' => $req->mobile,
+        'allow_notify' => 1,
+      ]);
+    }
 
     return response()->json([
       ...$this->G_ReturnDefault(),

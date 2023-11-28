@@ -51,17 +51,25 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '@/store/@auth/AuthStore'
-import { reactive } from 'vue'
-import AppButton from '@/components/form/AppButton.vue';
+import { reactive, onMounted } from 'vue'
+import AppButton from '@/components/form/AppButton.vue'
+import { useRoute } from 'vue-router'
 
-const $auth = useAuthStore();
+const $auth = useAuthStore()
+const $route = useRoute()
 
 interface InputInt {
   email: string
   password: string
 }
 const input = reactive<InputInt>({
-  email: 'staff@gmail.com',
+  email: '',
   password: '12345678',
 });
+
+onMounted(() => {
+  if($route.query.email) {
+    input.email = $route.query.email.toString() ?? ''
+  }
+})
 </script>

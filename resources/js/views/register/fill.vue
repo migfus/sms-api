@@ -12,7 +12,7 @@
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
-                    <p class="mt-1 text-sm text-gray-500">These information are required by the HRMO, CMU.</p>
+                    <p class="mt-1 text-sm text-gray-500">These information are required by the Office of Human Resource Management (OHRM), CMU. These data are not accessable to public, only you and for evaluation purposes.</p>
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">
 
