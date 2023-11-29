@@ -27,6 +27,8 @@ Route::group(['prefix' => 'public', 'as' => 'public.'], function() {
   Route::apiResource('/event',\App\Http\Controllers\public\EventPublicController::class)
     ->only(['index']);
     Route::get('/event/count',[\App\Http\Controllers\public\EventPublicController::class, 'getCount']);
+  Route::apiResource('/seminar-type',\App\Http\Controllers\public\SeminarTypePublicController::class)
+    ->only(['index']);
 });
 
 
@@ -46,8 +48,8 @@ Route::middleware('auth:sanctum')->group(function () {
         ->only(['index']);
       Route::apiResource('/mobile-number', \App\Http\Controllers\profile\MobileNumberController::class)
         ->only(['index', 'destroy', 'store', 'update']);
-      Route::apiResource('/seminar',       \App\Http\Controllers\profile\SeminarController::class)
-        ->only(['index']);
+      Route::apiResource('/seminars',       \App\Http\Controllers\profile\SeminarController::class)
+        ->only(['index', 'destroy', 'store', 'update']);
       Route::apiResource('/skills',         \App\Http\Controllers\profile\SkillController::class)
         ->only(['index', 'destroy', 'store', 'update']);
       Route::apiResource('/voluntary',     \App\Http\Controllers\profile\VoluntaryController::class)

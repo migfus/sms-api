@@ -2,7 +2,7 @@
   <div>
     <BasicTransition>
       <main v-if="$skills.config.form == 'create'" class="relative">
-        <div class="mx-auto max-w-screen-xl pb-6">
+        <div class="mx-auto max-w-screen-xl pb-3">
           <div class="overflow-hidden rounded-xl bg-white shadow">
               <Form v-slot="{ errors }" :validation-schema="schema" @submit="$skills.PostAPI()" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
                 <div class="py-6 px-4 sm:p-6 lg:pb-8">
@@ -31,7 +31,7 @@
       </main>
 
       <main v-if="$skills.config.form == 'update'" class="relative">
-        <div class="mx-auto max-w-screen-xl pb-6">
+        <div class="mx-auto max-w-screen-xl pb-3">
           <div class="overflow-hidden rounded-xl bg-white shadow">
             <Form v-slot="{ errors }" :validation-schema="schema_update" @submit="$skills.UpdateAPI()" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
               <div class="py-6 px-4 sm:p-6 lg:pb-8">
@@ -48,7 +48,7 @@
                     </div>
 
 
-                    <div class="flex justify-end mt-8 gap-1 col-span-2">
+                    <div class="flex justify-end mt-3 gap-1 col-span-2">
                       <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0">Update</AppButton>
                       <AppButton @click="$skills.ChangeForm(null)" color='white'>Cancel</AppButton>
                     </div>
@@ -65,12 +65,16 @@
 
     <Layout>
       <Loader v-if="$skills.config.loading" />
-      <div v-else class="divide-y divide-gray-200 lg:col-span-9">
-        <!-- Profile section -->
-        <div class="py-6 px-4 sm:p-6 lg:pb-8">
 
-          <div class="overflow-hidden bg-white shadow-md sm:rounded-xl">
+      <div v-else class="divide-y divide-gray-200 lg:col-span-9">
+
+        <h2 class="bg-white mb-3 rounded-xl p-5 shadow font-bold text-gray-600">Skills</h2>
+
+        <div class="px-4 sm:p-0 lg:pb-8">
+
+          <div class="overflow-hidden bg-white shadow sm:rounded-xl mb-3">
             <ul role="list" class="divide-y divide-gray-200">
+
               <li v-for="row in $skills.content" :key="row.id">
                 <div class="block hover:bg-gray-50">
                   <div class="px-4 py-4 sm:px-6">
@@ -97,11 +101,7 @@
             </ul>
           </div>
 
-
-          <div class="flex justify-end mt-8 gap-1">
-            <AppButton v-if="$skills.config.form == null" @click="$skills.ChangeForm(null, 'create')" color='white'>Create</AppButton>
-            <AppButton v-else @click="$skills.ChangeForm(null)" color='white'>Cancel</AppButton>
-          </div>
+          <ActionCard :form="$skills.config.form" @createClick="$skills.ChangeForm(null, 'create')" @cancelClick="$skills.ChangeForm(null)"/>
         </div>
       </div>
 
@@ -131,6 +131,7 @@ import Layout from './Layout.vue'
 import AppButton from '@/components/form/AppButton.vue'
 import Loader from './Loader.vue'
 import BasicTransition from '@/components/transitions/BasicTransition.vue'
+import ActionCard from './ActionCard.vue'
 
 configure({
     validateOnInput: true

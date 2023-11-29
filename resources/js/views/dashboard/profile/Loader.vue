@@ -1,7 +1,7 @@
 <template>
-  <div class="divide-y divide-gray-200 lg:col-span-9 animate-pulse">
-    <!-- Profile section -->
-    <div class="py-6 px-4 sm:p-6 lg:pb-8">
+  <div class="divide-y divide-gray-200 lg:col-span-9 bg-white shadow rounded">
+
+    <div class="py-6 px-4 sm:p-6 lg:pb-8 animate-pulse">
       <div>
         <div class="h-8 bg-gray-200 rounded-full dark:bg-gray-200 w-96 mb-4"></div>
       </div>

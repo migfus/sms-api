@@ -2,7 +2,7 @@
   <div>
     <BasicTransition>
       <main v-if="$mobiles.config.form == 'create'" class="relative">
-        <div class="mx-auto max-w-screen-xl pb-6">
+        <div class="mx-auto max-w-screen-xl pb-3">
           <div class="overflow-hidden rounded-xl bg-white shadow">
               <Form v-slot="{ errors }" :validation-schema="schema" @submit="$mobiles.PostAPI()" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
                 <div class="py-6 px-4 sm:p-6 lg:pb-8">
@@ -30,7 +30,7 @@
       </main>
 
       <main v-if="$mobiles.config.form == 'update'" class="relative">
-        <div class="mx-auto max-w-screen-xl pb-6">
+        <div class="mx-auto max-w-screen-xl pb-3">
           <div class="overflow-hidden rounded-xl bg-white shadow">
               <Form v-slot="{ errors }" :validation-schema="schema_update" @submit="$mobiles.UpdateAPI()" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
                 <div class="py-6 px-4 sm:p-6 lg:pb-8">
@@ -62,46 +62,33 @@
 
     <Layout>
       <Loader v-if="$mobiles.config.loading" />
+
       <div v-else class="divide-y divide-gray-200 lg:col-span-9">
-        <!-- Profile section -->
-        <div class="py-6 px-4 sm:p-6 lg:pb-8">
-          <div>
-            <h2 class="text-lg font-medium leading-6 text-gray-900">Mobile Numbers</h2>
-          </div>
 
-          <div class="bg-white lg:min-w-0 lg:flex-1">
+        <h2 class="bg-white mb-3 rounded-xl p-5 shadow font-bold text-gray-600">Mobile Numbers</h2>
 
-            <ul role="list" class="divide-y divide-gray-200 border-b border-gray-200">
-              <li v-for="row in $mobiles.content" :key="row.id" class="relative py-2 pl-4 pr-6 hover:bg-gray-50 sm:py-3 sm:pl-6 lg:pl-8 xl:pl-6">
-                <div class="flex items-center justify-between space-x-4">
-                  <!-- Repo name and link -->
-                  <div class="min-w-0 space-y-3">
-                    <a  class="group relative flex items-center space-x-2.5">
-                      <span :class="['bg-green-100', 'bg-gray-100', 'h-4 w-4 rounded-full flex items-center justify-center']" aria-hidden="true">
-                        <span :class="['bg-green-400', 'bg-gray-400', 'h-2 w-2 rounded-full']" />
-                      </span>
-                      <h3 class="truncate font-bold text-gray-500 group-hover:text-gray-900">{{ mobileToFormatted(row.number) }}</h3>
-                    </a>
-                  </div>
-                  <!-- Repo meta info -->
-                  <div class="flex-shrink-0 flex-col items-end space-y-3 sm:flex">
-                    <p class="flex space-x-2 text-sm text-gray-500">
-                      <span><AppButton @click="$mobiles.ChangeForm(row, 'update')" size="sm" color="white">Edit</AppButton></span>
-                      <span><AppButton @click="showPrompt = true; $mobiles.SetIDToDelete(row.id)" size="sm" color="white">Remove</AppButton></span>
-                    </p>
+        <div class="px-4 sm:p-0 lg:pb-8">
+
+          <div class="overflow-hidden bg-white shadow sm:rounded-xl mb-3">
+            <ul role="list" class="divide-y divide-gray-200">
+              <li v-for="row in $mobiles.content" :key="row.id">
+                <div class="block hover:bg-gray-50">
+                  <div class="px-4 py-4 sm:px-6">
+                    <div class="flex items-center justify-between">
+                      <p class="truncate text-md font-medium text-primary-600">{{ mobileToFormatted(row.number) }}</p>
+                      <div class="ml-2 flex flex-shrink-0">
+                        <AppButton @click="$mobiles.ChangeForm(row, 'update')" color='white' class="mr-2">Edit</AppButton>
+                        <AppButton @click="showPrompt = true; $mobiles.SetIDToDelete(row.id)" color='white'>Remove</AppButton>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
             </ul>
           </div>
 
+          <ActionCard :form="$mobiles.config.form" @createClick="$mobiles.ChangeForm(null, 'create')" @cancelClick="$mobiles.ChangeForm(null)"/>
 
-
-
-          <div class="flex justify-end mt-8 gap-1">
-            <AppButton v-if="$mobiles.config.form == null" @click="$mobiles.ChangeForm(null, 'create')" color='white'>Create</AppButton>
-            <AppButton v-else @click="$mobiles.ChangeForm(null)" color='white'>Cancel</AppButton>
-          </div>
         </div>
       </div>
 
@@ -127,6 +114,7 @@ import Layout from './Layout.vue'
 import AppButton from '@/components/form/AppButton.vue'
 import Loader from './Loader.vue'
 import BasicTransition from '@/components/transitions/BasicTransition.vue'
+import ActionCard from './ActionCard.vue'
 
 configure({
     validateOnInput: true

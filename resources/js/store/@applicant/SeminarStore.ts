@@ -1,0 +1,154 @@
+import { reactive } from 'vue'
+import { defineStore } from 'pinia'
+import { useStorage, StorageSerializers } from '@vueuse/core'
+import axios from 'axios'
+import { notify } from 'notiwind'
+import type { TGConfig } from '../GlobalType'
+
+interface TContent {
+  id: number
+  name: string
+  from: Date
+  to: Date
+  hours: number
+  seminar_type_id: number
+  sponsor: string
+  seminar_type: {
+    name: string
+  }
+}
+
+const title = `applicant/SeminarStore`
+export const useSeminarStore = defineStore(title, () => {
+  const content = useStorage<TContent[]>(`${title}/content`, null, sessionStorage, { serializer: StorageSerializers.object})
+  const config = reactive<TGConfig>({
+    loading: false,
+  })
+  const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
+
+  async function GetAPI() {
+    config.loading = true
+    try {
+      let { data: {data}} = await axios.get('/api/profile/seminars')
+      content.value = data
+    }
+    catch(err) {
+      console.log(err)
+    }
+    config.loading = false
+  }
+
+  async function PostAPI() {
+    try {
+      let { data: {data}} = await axios.post(`/api/profile/seminars`, params.value)
+      if(data) {
+        GetAPI()
+        ChangeForm(null)
+        notify({
+          group: "success",
+          title: "Sminar added",
+          text: 'New seminar has been added.'
+        }, 5000)
+      }
+    }
+    catch(err) {
+      console.log(err)
+      notify({
+        group: "error",
+        title: "Error",
+        text: 'The inputs may be invalid or server error.'
+      }, 5000)
+    }
+  }
+
+  async function UpdateAPI() {
+    try {
+      let { data: {data}} = await axios.put(`/api/profile/seminars/${params.value.id}`, params.value)
+      if(data) {
+        GetAPI()
+        ChangeForm(null)
+        notify({
+          group: "success",
+          title: "Seminar updated!",
+          text: 'Selected seminar has been updated.'
+        }, 5000)
+      }
+    }
+    catch(err) {
+      console.log(err)
+      notify({
+        group: "error",
+        title: "Error",
+        text: 'The inputs may be invalid or server error.'
+      }, 5000)
+    }
+  }
+
+  async function DestroyAPI() {
+    try {
+      let { data: {data}} = await axios.delete(`/api/profile/seminars/${params.value.id}`)
+      if(data) {
+
+        GetAPI()
+        notify({
+          group: "success",
+          title: "Skill Deleted",
+          text: 'Your skill is now removed'
+        }, 5000)
+      }
+    }
+    catch(err) {
+      console.log(err)
+      notify({
+        group: "error",
+        title: "Error Removing Skill",
+        text: 'Server error. Try refreshing the page'
+      }, 5000)
+    }
+  }
+
+  function InitParams() {
+    return {
+      id: -1,
+      name: null,
+      from: null,
+      to: null,
+      hours: null,
+      seminar_type_id: null,
+      sponsor: null,
+      seminar_type: null
+    }
+  }
+
+  function SetIDToDelete(id: number) {
+    params.value.id = id
+  }
+
+  function ChangeForm(row?: TContent, formMode = null) {
+    if(formMode == 'update') {
+      config.form = 'update'
+      params.value = row
+    }
+    else if(formMode == 'create') {
+      config.form = 'create'
+    }
+    else {
+      config.form = null
+      params.value = InitParams()
+    }
+  }
+
+  return {
+    content,
+    config,
+    params,
+
+    GetAPI,
+    UpdateAPI,
+    DestroyAPI,
+    PostAPI,
+
+    SetIDToDelete,
+    ChangeForm,
+  }
+})
