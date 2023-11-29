@@ -78,7 +78,7 @@ class MobileNumberController extends Controller
         return $this->G_ValidatorFailResponse($val);
       }
 
-      $mobiles = MobileNumber::where('id', $id)->where('user_id', $req->user()->info->id)
+      $mobiles = MobileNumber::where('id', $id)->where('info_id', $req->user()->info->id)
         ->update([
           'number' => $req->number,
         ]);

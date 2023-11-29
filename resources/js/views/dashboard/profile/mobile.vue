@@ -16,7 +16,7 @@
                       </div>
 
                       <div class="flex justify-end mt-8 gap-1">
-                        <AppButton @click="$mobiles.PostAPI()" color='white'>Create</AppButton>
+                        <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0">Create</AppButton>
                         <AppButton @click="$mobiles.ChangeForm(null)" color='white'>Cancel</AppButton>
                       </div>
                     </div>
@@ -44,7 +44,7 @@
                       </div>
 
                       <div class="flex justify-end mt-8 gap-1">
-                        <AppButton @click="$mobiles.PostAPI()" color='white'>Update</AppButton>
+                        <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0">Update</AppButton>
                         <AppButton @click="$mobiles.ChangeForm(null)" color='white'>Cancel</AppButton>
                       </div>
                     </div>

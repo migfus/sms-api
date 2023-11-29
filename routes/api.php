@@ -48,8 +48,8 @@ Route::middleware('auth:sanctum')->group(function () {
         ->only(['index', 'destroy', 'store', 'update']);
       Route::apiResource('/seminar',       \App\Http\Controllers\profile\SeminarController::class)
         ->only(['index']);
-      Route::apiResource('/skill',         \App\Http\Controllers\profile\SkillController::class)
-        ->only(['index']);
+      Route::apiResource('/skills',         \App\Http\Controllers\profile\SkillController::class)
+        ->only(['index', 'destroy', 'store', 'update']);
       Route::apiResource('/voluntary',     \App\Http\Controllers\profile\VoluntaryController::class)
         ->only(['index']);
       Route::apiResource('/document', \App\Http\Controllers\DocumentAuthController::class)

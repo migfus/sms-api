@@ -54,6 +54,7 @@ const $props = defineProps<{
     push?: string
     type?: string
     block?: boolean
+    errorDisabled? : any
 }>()
 
 const color = computed(() => {

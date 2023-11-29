@@ -9,4 +9,8 @@ use Kra8\Snowflake\HasShortflakePrimary;
 class Skill extends Model
 {
     use HasFactory, HasShortflakePrimary;
+
+    protected $fillable = [
+      'info_id', 'name', 'recognition'
+    ];
 }
