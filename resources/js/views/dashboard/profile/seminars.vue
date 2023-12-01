@@ -1,118 +1,104 @@
 <template>
   <div>
-    <BasicTransition>
-      <main v-if="$seminars.config.form == 'create'" class="relative">
-        <div class="mx-auto max-w-screen-xl pb-3">
-          <div class="overflow-hidden rounded-xl bg-white shadow">
-              <Form v-slot="{ errors }" :validation-schema="schema" @submit="$seminars.PostAPI()" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
-                <div class="py-6 px-4 sm:p-6 lg:pb-8">
-                  <div>
-                    <h2 class="text-lg font-medium leading-6 text-gray-900">Add Seminar</h2>
-                  </div>
-                  <div class="mt-6 grid grid-cols-6 lg:flex-row gap-2">
-
-                      <div class="col-span-3">
-                          <AppInput v-model="$seminars.params.name" placeholder="Seminar Name" name="name" :errors="errors"/>
-                      </div>
-                      <div class="col-span-3">
-                        <AppSelect v-model="$seminars.params.seminar_type_id" placeholder="Seminar Type" name="type" :errors="errors">
-                          <option v-for="row in $seminarType.content" :key="row.id" :value="row.id">{{ row.name }}</option>
-                        </AppSelect>
-                      </div>
-
-                      <div class="col-span-2">
-                          <AppInput v-model="$seminars.params.from" placeholder="From Date" name="from" type="date" :errors="errors"/>
-                      </div>
-                      <div class="col-span-2">
-                          <AppInput v-model="$seminars.params.to" placeholder="To Date" name="to" type="date" :errors="errors"/>
-                      </div>
-                      <div class="col-span-2">
-                          <AppInput v-model="$seminars.params.hours" placeholder="Hours taken" name="hours" type="number" :errors="errors"/>
-                      </div>
-
-                      <div class="col-span-3">
-                          <AppInput v-model="$seminars.params.sponsor" placeholder="Sponsor" name="sponsor" :errors="errors"/>
-                      </div>
-
-                      <div class="flex justify-end mt-8 gap-1 col-span-6">
-                        <AppButton color='white' type="submit" :disabled="Object.keys(errors).length != 0">Create</AppButton>
-                        <AppButton @click="$seminars.ChangeForm(null)" color='white'>Cancel</AppButton>
-                      </div>
-
-                  </div>
-                </div>
-              </Form>
-          </div>
-        </div>
-      </main>
-
-      <main v-if="$seminars.config.form == 'update'" class="relative">
-        <div class="mx-auto max-w-screen-xl pb-3">
-          <div class="overflow-hidden rounded-xl bg-white shadow">
-            <Form v-slot="{ errors }" :validation-schema="schema_update" @submit="$seminars.UpdateAPI()" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
-              <div class="py-6 px-4 sm:p-6 lg:pb-8">
-                <div>
-                  <h2 class="text-lg font-medium leading-6 text-gray-900">Update Skill</h2>
-                </div>
-                <div class="mt-6 grid grid-cols-6 gap-2">
-
-                  <div class="col-span-3">
-                    <AppInput v-model="$seminars.params.name" placeholder="Seminar Name" name="name" :errors="errors"/>
-                  </div>
-                  <div class="col-span-3">
-                    <AppSelect v-model="$seminars.params.seminar_type_id" placeholder="Seminar Type" name="type" :errors="errors">
-                      <option v-for="row in $seminarType.content" :key="row.id" :value="row.id">{{ row.name }}</option>
-                    </AppSelect>
-                  </div>
-
-                  <div class="col-span-2">
-                    <AppInput v-model="$seminars.params.from" placeholder="From Date" name="from" type="date" :errors="errors"/>
-                  </div>
-                  <div class="col-span-2">
-                    <AppInput v-model="$seminars.params.to" placeholder="To Date" name="to" type="date" :errors="errors"/>
-                  </div>
-                  <div class="col-span-2">
-                    <AppInput v-model="$seminars.params.hours" placeholder="Hours taken" name="hours" type="number" :errors="errors"/>
-                  </div>
-
-                  <div class="col-span-3">
-                    <AppInput v-model="$seminars.params.sponsor" placeholder="Sponsor" name="sponsor" :errors="errors"/>
-                  </div>
-
-                  <div class="flex justify-end mt-8 gap-1 col-span-6">
-                    <AppButton color='white' type="submit" :disabled="Object.keys(errors).length != 0">Update</AppButton>
-                    <AppButton @click="$seminars.ChangeForm(null)" color='white'>Cancel</AppButton>
-                  </div>
-
-                </div>
-              </div>
-            </Form>
-          </div>
-        </div>
-      </main>
-    </BasicTransition>
-
-
-
     <Layout>
-      <Loader v-if="$seminars.config.loading" />
-      <div v-else class="divide-y divide-gray-200 lg:col-span-9">
+      <div class="divide-y divide-gray-200 lg:col-span-9">
+        <!-- SECTION FORMS -->
+        <BasicTransition>
+          <!-- NOTE ADD -->
+          <FormCard
+            v-if="$seminars.config.form == 'create'"
+            title="Add Seminar"
+            :formSchema="schema"
+            :loading="$seminars.config.buttonLoading"
+            submitButtonName="Create"
+            @submitForm="$seminars.PostAPI()"
+            @cancelClick="$seminars.ChangeForm(null)"
+            v-slot="{errors}"
+          >
+            <div class="col-span-4">
+              <AppInput v-model="$seminars.params.name" placeholder="Seminar Name" name="name" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+              <AppSelect v-model="$seminars.params.seminar_type_id" placeholder="Seminar Type" name="type" :errors="errors">
+                <option v-for="row in $seminarType.content" :key="row.id" :value="row.id">{{ row.name }}</option>
+              </AppSelect>
+            </div>
 
-        <h2 class="bg-white mb-3 rounded-xl p-5 shadow font-bold text-gray-600">Seminars</h2>
+            <div class="col-span-4">
+                <AppInput v-model="$seminars.params.hours" placeholder="Hours taken" name="hours" type="number" :errors="errors"/>
+            </div>
 
-        <div class="lg:pb-2">
+            <div class="col-span-3">
+                <AppInput v-model="$seminars.params.from" placeholder="From Date" name="from" type="date" :errors="errors"/>
+            </div>
+            <div class="col-span-3">
+                <AppInput v-model="$seminars.params.to" placeholder="To Date" name="to" type="date" :errors="errors"/>
+            </div>
 
-          <div class="overflow-hidden bg-white shadow sm:rounded-xl mb-3">
-            <ul role="list" class="divide-y divide-gray-200">
+            <div class="col-span-6">
+                <AppInput v-model="$seminars.params.sponsor" placeholder="Sponsor" name="sponsor" :errors="errors"/>
+            </div>
+          </FormCard>
+          <!-- NOTE UPDATE -->
+          <FormCard
+            v-if="$seminars.config.form == 'update'"
+            v-slot="{errors}" title="Update Seminar"
+            :formSchema="schema_update"
+            :loading="$seminars.config.buttonLoading"
+            submitButtonName="Update"
+            @submitForm="$seminars.UpdateAPI()"
+            @cancelClick="$seminars.ChangeForm(null)"
+          >
+            <div class="col-span-4">
+              <AppInput v-model="$seminars.params.name" placeholder="Seminar Name" name="name" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+              <AppSelect v-model="$seminars.params.seminar_type_id" placeholder="Seminar Type" name="type" :errors="errors">
+                <option v-for="row in $seminarType.content" :key="row.id" :value="row.id">{{ row.name }}</option>
+              </AppSelect>
+            </div>
+
+            <div class="col-span-4">
+                <AppInput v-model="$seminars.params.hours" placeholder="Hours taken" name="hours" type="number" :errors="errors"/>
+            </div>
+
+            <div class="col-span-3">
+                <AppInput v-model="$seminars.params.from" placeholder="From Date" name="from" type="date" :errors="errors"/>
+            </div>
+            <div class="col-span-3">
+                <AppInput v-model="$seminars.params.to" placeholder="To Date" name="to" type="date" :errors="errors"/>
+            </div>
+
+
+            <div class="col-span-6">
+                <AppInput v-model="$seminars.params.sponsor" placeholder="Sponsor" name="sponsor" :errors="errors"/>
+            </div>
+          </FormCard>
+        </BasicTransition>
+
+        <!-- SECTION CONTENT -->
+        <ContentCard
+          title="Seminars"
+          :form="$seminars.config.form"
+          :contentLoading="$seminars.config.buttonLoading"
+          :buttonLoading="$seminars.config.buttonLoading"
+          @actionCreateClick="$seminars.ChangeForm(null, 'create')"
+          @actionCancelClick="$seminars.ChangeForm(null)"
+        >
+          <template #search>
+            <AppInput v-model="$seminars.query.search" name="search" placeholder="Search" noLabel/>
+          </template>
+
+          <template #default>
+            <DataTransition>
               <li v-for="row in $seminars.content" :key="row.id">
                 <div class="block hover:bg-gray-50">
                   <div class="px-4 py-4 sm:px-6">
                     <div class="flex items-center justify-between">
                       <p class="truncate text-sm font-medium text-primary-600">{{ row.name }}</p>
                       <div class="ml-2 flex flex-shrink-0">
-                        <AppButton @click="$seminars.ChangeForm(row, 'update')" color='white' class="mr-2">Edit</AppButton>
-                        <AppButton @click="showPrompt = true; $seminars.SetIDToDelete(row.id)" color='white'>Remove</AppButton>
-
+                        <AppButton @click="$seminars.ChangeForm(row, 'update')" color='white' class="mr-2" size="sm" :loading="$seminars.config.buttonLoading">Edit</AppButton>
+                        <AppButton @click="showPrompt = true; $seminars.SetIDToDelete(row.id)" color='danger' size="sm" :loading="$seminars.config.buttonLoading">Remove</AppButton>
                       </div>
                     </div>
                     <div class="mt-2 sm:flex sm:justify-between">
@@ -141,20 +127,11 @@
                   </div>
                 </div>
               </li>
-            </ul>
-          </div>
+            </DataTransition>
 
-
-          <ActionCard :form="$seminars.config.form" @createClick="$seminars.ChangeForm(null, 'create')" @cancelClick="$seminars.ChangeForm(null)"/>
-
-        </div>
-      </div>
-
-
-
-
-
-
+          </template>
+        </ContentCard>
+    </div>
   </Layout>
 </div>
 
@@ -164,26 +141,23 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import * as Yup from 'yup'
-import { Form, configure } from 'vee-validate'
 import { useSeminarStore } from '@/store/@applicant/SeminarStore'
 import { useSeminarTypeStore } from '@/store/system/SeminarTypeStore'
 import { CalendarIcon, ClockIcon, LinkIcon, MegaphoneIcon } from '@heroicons/vue/24/outline'
 import moment from 'moment'
+import { useDebounceFn } from '@vueuse/core'
 
-import AppInput from '@/components/form/AppInput.vue'
+import Layout from     './~Components/Layout.vue'
+import ContentCard from'./~Components/ContentCard.vue'
+import FormCard from   './~Components/FormCard.vue'
+import AppInput from    '@/components/form/AppInput.vue'
 import PromptModal from '@/components/modals/PromptModal.vue'
-import Layout from './Layout.vue'
-import AppButton from '@/components/form/AppButton.vue'
-import Loader from './Loader.vue'
+import AppButton from   '@/components/form/AppButton.vue'
 import BasicTransition from '@/components/transitions/BasicTransition.vue'
-import ActionCard from './ActionCard.vue'
-import AppSelect from '@/components/form/AppSelect.vue'
-
-configure({
-    validateOnInput: true
-})
+import DataTransition from '@/components/transitions/DataTransition.vue'
+import AppSelect from   '@/components/form/AppSelect.vue'
 
 const schema = Yup.object({
     name: Yup.string().required('Seminar name is required'),
@@ -225,4 +199,8 @@ onMounted(() => {
   $seminarType.GetAPI()
   $seminars.GetAPI()
 })
+
+watch($seminars.query, useDebounceFn(() => {
+  $seminars.GetAPI()
+}, 600))
 </script>

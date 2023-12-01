@@ -18,7 +18,9 @@ class MobileNumberController extends Controller
         return $this->G_UnauthorizedResponse();
       }
 
-      $mobiles = MobileNumber::where('info_id', $req->user()->info->id)->get();
+      $mobiles = MobileNumber::where('info_id', $req->user()->info->id)
+        ->where('number', 'LIKE', '%'.$req->search.'%')
+        ->get();
 
       // $mobiles = $req->user()->info->id;
 

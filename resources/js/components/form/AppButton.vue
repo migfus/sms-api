@@ -67,7 +67,7 @@ const color = computed(() => {
         case 'danger':
             return 'bg-red-300 hover:bg-red-400 focus:ring-red-400 text-red-800'
         case 'success' :
-            return 'bg-green-300 hover:bg-green-400 focus:ring-emerald-500 text-green-800'
+            return 'bg-teal-200 hover:bg-teal-400 focus:ring-teal-500 text-green-800'
         case 'white':
             return 'border-1 border-slate-300 bg-gray-300 hover:bg-gray-200 focus:ring-slate-400 text-black'
         default:
@@ -78,7 +78,7 @@ const color = computed(() => {
 const size = computed(() => {
     switch ($props.size) {
         case 'sm':
-            return 'text-sm'
+            return 'text-xs !px-3 !py-1'
         default:
             return 'text-sm'
     }

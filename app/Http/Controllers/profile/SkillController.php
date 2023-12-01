@@ -10,21 +10,21 @@ use App\Models\Skill;
 
 class SkillController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $req) {
-      if(!$req->user()->can('index profile')) {
-        return $this->G_UnauthorizedResponse();
-      }
-
-      $skills = Skill::where('info_id', $req->user()->info->id)->orderBy('created_at', 'DESC')->get();
-
-      return response()->json([
-        ...$this->G_ReturnDefault(),
-        'data' => $skills,
-      ], 200);
+  public function index(Request $req) {
+    if(!$req->user()->can('index profile')) {
+      return $this->G_UnauthorizedResponse();
     }
+
+    $skills = Skill::where('info_id', $req->user()->info->id)
+      ->where('name', 'LIKE', '%'.$req->search.'%')
+      ->orderBy('created_at', 'DESC')
+      ->get();
+
+    return response()->json([
+      ...$this->G_ReturnDefault(),
+      'data' => $skills,
+    ], 200);
+  }
 
     /**
      * Store a newly created resource in storage.

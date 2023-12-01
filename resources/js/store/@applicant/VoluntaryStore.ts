@@ -8,42 +8,47 @@ import type { TGConfig } from '../GlobalType'
 interface TContent {
   id: number
   name: string
-  recognition: string
+  from: Date
+  to: Date
+  hours: number
+  position: string
 }
 
-const title = `applicant/SkillStore`
-export const useSkillStore = defineStore(title, () => {
+const title = `applicant/VoluntaryStore`
+export const useVoluntaryStore = defineStore(title, () => {
   const content = useStorage<TContent[]>(`${title}/content`, null, sessionStorage, { serializer: StorageSerializers.object})
   const config = reactive<TGConfig>({
-    contentLoading: false,
     buttonLoading: false,
+    contentLoading: false,
   })
   const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
-  const query = reactive<{search: string}>({
-    search: '',
+  const query = reactive<{ search: string}>({
+    search: ''
   })
 
   async function GetAPI() {
+    config.contentLoading = true
     try {
-      let { data: {data}} = await axios.get('/api/profile/skills', { params: query })
+      let { data: {data}} = await axios.get('/api/profile/voluntaries')
       content.value = data
     }
     catch(err) {
       console.log(err)
     }
+    config.contentLoading = false
   }
 
   async function PostAPI() {
     config.buttonLoading = true
     try {
-      let { data: {data}} = await axios.post(`/api/profile/skills`, params.value)
+      let { data: {data}} = await axios.post(`/api/profile/voluntaries`, params.value)
       if(data) {
         GetAPI()
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
-          text: 'Personal Info is now changed.'
+          title: "Sminar added",
+          text: 'New seminar has been added.'
         }, 5000)
       }
     }
@@ -61,14 +66,14 @@ export const useSkillStore = defineStore(title, () => {
   async function UpdateAPI() {
     config.buttonLoading = true
     try {
-      let { data: {data}} = await axios.put(`/api/profile/skills/${params.value.id}`, params.value)
+      let { data: {data}} = await axios.put(`/api/profile/voluntaries/${params.value.id}`, params.value)
       if(data) {
         GetAPI()
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Skill updated!",
-          text: 'Skill is now changed.'
+          title: "Seminar updated!",
+          text: 'Selected seminar has been updated.'
         }, 5000)
       }
     }
@@ -86,7 +91,7 @@ export const useSkillStore = defineStore(title, () => {
   async function DestroyAPI() {
     config.buttonLoading = true
     try {
-      let { data: {data}} = await axios.delete(`/api/profile/skills/${params.value.id}`)
+      let { data: {data}} = await axios.delete(`/api/profile/voluntaries/${params.value.id}`)
       if(data) {
 
         GetAPI()
@@ -111,8 +116,11 @@ export const useSkillStore = defineStore(title, () => {
   function InitParams() {
     return {
       id: -1,
-      name: '',
-      recognition: ''
+      name: null,
+      from: null,
+      to: null,
+      hours: null,
+      position: null,
     }
   }
 

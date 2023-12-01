@@ -39,7 +39,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::group(['prefix' => 'profile', 'as' => 'profile.'], function() {
       Route::apiResource('/personal',      \App\Http\Controllers\profile\PersonalController::class)
         ->only(['index', 'update']);
-
       Route::apiResource('/education',     \App\Http\Controllers\profile\EducationController::class)
         ->only(['index']);
       Route::apiResource('/eligibility',   \App\Http\Controllers\profile\EligibilityController::class)
@@ -47,13 +46,13 @@ Route::middleware('auth:sanctum')->group(function () {
       Route::apiResource('/experience',    \App\Http\Controllers\profile\ExperienceController::class)
         ->only(['index']);
       Route::apiResource('/mobile-number', \App\Http\Controllers\profile\MobileNumberController::class)
-        ->only(['index', 'destroy', 'store', 'update']);
+        ->except(['show']);
       Route::apiResource('/seminars',       \App\Http\Controllers\profile\SeminarController::class)
-        ->only(['index', 'destroy', 'store', 'update']);
+        ->except(['show']);
       Route::apiResource('/skills',         \App\Http\Controllers\profile\SkillController::class)
-        ->only(['index', 'destroy', 'store', 'update']);
-      Route::apiResource('/voluntary',     \App\Http\Controllers\profile\VoluntaryController::class)
-        ->only(['index']);
+        ->except(['show']);
+      Route::apiResource('/voluntaries',     \App\Http\Controllers\profile\VoluntaryController::class)
+        ->except(['show']);
       Route::apiResource('/document', \App\Http\Controllers\DocumentAuthController::class)
         ->only(['index', 'destroy', 'store']);
     });

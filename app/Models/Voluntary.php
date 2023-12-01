@@ -9,4 +9,8 @@ use Kra8\Snowflake\HasShortflakePrimary;
 class Voluntary extends Model
 {
     use HasFactory, HasShortflakePrimary;
+
+  protected $fillable = [
+    'info_id', 'name', 'from', 'to', 'hours', 'position',
+  ];
 }

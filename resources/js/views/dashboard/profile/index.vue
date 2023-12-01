@@ -157,10 +157,10 @@ import { useAddressStore } from '@/store/system/AddressStore'
 import { usePersonalStore } from '@/store/@applicant/PersonalStore'
 
 import AppInput from '@/components/form/AppInput.vue'
-import Layout from './Layout.vue'
+import Layout from './@Components/Layout.vue'
 import AppSelect from '@/components/form/AppSelect.vue'
 import AppButton from '@/components/form/AppButton.vue'
-import Loader from './Loader.vue'
+import Loader from './@Components/Loader.vue'
 import AvatarUpload from '@/components/modals/AvatarUpload.vue'
 
 

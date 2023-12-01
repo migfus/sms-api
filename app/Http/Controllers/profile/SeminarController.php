@@ -10,21 +10,21 @@ use App\Models\Seminar;
 
 class SeminarController extends Controller
 {
-    public function index(Request $req) {
-      if(!$req->user()->can('index profile')) {
-        return $this->G_UnauthorizedResponse();
-      }
-
-      $seminars = Seminar::where('info_id', $req->user()->info->id)
-        ->with(['seminar_type'])
-        ->orderBy('created_at', 'DESC')
-        ->get();
-
-      return response()->json([
-        ...$this->G_ReturnDefault(),
-        'data' => $seminars,
-      ], 200);
+  public function index(Request $req) {
+    if(!$req->user()->can('index profile')) {
+      return $this->G_UnauthorizedResponse();
     }
+
+    $seminars = Seminar::where('info_id', $req->user()->info->id)
+      ->with(['seminar_type'])
+      ->orderBy('from', 'DESC')
+      ->get();
+
+    return response()->json([
+      ...$this->G_ReturnDefault(),
+      'data' => $seminars,
+    ], 200);
+  }
 
     public function store(Request $req) {
       if(!$req->user()->can('update profile')) {

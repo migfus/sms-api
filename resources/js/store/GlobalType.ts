@@ -1,5 +1,6 @@
 export type TGConfig = {
-  loading: boolean
+  contentLoading: boolean
+  buttonLoading: boolean
   form?: string
 }
 
