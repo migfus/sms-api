@@ -9,4 +9,14 @@ use Kra8\Snowflake\HasShortflakePrimary;
 class Eligibility extends Model
 {
     use HasFactory, HasShortflakePrimary;
+
+  protected $fillable = [
+    'info_id',
+    'name',
+    'address_id',
+    'rating',
+    'exam_date',
+    'validity_date',
+    'number'
+  ];
 }

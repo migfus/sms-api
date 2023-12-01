@@ -17,6 +17,7 @@
     </div>
 
     <div class="flex justify-end gap-1 bg-white py-4 px-6 rounded-xl shadow">
+      <AppButton color='white' :loading="$props.contentLoading || $props.buttonLoading" class="mr-1">Generate PDS</AppButton>
       <AppButton v-if="$props.form == '' || $props.form == null" @click="$emit('actionCreateClick')" color='white' :loading="$props.contentLoading || $props.buttonLoading">Create</AppButton>
       <AppButton v-else @click="$emit('actionCancelClick')" color='danger' :loading="$props.contentLoading || $props.buttonLoading">Cancel</AppButton>
     </div>

@@ -44,7 +44,7 @@ Route::middleware('auth:sanctum')->group(function () {
       Route::apiResource('/education',     \App\Http\Controllers\profile\EducationController::class)
         ->only(['index']);
       Route::apiResource('/eligibility',   \App\Http\Controllers\profile\EligibilityController::class)
-        ->only(['index']);
+        ->except(['show']);
       Route::apiResource('/experience',    \App\Http\Controllers\profile\ExperienceController::class)
         ->except(['show']);
       Route::apiResource('/mobile-number', \App\Http\Controllers\profile\MobileNumberController::class)

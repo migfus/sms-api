@@ -37,15 +37,15 @@ const $salaryType = useSalaryTypeStore()
 const $seminarType = useSeminarTypeStore()
 const $workStatus = useWorkStatusStore()
 
-onMounted(() => {
-  $job.GetAPI()
-  $event.GetCountAPI()
-  $address.GetAPI()
-  $post.GetAPI()
+onMounted(async () => {
+  await $job.GetAPI()
+  await $event.GetCountAPI()
+  await $address.GetAPI()
+  await $post.GetAPI()
 
-  $salaryType.GetAPI()
+  await $salaryType.GetAPI()
   // $civilStatus.GetAPI()
-  $seminarType.GetAPI()
-  $workStatus.GetAPI()
+  await $seminarType.GetAPI()
+  await $workStatus.GetAPI()
 });
 </script>
