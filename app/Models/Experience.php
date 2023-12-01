@@ -9,4 +9,21 @@ use Kra8\Snowflake\HasShortflakePrimary;
 class Experience extends Model
 {
     use HasFactory, HasShortflakePrimary;
+
+  protected $fillable = [
+    'info_id',
+    'position',
+    'company',
+    'from',
+    'to',
+    'salary',
+    'salary_type_id',
+    'sg',
+    'work_status_id',
+    'is_government',
+  ];
+
+  public function work_status() {
+    return $this->belongsTo(WorkStatus::class);
+  }
 }

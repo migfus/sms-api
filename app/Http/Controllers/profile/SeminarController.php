@@ -17,6 +17,7 @@ class SeminarController extends Controller
 
     $seminars = Seminar::where('info_id', $req->user()->info->id)
       ->with(['seminar_type'])
+      ->where('name', 'LIKE', '%'.$req->search.'%')
       ->orderBy('from', 'DESC')
       ->get();
 

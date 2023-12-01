@@ -6,12 +6,23 @@ import { notify } from 'notiwind'
 import type { TGConfig } from '../GlobalType'
 
 interface TContent {
-  number: string
   id: number
+  position: string
+  company: string
+  from: Date
+  to: Date
+  salary: number
+  salary_type_id: number
+  sg: number
+  work_status_id: number
+  is_government: boolean
+  work_status: {
+    name: string
+  }
 }
 
-const title = `applicant/MobileNumberStore`
-export const useMobileNumberStore = defineStore(title, () => {
+const title = `applicant/ExperienceStore`
+export const useExperienceStore = defineStore(title, () => {
   const content = useStorage<TContent[]>(`${title}/content`, null, sessionStorage, { serializer: StorageSerializers.object})
   const config = reactive<TGConfig>({
     contentLoading: false,
@@ -26,7 +37,7 @@ export const useMobileNumberStore = defineStore(title, () => {
   async function GetAPI() {
     config.contentLoading = true
     try {
-      let { data: {data}} = await axios.get('/api/profile/mobile-number', { params: { search: query.search }})
+      let { data: {data}} = await axios.get('/api/profile/experience', { params: query })
       content.value = data
     }
     catch(err) {
@@ -38,7 +49,7 @@ export const useMobileNumberStore = defineStore(title, () => {
   async function PostAPI() {
     config.buttonLoading = true
     try {
-      let { data: {data}} = await axios.post(`/api/profile/mobile-number`, params.value)
+      let { data: {data}} = await axios.post(`/api/profile/experience`, params.value)
       if(data) {
         GetAPI()
         ChangeForm(null)
@@ -63,7 +74,7 @@ export const useMobileNumberStore = defineStore(title, () => {
   async function UpdateAPI() {
     config.buttonLoading = true
     try {
-      let { data: {data}} = await axios.put(`/api/profile/mobile-number/${params.value.id}`, params.value)
+      let { data: {data}} = await axios.put(`/api/profile/experience/${params.value.id}`, params.value)
       if(data) {
         GetAPI()
         ChangeForm(null)
@@ -88,7 +99,7 @@ export const useMobileNumberStore = defineStore(title, () => {
   async function DestroyAPI() {
     config.buttonLoading = true
     try {
-      let { data: {data}} = await axios.delete(`/api/profile/mobile-number/${params.value.id}`)
+      let { data: {data}} = await axios.delete(`/api/profile/experience/${params.value.id}`)
       if(data) {
 
         GetAPI()
@@ -112,8 +123,17 @@ export const useMobileNumberStore = defineStore(title, () => {
 
   function InitParams() {
     return {
-      number: null,
-      id: -1
+      id: -1,
+      position: '',
+      company: '',
+      from: null,
+      to: null,
+      salary: 0,
+      salary_type_id: 1,
+      sg: 0,
+      is_government: false,
+      work_status_id: -1,
+      work_status: { name: ''}
     }
   }
 

@@ -55,3 +55,13 @@ export const cityIDToProvinceID = (id: number) => {
 export const mobileToFormatted = (number: string) => {
   return `+63 ${number.substring(0,3)} ${number.substring(3,6)} ${number.substring(6, number.length)}`
 }
+
+
+// SECTION NUMBER CONVERTER
+export const NumberAddComma = (num: number)  => {
+  if(num) {
+      let _num = Number(num).toFixed(2);
+      return _num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  return '0.00'
+}

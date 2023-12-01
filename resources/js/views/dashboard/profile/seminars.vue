@@ -80,7 +80,7 @@
         <ContentCard
           title="Seminars"
           :form="$seminars.config.form"
-          :contentLoading="$seminars.config.buttonLoading"
+          :contentLoading="$seminars.config.contentLoading"
           :buttonLoading="$seminars.config.buttonLoading"
           @actionCreateClick="$seminars.ChangeForm(null, 'create')"
           @actionCancelClick="$seminars.ChangeForm(null)"
@@ -167,14 +167,7 @@ const schema = Yup.object({
     hours: Yup.number().required('Hours is required').min(1, 'Minimum of 1 hour'),
     sponsor: Yup.string().required('Sponsor is required'),
 })
-const schema_update = Yup.object({
-  name: Yup.string().required('Seminar name is required'),
-  type: Yup.string().required('Seminar type is required'),
-  from: Yup.date().typeError('Invalid Date').required('From date is Required'),
-  to: Yup.date().typeError('Invalid Date').required('To date is Required'),
-  hours: Yup.number().required('Hours is required').min(1, 'Minimum of 1 hour'),
-  sponsor: Yup.string().required('Sponsor is required'),
-})
+const schema_update = schema
 
 const $seminars = useSeminarStore()
 const $seminarType = useSeminarTypeStore()
@@ -196,7 +189,6 @@ function hoursDisplay(hours: number) {
 }
 
 onMounted(() => {
-  $seminarType.GetAPI()
   $seminars.GetAPI()
 })
 

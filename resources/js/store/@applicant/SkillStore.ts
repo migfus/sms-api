@@ -17,6 +17,7 @@ export const useSkillStore = defineStore(title, () => {
   const config = reactive<TGConfig>({
     contentLoading: false,
     buttonLoading: false,
+    form: '',
   })
   const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
   const query = reactive<{search: string}>({
@@ -24,6 +25,7 @@ export const useSkillStore = defineStore(title, () => {
   })
 
   async function GetAPI() {
+    config.contentLoading = true
     try {
       let { data: {data}} = await axios.get('/api/profile/skills', { params: query })
       content.value = data
@@ -31,6 +33,7 @@ export const useSkillStore = defineStore(title, () => {
     catch(err) {
       console.log(err)
     }
+    config.contentLoading = false
   }
 
   async function PostAPI() {
@@ -129,7 +132,7 @@ export const useSkillStore = defineStore(title, () => {
       config.form = 'create'
     }
     else {
-      config.form = null
+      config.form = ''
       params.value = InitParams()
     }
   }

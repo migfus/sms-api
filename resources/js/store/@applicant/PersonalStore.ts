@@ -38,6 +38,7 @@ export const usePersonalStore = defineStore(title, () => {
   const content = useStorage<TContent>(`${title}/content`, null, sessionStorage, { serializer: StorageSerializers.object})
   const config = reactive<TGConfig>({
     loading: false,
+    form: '',
   })
   const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
 

@@ -16,6 +16,7 @@ class VoluntaryController extends Controller
     }
 
     $voluntary = Voluntary::where('info_id', $req->user()->info->id)
+      ->where('name', 'LIKE', '%'.$req->search.'%')
       ->orderBy('created_at', 'DESC')
       ->get();
 

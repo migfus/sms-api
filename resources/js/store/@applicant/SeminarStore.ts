@@ -24,6 +24,7 @@ export const useSeminarStore = defineStore(title, () => {
   const config = reactive<TGConfig>({
     contentLoading: false,
     buttonLoading: false,
+    form: '',
   })
   const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
   const query = reactive<{search: string}>({
@@ -31,6 +32,7 @@ export const useSeminarStore = defineStore(title, () => {
   })
 
   async function GetAPI() {
+    config.contentLoading = true
     try {
       let { data: {data}} = await axios.get('/api/profile/seminars', {params: query})
       content.value = data
@@ -38,6 +40,7 @@ export const useSeminarStore = defineStore(title, () => {
     catch(err) {
       console.log(err)
     }
+    config.contentLoading = false
   }
 
   async function PostAPI() {
@@ -141,7 +144,7 @@ export const useSeminarStore = defineStore(title, () => {
       config.form = 'create'
     }
     else {
-      config.form = null
+      config.form = ''
       params.value = InitParams()
     }
   }

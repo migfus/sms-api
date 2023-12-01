@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         WorkStatusSeeder::class,
         EducationLevelSeeder::class,
         SeminarTypeSeeder::class,
+        SalaryTypeSeeder::class,
 
         JobStatusSeeder::class,
         JobTypeSeeder::class,

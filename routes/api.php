@@ -29,6 +29,8 @@ Route::group(['prefix' => 'public', 'as' => 'public.'], function() {
     Route::get('/event/count',[\App\Http\Controllers\public\EventPublicController::class, 'getCount']);
   Route::apiResource('/seminar-type',\App\Http\Controllers\public\SeminarTypePublicController::class)
     ->only(['index']);
+  Route::apiResource('/work-status', \App\Http\Controllers\public\WorkStatusPublicController::class)->only(['index']);
+  Route::apiResource('/salary-type', \App\Http\Controllers\public\SalaryTypePublicController::class)->only(['index']);
 });
 
 
@@ -44,7 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
       Route::apiResource('/eligibility',   \App\Http\Controllers\profile\EligibilityController::class)
         ->only(['index']);
       Route::apiResource('/experience',    \App\Http\Controllers\profile\ExperienceController::class)
-        ->only(['index']);
+        ->except(['show']);
       Route::apiResource('/mobile-number', \App\Http\Controllers\profile\MobileNumberController::class)
         ->except(['show']);
       Route::apiResource('/seminars',       \App\Http\Controllers\profile\SeminarController::class)

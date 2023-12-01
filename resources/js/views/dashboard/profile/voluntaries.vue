@@ -75,40 +75,41 @@
           </template>
 
           <template #default>
-            <li v-for="row in $voluntaries.content" :key="row.id">
-              <div class="block hover:bg-gray-50">
-                <div class="px-4 py-4 sm:px-6">
-                  <div class="flex items-center justify-between">
-                    <p class="truncate text-sm font-medium text-primary-600">{{ row.name }}</p>
-                    <div class="ml-2 flex flex-shrink-0">
-                      <AppButton @click="$voluntaries.ChangeForm(row, 'update')" color='white' class="mr-2" size="sm">Edit</AppButton>
-                      <AppButton @click="showPrompt = true; $voluntaries.SetIDToDelete(row.id)" color='danger' size="sm">Remove</AppButton>
+            <DataTransition>
+              <li v-for="row in $voluntaries.content" :key="row.id">
+                <div class="block hover:bg-gray-50">
+                  <div class="px-4 py-4 sm:px-6">
+                    <div class="flex items-center justify-between">
+                      <p class="truncate text-sm font-medium text-primary-600">{{ row.name }}</p>
+                      <div class="ml-2 flex flex-shrink-0">
+                        <AppButton @click="$voluntaries.ChangeForm(row, 'update')" color='white' class="mr-2" size="sm">Edit</AppButton>
+                        <AppButton @click="showPrompt = true; $voluntaries.SetIDToDelete(row.id)" color='danger' size="sm">Remove</AppButton>
+                      </div>
                     </div>
-                  </div>
-                  <div class="mt-2 sm:flex sm:justify-between">
-                    <div class="sm:flex">
-                      <p class="flex items-center text-sm text-gray-500 mb-2 sm:mb-0">
-                        <ClockIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                        {{ hoursDisplay(row.hours) }}
-                      </p>
-                      <p class="flex items-center text-sm text-gray-500 sm:ml-3 mb-2 sm:mb-0">
-                        <MapPinIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                        {{ row.position }}
-                      </p>
-                    </div>
-                    <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 mb-2 sm:mb-0">
-                      <CalendarIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                      <p>
-                        {{ dateDisplay(row.from, row.to) }}
-                      </p>
-                    </div>
+                    <div class="mt-2 sm:flex sm:justify-between">
+                      <div class="sm:flex">
+                        <p class="flex items-center text-sm text-gray-500 mb-2 sm:mb-0">
+                          <ClockIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                          {{ hoursDisplay(row.hours) }}
+                        </p>
+                        <p class="flex items-center text-sm text-gray-500 sm:ml-3 mb-2 sm:mb-0">
+                          <MapPinIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                          {{ row.position }}
+                        </p>
+                      </div>
+                      <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 mb-2 sm:mb-0">
+                        <CalendarIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                        <p>
+                          {{ dateDisplay(row.from, row.to) }}
+                        </p>
+                      </div>
 
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            </DataTransition>
           </template>
-
         </ContentCard>
       </div>
   </Layout>
@@ -120,11 +121,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import * as Yup from 'yup'
 import { useVoluntaryStore } from '@/store/@applicant/VoluntaryStore'
 import { CalendarIcon, ClockIcon, MapPinIcon } from '@heroicons/vue/24/outline'
 import moment from 'moment'
+import { useDebounceFn } from '@vueuse/core'
 
 import Layout from     './~Components/Layout.vue'
 import ContentCard from'./~Components/ContentCard.vue'
@@ -133,6 +135,7 @@ import AppInput from    '@/components/form/AppInput.vue'
 import PromptModal from '@/components/modals/PromptModal.vue'
 import AppButton from   '@/components/form/AppButton.vue'
 import BasicTransition from '@/components/transitions/BasicTransition.vue'
+import DataTransition from '@/components/transitions/DataTransition.vue'
 
 const schema = Yup.object({
   name: Yup.string().required('Seminar name is required'),
@@ -170,4 +173,8 @@ function hoursDisplay(hours: number) {
 onMounted(() => {
   $voluntaries.GetAPI()
 })
+
+watch($voluntaries.query, useDebounceFn(() => {
+  $voluntaries.GetAPI()
+}, 600))
 </script>

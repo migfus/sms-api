@@ -20,6 +20,7 @@ export const useVoluntaryStore = defineStore(title, () => {
   const config = reactive<TGConfig>({
     buttonLoading: false,
     contentLoading: false,
+    form: '',
   })
   const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
   const query = reactive<{ search: string}>({
@@ -29,7 +30,7 @@ export const useVoluntaryStore = defineStore(title, () => {
   async function GetAPI() {
     config.contentLoading = true
     try {
-      let { data: {data}} = await axios.get('/api/profile/voluntaries')
+      let { data: {data}} = await axios.get('/api/profile/voluntaries', { params: query})
       content.value = data
     }
     catch(err) {
@@ -137,7 +138,7 @@ export const useVoluntaryStore = defineStore(title, () => {
       config.form = 'create'
     }
     else {
-      config.form = null
+      config.form = ''
       params.value = InitParams()
     }
   }
