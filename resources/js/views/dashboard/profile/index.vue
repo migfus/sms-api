@@ -1,10 +1,9 @@
 <template>
   <div>
     <Layout>
-      <Loader v-if="$person.config.loading" />
-      <Form v-else v-slot="{ errors }" :validation-schema="schema" @submit="$person.UpdateAPI()" class="divide-y divide-gray-200 lg:col-span-9">
+      <Form v-slot="{ errors }" :validation-schema="schema" @submit="$person.UpdateAPI()" class="divide-y divide-gray-200 lg:col-span-9">
         <!-- Profile section -->
-        <div class="py-6 px-4 sm:p-6 lg:pb-8">
+        <div class="py-6 px-4 sm:p-6 lg:pb-8 bg-white rounded-xl shadow mb-2">
           <div>
             <h2 class="text-lg font-medium leading-6 text-gray-900">Personal Info</h2>
           </div>
@@ -157,10 +156,10 @@ import { useAddressStore } from '@/store/system/AddressStore'
 import { usePersonalStore } from '@/store/@applicant/PersonalStore'
 
 import AppInput from '@/components/form/AppInput.vue'
-import Layout from './@Components/Layout.vue'
+import Layout from './~Components/Layout.vue'
 import AppSelect from '@/components/form/AppSelect.vue'
 import AppButton from '@/components/form/AppButton.vue'
-import Loader from './@Components/Loader.vue'
+import Loader from './~Components/Loader.vue'
 import AvatarUpload from '@/components/modals/AvatarUpload.vue'
 
 

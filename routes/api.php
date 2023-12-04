@@ -31,6 +31,7 @@ Route::group(['prefix' => 'public', 'as' => 'public.'], function() {
     ->only(['index']);
   Route::apiResource('/work-status', \App\Http\Controllers\public\WorkStatusPublicController::class)->only(['index']);
   Route::apiResource('/salary-type', \App\Http\Controllers\public\SalaryTypePublicController::class)->only(['index']);
+  Route::apiResource('education-level', \App\Http\Controllers\public\EducationLevelController::class)->only(['index']);
 });
 
 
@@ -42,21 +43,21 @@ Route::middleware('auth:sanctum')->group(function () {
       Route::apiResource('/personal',      \App\Http\Controllers\profile\PersonalController::class)
         ->only(['index', 'update']);
       Route::apiResource('/education',     \App\Http\Controllers\profile\EducationController::class)
-        ->only(['index']);
+        ->except(['show']);
       Route::apiResource('/eligibility',   \App\Http\Controllers\profile\EligibilityController::class)
         ->except(['show']);
       Route::apiResource('/experience',    \App\Http\Controllers\profile\ExperienceController::class)
         ->except(['show']);
       Route::apiResource('/mobile-number', \App\Http\Controllers\profile\MobileNumberController::class)
         ->except(['show']);
-      Route::apiResource('/seminars',       \App\Http\Controllers\profile\SeminarController::class)
+      Route::apiResource('/seminars',      \App\Http\Controllers\profile\SeminarController::class)
         ->except(['show']);
-      Route::apiResource('/skills',         \App\Http\Controllers\profile\SkillController::class)
+      Route::apiResource('/skills',        \App\Http\Controllers\profile\SkillController::class)
         ->except(['show']);
-      Route::apiResource('/voluntaries',     \App\Http\Controllers\profile\VoluntaryController::class)
+      Route::apiResource('/voluntaries',   \App\Http\Controllers\profile\VoluntaryController::class)
         ->except(['show']);
-      Route::apiResource('/document', \App\Http\Controllers\DocumentAuthController::class)
-        ->only(['index', 'destroy', 'store']);
+      Route::apiResource('/files',         \App\Http\Controllers\profile\FilesController::class)
+        ->except(['show']);
     });
 
   Route::apiResource('/users', \App\Http\Controllers\UserController::class)

@@ -27,6 +27,29 @@
 
     }
 
+    .body-loader {
+      left: 100px;
+      bottom: 0px !important;
+      width: 48px;
+      height: 48px;
+      border: 5px solid #FFF;
+      border-bottom-color: #14b8a6;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: body-rotation 1s linear infinite;
+      position: absolute;
+    }
+
+    @keyframes body-rotation {
+      0% {
+          transform: rotate(0deg);
+      }
+      100% {
+          transform: rotate(360deg);
+      }
+    }
+
   </style>
 </head>
 
@@ -36,14 +59,18 @@
     <div id="loading-bg" class="preload-logo-container">
       <div class="preload-logo-item">
         <div class="loading-bg">
-          <object data="/images/logo-anim.svg" style="width: 240px; height: auto; z-index: 10"/>
+          <object data="/images/logo-anim.svg" style="width: 240px; height: 240px;"/>
         </div>
-
-        <div class="loading-bg" style="margin-top: 0px">
+        {{-- <div class="loading-bg" style="margin-top: 0px">
           <h3>Development {{ env('VITE_VER') }}</h3>
-        </div>
+        </div> --}}
       </div>
     </div>
+
+    <h1>{{ $fact }}</h1>
+
+
+
 
   </div>
 

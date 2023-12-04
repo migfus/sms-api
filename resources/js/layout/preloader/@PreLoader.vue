@@ -1,7 +1,10 @@
 <template>
   <div class="flex justify-center">
-    <div v-if="$preLoader.config.loading" class="loader my-10">
+    <div class="flex flex-col justify-items-center">
+      <object data="/images/logo-anim.svg" style="width: 140px; height: auto; z-index: 10" class="mt-5"/>
+      <div v-if="$preLoader.config.loading" class="loader my-10 ml-10"></div>
     </div>
+
   </div>
 
 </template>
@@ -14,31 +17,23 @@ const $preLoader = usePreLoader();
 
 <style scoped>
 .loader {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      position: relative;
-      animation: rotate 1s linear infinite
-    }
-    .loader::before {
-      content: "";
-      box-sizing: border-box;
-      position: absolute;
-      inset: 0px;
-      border-radius: 50%;
-      border: 5px solid #008242;
-      animation: prixClipFix 2s linear infinite ;
-    }
+  left: 100px;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #14b8a6;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
 
-    @keyframes rotate {
-      100%   {transform: rotate(360deg)}
-    }
-
-    @keyframes prixClipFix {
-        0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-        25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-        50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-        75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-        100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
-    }
+@keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
 </style>

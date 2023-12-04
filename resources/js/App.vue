@@ -20,6 +20,7 @@ import { useSalaryTypeStore } from '@/store/system/SalaryTypeStore'
 // import { useCivilStatusStore } from '@/store/system/CivilStatusStore'
 import { useSeminarTypeStore } from '@/store/system/SeminarTypeStore'
 import { useWorkStatusStore } from './store/system/WorkStatusStore'
+import { useEducationLevelStore } from './store/system/EducationLevelStore'
 
 
 import NotificationsSection from './components/AppNotifications.vue'
@@ -36,6 +37,7 @@ const $salaryType = useSalaryTypeStore()
 // const $civilStatus = useCivilStatusStore()
 const $seminarType = useSeminarTypeStore()
 const $workStatus = useWorkStatusStore()
+const $levels = useEducationLevelStore()
 
 onMounted(async () => {
   await $job.GetAPI()
@@ -47,5 +49,6 @@ onMounted(async () => {
   // $civilStatus.GetAPI()
   await $seminarType.GetAPI()
   await $workStatus.GetAPI()
+  await $levels.GetAPI()
 });
 </script>

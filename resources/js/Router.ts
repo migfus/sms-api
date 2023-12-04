@@ -249,6 +249,16 @@ const router = createRouter({
                 auth: true,
               },
             },
+            {
+              path: 'documents',
+              name: "profile-documents",
+              component: () => import("@/views/dashboard/profile/documents.vue"),
+              meta: {
+                sideBar: true,
+                title: "Uploaded Documents",
+                auth: true,
+              },
+            },
           ]
 
         },

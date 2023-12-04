@@ -33,7 +33,8 @@ AcademicCapIcon,
   PresentationChartLineIcon,
   ScaleIcon,
   UserCircleIcon,
-  DevicePhoneMobileIcon
+  DevicePhoneMobileIcon,
+  FolderIcon
 } from '@heroicons/vue/24/outline'
 
 const $route = useRoute()
@@ -47,6 +48,7 @@ const subNavigation = [
   { name: 'Seminars', href: 'profile-seminars', icon: PresentationChartLineIcon, current: false },
   { name: 'Skills', href: 'profile-skills', icon: ScaleIcon, current: false },
   { name: 'Mobile Numbers', href: 'profile-mobile', icon: DevicePhoneMobileIcon, current: false },
+  { name: 'Uploaded Documents', href: 'profile-documents', icon: FolderIcon, current: false },
 ]
 
 function ScrollUp() {
