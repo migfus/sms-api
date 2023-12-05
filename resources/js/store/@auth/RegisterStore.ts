@@ -37,12 +37,13 @@ export const useRegisterStore = defineStore(title, () => {
   )
 
   const config = reactive<TGConfig>({
-    loading: false,
+    buttonLoading: false,
+    contentLoading: false,
   })
 
   // SECTION API
   async function RegisterAPI() {
-    config.loading = true
+    config.buttonLoading = true
     try{
       let { data: { data }} = await axios.post('/api/register', params.value)
 
@@ -67,7 +68,7 @@ export const useRegisterStore = defineStore(title, () => {
         }, 5000)
       }
     }
-    config.loading = false
+    config.buttonLoading = false
   }
 
   function ResetParams() {

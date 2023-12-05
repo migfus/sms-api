@@ -306,6 +306,35 @@ const router = createRouter({
       ]
     },
 
+    // NOTE ACCOUNT SETTINGS
+    {
+      path: '/account',
+      children: [
+        {
+          name: 'account',
+          path: '',
+          component: () => import('@/views/account/index.vue'),
+          meta: {
+            title: 'Account Settings',
+            auth: true,
+            sideBar: true
+          }
+        },
+        {
+          name: 'account-password',
+          path: '/password',
+          component: () => import('@/views/account/password.vue'),
+          meta: {
+            title: 'Update Password',
+            auth: true,
+            sideBar: true
+          }
+        }
+
+      ]
+
+    },
+
 
     // NOTE OTHER
     {

@@ -20,12 +20,13 @@ export const useForgotStore = defineStore(title, () => {
   )
 
   const config = reactive<TGConfig>({
-    loading: false,
+    buttonLoading: false,
+    contentLoading: false,
   })
 
   // SECTION API
   async function PostAPI() {
-    config.loading = true
+    config.buttonLoading = true
     try{
       let { data: { data }} = await axios.post('/api/forgot', params.value)
       if(data) {
@@ -56,7 +57,7 @@ export const useForgotStore = defineStore(title, () => {
         }, 5000)
       }
     }
-    config.loading = false
+    config.buttonLoading = false
   }
 
   function ResetParams() {

@@ -1,6 +1,6 @@
 <template>
-  <div class='h-full'>
-    <div class="grid min-h-full justify-center py-8">
+  <div class='h-full flex justify-center'>
+    <div class="grid max-w-7xl justify-center py-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-md mb-8">
         <!-- <object class="mx-auto h-40 w-auto" data="/images/logo-anim.svg" alt="Your Company" /> -->
         <h2 class="text-center text-3xl font-bold tracking-tight text-gray-900">Lastly Fill-Up</h2>

@@ -2,7 +2,7 @@
   <div class='h-full'>
     <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 col-start-1 col-span-3 lg:col-span-1 lg:col-start-2">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img class="mx-auto h-24 w-auto" :src="logo" alt="Your Company" />
+        <object class="mx-auto h-40 w-auto" data="/images/logo-anim.svg" alt="Your Company" />
         <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Recover your account</h2>
       </div>
 
@@ -21,7 +21,7 @@
             </div>
 
             <div>
-              <AppButton type="submit" block :loading="$forgot.config.loading">Send Recovery Link</AppButton>
+              <AppButton type="submit" block :loading="$forgot.config.buttonLoading">Send Recovery Link</AppButton>
             </div>
           </Form>
 
@@ -38,7 +38,6 @@ import { useForgotStore } from '@/store/@auth/ForgotStore'
 import * as Yup from 'yup'
 import { Form, configure } from 'vee-validate'
 
-import logo from '@/assets/images/logo.png'
 import AppButton from '@/components/form/AppButton.vue'
 import AppInput from '@/components/form/AppInput.vue'
 

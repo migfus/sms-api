@@ -22,7 +22,8 @@ export const useJobPublicStore = defineStore(title, () => {
   const content = useStorage<Array<TContent>>(`${title}/content`, [], sessionStorage, {serializer: StorageSerializers.object});
   const result = ref<Array<TResult>>([]);
   const config = reactive<TGConfig>({
-    loading: false,
+    buttonLoading: false,
+    contentLoading: false,
   })
   const query = reactive({
     search: '',
@@ -42,7 +43,7 @@ export const useJobPublicStore = defineStore(title, () => {
   })
 
   async function GetAPI() {
-    config.loading = true
+    config.contentLoading = true
     try {
       let { data: { data }} = await axios.get('/api/public/job')
       content.value = data
@@ -51,7 +52,7 @@ export const useJobPublicStore = defineStore(title, () => {
     catch (err) {
       console.error('useJobPublicStore GetAPI Error', err);
     }
-    config.loading = false
+    config.contentLoading = false
   }
 
   function QueryInit() {

@@ -105,7 +105,7 @@ export const useExperienceStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Experience is removed",
+          title: "Successfully removed",
           text: 'Selected experience is removed'
         }, 5000)
       }

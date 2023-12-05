@@ -94,7 +94,7 @@ export const useMobileNumberStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Mobile Number Deleted",
+          title: "Successfully Deleted",
           text: 'Your mobile number is now removed'
         }, 5000)
       }

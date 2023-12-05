@@ -22,7 +22,8 @@ const title = `post/PostPublicStore`
 export const usePostPublicStore = defineStore(title, () => {
   const content = useStorage<Array<TContent>>(`${title}/content`, [], sessionStorage, {serializer: StorageSerializers.object});
   const config = reactive<TGConfig>({
-    loading: false
+    buttonLoading: false,
+    contentLoading: false
   });
   const query = reactive<TGQuery>({
     search: '',
@@ -30,7 +31,7 @@ export const usePostPublicStore = defineStore(title, () => {
   })
 
   async function GetAPI() {
-    config.loading = true
+    config.contentLoading = true
     try {
       let { data: { data }} = await axios.get('/api/public/post', { params: query})
       content.value = data;
@@ -38,7 +39,7 @@ export const usePostPublicStore = defineStore(title, () => {
     catch(err) {
       console.log('error');
     }
-    config.loading = false
+    config.contentLoading = false
   }
 
   return {

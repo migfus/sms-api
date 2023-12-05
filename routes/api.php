@@ -60,6 +60,11 @@ Route::middleware('auth:sanctum')->group(function () {
         ->except(['show']);
     });
 
+    Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
+      Route::apiResource('/password', \App\Http\Controllers\account\PasswordController::class)->only('store');
+      Route::apiResource('/general', \App\Http\Controllers\account\GeneralSettingsController::class)->only(['store', 'index']);
+    });
+
   Route::apiResource('/users', \App\Http\Controllers\UserController::class)
     ->only(['index', 'destroy']);
 });

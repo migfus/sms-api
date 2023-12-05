@@ -27,6 +27,14 @@ class User extends Authenticatable
     'avatar',
     'email_verified_at',
     'remember_token',
+
+    'notify_email_job',
+    'notify_email_news',
+    'notify_email_event',
+
+    'notify_sms_job',
+    'notify_sms_news',
+    'notify_sms_event',
   ];
 
   /**

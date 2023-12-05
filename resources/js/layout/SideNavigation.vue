@@ -34,7 +34,7 @@
                   <!-- SECTION MOBILE NAV -->
                   <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')"> Dashboard </AppSidebarNav>
                   <AppSidebarNav linkName="profile" :icon="UsersIcon" :disabled="!can('index', 'profile')"> Prolife </AppSidebarNav>
-                  <!-- <AppSidebarNav linkName="profile" :icon="WindowIcon"> Account Settings </AppSidebarNav> -->
+                  <AppSidebarNav linkName="account" :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')"> Account Settings </AppSidebarNav>
 
                   <h3 class="mb-1 px-3 text-sm font-medium text-gray-100 mt-4" id="projects-headline">Pages</h3>
 
@@ -70,7 +70,7 @@
             <!-- SECTION DESKTOP NAV -->
             <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')"> Dashboard </AppSidebarNav>
             <AppSidebarNav linkName="profile" :icon="UsersIcon" :disabled="!can('index', 'profile')"> Profile </AppSidebarNav>
-            <!-- <AppSidebarNav linkName="account-settings" :icon="Cog6ToothIcon" :disabled="!can('index', 'auth')"> Account Settings </AppSidebarNav> -->
+            <AppSidebarNav linkName="account" :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')"> Account Settings </AppSidebarNav>
 
             <h3 class="mb-1 px-3 text-sm font-medium text-gray-100 mt-4" id="projects-headline">Pages</h3>
 
@@ -155,7 +155,7 @@ import {
   QueueListIcon,
   CheckCircleIcon,
   MegaphoneIcon,
-  SquaresPlusIcon,
+  Cog6ToothIcon,
   WindowIcon,
 BriefcaseIcon
 } from '@heroicons/vue/24/outline'

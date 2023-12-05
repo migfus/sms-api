@@ -101,7 +101,7 @@ export const useEligibilityStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Eligibility is deleted",
+          title: "Successfully deleted",
           text: 'Selected eligibility is now removed'
         }, 5000)
       }

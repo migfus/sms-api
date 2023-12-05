@@ -19,7 +19,8 @@ const title = `faq/FaqPublicStore`
 export const useFaqPublicStore = defineStore(title, () => {
   const content = ref<Array<TContent>>([])
   const config = reactive<TGConfig>({
-    loading: false,
+    buttonLoading: false,
+    contentLoading: false,
   })
   const params = reactive<TGQuery>({
     search: ``,
@@ -27,7 +28,7 @@ export const useFaqPublicStore = defineStore(title, () => {
   })
 
   async function GetAPI() {
-    config.loading = true
+    config.contentLoading = true
     try {
       let { data: { data }} = await axios.get('/api/public/faq', { params: params})
       content.value = data
@@ -35,7 +36,7 @@ export const useFaqPublicStore = defineStore(title, () => {
     catch(err) {
       console.error(err)
     }
-    config.loading = false
+    config.contentLoading= false
   }
 
   return {

@@ -105,7 +105,7 @@ export const useEducationStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Education is deleted!",
+          title: "Successfully deleted!",
           text: 'Selected Education is deleted'
         }, 5000)
       }
