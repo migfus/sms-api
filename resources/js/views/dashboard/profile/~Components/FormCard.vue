@@ -2,7 +2,7 @@
   <main  class="relative">
     <div class="mx-auto max-w-screen-xl pb-3">
       <div class="overflow-hidden rounded-xl bg-white shadow">
-        <Form v-slot="{ errors }" :validation-schema="$props.formSchema" @submit="$emit('submitForm')" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
+        <Form v-slot="{ errors }" :validation-schema="$props.formSchema" @submit="$emit('submitForm')" :enctype="$props.enctype" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
           <div class="py-6 px-4 sm:p-6 lg:pb-8">
             <div>
               <h2 class="text-lg font-medium leading-6 text-gray-900">{{  $props.title }}</h2>
@@ -40,6 +40,7 @@ const $props = defineProps<{
   formSchema: any
   submitButtonName: string
   loading: boolean
+  enctype?: string
 }>()
 const $emit = defineEmits(['submitForm', 'cancelClick'])
 </script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\profile;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,7 +12,8 @@ use App\Models\Education;
 class EducationController extends Controller
 {
 
-  public function index(Request $req) {
+
+  public function index(Request $req) : JsonResponse {
     if(!$req->user()->can('index profile')) {
       return $this->G_UnauthorizedResponse();
     }
@@ -34,7 +36,7 @@ class EducationController extends Controller
     ], 200);
   }
 
-  public function destroy(Request $req, string $id) {
+  public function destroy(Request $req, string $id) : JsonResponse {
     if(!$req->user()->can('update profile')) {
       return $this->G_UnauthorizedResponse();
     }
@@ -54,7 +56,7 @@ class EducationController extends Controller
     ]);
   }
 
-  public function store(Request $req) {
+  public function store(Request $req) : JsonResponse{
     if(!$req->user()->can('update profile')) {
       return $this->G_UnauthorizedResponse();
     }
@@ -90,7 +92,7 @@ class EducationController extends Controller
     ], 200);
   }
 
-  public function update(Request $req, string $id) {
+  public function update(Request $req, string $id) : JsonResponse {
     if(!$req->user()->can('update profile')) {
       return $this->G_UnauthorizedResponse();
     }

@@ -52,3 +52,9 @@ onMounted(async () => {
   await $levels.GetAPI()
 });
 </script>
+
+<!-- <style>
+* {
+  float: left;
+}
+</style> -->

@@ -65,3 +65,31 @@ export const NumberAddComma = (num: number)  => {
   }
   return '0.00'
 }
+
+export const FileExtension = (filename: string, filenamOnly = false) => {
+  if(filenamOnly) {
+    return filename.replace(/\.[^/.]+$/, "")
+  }
+  return filename.substring(filename.lastIndexOf('.')+1, filename.length) || filename;
+}
+
+export const FileExtensionPreview = (filename: string, url = null) => {
+  let ext =  filename.substring(filename.lastIndexOf('.')+1, filename.length) || filename;
+
+  switch(ext) {
+    case 'xlsx':
+      return 'https://techcommunity.microsoft.com/t5/image/serverpage/image-id/375416i783713B05CAD4A92/image-size/original?v=v2&px=-1'
+    case 'docx':
+      return 'https://logos-world.net/wp-content/uploads/2020/03/Microsoft-Word-Logo.png'
+    case 'pdf':
+      return 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png'
+    case 'png':
+      return url
+    case 'jpg':
+      return url
+    case 'gif':
+      return url
+    default:
+      return 'https://e7.pngegg.com/pngimages/1022/1019/png-clipart-question-mark-logo-question-mark-in-circle-icons-logos-emojis-question-marks.png'
+  }
+}
