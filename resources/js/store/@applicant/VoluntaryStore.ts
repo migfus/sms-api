@@ -48,8 +48,8 @@ export const useVoluntaryStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Sminar added",
-          text: 'New seminar has been added.'
+          title: "Successfully added",
+          text: 'New voluntary has been added.'
         }, 5000)
       }
     }
@@ -57,7 +57,7 @@ export const useVoluntaryStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error",
+        title: "Error adding",
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
@@ -73,8 +73,8 @@ export const useVoluntaryStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Seminar updated!",
-          text: 'Selected seminar has been updated.'
+          title: "Successfully updated!",
+          text: 'Voluntary has been updated.'
         }, 5000)
       }
     }
@@ -82,7 +82,7 @@ export const useVoluntaryStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error",
+        title: "Error updating",
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
@@ -98,8 +98,8 @@ export const useVoluntaryStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Skill Deleted",
-          text: 'Your skill is now removed'
+          title: "Successfully Deleted",
+          text: 'Your voluntary is now removed'
         }, 5000)
       }
     }
@@ -107,7 +107,7 @@ export const useVoluntaryStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error Removing Skill",
+        title: "Error Removing voluntary",
         text: 'Server error. Try refreshing the page'
       }, 5000)
     }

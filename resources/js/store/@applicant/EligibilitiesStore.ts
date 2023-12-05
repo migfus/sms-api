@@ -51,7 +51,7 @@ export const useEligibilityStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
+          title: "Successfully added!",
           text: 'Personal Info is now changed.'
         }, 5000)
       }
@@ -60,7 +60,7 @@ export const useEligibilityStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error",
+        title: "Adding new eligibility error",
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
@@ -76,8 +76,8 @@ export const useEligibilityStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
-          text: 'Personal Info is now changed.'
+          title: "Successfully updated",
+          text: 'Eligibility is now changed.'
         }, 5000)
       }
     }
@@ -85,7 +85,7 @@ export const useEligibilityStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error",
+        title: "Error updating elibigility",
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
@@ -101,8 +101,8 @@ export const useEligibilityStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Mobile Number Deleted",
-          text: 'Your mobile number is now removed'
+          title: "Eligibility is deleted",
+          text: 'Selected eligibility is now removed'
         }, 5000)
       }
     }
@@ -110,7 +110,7 @@ export const useEligibilityStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error Removing Number",
+        title: "Error Removing eligibility",
         text: 'Server error. Try refreshing the page'
       }, 5000)
     }

@@ -55,8 +55,8 @@ export const useExperienceStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
-          text: 'Personal Info is now changed.'
+          title: "Successfully added",
+          text: 'New experience added to record.'
         }, 5000)
       }
     }
@@ -64,7 +64,7 @@ export const useExperienceStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error",
+        title: "Error Adding record",
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
@@ -80,8 +80,8 @@ export const useExperienceStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
-          text: 'Personal Info is now changed.'
+          title: "Successfully updated!",
+          text: 'Selected experience is updated.'
         }, 5000)
       }
     }
@@ -89,7 +89,7 @@ export const useExperienceStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error",
+        title: "Error Update",
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
@@ -105,8 +105,8 @@ export const useExperienceStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Mobile Number Deleted",
-          text: 'Your mobile number is now removed'
+          title: "Experience is removed",
+          text: 'Selected experience is removed'
         }, 5000)
       }
     }
@@ -114,7 +114,7 @@ export const useExperienceStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error Removing Number",
+        title: "Error Removing Experience",
         text: 'Server error. Try refreshing the page'
       }, 5000)
     }

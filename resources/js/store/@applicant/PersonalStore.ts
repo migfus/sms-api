@@ -37,7 +37,8 @@ const title = `applicant/PersonalStore`
 export const usePersonalStore = defineStore(title, () => {
   const content = useStorage<TContent>(`${title}/content`, null, sessionStorage, { serializer: StorageSerializers.object})
   const config = reactive<TGConfig>({
-    loading: false,
+    contentLoading: false,
+    buttonLoading: false,
     form: '',
   })
   const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
@@ -46,7 +47,7 @@ export const usePersonalStore = defineStore(title, () => {
   const address_province_id = ref(16)
 
   async function GetAPI() {
-    config.loading = true
+    config.contentLoading = true
     try {
       let { data: {data}} = await axios.get('/api/profile/personal')
       bday_province_id.value = cityIDToProvinceID(data.birth_place_id)
@@ -60,18 +61,18 @@ export const usePersonalStore = defineStore(title, () => {
     catch(err) {
       console.log(err)
     }
-    config.loading = false
+    config.contentLoading = false
   }
 
   async function UpdateAPI() {
-    config.loading = true
+    config.buttonLoading = true
     try {
       let { data: {data}} = await axios.put(`/api/profile/personal/${params.value.id}`, params.value)
       if(data) {
         $auth.content.auth.avatar = params.value.avatar
         notify({
           group: "success",
-          title: "Personal Info updated!",
+          title: "Successfully updated!",
           text: 'Personal Info is now changed.'
         }, 5000)
       }
@@ -84,7 +85,7 @@ export const usePersonalStore = defineStore(title, () => {
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
-    config.loading = false
+    config.buttonLoading = false
   }
 
   function InitParams() {

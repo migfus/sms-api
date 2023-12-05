@@ -44,7 +44,7 @@ export const useMobileNumberStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
+          title: "Successfully updated!",
           text: 'Personal Info is now changed.'
         }, 5000)
       }
@@ -69,7 +69,7 @@ export const useMobileNumberStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
+          title: "Successfully updated!",
           text: 'Personal Info is now changed.'
         }, 5000)
       }

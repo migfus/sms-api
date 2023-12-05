@@ -52,7 +52,7 @@ export const useSeminarStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Sminar added",
+          title: "Successfully added",
           text: 'New seminar has been added.'
         }, 5000)
       }
@@ -77,7 +77,7 @@ export const useSeminarStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Seminar updated!",
+          title: "Successfully updated!",
           text: 'Selected seminar has been updated.'
         }, 5000)
       }
@@ -102,7 +102,7 @@ export const useSeminarStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Skill Deleted",
+          title: "Successfully Deleted",
           text: 'Your skill is now removed'
         }, 5000)
       }
@@ -111,7 +111,7 @@ export const useSeminarStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error Removing Skill",
+        title: "Error Removing Seminar",
         text: 'Server error. Try refreshing the page'
       }, 5000)
     }

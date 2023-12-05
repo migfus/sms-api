@@ -55,8 +55,8 @@ export const useEducationStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
-          text: 'Personal Info is now changed.'
+          title: "Successfully added!",
+          text: 'New education is added.'
         }, 5000)
       }
     }
@@ -64,7 +64,7 @@ export const useEducationStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error",
+        title: "Error adding education.",
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
@@ -80,8 +80,8 @@ export const useEducationStore = defineStore(title, () => {
         ChangeForm(null)
         notify({
           group: "success",
-          title: "Personal Info updated!",
-          text: 'Personal Info is now changed.'
+          title: "Successfully updated!",
+          text: 'Education is now changed.'
         }, 5000)
       }
     }
@@ -89,7 +89,7 @@ export const useEducationStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error",
+        title: "Error Updating Education",
         text: 'The inputs may be invalid or server error.'
       }, 5000)
     }
@@ -105,8 +105,8 @@ export const useEducationStore = defineStore(title, () => {
         GetAPI()
         notify({
           group: "success",
-          title: "Mobile Number Deleted",
-          text: 'Your mobile number is now removed'
+          title: "Education is deleted!",
+          text: 'Selected Education is deleted'
         }, 5000)
       }
     }
@@ -114,7 +114,7 @@ export const useEducationStore = defineStore(title, () => {
       console.log(err)
       notify({
         group: "error",
-        title: "Error Removing Number",
+        title: "Error Removing Education",
         text: 'Server error. Try refreshing the page'
       }, 5000)
     }
