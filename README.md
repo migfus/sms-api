@@ -15,7 +15,7 @@
 Central Mindanao University is a school located on Central Mindanao University, Musuan, Maramag, Bukidnon, Philippines. The CMUJ is currently on development for the online job application transactions. This website currently had features for:
 
 - Registration, Authentication & Account Recovery.
-- Account Profile - applicants personal records (following Personal Data Sheet format - CSC Form 212 (Revised 2017)).
+- Account Profile - applicants personal records (following Personal Data Sheet - CSC Form 212 (Revised 2017) format).
 - Document Attachement/Upload - application requirements & proof.
 - Job Listing - job available.
 - Calendar - CMU events
