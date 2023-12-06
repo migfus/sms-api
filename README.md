@@ -31,3 +31,6 @@ Available only for applicants on this current version.
 - Explore as applicant.
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+## Development Progress
+[https://trello.com/b/IgPLBqZN/cmu-hrmo-applicants](https://trello.com/b/IgPLBqZN/cmu-hrmo-applicants)
