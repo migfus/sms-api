@@ -12,11 +12,11 @@ class SalaryTypeSeeder extends Seeder
     $data = [
       [
         // 'id' => 1,
-        'name' => 'Monthly'
+        'name' => 'Month'
       ],
       [
         // 'id' => 2,
-        'name' => 'Daily'
+        'name' => 'Day'
       ],
     ];
 

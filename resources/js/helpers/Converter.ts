@@ -93,3 +93,8 @@ export const FileExtensionPreview = (filename: string, url = null) => {
       return 'https://e7.pngegg.com/pngimages/1022/1019/png-clipart-question-mark-logo-question-mark-in-circle-icons-logos-emojis-question-marks.png'
   }
 }
+
+
+export const FullName = (name: { last_name: string, first_name: string, mid_name?: string, ext_name?: string}) => {
+  return `${name.last_name}, ${name.first_name} ${name.mid_name ?? ''} ${name.ext_name ?? ''}`
+}

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ProfileBanner />
     <main class="relative">
       <div class="mx-auto max-w-screen-xl pb-6">
         <div class="overflow-hidden">
@@ -36,6 +37,8 @@ AcademicCapIcon,
   DevicePhoneMobileIcon,
   FolderIcon
 } from '@heroicons/vue/24/outline'
+
+import ProfileBanner from './ProfileBanner.vue'
 
 const $route = useRoute()
 

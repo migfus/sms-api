@@ -113,7 +113,9 @@
       </div>
 
       <main class="flex-1">
+
         <BreadCrumbs />
+
         <div class="py-6">
           <div class="mx-auto max-w-full px-4 sm:px-6 md:px-8">
 
@@ -134,7 +136,6 @@
 </template>
 
 <script setup lang='ts'>
-import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 import {
   Dialog,
@@ -144,15 +145,11 @@ import {
 } from '@headlessui/vue'
 import {
   Bars3BottomLeftIcon,
-  BellIcon,
   CalendarIcon,
-  FolderIcon,
   HomeIcon,
-  InboxIcon,
   UsersIcon,
   XMarkIcon,
   InformationCircleIcon,
-  QueueListIcon,
   CheckCircleIcon,
   MegaphoneIcon,
   Cog6ToothIcon,

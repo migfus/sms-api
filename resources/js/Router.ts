@@ -264,18 +264,6 @@ const router = createRouter({
         },
 
         {
-          path: "documents",
-          name: "documents",
-          component: () => import("@/views/dashboard/documents/index.vue"),
-          meta: {
-            sideBar: true,
-            title: "Dashboard",
-            auth: true,
-            resource: 'profile',
-          },
-        },
-
-        {
           path: "users",
           children: [
             {

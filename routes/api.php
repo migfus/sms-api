@@ -65,6 +65,10 @@ Route::middleware('auth:sanctum')->group(function () {
       Route::apiResource('/general', \App\Http\Controllers\account\GeneralSettingsController::class)->only(['store', 'index']);
     });
 
+    Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+      Route::apiResource('/profile-summary', \App\Http\Controllers\dashboard\ProfileSummaryController::class)->only('index');
+    });
+
   Route::apiResource('/users', \App\Http\Controllers\UserController::class)
     ->only(['index', 'destroy']);
 });

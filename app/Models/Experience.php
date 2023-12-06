@@ -26,4 +26,8 @@ class Experience extends Model
   public function work_status() {
     return $this->belongsTo(WorkStatus::class);
   }
+
+  public function salary_type() {
+    return $this->belongsTo(SalaryType::class);
+  }
 }
