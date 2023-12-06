@@ -26,6 +26,7 @@ Central Mindanao University is a school located on Central Mindanao University, 
 
 Available only for applicants on this current version.
 
+- [https://cmuj.migfus.net](https://cmuj.migfus.net)
 - You need to register using email.
 - Explore as applicant.
 
