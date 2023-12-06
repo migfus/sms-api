@@ -4,11 +4,11 @@
     <div :class="[$props.sideBar ? 'max-w-full' : 'max-w-7xl ', 'mx-auto px-6 pb-8 pt-4 sm:pt-24 lg:px-8 lg:pt-32']">
       <div class="xl:grid xl:grid-cols-3 xl:gap-8">
         <div class="space-y-6">
-          <object class="h-48" data="/images/logo-anim.svg" alt="Company name" />
-          <p class="text-sm leading-6 text-gray-600 mt-0 font-bold">HRMO, Admin. Bldg., CMU, Musuan, Maramag, Bukidnon</p>
+          <object class="h-48 mb-4" data="/images/logo-anim.svg" alt="Company name" />
+          <a href="https://maps.app.goo.gl/Pyp6oks9RvfraMvM6" target="_blank" class="text-sm leading-6 text-gray-600 mt-0 font-bold">OHRM, Admin. Bldg., CMU, Musuan, Maramag, Bukidnon</a>
           <p class="text-sm leading-6 text-gray-600 mt-0" style="margin-top: 0px">Email: <a href="mailto:hrmo@cmu.edu.ph" class="font-bold">hrmo@cmu.edu.ph</a></p>
           <div class="flex space-x-6">
-            <a v-for="item in $nav.social" :key="item.name" :href="item.href" class="text-gray-400 hover:text-gray-500">
+            <a v-for="item in $nav.social" :key="item.name" :href="item.href" target="_blank" class="text-gray-400 hover:text-gray-500">
               <span class="sr-only">{{ item.name }}</span>
               <component :is="item.icon" class="h-8 w-8" aria-hidden="true" />
             </a>
@@ -20,15 +20,15 @@
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Pages</h3>
               <ul role="list" class="mt-6 space-y-4">
                 <li v-for="item in navigation.pages" :key="`${item.name}`">
-                  <RouterLink :to="`${item.link}`" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
+                  <RouterLink :to="{ name: item.link.name }" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
                 </li>
               </ul>
             </div>
             <div class="mt-10 md:mt-0">
               <h3 class="text-sm font-semibold leading-6 text-gray-900">FAQs</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in $nav.faqs" :key="`${item.name}`">
-                  <RouterLink :to="`${item.link}`" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
+                <li v-for="row in $faqs.content" :key="row.id" class="truncate">
+                  <RouterLink to="/faqs" class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-ellipsis">{{ row.question }}</RouterLink>
                 </li>
               </ul>
             </div>
@@ -37,8 +37,8 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Posts</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in $nav.posts" :key="`${item.name}`">
-                  <RouterLink :to="`${item.link}`" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
+                <li v-for="row in $posts.content" :key="`${row.id}`" class="truncate">
+                  <RouterLink :to="`/posts/${row.id}`" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ row.title }}</RouterLink>
                 </li>
               </ul>
             </div>
@@ -54,16 +54,21 @@
         </div>
       </div>
       <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-        <p class="text-xs leading-5 text-gray-500">&copy; 2023 Human Resource Management Office | Central Mindanao University.</p>
+        <p class="text-xs leading-5 text-gray-500">&copy; 2023 Office of Human Resource Management (OHRM) | Central Mindanao University (CMU).</p>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-import { useNavigationStore } from '@/store/system/NavigationStore';
+import { useNavigationStore } from '@/store/system/NavigationStore'
+import { usePostPublicStore } from '@/store/@public/PostPublicStore'
+import { useFaqPublicStore } from  '@/store/@public/FaqPublicStore'
 
-const $nav = useNavigationStore();
+const $nav =   useNavigationStore()
+const $posts = usePostPublicStore()
+const $faqs =  useFaqPublicStore()
+
 const $props = defineProps({
   sideBar: {
     default: false,
@@ -88,8 +93,6 @@ const navigation = {
   ],
   legal: [
     { name: 'Terms & Agreement', href: 'terms-agreement' },
-    { name: 'Privacy', href: 'home' },
-    { name: 'Terms', href: 'home' },
   ],
 };
 </script>

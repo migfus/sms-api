@@ -5,16 +5,6 @@ interface pagesInt {
   name: string
   link: { name: string }
 }
-// BUG
-interface socialInt {
-  name: string
-  href: string
-  // icon: Component,
-}
-interface faqsInt {
-  name: string
-  link: string
-}
 
 export const useNavigationStore = defineStore("system/NavigationStore", () => {
 
@@ -40,15 +30,15 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
       link: { name: 'faqs'}
     },
     {
-    name: 'News & Updates',
-      link: { name: 'news'}
+      name: 'Posts',
+      link: { name: 'posts'}
     },
   ]
   // BUG
   const social = shallowRef([
     {
       name: 'Facebook',
-      href: '#',
+      href: 'https://www.facebook.com/cmu.hrmo.33',
       icon: defineComponent({
         render: () =>
           h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -62,40 +52,9 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
     },
   ])
 
-  const faqs: Array<faqsInt> = [
-    {
-      name: 'Registration',
-      link: '/faqs'
-    },
-    {
-      name: 'Login',
-      link: '/faqs'
-    },
-    {
-      name: 'Registration',
-      link: '/faqs'
-    },
-  ]
-
-  const posts: Array<faqsInt> = [
-    {
-      name: 'Post 1',
-      link: '/faqs'
-    },
-    {
-      name: 'Post 2',
-      link: '/faqs'
-    },
-    {
-      name: 'Post 3',
-      link: '/faqs'
-    },
-  ]
 
   return {
     pages,
     social,
-    faqs,
-    posts,
   }
 });

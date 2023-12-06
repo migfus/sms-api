@@ -67,13 +67,13 @@
               FAQs
             </RouterLink>
 
-            <RouterLink :to="{ name: 'news'}" :class="[$route.name == 'news' ?
+            <RouterLink :to="{ name: 'posts'}" :class="[$route.name == 'posts' ?
               'border-primary-700 text-gray-900' :
               'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
               'hidden xl:inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
               ]"
             >
-              News & Updates
+              Posts
             </RouterLink>
 
             <Popover class="block xl:hidden relative border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 mt-5" v-slot="{ open }">
@@ -108,8 +108,8 @@
                         <span class="text-base font-medium text-gray-900">FAQs</span>
                       </RouterLink>
 
-                      <RouterLink :to="{name: 'news'}" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
-                        <span class="text-base font-medium text-gray-900">News & Updates</span>
+                      <RouterLink :to="{name: 'posts'}" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                        <span class="text-base font-medium text-gray-900">Posts</span>
                       </RouterLink>
                     </div>
                   </div>

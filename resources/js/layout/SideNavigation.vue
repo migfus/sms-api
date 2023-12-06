@@ -43,7 +43,7 @@
                   <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)" @click="sidebarOpen = false"> Job Listing </AppSidebarNav>
                   <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)" @click="sidebarOpen = false"> Calendar </AppSidebarNav>
                   <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon" @click="sidebarOpen = false"> FAQs </AppSidebarNav>
-                  <AppSidebarNav linkName="news" :icon="MegaphoneIcon" @click="sidebarOpen = false"> News & Updates </AppSidebarNav>
+                  <AppSidebarNav linkName="posts" :icon="MegaphoneIcon" @click="sidebarOpen = false"> Posts </AppSidebarNav>
 
                 </nav>
               </div>
@@ -79,8 +79,7 @@
             <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)" @click="sidebarOpen = false"> Job Listing </AppSidebarNav>
             <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)" @click="sidebarOpen = false"> Calendar </AppSidebarNav>
             <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon" @click="sidebarOpen = false"> FAQs </AppSidebarNav>
-            <AppSidebarNav linkName="news" :icon="MegaphoneIcon" @click="sidebarOpen = false"> News & Updates </AppSidebarNav>
-
+            <AppSidebarNav linkName="posts" :icon="MegaphoneIcon" @click="sidebarOpen = false"> Posts </AppSidebarNav>
 
           </nav>
         </div>

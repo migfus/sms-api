@@ -4,7 +4,7 @@
     <li v-for="row in $post.content" :key="row.id" class="relative  py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600 hover:bg-gray-50">
       <div class="flex justify-between space-x-3">
         <div class="min-w-0 flex-1">
-          <RouterLink :to="'/news/' + row.id" class="block focus:outline-none">
+          <RouterLink :to="'/posts/' + row.id" class="block focus:outline-none">
             <span class="absolute inset-0" aria-hidden="true" />
             <p class="truncate text-sm font-medium text-gray-900"><img :src="row.user.avatar" class="h-6 inline"/> <span>{{ row.user.email }}</span></p>
             <p class="truncate text-sm text-gray-500 font-medium">{{ row.title }}</p>

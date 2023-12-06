@@ -65,7 +65,7 @@ interface InputInt {
 }
 const input = reactive<InputInt>({
   email: '',
-  password: '12345678',
+  password: '',
 });
 
 onMounted(() => {

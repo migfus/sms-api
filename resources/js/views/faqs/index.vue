@@ -39,10 +39,6 @@ import DataTransition from '@/components/transitions/DataTransition.vue'
 
 const $faq = useFaqPublicStore();
 
-onMounted(() => {
-  $faq.GetAPI()
-});
-
 watch($faq.params, throttle(() => {
   $faq.GetAPI()
 }, 1000));

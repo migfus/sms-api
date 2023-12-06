@@ -1,7 +1,8 @@
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import type { TGConfig, TGQuery } from "../GlobalType"
+import { useStorage, StorageSerializers } from '@vueuse/core'
 
 interface TContent {
   category: { name: string }
@@ -15,9 +16,9 @@ interface TContent {
   answer: string
 }
 
-const title = `faq/FaqPublicStore`
+const title = `public/FaqPublicStore`
 export const useFaqPublicStore = defineStore(title, () => {
-  const content = ref<Array<TContent>>([])
+  const content = useStorage<Array<TContent>>(`${title}/content`, [], sessionStorage, {serializer: StorageSerializers.object});
   const config = reactive<TGConfig>({
     buttonLoading: false,
     contentLoading: false,

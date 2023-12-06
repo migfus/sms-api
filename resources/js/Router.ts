@@ -69,21 +69,21 @@ const router = createRouter({
     },
 
     {
-      path: '/news',
+      path: '/posts',
       children:[
         {
           path: '',
-          name: 'news',
-          component: () => import('@/views/news/index.vue'),
+          name: 'posts',
+          component: () => import('@/views/posts/index.vue'),
           meta: {
-            title: 'News & Updates'
+            title: 'Posts'
           },
         },
 
         {
           path: ':id',
           name: 'post',
-            component: () => import('@/views/news/[id].vue'),
+            component: () => import('@/views/posts/[id].vue'),
             meta: {
               title: 'Post'
             }

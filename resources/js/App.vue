@@ -19,6 +19,7 @@ import { useSalaryTypeStore } from     '@/store/system/SalaryTypeStore'
 import { useSeminarTypeStore } from    '@/store/system/SeminarTypeStore'
 import { useWorkStatusStore } from     './store/system/WorkStatusStore'
 import { useEducationLevelStore } from './store/system/EducationLevelStore'
+import { useFaqPublicStore } from './store/@public/FaqPublicStore'
 
 
 import NotificationsSection from './components/AppNotifications.vue'
@@ -30,6 +31,7 @@ const $job = useJobPublicStore()
 const $event = useEventPublicStore()
 const $address = useAddressStore()
 const $post = usePostPublicStore()
+const $faqs = useFaqPublicStore()
 
 const $salaryType = useSalaryTypeStore()
 const $seminarType = useSeminarTypeStore()
@@ -41,6 +43,7 @@ onMounted(async () => {
   await $event.GetCountAPI()
   await $address.GetAPI()
   await $post.GetAPI()
+  await $faqs.GetAPI()
 
   await $salaryType.GetAPI()
   await $seminarType.GetAPI()
