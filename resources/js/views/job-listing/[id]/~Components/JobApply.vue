@@ -113,16 +113,20 @@
       <div class="grid grid-cols-1 gap-4 col-span-3">
         <section aria-labelledby="section-1-title">
           <h2 class="sr-only" id="section-1-title">Section title</h2>
-          <div class="flex justify-end overflow-hidden rounded-lg bg-white shadow">
-            <div class="px-6 py-4 text-end">
-              <span class="isolate inline-flex rounded-md shadow-sm mt-1">
-                <button @click="Apply()" type="button" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500">
-                  <ArrowRightCircleIcon class="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
-                  Apply Now
-                </button>
-              </span>
-            </div>
+          <div class="bg-white px-6 py-4 shadow rounded-xl flex justify-end gap-2">
+            <RouterLink :to="{ name: 'job-listing'}" >
+              <AppButton color="white">
+                <ArrowLeftCircleIcon class="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                Cancel
+              </AppButton>
+            </RouterLink>
+
+            <AppButton @click="Apply()" color="white">
+              <ArrowRightCircleIcon class="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+              Apply Now
+            </AppButton>
           </div>
+
         </section>
       </div>
     </div>
@@ -132,11 +136,12 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowRightCircleIcon, XMarkIcon, PaperAirplaneIcon, CheckCircleIcon } from '@heroicons/vue/20/solid';
+import { ArrowRightCircleIcon, XMarkIcon, PaperAirplaneIcon, CheckCircleIcon, ArrowLeftCircleIcon } from '@heroicons/vue/20/solid';
 import { ref, reactive} from 'vue'
 
 import ActivityCard from './ActivityCard.vue'
-import CancelProcessedPrompt from './CancelProcessedPrompt.vue';
+import CancelProcessedPrompt from './CancelProcessedPrompt.vue'
+import AppButton from '@/components/form/AppButton.vue'
 
 interface formInt {
   subject: string

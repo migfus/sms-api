@@ -53,7 +53,7 @@ class Controller extends BaseController
     ], 401);
   }
 
-  public function G_AvatarUpload($image, $path = '') : string {
+  public function G_AvatarUpload($image, $path = '') {
     list($type, $image) = explode(';', $image);
     list(, $image) = explode(',', $image);
 

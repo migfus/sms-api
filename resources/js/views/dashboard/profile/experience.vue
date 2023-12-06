@@ -14,7 +14,7 @@
             @cancelClick="$exp.ChangeForm(null)"
             v-slot="{errors}"
           >
-            <div class="col-span-6">
+            <div class="col-span-12 sm:col-span-6">
                 <AppInput v-model="$exp.params.position" placeholder="Position" name="position" :errors="errors"/>
             </div>
             <div class="col-span-6">
@@ -26,25 +26,25 @@
                 <option v-for="row in $exp_status.content" :key="row.id" :value="row.id">{{ row.name }}</option>
               </AppSelect>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$exp.params.from" placeholder="From" name="from" type="date" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$exp.params.to" placeholder="To (Blank if present)" name="to" type="date" :errors="errors"/>
             </div>
 
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$exp.params.sg" placeholder="Salary Grade" name="sg" :errors="errors"/>
             </div>
-            <div class="col-span-4">
+            <div class="col-span-6 sm:col-span-4">
                 <AppInput v-model="$exp.params.salary" placeholder="Salary" name="salary" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
               <AppSelect v-model="$exp.params.salary_type_id" placeholder="Salary Type" name="salary_type" :errors="errors">
                 <option v-for="row in $salaryType.content" :value="row.id">{{ row.name }}</option>
               </AppSelect>
             </div>
-            <div class="col-span-2">
+            <div class="col-span-6 sm:col-span-2">
               <AppSelect v-model="$exp.params.is_government" placeholder="Government" name="government" :errors="errors">
                 <option :value="true">Yes</option>
                 <option :value="false">No</option>
@@ -62,7 +62,7 @@
             @cancelClick="$exp.ChangeForm(null)"
             v-slot="{errors}"
           >
-          <div class="col-span-6">
+          <div class="col-span-12 sm:col-span-6">
                 <AppInput v-model="$exp.params.position" placeholder="Position" name="position" :errors="errors"/>
             </div>
             <div class="col-span-6">
@@ -74,25 +74,25 @@
                 <option v-for="row in $exp_status.content" :key="row.id" :value="row.id">{{ row.name }}</option>
               </AppSelect>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$exp.params.from" placeholder="From" name="from" type="date" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$exp.params.to" placeholder="To (Blank if present)" name="to" type="date" :errors="errors"/>
             </div>
 
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$exp.params.sg" placeholder="Salary Grade" name="sg" :errors="errors"/>
             </div>
-            <div class="col-span-4">
+            <div class="col-span-6 sm:col-span-4">
                 <AppInput v-model="$exp.params.salary" placeholder="Salary" name="salary" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
               <AppSelect v-model="$exp.params.salary_type_id" placeholder="Salary Type" name="salary_type" :errors="errors">
                 <option v-for="row in $salaryType.content" :value="row.id">{{ row.name }}</option>
               </AppSelect>
             </div>
-            <div class="col-span-2">
+            <div class="col-span-6 sm:col-span-2">
               <AppSelect v-model="$exp.params.is_government" placeholder="Government" name="government" :errors="errors">
                 <option :value="true">Yes</option>
                 <option :value="false">No</option>
@@ -183,7 +183,7 @@ import AppInput from    '@/components/form/AppInput.vue'
 import PromptModal from '@/components/modals/PromptModal.vue'
 import AppButton from   '@/components/form/AppButton.vue'
 import BasicTransition from '@/components/transitions/BasicTransition.vue'
-import DataTransition from '@/components/transitions/DataTransition.vue'
+import DataTransition from  '@/components/transitions/DataTransition.vue'
 import AppSelect from   '@/components/form/AppSelect.vue'
 
 const schema = Yup.object({

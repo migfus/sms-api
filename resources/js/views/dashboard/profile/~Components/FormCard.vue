@@ -1,7 +1,7 @@
 <template>
   <main  class="relative">
     <div class="mx-auto max-w-screen-xl pb-3">
-      <div class="overflow-hidden rounded-xl bg-white shadow">
+      <div class="overflow-hidden sm:rounded-xl bg-white shadow">
         <Form v-slot="{ errors }" :validation-schema="$props.formSchema" @submit="$emit('submitForm')" :enctype="$props.enctype" class="rounded-xl divide-y divide-gray-200 lg:col-span-9">
           <div class="py-6 px-4 sm:p-6 lg:pb-8">
             <div>
@@ -11,9 +11,9 @@
               <div class="grid grid-cols-12 gap-2">
                 <slot :errors="errors"></slot>
 
-                <div class="flex justify-end mt-3 gap-1 col-span-12">
-                  <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0" :loading="$props.loading">{{ $props.submitButtonName }}</AppButton>
-                  <AppButton @click="$emit('cancelClick')" color='danger' :loading="$props.loading">Cancel</AppButton>
+                <div class="flex-none sm:flex justify-end mt-3 gap-1 col-span-12">
+                  <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0" :loading="$props.loading" class="w-full sm:w-auto mb-2 sm:mb-0">{{ $props.submitButtonName }}</AppButton>
+                  <AppButton @click="$emit('cancelClick')" color='danger' :loading="$props.loading" class="w-full sm:w-auto mb-2 sm:mb-0">Cancel</AppButton>
                 </div>
               </div>
             </div>

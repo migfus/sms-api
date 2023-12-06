@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$post.content" class="relative px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28" style="background: url('/images/background1.jpg') no-repeat center center; background-size: cover;">
+  <div v-if="$post.content" class="relative sm:px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28" style="background: url('/images/background1.jpg') no-repeat center center; background-size: cover;">
     <div class="absolute inset-0">
       <div class="h-1/3 bg-white/20 sm:h-2/3" />
     </div>
@@ -8,8 +8,8 @@
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the news/updates</h2>
         <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.</p>
       </div>
-      <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-        <div v-for="row in $post.content" :key="row.title" class="flex flex-col overflow-hidden rounded-lg shadow-lg backdrop-blur-md">
+      <div class="mx-auto mt-12 grid sm:max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+        <div v-for="row in $post.content" :key="row.title" class="flex flex-col overflow-hidden sm:rounded-xl shadow-lg backdrop-blur-md">
           <div class="flex-shrink-0">
             <img class="h-48 w-full object-cover" :src="row.cover" alt="" />
           </div>

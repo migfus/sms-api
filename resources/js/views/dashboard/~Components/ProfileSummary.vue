@@ -1,5 +1,5 @@
 <template>
-  <ul role="list" class="divide-y divide-gray-200 mt-4 rounded-xl shadow bg-white">
+  <ul role="list" class="divide-y divide-gray-200 mt-4 sm:rounded-xl shadow bg-white">
     <h1 class="p-4 font-bold text-gray-500">Profile Summary</h1>
 
     <li class="relative py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600 hover:bg-gray-50">

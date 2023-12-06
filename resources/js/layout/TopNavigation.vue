@@ -21,16 +21,15 @@
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
 
-            <RouterLink :to="{ name: 'home'}" :class="[$route.name == 'home' ?
-              'border-primary-700 text-gray-900' :
-              'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-              'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-              ]"
+            <RouterLink to="/"
+              :class="[$route.name == 'home' ? 'border-primary-700 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
+                ]"
             >
               Home
             </RouterLink>
 
-            <RouterLink :to="{ name: 'about'}" :class="[$route.name == 'about' ?
+            <RouterLink to="/about" :class="[$route.name == 'about' ?
               'border-primary-700 text-gray-900' :
               'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
               'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
@@ -132,7 +131,7 @@
         <RouterLink
             v-for="row in $nav.pages"
             :key="`${row.name}`"
-            :to="`${row.link}`"
+            :to="{name: row.link.name }"
             @click="open"
             :class="[row.link.name == $route.name ?
               'block border-l-4 border-primary-500 bg-primary-50 py-2 pl-3 pr-4 text-base font-medium text-primary-700' :
@@ -146,6 +145,7 @@
             </DisclosureButton>
 
         </RouterLink>
+
       </div>
     </DisclosurePanel>
   </Disclosure>
@@ -157,7 +157,7 @@
 </template>
 
 <script setup lang='ts'>
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Popover, PopoverPanel, PopoverButton } from '@headlessui/vue'
+import { Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverPanel, PopoverButton } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/vue/24/outline'
 import { useNavigationStore } from '@/store/system/NavigationStore'
 import { useRoute } from 'vue-router'

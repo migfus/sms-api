@@ -3,7 +3,7 @@
     <Layout>
       <Form v-slot="{ errors }" :validation-schema="schema" @submit="$general.PostAPI()" class="divide-y divide-gray-200 lg:col-span-9">
 
-          <div class="space-y-6 bg-white py-6 px-4 sm:p-6 rounded-xl">
+          <div class="space-y-6 bg-white py-6 px-4 sm:p-6 sm:rounded-xl">
             <div>
               <h3 class="text-lg font-medium leading-6 text-gray-900">Notifications</h3>
               <p class="mt-1 text-sm text-gray-500">We will notify you by checking the check-box.</p>
@@ -73,7 +73,7 @@
             </div>
 
             <div class="text-right justify-end flex">
-              <AppButton color="white" type="submit" :disabled="Object.keys(errors).length != 0" :loading="$general.config.buttonLoading">Save</AppButton>
+              <AppButton color="white" type="submit" :disabled="Object.keys(errors).length != 0" :loading="$general.config.buttonLoading" btnCss="w-full sm:w-auto">Save</AppButton>
             </div>
           </div>
 
@@ -88,9 +88,9 @@ import * as Yup from 'yup'
 import { Form, configure } from 'vee-validate'
 import { useGeneralSettingsStore } from '@/store/@applicant/GeneralSettingsStore'
 
-import Layout from './~Components/Layout.vue'
+import Layout from    './~Components/Layout.vue'
 import AppButton from '@/components/form/AppButton.vue'
-import AppCheck from '@/components/form/AppCheck.vue'
+import AppCheck from  '@/components/form/AppCheck.vue'
 
 configure({
     validateOnInput: true

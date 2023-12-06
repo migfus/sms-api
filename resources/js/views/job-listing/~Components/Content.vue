@@ -5,7 +5,7 @@
       <li v-if="$job.content.length == 0">
         <div class="block hover:bg-gray-50">
           <div class="px-4 py-4 sm:px-6">
-            <div v-if="$job.query.search == '' && $job.config.loading == false" class="flex items-center justify-center">
+            <div v-if="$job.query.search == '' && $job.config.buttonLoading == false" class="flex items-center justify-center">
               <p class="truncate text-sm font-medium text-primary-600 item-center">
                 Sorry it seems empty today.
               </p>
@@ -23,7 +23,7 @@
 
       <DataTransition>
         <li v-for="position in $job.filterJobs" :key="position.id">
-          <RouterLink :to="`job/${position.id}`" class="block hover:bg-gray-50">
+          <RouterLink :to="`job-listing/${position.id}`" class="block hover:bg-gray-50">
             <div class="px-4 py-4 sm:px-6">
               <div class="flex items-center justify-between">
                 <p class="truncate text-sm font-medium text-primary-600">{{ position.title }}</p>

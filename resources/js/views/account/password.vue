@@ -3,7 +3,7 @@
     <Layout>
       <Form v-slot="{ errors }" :validation-schema="schema" @submit="$pass.PostAPI()" class="divide-y divide-gray-200 lg:col-span-9">
         <!-- Profile section -->
-        <div class="py-6 px-4 sm:p-6 lg:pb-8 bg-white rounded-xl shadow mb-2">
+        <div class="py-6 px-4 sm:p-6 lg:pb-8 bg-white sm:rounded-xl shadow mb-2">
           <div>
             <h2 class="text-lg font-medium leading-6 text-gray-900">Update Password</h2>
           </div>
@@ -27,7 +27,7 @@
           </div>
 
           <div class="flex justify-end mt-8 gap-1">
-            <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0" :loading="$pass.config.buttonLoading">Update</AppButton>
+            <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0" :loading="$pass.config.buttonLoading" btnCss="w-full sm:w-auto">Update</AppButton>
           </div>
         </div>
       </Form>
@@ -40,8 +40,8 @@ import * as Yup from 'yup'
 import { Form, configure } from 'vee-validate'
 import { usePasswordStore } from '@/store/@applicant/PasswordStore'
 
-import AppInput from '@/components/form/AppInput.vue'
-import Layout from './~Components/Layout.vue'
+import AppInput from  '@/components/form/AppInput.vue'
+import Layout from    './~Components/Layout.vue'
 import AppButton from '@/components/form/AppButton.vue'
 
 configure({

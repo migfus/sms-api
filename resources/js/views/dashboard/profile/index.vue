@@ -3,7 +3,7 @@
     <Layout>
       <Form v-slot="{ errors }" :validation-schema="schema" @submit="$person.UpdateAPI()" class="divide-y divide-gray-200 lg:col-span-9">
         <!-- Profile section -->
-        <div class="py-6 px-4 sm:p-6 lg:pb-8 bg-white rounded-xl shadow mb-2">
+        <div class="py-6 px-4 sm:p-6 lg:pb-8 bg-white sm:rounded-xl shadow mb-2">
           <div>
             <h2 class="text-lg font-medium leading-6 text-gray-900">Personal Info</h2>
           </div>
@@ -53,17 +53,17 @@
               </div>
             </div>
 
-            <div class="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
-              <p class="text-sm font-medium text-gray-700" aria-hidden="true">Avatar</p>
+            <div class="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0 justify-center">
               <div class="mt-1 lg:hidden">
-                <div class="flex items-center">
-                  <div class="inline-block h-12 w-12 flex-shrink-0 overflow-hidden rounded-full" aria-hidden="true">
-                    <img class="h-full w-full rounded-full" :src="user.imageUrl" alt="" />
+                <div class="flex items-center justify-center">
+                  <div @click="openModal = true" class="inline-block h-24 w-24 flex-shrink-0 overflow-hidden rounded-full" aria-hidden="true">
+                    <img class="h-full w-full rounded-full" :src="$person.params.avatar" alt="" />
                   </div>
-                  <div class="ml-5 rounded-md shadow-sm">
-                    <div class="group relative flex items-center justify-center rounded-md border border-gray-300 py-2 px-3 focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:bg-gray-50">
+                  <AppButton @click="openModal = true" color='white' class="ml-4">Change</AppButton>
 
-                      <input id="mobile-user-photo" name="user-photo" type="file" class="absolute h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0" />
+                  <div class="ml-5 rounded-md shadow-sm">
+                    <div class="hidden group relative items-center justify-center rounded-md border border-gray-300 py-2 px-3 focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:bg-gray-50">
+                      <input id="mobile-user-photo" name="user-photo" type="file" class="hidden absolute h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0" />
                     </div>
                   </div>
                 </div>
@@ -71,15 +71,15 @@
 
               <div @click="openModal = true" class="relative hidden overflow-hidden rounded-full lg:block">
                 <img class="relative h-20 w-20 rounded-full" :src="$person.params.avatar" alt="" />
-                <label for="desktop-user-photo" class="absolute inset-0 flex h-full w-full items-center justify-center bg-black bg-opacity-75 text-sm font-medium text-white opacity-0 focus-within:opacity-100 hover:opacity-100">
-                  <span>Change</span>
+                <label for="desktop-user-photo" class="absolute inset-0 flex h-full w-full items-center bg-black bg-opacity-75 text-sm font-medium text-white opacity-0 focus-within:opacity-100 hover:opacity-100">
+                  <span class="mx-auto">Change</span>
                   <span class="sr-only"> user photo</span>
                   <input type="file" id="desktop-user-photo" name="user-photo" class="absolute inset-0 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0" />
-
                 </label>
               </div>
+              <AppButton @click="openModal = true" color='white' class="hidden lg:block mt-4">Change</AppButton>
 
-              <AppButton @click="openModal = true" color='white' class="mt-2">Change</AppButton>
+
             </div>
           </div>
 
@@ -136,9 +136,9 @@
             </div>
           </div>
 
-          <div class="flex justify-end mt-8 gap-1">
-            <AppButton @click="$person.GetAPI()" color='white'>Reset</AppButton>
-            <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0">Update</AppButton>
+          <div class="flex-none sm:flex justify-end mt-8 gap-1">
+            <AppButton type="submit" color='white' :disabled="Object.keys(errors).length != 0" class="mr-1 w-full sm:w-auto mb-2 sm:mb-0">Update</AppButton>
+            <AppButton @click="$person.GetAPI()" color='white' class="mr-1 w-full sm:w-auto mb-2 sm:mb-0">Reset</AppButton>
           </div>
         </div>
 
@@ -155,11 +155,10 @@ import { Form, configure } from 'vee-validate'
 import { useAddressStore } from '@/store/system/AddressStore'
 import { usePersonalStore } from '@/store/@applicant/PersonalStore'
 
-import AppInput from '@/components/form/AppInput.vue'
-import Layout from './~Components/Layout.vue'
+import AppInput from  '@/components/form/AppInput.vue'
+import Layout from    './~Components/Layout.vue'
 import AppSelect from '@/components/form/AppSelect.vue'
 import AppButton from '@/components/form/AppButton.vue'
-import Loader from './~Components/Loader.vue'
 import AvatarUpload from '@/components/modals/AvatarUpload.vue'
 
 

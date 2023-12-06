@@ -51,6 +51,7 @@
     }
 
   </style>
+	@vite('resources/css/app.css')
 </head>
 
 <body class="h-full">

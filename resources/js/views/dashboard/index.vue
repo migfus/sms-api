@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import ActivityFeeds from './~Components/ActivityFeeds.vue'
 import StatisticCard from './~Components/StatisticCard.vue'
-import PostsFeeds from './~Components/PostFeeds.vue'
-import AppliedJob from './~Components/AppliedJob.vue'
-import ProfileSummary from './~Components/ProfileSummary.vue'
+import PostsFeeds from    './~Components/PostFeeds.vue'
+import AppliedJob from    './~Components/AppliedJob.vue'
+import ProfileSummary from'./~Components/ProfileSummary.vue'
 </script>

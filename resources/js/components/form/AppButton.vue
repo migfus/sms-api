@@ -13,7 +13,8 @@
               color,
               size,
               $props.block && 'w-full',
-              $props.disabled && 'text-gray-600'
+              $props.disabled && 'text-gray-600',
+              $props.btnCss
           ]"
           :disabled="$props.loading || $props.disabled"
           :type="type"
@@ -55,6 +56,7 @@ const $props = defineProps<{
     type?: string
     block?: boolean
     errorDisabled? : any
+    btnCss?: string
 }>()
 
 const color = computed(() => {

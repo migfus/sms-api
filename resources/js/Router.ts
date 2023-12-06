@@ -42,7 +42,7 @@ const router = createRouter({
         {
           path: ':id',
           name: 'job-view',
-          component: () => import('@/views/job-listing/[id].vue'),
+          component: () => import('@/views/job-listing/[id]/index.vue'),
           meta: {
             title: 'Job Listing'
           },

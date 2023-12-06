@@ -11,21 +11,19 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useJobPublicStore } from '@/store/@public/JobPublicStore'
-import { useEventPublicStore } from '@/store/@public/EventPublicStore'
-import { useAddressStore } from './store/system/AddressStore'
-import { usePostPublicStore } from './store/@public/PostPublicStore'
-
-import { useSalaryTypeStore } from '@/store/system/SalaryTypeStore'
-// import { useCivilStatusStore } from '@/store/system/CivilStatusStore'
-import { useSeminarTypeStore } from '@/store/system/SeminarTypeStore'
-import { useWorkStatusStore } from './store/system/WorkStatusStore'
+import { useJobPublicStore } from      '@/store/@public/JobPublicStore'
+import { useEventPublicStore } from    '@/store/@public/EventPublicStore'
+import { useAddressStore } from        './store/system/AddressStore'
+import { usePostPublicStore } from     './store/@public/PostPublicStore'
+import { useSalaryTypeStore } from     '@/store/system/SalaryTypeStore'
+import { useSeminarTypeStore } from    '@/store/system/SeminarTypeStore'
+import { useWorkStatusStore } from     './store/system/WorkStatusStore'
 import { useEducationLevelStore } from './store/system/EducationLevelStore'
 
 
 import NotificationsSection from './components/AppNotifications.vue'
-import TopNavigation from '@/layout/TopNavigation.vue'
-import SideNavigation from '@/layout/SideNavigation.vue'
+import TopNavigation from        '@/layout/TopNavigation.vue'
+import SideNavigation from       '@/layout/SideNavigation.vue'
 
 const $route = useRoute()
 const $job = useJobPublicStore()
@@ -34,7 +32,6 @@ const $address = useAddressStore()
 const $post = usePostPublicStore()
 
 const $salaryType = useSalaryTypeStore()
-// const $civilStatus = useCivilStatusStore()
 const $seminarType = useSeminarTypeStore()
 const $workStatus = useWorkStatusStore()
 const $levels = useEducationLevelStore()
@@ -46,15 +43,8 @@ onMounted(async () => {
   await $post.GetAPI()
 
   await $salaryType.GetAPI()
-  // $civilStatus.GetAPI()
   await $seminarType.GetAPI()
   await $workStatus.GetAPI()
   await $levels.GetAPI()
 });
 </script>
-
-<!-- <style>
-* {
-  float: left;
-}
-</style> -->

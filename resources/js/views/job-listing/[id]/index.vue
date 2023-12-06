@@ -14,9 +14,11 @@
                 </div>
                 <div class="px-6 py-4 text-end">
                   <span class="isolate inline-flex rounded-md shadow-sm mt-1">
-                    <RouterLink :to="{name: 'job-listing'}" @click="$job.Reset()" type="button" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500">
-                      <ArrowLeftCircleIcon class="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
-                      Back to list
+                    <RouterLink :to="{name: 'job-listing'}" @click="$job.Reset()" >
+                      <AppButton color="white">
+                        <ArrowLeftCircleIcon class="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                        Back to List
+                      </AppButton>
                     </RouterLink>
                   </span>
                 </div>
@@ -49,9 +51,10 @@ import { useRoute } from 'vue-router'
 import { reactive } from 'vue'
 import { ArrowLeftCircleIcon } from '@heroicons/vue/20/solid'
 import { useTitle } from '@vueuse/core'
-import JobApply from './[id]/JobApply.vue'
 
-import JobContent from './[id]/JobContent.vue'
+import JobApply from   './~Components/JobApply.vue'
+import JobContent from './~Components/JobContent.vue'
+import AppButton from  '@/components/form/AppButton.vue'
 
 const $job = useJobPublicStore();
 const $route = useRoute();

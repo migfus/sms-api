@@ -2,18 +2,18 @@ import { defineComponent, h, shallowRef  } from "vue"
 import { defineStore } from "pinia"
 
 interface pagesInt {
-  name: String
-  link: { name: String }
+  name: string
+  link: { name: string }
 }
 // BUG
 interface socialInt {
-  name: String
-  href: String
+  name: string
+  href: string
   // icon: Component,
 }
 interface faqsInt {
-  name: String
-  link: String
+  name: string
+  link: string
 }
 
 export const useNavigationStore = defineStore("system/NavigationStore", () => {

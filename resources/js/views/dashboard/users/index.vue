@@ -17,10 +17,10 @@
 import { useUserStore } from '@/store/@staff/UserStore'
 import { onMounted } from 'vue'
 
-import IndividualUser from './components/IndividualUser.vue'
-import MenuCard from './components/MenuCard.vue'
+import IndividualUser from './~Components/IndividualUser.vue'
+import MenuCard from       './~Components/MenuCard.vue'
 import DataTransition from '@/components/transitions/DataTransition.vue'
-import DeletePrompt from './components/DeletePrompt.vue'
+import DeletePrompt from   './~Components/DeletePrompt.vue'
 
 const $user = useUserStore();
 

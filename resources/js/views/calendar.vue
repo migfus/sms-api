@@ -27,8 +27,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import FullCalendar from '@fullcalendar/vue3'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import FullCalendar from      '@fullcalendar/vue3'
+import dayGridPlugin from     '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import moment from 'moment'
 import { useEventPublicStore } from '@/store/@public/EventPublicStore'

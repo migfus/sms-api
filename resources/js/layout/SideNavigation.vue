@@ -32,18 +32,18 @@
                 <nav class="space-y-1 px-2">
 
                   <!-- SECTION MOBILE NAV -->
-                  <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')"> Dashboard </AppSidebarNav>
-                  <AppSidebarNav linkName="profile" :icon="UsersIcon" :disabled="!can('index', 'profile')"> Prolife </AppSidebarNav>
-                  <AppSidebarNav linkName="account" :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')"> Account Settings </AppSidebarNav>
+                  <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Dashboard </AppSidebarNav>
+                  <AppSidebarNav linkName="profile"   :icon="UsersIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Prolife </AppSidebarNav>
+                  <AppSidebarNav linkName="account"   :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Account Settings </AppSidebarNav>
 
                   <h3 class="mb-1 px-3 text-sm font-medium text-gray-100 mt-4" id="projects-headline">Pages</h3>
 
-                  <AppSidebarNav linkName="home" :icon="HomeIcon"> Home </AppSidebarNav>
-                  <AppSidebarNav linkName="about" :icon="InformationCircleIcon"> About </AppSidebarNav>
-                  <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)"> Job Listing </AppSidebarNav>
-                  <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)"> Calendar </AppSidebarNav>
-                  <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon"> FAQs </AppSidebarNav>
-                  <AppSidebarNav linkName="news" :icon="MegaphoneIcon"> News & Updates </AppSidebarNav>
+                  <AppSidebarNav linkName="home" :icon="HomeIcon" @click="sidebarOpen = false"> Home </AppSidebarNav>
+                  <AppSidebarNav linkName="about" :icon="InformationCircleIcon" @click="sidebarOpen = false"> About </AppSidebarNav>
+                  <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)" @click="sidebarOpen = false"> Job Listing </AppSidebarNav>
+                  <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)" @click="sidebarOpen = false"> Calendar </AppSidebarNav>
+                  <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon" @click="sidebarOpen = false"> FAQs </AppSidebarNav>
+                  <AppSidebarNav linkName="news" :icon="MegaphoneIcon" @click="sidebarOpen = false"> News & Updates </AppSidebarNav>
 
                 </nav>
               </div>
@@ -68,18 +68,18 @@
           <nav class="flex-1 space-y-1 px-2 pb-4">
 
             <!-- SECTION DESKTOP NAV -->
-            <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')"> Dashboard </AppSidebarNav>
-            <AppSidebarNav linkName="profile" :icon="UsersIcon" :disabled="!can('index', 'profile')"> Profile </AppSidebarNav>
-            <AppSidebarNav linkName="account" :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')"> Account Settings </AppSidebarNav>
+            <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Dashboard </AppSidebarNav>
+            <AppSidebarNav linkName="profile" :icon="UsersIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Profile </AppSidebarNav>
+            <AppSidebarNav linkName="account" :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Account Settings </AppSidebarNav>
 
             <h3 class="mb-1 px-3 text-sm font-medium text-gray-100 mt-4" id="projects-headline">Pages</h3>
 
-            <AppSidebarNav linkName="home" :icon="HomeIcon"> Home </AppSidebarNav>
-            <AppSidebarNav linkName="about" :icon="InformationCircleIcon"> About </AppSidebarNav>
-            <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)"> Job Listing </AppSidebarNav>
-            <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)"> Calendar </AppSidebarNav>
-            <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon"> FAQs </AppSidebarNav>
-            <AppSidebarNav linkName="news" :icon="MegaphoneIcon"> News & Updates </AppSidebarNav>
+            <AppSidebarNav linkName="home" :icon="HomeIcon" @click="sidebarOpen = false"> Home </AppSidebarNav>
+            <AppSidebarNav linkName="about" :icon="InformationCircleIcon" @click="sidebarOpen = false"> About </AppSidebarNav>
+            <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)" @click="sidebarOpen = false"> Job Listing </AppSidebarNav>
+            <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)" @click="sidebarOpen = false"> Calendar </AppSidebarNav>
+            <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon" @click="sidebarOpen = false"> FAQs </AppSidebarNav>
+            <AppSidebarNav linkName="news" :icon="MegaphoneIcon" @click="sidebarOpen = false"> News & Updates </AppSidebarNav>
 
 
           </nav>
@@ -88,20 +88,20 @@
     </div>
     <div class="flex flex-1 flex-col md:pl-64">
       <HeaderBanner />
-      <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
+      <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white backdrop-blur bg-opacity-80 shadow">
         <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 md:hidden" @click="sidebarOpen = true">
           <span class="sr-only">Open sidebar</span>
           <Bars3BottomLeftIcon class="h-6 w-6" aria-hidden="true" />
         </button>
-        <div class="flex flex-1 justify-between px-4">
-          <div class="flex flex-1">
-            <form class="flex w-full md:ml-0" action="#" method="GET">
+        <div class="flex flex-1 justify-between px-4 ">
+          <div class="flex flex-1 ">
+            <form class="flex w-full md:ml-0 " action="#" method="GET">
               <label for="search-field" class="sr-only">Search</label>
-              <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+              <div class="relative w-full text-gray-400 focus-within:text-gray-600 ">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center">
                   <MagnifyingGlassIcon class="h-5 w-5" aria-hidden="true" />
                 </div>
-                <input id="search-field" class="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search" />
+                <input id="search-field" class="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 bg-opacity-50 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search" />
               </div>
             </form>
           </div>
@@ -117,7 +117,7 @@
         <BreadCrumbs />
 
         <div class="py-6">
-          <div class="mx-auto max-w-full px-4 sm:px-6 md:px-8">
+          <div class="mx-auto max-w-full sm:px-6 md:px-8">
 
             <PreLoader v-if="$preLoader.config.loading"/>
             <RouterView v-else></RouterView>

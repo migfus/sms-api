@@ -14,20 +14,20 @@
             @cancelClick="$voluntaries.ChangeForm(null)"
             v-slot="{errors}"
           >
-            <div class="col-span-6">
+            <div class="col-span-12 sm:col-span-6">
                 <AppInput v-model="$voluntaries.params.name" placeholder="Name" name="name" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$voluntaries.params.from" placeholder="From Date" name="from" type="date" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$voluntaries.params.to" placeholder="To Date" name="to" type="date" :errors="errors"/>
             </div>
 
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$voluntaries.params.hours" placeholder="Hours taken" name="hours" type="number" :errors="errors"/>
             </div>
-            <div class="col-span-4">
+            <div class="col-span-6 sm:col-span-4">
                 <AppInput v-model="$voluntaries.params.position" placeholder="Position" name="position" :errors="errors"/>
             </div>
           </FormCard>
@@ -42,20 +42,20 @@
             @cancelClick="$voluntaries.ChangeForm(null)"
             v-slot="{errors}"
           >
-            <div class="col-span-6">
+            <div class="col-span-12 sm:col-span-6">
                 <AppInput v-model="$voluntaries.params.name" placeholder="Name" name="name" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$voluntaries.params.from" placeholder="From Date" name="from" type="date" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$voluntaries.params.to" placeholder="To Date" name="to" type="date" :errors="errors"/>
             </div>
 
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$voluntaries.params.hours" placeholder="Hours taken" name="hours" type="number" :errors="errors"/>
             </div>
-            <div class="col-span-4">
+            <div class="col-span-6 sm:col-span-4">
                 <AppInput v-model="$voluntaries.params.position" placeholder="Position" name="position" :errors="errors"/>
             </div>
           </FormCard>
@@ -128,9 +128,9 @@ import { CalendarIcon, ClockIcon, MapPinIcon } from '@heroicons/vue/24/outline'
 import moment from 'moment'
 import { useDebounceFn } from '@vueuse/core'
 
-import Layout from     './~Components/Layout.vue'
-import ContentCard from'./~Components/ContentCard.vue'
-import FormCard from   './~Components/FormCard.vue'
+import Layout from      './~Components/Layout.vue'
+import ContentCard from './~Components/ContentCard.vue'
+import FormCard from    './~Components/FormCard.vue'
 import AppInput from    '@/components/form/AppInput.vue'
 import PromptModal from '@/components/modals/PromptModal.vue'
 import AppButton from   '@/components/form/AppButton.vue'

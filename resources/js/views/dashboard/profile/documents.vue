@@ -9,7 +9,7 @@
           <form
             v-if="$files.config.form == 'create'"
             enctype="multipart/form-data"
-            class="rounded-xl divide-y divide-gray-200 lg:col-span-9 bg-white shadow mb-3 grid-cols-12"
+            class="sm:rounded-xl divide-y divide-gray-200 lg:col-span-9 bg-white shadow mb-3 grid-cols-12"
           >
             <div class="py-6 px-4 sm:p-6 lg:pb-8 ">
               <div>
@@ -75,7 +75,7 @@
               <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8 px-5 py-6">
                 <li  v-for="row in $files.content" :key="row.id" class="relative justify-content-end">
 
-                  <div class="aspect-w-10 aspect-h-7 block w-full h-44 overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                  <div class="aspect-w-10 aspect-h-7 block w-full h-44 overflow-hidden sm:rounded-xl bg-gray-100 focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
 
                     <iframe
                       v-if="FileExtension(row.filename) == 'docx' || FileExtension(row.filename) == 'doc' || FileExtension(row.filename) == 'xlsx' || FileExtension(row.filename) == 'pdf'"

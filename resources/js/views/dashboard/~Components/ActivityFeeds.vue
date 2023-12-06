@@ -18,7 +18,7 @@
   ```
 -->
 <template>
-  <div class="bg-white rounded-xl shadow">
+  <div class="bg-white sm:rounded-xl shadow">
     <div class="flow-root">
       <ul role="list" class="px-4 py-0 divide-y divide-gray-200">
         <h1 class="p-4 font-bold text-gray-500">Activities</h1>

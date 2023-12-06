@@ -52,8 +52,9 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/store/@auth/AuthStore'
 import { reactive, onMounted } from 'vue'
-import AppButton from '@/components/form/AppButton.vue'
 import { useRoute } from 'vue-router'
+
+import AppButton from '@/components/form/AppButton.vue'
 
 const $auth = useAuthStore()
 const $route = useRoute()

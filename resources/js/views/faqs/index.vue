@@ -34,7 +34,7 @@ import { onMounted, onUnmounted, watch } from 'vue';
 import { throttle } from 'lodash';
 import { useFaqPublicStore } from '@/store/@public/FaqPublicStore'
 
-import FaqForm from './FaqForm.vue'
+import FaqForm from        './FaqForm.vue'
 import DataTransition from '@/components/transitions/DataTransition.vue'
 
 const $faq = useFaqPublicStore();

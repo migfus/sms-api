@@ -9,7 +9,7 @@
 import { useRoute } from 'vue-router'
 import { XMarkIcon } from '@heroicons/vue/20/solid'
 
-import CardComp from '@/components/AppCard.vue'
+import CardComp from   '@/components/AppCard.vue'
 import ButtonComp from '@/components/form/AppButton.vue'
 
 const $route = useRoute();

@@ -142,7 +142,7 @@ import { useAddressStore } from '@/store/system/AddressStore'
 import { ref, computed } from 'vue'
 
 import AppButton from '@/components/form/AppButton.vue'
-import AppInput from '@/components/form/AppInput.vue'
+import AppInput from  '@/components/form/AppInput.vue'
 import AppSelect from '@/components/form/AppSelect.vue'
 
 configure({

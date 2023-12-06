@@ -15,27 +15,27 @@
             @cancelClick="$seminars.ChangeForm(null)"
             v-slot="{errors}"
           >
-            <div class="col-span-4">
+            <div class="col-span-12 sm:col-span-4">
               <AppInput v-model="$seminars.params.name" placeholder="Seminar Name" name="name" :errors="errors"/>
             </div>
-            <div class="col-span-4">
+            <div class="col-span-6 sm:col-span-4">
               <AppSelect v-model="$seminars.params.seminar_type_id" placeholder="Seminar Type" name="type" :errors="errors">
                 <option v-for="row in $seminarType.content" :key="row.id" :value="row.id">{{ row.name }}</option>
               </AppSelect>
             </div>
 
-            <div class="col-span-4">
+            <div class="col-span-6 sm:col-span-4">
                 <AppInput v-model="$seminars.params.hours" placeholder="Hours taken" name="hours" type="number" :errors="errors"/>
             </div>
 
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$seminars.params.from" placeholder="From Date" name="from" type="date" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$seminars.params.to" placeholder="To Date" name="to" type="date" :errors="errors"/>
             </div>
 
-            <div class="col-span-6">
+            <div class="col-span-12 sm:col-span-6">
                 <AppInput v-model="$seminars.params.sponsor" placeholder="Sponsor" name="sponsor" :errors="errors"/>
             </div>
           </FormCard>
@@ -49,28 +49,28 @@
             @submitForm="$seminars.UpdateAPI()"
             @cancelClick="$seminars.ChangeForm(null)"
           >
-            <div class="col-span-4">
+            <div class="col-span-12 sm:col-span-4">
               <AppInput v-model="$seminars.params.name" placeholder="Seminar Name" name="name" :errors="errors"/>
             </div>
-            <div class="col-span-4">
+            <div class="col-span-6 sm:col-span-4">
               <AppSelect v-model="$seminars.params.seminar_type_id" placeholder="Seminar Type" name="type" :errors="errors">
                 <option v-for="row in $seminarType.content" :key="row.id" :value="row.id">{{ row.name }}</option>
               </AppSelect>
             </div>
 
-            <div class="col-span-4">
+            <div class="col-span-6 sm:col-span-4">
                 <AppInput v-model="$seminars.params.hours" placeholder="Hours taken" name="hours" type="number" :errors="errors"/>
             </div>
 
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$seminars.params.from" placeholder="From Date" name="from" type="date" :errors="errors"/>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-6 sm:col-span-3">
                 <AppInput v-model="$seminars.params.to" placeholder="To Date" name="to" type="date" :errors="errors"/>
             </div>
 
 
-            <div class="col-span-6">
+            <div class="col-span-12 sm:col-span-6">
                 <AppInput v-model="$seminars.params.sponsor" placeholder="Sponsor" name="sponsor" :errors="errors"/>
             </div>
           </FormCard>
@@ -156,7 +156,7 @@ import AppInput from    '@/components/form/AppInput.vue'
 import PromptModal from '@/components/modals/PromptModal.vue'
 import AppButton from   '@/components/form/AppButton.vue'
 import BasicTransition from '@/components/transitions/BasicTransition.vue'
-import DataTransition from '@/components/transitions/DataTransition.vue'
+import DataTransition from  '@/components/transitions/DataTransition.vue'
 import AppSelect from   '@/components/form/AppSelect.vue'
 
 const schema = Yup.object({

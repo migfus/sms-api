@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import Banner from './components/Banner.vue'
+import Banner from './~Components/Banner.vue'
 
-import AddressSection from './components/Address.vue'
-import TeamSection from './components/Team.vue'
+import AddressSection from './~Components/Address.vue'
+import TeamSection from    './~Components/Team.vue'
 </script>
 

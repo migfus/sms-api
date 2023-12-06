@@ -14,7 +14,7 @@
         </MenuButton>
       </div>
       <transition enter-active-class="transition ease-out duration-200" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-        <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <MenuItems class="bg-opacity-80 backdrop-blur absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <MenuItem v-slot="{ active }">
             <RouterLink :to="{name: 'dashboard'}" :class="[active || $route.name == 'dashboard' ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
               <WindowIcon class="h-5 w-5 inline-block mr-1" aria-hidden="true" />
@@ -25,12 +25,6 @@
             <RouterLink :to="{name: 'profile'}" :class="[active || $route.name == 'profile' ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
               <SquaresPlusIcon class="h-5 w-5 inline-block mr-1" aria-hidden="true" />
               Profile
-            </RouterLink>
-          </MenuItem>
-          <MenuItem v-slot="{ active }">
-            <RouterLink :to="{name: 'documents'}" :class="[active || $route.name == 'documents'  ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
-              <FolderIcon class="h-5 w-5 inline-block mr-1" aria-hidden="true" />
-              Documents
             </RouterLink>
           </MenuItem>
           <MenuItem v-slot="{ active }">
