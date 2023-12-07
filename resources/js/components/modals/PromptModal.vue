@@ -20,9 +20,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="mt-5 sm:mt-4 flex gap-2 justify-end">
-                  <AppButton @click="$emit('update:modelValue', false)" color="white">Cancel</AppButton>
-                  <AppButton @click="$emit('confirm', true); $emit('update:modelValue', false)" color="danger">{{ $props.confirmButtonName }}</AppButton>
+                <div class="mt-5 sm:mt-4 flex-none sm:flex gap-2 justify-end">
+                  <AppButton @click="$emit('update:modelValue', false)" color="white" class="w-full sm:w-auto mb-2 sm:mb-0">Cancel</AppButton>
+                  <AppButton @click="$emit('confirm', true); $emit('update:modelValue', false)" color="danger" class="w-full sm:w-auto">{{ $props.confirmButtonName }}</AppButton>
                 </div>
               </DialogPanel>
             </TransitionChild>

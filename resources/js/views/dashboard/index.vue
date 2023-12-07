@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-12 gap-4">
+  <div class="max-w-screen-xl mx-auto grid grid-cols-12 gap-4">
     <div class="col-span-12 xl:col-span-8">
       <!-- <StatisticCard class=""/> -->
       <AppliedJob />

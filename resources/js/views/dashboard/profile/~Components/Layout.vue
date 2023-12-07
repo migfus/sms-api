@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProfileBanner />
+    <ProfileBanner class="max-w-screen-xl mx-auto"/>
     <main class="relative">
       <div class="mx-auto max-w-screen-xl pb-6">
         <div class="overflow-hidden">

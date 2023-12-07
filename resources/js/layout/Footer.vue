@@ -43,7 +43,7 @@
               </ul>
             </div>
             <div class="mt-10 md:mt-0">
-              <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Others</h3>
               <ul role="list" class="mt-6 space-y-4">
                 <li v-for="item in navigation.legal" :key="item.name">
                   <RouterLink :to="{ name: item.href }" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</RouterLink>
@@ -93,6 +93,7 @@ const navigation = {
   ],
   legal: [
     { name: 'Terms & Agreement', href: 'terms-agreement' },
+    { name: 'Sitemap', href: 'sitemap' },
   ],
 };
 </script>

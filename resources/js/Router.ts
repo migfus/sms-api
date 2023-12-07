@@ -92,11 +92,29 @@ const router = createRouter({
     },
 
     {
+      path: '/download-documents',
+      name: 'download-documents',
+      component: () => import('@/views/download-documents/index.vue'),
+      meta: {
+        title: 'Posts'
+      },
+    },
+
+    {
       path: '/terms-agreement',
       name: 'terms-agreement',
       component: () => import('@/views/terms-agreement.vue'),
       meta: {
         title: 'Terms & Agreement'
+      }
+    },
+
+    {
+      path: '/sitemap',
+      name: 'sitemap',
+      component: () => import('@/views/sitemap.vue'),
+      meta: {
+        title: 'Sitemap'
       }
     },
 

@@ -33,6 +33,10 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
       name: 'Posts',
       link: { name: 'posts'}
     },
+    {
+      name: 'Download Documents',
+      link: { name: 'download-documents'}
+    },
   ]
   // BUG
   const social = shallowRef([
