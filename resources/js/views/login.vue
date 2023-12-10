@@ -8,19 +8,13 @@
 
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form class="space-y-6" action="#" method="POST" @submit.prevent="$auth.LoginAPI(input)">
+          <Form v-slot="{errors}" class="space-y-6" :validation-schema="schema" @submit="$auth.LoginAPI(input)">
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-              <div class="mt-1">
-                <input v-model="input.email" id="email" name="email" type="email" autocomplete="email" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm" />
-              </div>
+              <AppInput v-model="input.email" name="email" placeholder="Email" :errors="errors"/>
             </div>
 
             <div>
-              <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-              <div class="mt-1">
-                <input v-model="input.password" id="password" name="password" type="password" autocomplete="current-password" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm" />
-              </div>
+              <AppInput v-model="input.password" type="password" name="password" placeholder="Password" :errors="errors"/>
             </div>
 
             <div class="flex items-center justify-between">
@@ -35,11 +29,11 @@
             </div>
 
             <div>
-              <AppButton block :loading="$auth.config.loading" type="submit">
+              <AppButton block :loading="$auth.config.loading" type="submit" :disabled="Object.keys(errors).length != 0">
                 Login
               </AppButton>
             </div>
-          </form>
+          </Form>
 
 
         </div>
@@ -53,20 +47,34 @@
 import { useAuthStore } from '@/store/@auth/AuthStore'
 import { reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { Form, configure } from 'vee-validate'
+import * as Yup from 'yup'
 
 import AppButton from '@/components/form/AppButton.vue'
+import AppInput from '@/components/form/AppInput.vue'
 
 const $auth = useAuthStore()
 const $route = useRoute()
+
+configure({
+  validateOnInput: true
+})
 
 interface InputInt {
   email: string
   password: string
 }
+
+const schema = Yup.object({
+  email: Yup.string().required('Email is required').email('Invalid Email'),
+  password: Yup.string().required('Password is requried')
+})
+
 const input = reactive<InputInt>({
   email: '',
   password: '',
 });
+
 
 onMounted(() => {
   if($route.query.email) {

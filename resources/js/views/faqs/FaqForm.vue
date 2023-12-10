@@ -9,51 +9,59 @@
   </div>
 
   <div v-else class="mx-auto max-w-7xl py-6 px-10 lg:px-8 bg-white m-4 rounded-xl shadow">
-    <div class="mx-auto max-w-2xl text-left">
-      <h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900">Cant' find questions?</h2>
-      <div class="mt-4">
-        <textarea v-model="params.question" placeholder="Write some questions on your mind." id="about" name="about" rows="3" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"/>
-      </div>
+    <Form v-slot="{ errors }" :validation-schema="schema" >
+      <div class="mx-auto max-w-2xl text-left">
+        <h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900">Cant' find questions?</h2>
+        <p class="mt-4 text-base leading-7 text-gray-600">OHRM Staff will moderate your question before publishing. That will depends on your question.</p>
 
-      <div class="sm:col-span-3 mt-4">
-        <label for="last-name" class="block text-sm font-medium text-gray-700">Email (Optional)</label>
-        <div class="mt-1">
-          <input v-model="params.email" placeholder="We will notify you thru email" type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm" />
+        <div class="mt-4">
+          <AppTextArea name='question' placeholder='Question' />
         </div>
-      </div>
 
-      <div class="sm:col-span-3 mt-4">
-        <label for="last-name" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
-        <div class="mt-1">
-          <input v-model="params.phone" placeholder="Server not available." type="text" name="last-name" id="last-name" autocomplete="family-name" class="bg-gray-200 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm" disabled/>
+        <div class="sm:col-span-3 mt-4">
+          <AppInput name='email' placeholder='Email' />
         </div>
+
       </div>
 
 
-      <p class="mt-4 text-base leading-7 text-gray-600">HRMO Staff will moderate your question before it will publish to this website. That depends on your question.</p>
-    </div>
+      <div class="py-4 text-end">
+        <span class="isolate inline-flex rounded-md shadow-sm mt-1">
+          <AppButton type="submit" color="white" :disabled="Object.keys(errors).length != 0">
+            Submit
+          </AppButton>
+        </span>
+      </div>
+    </Form>
 
-
-    <div class="py-4 text-end">
-      <span class="isolate inline-flex rounded-md shadow-sm mt-1">
-        <button @click="config.submitted = true" type="button" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500">
-          <PaperAirplaneIcon class="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
-          Submit
-        </button>
-      </span>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { PaperAirplaneIcon, HeartIcon } from '@heroicons/vue/20/solid';
+import { HeartIcon } from '@heroicons/vue/20/solid'
+import {Form, configure } from 'vee-validate'
+import * as Yup from 'yup'
+
+import AppButton from '@/components/form/AppButton.vue'
+import AppInput from '@/components/form/AppInput.vue'
+import AppTextArea from '@/components/form/AppTextArea.vue'
 
 interface paramsInt {
   question: string
   email: string
   phone: string
 }
+
+configure({
+  validateOnInput: true
+})
+
+const schema = Yup.object({
+  email: Yup.string().email("Invalid Email")
+})
+
+
 interface configInt {
   submitted: boolean
 }

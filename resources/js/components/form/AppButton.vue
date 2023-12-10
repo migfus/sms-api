@@ -27,7 +27,7 @@
                   </svg>
                   <span class="sr-only">Loading...</span>
               </div>
-              <XMarkIcon v-if="$props.disabled" class="h-5 w-5 text-gray-700 mr-2 ml-0" aria-hidden="true" style="margin-top: 2px;"/>
+              <XMarkIcon v-if="$props.disabled" class="h-4 w-4 text-gray-700 mr-2 ml-0" aria-hidden="true" style="margin-top: 2px;"/>
           </BasicTransition>
 
 
@@ -70,12 +70,12 @@ const color = computed(() => {
             return 'bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-500 text-yellow-800'
         case 'danger':
             return 'bg-red-300 hover:bg-red-400 focus:ring-red-400 text-red-800'
-        case 'success' :
-            return 'bg-teal-200 hover:bg-teal-400 focus:ring-teal-500 text-green-800'
-        case 'white':
-            return 'border-1 border-slate-300 bg-gray-300 hover:bg-gray-200 focus:ring-slate-400 text-black'
+        // case 'success' :
+        //     return 'bg-teal-200 hover:bg-teal-400 focus:ring-teal-500 text-green-800'
+        case 'success':
+            return 'bg-green-300 hover:bg-primary-400 focus:ring-primary-500 text-primary-800'
         default:
-            return 'bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 text-white'
+          return 'border-1 border-slate-300 bg-gray-300 hover:bg-gray-200 focus:ring-slate-400 text-black'
     }
 })
 

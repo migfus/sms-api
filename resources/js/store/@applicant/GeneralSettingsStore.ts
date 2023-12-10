@@ -27,7 +27,7 @@ export const useGeneralSettingsStore = defineStore(title, () => {
   async function GetAPI() {
     config.contentLoading = true
     try {
-      let { data: {data}} = await axios.get<TContent>('/api/account/general')
+      let { data: {data}} = await axios.get('/api/account/general')
       console.log(data)
       params.value.notify_email_job   = DataToCheckBox(data.notify_email_job)
       params.value.notify_email_news  = DataToCheckBox(data.notify_email_news)
@@ -79,7 +79,7 @@ export const useGeneralSettingsStore = defineStore(title, () => {
     }
   }
 
-  function DataToCheckBox(data: integer) {
+  function DataToCheckBox(data: number) {
     return data == 1 ? true : false
   }
 

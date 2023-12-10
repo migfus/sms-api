@@ -21,7 +21,7 @@
             </div>
 
             <div>
-              <AppButton type="submit" block :loading="$forgot.config.buttonLoading">Send Recovery Link</AppButton>
+              <AppButton type="submit" block :loading="$forgot.config.buttonLoading" :disabled="Object.keys(errors).length != 0">Send Recovery Link</AppButton>
             </div>
           </Form>
 

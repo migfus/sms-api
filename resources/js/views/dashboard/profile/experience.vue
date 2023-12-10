@@ -171,7 +171,7 @@ import * as Yup from 'yup'
 import { useExperienceStore } from '@/store/@applicant/ExperienceStore'
 import { useWorkStatusStore } from '@/store/system/WorkStatusStore'
 import { useSalaryTypeStore } from '@/store/system/SalaryTypeStore'
-import { CalendarIcon, BanknotesIcon, MapPinIcon, StopIcon, TagIcon } from '@heroicons/vue/24/outline'
+import { CalendarIcon, BanknotesIcon, StopIcon, TagIcon } from '@heroicons/vue/24/outline'
 import moment from 'moment'
 import { NumberAddComma } from '@/helpers/Converter'
 import { useDebounceFn } from '@vueuse/core'
@@ -189,7 +189,7 @@ import AppSelect from   '@/components/form/AppSelect.vue'
 const schema = Yup.object({
   position: Yup.string().required('Position is required'),
   company: Yup.string().required('Company is required'),
-  work_status: Yup.number().required('Work Status is required'),
+  work_status: Yup.string().required('Work Status is required'),
   from: Yup.date().typeError('Invalid Date').required('From date is Required'),
   // to: Yup.date().typeError('Invalid Date').required('To date is Required'),
   salary: Yup.number().required('Salary is required').typeError('Invalid Number'),

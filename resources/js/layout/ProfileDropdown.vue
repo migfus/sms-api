@@ -40,12 +40,12 @@
 
   <div v-else class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
     <RouterLink :to="{name: 'login'}" class="ml-3 inline-flex items-center justify-center">
-      <AppButton>
+      <AppButton color="white">
         Login
       </AppButton>
     </RouterLink>
     <RouterLink :to="{name: 'register'}" class="ml-3 inline-flex items-center justify-center">
-      <AppButton color="warning">
+      <AppButton color="success">
         Register
       </AppButton>
     </RouterLink>

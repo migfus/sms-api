@@ -1,49 +1,6 @@
 <template>
-  <div class="bg-white shadow sm:rounded-xl max-w-screen-xl mx-auto mt-3 mb-3 p-6">
-    <h1 class="font-bold text-gray-600">Non-Fillable Documents</h1>
-  </div>
-
-  <div class="bg-white shadow sm:rounded-xl max-w-screen-xl mx-auto mb-6">
-    <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
-      <div v-for="(row, rowIdx) in nonFillable" :key="row.title" :class="[false ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '', rowIdx === 1 ? 'sm:rounded-tr-lg' : '', rowIdx === nonFillable.length - 2 ? 'sm:rounded-bl-lg' : '', rowIdx === nonFillable.length - 1 ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none' : '', 'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-500']">
-        <div>
-          <span :class="[row.iconBackground, row.iconForeground, 'rounded-lg inline-flex p-3 ring-4 ring-white']">
-            <component :is="row.icon" class="h-6 w-6" aria-hidden="true" />
-          </span>
-        </div>
-        <div class="mt-8">
-          <h3 class="text-lg font-medium">
-            <div class="focus:outline-none">
-              <!-- Extend touch target to entire panel -->
-              <!-- <span class="absolute inset-0" aria-hidden="true" /> -->
-              {{ row.title }}
-            </div>
-          </h3>
-          <p class="mt-2 text-sm text-gray-500">{{ row.desc }} </p>
-        </div>
-
-        <div class="flex justify-end gap-2 mt-4">
-          <a v-if="row.download_type.excel" :href="row.download_type.excel" target="_blank">
-            <AppButton>Download XLSX</AppButton>
-          </a>
-          <a v-if="row.download_type.word" :href="row.download_type.word" target="_blank">
-            <AppButton color="info">Download DOCX</AppButton>
-          </a>
-          <a v-if="row.download_type.pdf" :href="row.download_type.pdf" target="_blank">
-            <AppButton color="danger">Download PDF</AppButton>
-          </a>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
   <div class="bg-white shadow sm:rounded-xl max-w-screen-xl mx-auto my-3 p-6">
-    <h1 class="font-bold text-gray-600">Fillable Documents</h1>
+    <h1 class="font-bold text-gray-600">Downloadable Documents</h1>
   </div>
 
   <div class="bg-white shadow sm:rounded-xl max-w-screen-xl mx-auto mb-6">

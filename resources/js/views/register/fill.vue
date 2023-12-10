@@ -162,6 +162,8 @@ const schema = Yup.object({
     first_name: Yup.string().required('First name is required'),
 
     bday: Yup.date().typeError('Invalid Date').required('Date is Required'),
+    bplace_city: Yup.string().required("Birth Place is required"),
+    address_city: Yup.string().required('Address is required'),
     // bplace_city: Yup.string().required('Birth Place is required'),
     height: Yup.string().required('Height is required'),
     weight: Yup.string().required('Weight is required'),
