@@ -26,8 +26,13 @@ return new class extends Migration
           $table->decimal('height', 5, 2);
           $table->decimal('weight', 5, 2);
           $table->integer('address_id')->unsgined();
-          $table->string('address')->comment('specific address');
+          $table->string('address_barangay')->nullable();
+          $table->string('address_street')->nullable();
+          $table->string('address')->nullabe()->comment('specific address');
           $table->string('gsis_id')->nullable();
+          $table->string('philhealth_id')->nullable();
+          $table->string('sss_id')->nullable();
+          $table->string('agency_id')->nullable();
           $table->string('pagibig_id')->nullable();
           $table->string('tin_id')->nullable();
           $table->timestamps();

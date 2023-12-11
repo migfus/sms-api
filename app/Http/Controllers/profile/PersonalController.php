@@ -26,6 +26,7 @@ class PersonalController extends Controller
   public function update(Request $req, $id) {
     if(!$req->user()->can('update profile'))
       return $this->G_UnauthorizedResponse();
+    $user_id = $req->user()->id;
 
     $val = Validator::make($req->all(), [
       'last_name' => 'required',
@@ -38,19 +39,24 @@ class PersonalController extends Controller
       'height' => 'required',
       'weight' => 'required',
       'address_id' => 'required',
-      'address' => 'required',
+      'address_barangay' => '',
+      'address_street' => '',
+      'address' => '',
     ]);
 
     if($val->fails()) {
       return $this->G_ValidatorFailResponse($val);
     }
 
-    $user = User::where('id', $req->user()->id)->whereNot('avatar', $req->avatar)
-      ->update([
-        'avatar' => $this->G_AvatarUpload($req->avatar)
-      ]);
+    if(filter_var($req->avatar, FILTER_VALIDATE_URL) === false) {
+      $user = User::
+        where('id', $user_id)
+        ->update([
+          'avatar' => $this->G_AvatarUpload($req->avatar)
+        ]);
+    }
 
-    $info = Info::where('user_id', $req->user()->id)->where('id', $id)
+    $info = Info::where('user_id', $user_id)->where('id', $id)
       ->update([
         'last_name' => $req->last_name,
         'first_name' => $req->first_name,
@@ -64,10 +70,16 @@ class PersonalController extends Controller
         'height' => $req->height,
         'weight' => $req->weight,
         'address_id' => $req->address_id,
+        'address_barangay' => $req->address_barangay,
+        'address_street' => $req->address_street,
         'address' => $req->address,
+
         'gsis_id' => $req->gsis_id ?? null,
         'pagibig_id' => $req->pagibig_id ?? null,
+        'philhealth_id' => $req->philhealth_id ?? null,
+        'sss_id' => $req->sss_id ?? null,
         'tin_id' => $req->tin_id ?? null,
+        'agency_id' => $req->agency_id ?? null,
       ]);
 
     if(!$info) {

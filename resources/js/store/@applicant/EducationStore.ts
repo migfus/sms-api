@@ -3,32 +3,19 @@ import { defineStore } from 'pinia'
 import { useStorage, StorageSerializers } from '@vueuse/core'
 import axios from 'axios'
 import { notify } from 'notiwind'
-import type { TGConfig } from '../GlobalType'
+import type { TGConfig, TGEducation } from '../GlobalType'
 import { cityIDToProvinceID } from '@/helpers/Converter'
 
-interface TContent {
-  id: number
-  level: number
-  school: string
-  degree?: string
-  from: Date
-  to: Date
-  scholarship?: string
-  honors?: string
-  education_levels: {
-    name: string
-  }
-}
 
 const title = `applicant/EducationStore`
 export const useEducationStore = defineStore(title, () => {
-  const content = useStorage<TContent[]>(`${title}/content`, null, sessionStorage, { serializer: StorageSerializers.object})
+  const content = useStorage<TGEducation[]>(`${title}/content`, null, sessionStorage, { serializer: StorageSerializers.object})
   const config = reactive<TGConfig>({
     contentLoading: false,
     buttonLoading: false,
     form: ''
   })
-  const params = useStorage<TContent>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
+  const params = useStorage<TGEducation>(`${title}/params`, InitParams(), sessionStorage, { serializer: StorageSerializers.object })
   const query = reactive<{ search: string }>({
     search: ''
   })
@@ -131,7 +118,7 @@ export const useEducationStore = defineStore(title, () => {
       to: null,
       scholarship: '',
       honors: '',
-      education_levels: {
+      education_level: {
         name: ''
       }
     }
@@ -141,7 +128,7 @@ export const useEducationStore = defineStore(title, () => {
     params.value.id = id
   }
 
-  function ChangeForm(row?: TContent, formMode = null) {
+  function ChangeForm(row?: TGEducation, formMode = null) {
     if(formMode == 'update') {
       config.form = 'update'
       params.value = row

@@ -58,6 +58,8 @@ Route::middleware('auth:sanctum')->group(function () {
         ->except(['show']);
       Route::apiResource('/files',         \App\Http\Controllers\profile\FilesController::class)
         ->except(['show']);
+      Route::apiResource('/generate-pds',  \App\Http\Controllers\profile\GeneratePdsController::class)
+        ->only(['index']);
     });
 
     Route::group(['prefix' => 'account', 'as' => 'account.'], function () {

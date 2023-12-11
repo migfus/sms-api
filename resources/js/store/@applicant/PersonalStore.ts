@@ -22,11 +22,16 @@ interface TContent {
   height: number
   weight: number
   address_id: number
+  address_barangay: string
+  address_street: string
   address: string
 
   gsis_id: string
   pagibig_id: string
   tin_id: string
+  philhealth_id: string
+  sss_id: string
+  agency_id: string
 
   avatar: string
 }
@@ -56,7 +61,6 @@ export const usePersonalStore = defineStore(title, () => {
       content.value = data
       params.value = data
       params.value.sex = data.sex ? 'true' : 'false'
-
     }
     catch(err) {
       console.log(err)
@@ -104,11 +108,16 @@ export const usePersonalStore = defineStore(title, () => {
       height: null,
       weight: null,
       address_id: null,
+      address_barangay: '',
+      address_street: '',
       address: '',
 
       gsis_id: null,
       pagibig_id: null,
       tin_id: null,
+      philhealth_id: null,
+      sss_id: null,
+      agency_id: null,
 
       avatar: null
     }

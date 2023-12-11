@@ -7,6 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Routing\UrlGenerator;
 
 use App\Models\User;
 
@@ -62,7 +63,7 @@ class Controller extends BaseController
     $location = '/uploads/'.$path.$imageName;
     file_put_contents('uploads/'.$path.$imageName, $image);
 
-    return $location;
+    return url('').$location;
   }
 
   public function G_FileUpload($file, $path = '') : string {

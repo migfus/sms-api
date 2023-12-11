@@ -70,7 +70,9 @@ class AuthController extends Controller
       'height' => 'required',
       'weight' => 'required',
       'address_id' => 'required',
-      'address' => 'required',
+      'address_barangay' => '',
+      'address_street' => '',
+      'address' => '',
     ]);
 
     if($val->fails()) {
@@ -97,7 +99,9 @@ class AuthController extends Controller
       'height' => $req->height,
       'weight' => $req->weight,
       'address_id' => $req->address_id,
-      'address' => $req->address,
+      'address_barangay' => $req->address_barangay ?? null,
+      'address_street' => $req->address_street ?? null,
+      'address' => $req->address ?? null,
     ]);
 
     if($req->mobile) {

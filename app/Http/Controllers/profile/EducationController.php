@@ -20,7 +20,7 @@ class EducationController extends Controller
 
     $educ = Education::
       where('info_id', $req->user()->info->id)
-      ->with(['education_levels'])
+      ->with(['education_level'])
       ->where(function ($q) use($req){
         $q->where('school', 'LIKE', '%'.$req->search.'%');
         $q->orWhere('degree', 'LIKE', '%'.$req->search.'%');

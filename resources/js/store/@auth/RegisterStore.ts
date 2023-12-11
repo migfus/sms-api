@@ -22,6 +22,8 @@ interface TParams {
   height: number
   weight: number
   address_id: number
+  address_barangay: string,
+  address_street: string,
   address: string,
   mobile: string
 }
@@ -89,6 +91,8 @@ export const useRegisterStore = defineStore(title, () => {
       height: 0,
       weight: 0,
       address_id: null,
+      address_barangay: null,
+      address_street: null,
       address: null,
       mobile: `09`,
     }

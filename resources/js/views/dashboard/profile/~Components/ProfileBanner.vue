@@ -13,8 +13,7 @@
             <h1 class="truncate text-2xl font-bold text-gray-900">{{ $auth.content.auth.email }}</h1>
           </div>
           <div class="justify-stretch mt-6 flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-            <AppButton color="white">Generate PDS</AppButton>
-
+            <GeneratePDS />
           </div>
         </div>
       </div>
@@ -27,8 +26,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '@/store/@auth/AuthStore'
-import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/20/solid'
-import AppButton from '@/components/form/AppButton.vue'
+import GeneratePDS from './GeneratePds.vue'
 
 const profile = {
   name: 'Ricardo Cooper',

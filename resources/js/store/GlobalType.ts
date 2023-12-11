@@ -60,6 +60,9 @@ export type TGPersonal = {
   ext_name: string
 
   civil_status_id: number
+  civil_status: {
+    name: string
+  }
   birth_day: Date
   birth_place_id: number
   blood_type_id: number
@@ -70,16 +73,27 @@ export type TGPersonal = {
   height: number
   weight: number
   address_id: number
+  address_barangay: string
+  address_street: string
   address: string
 
-  gsis_id: string
-  pagibig_id: string
-  tin_id: string
+  gsis_id?: string
+  pagibig_id?: string
+  // philhealth_id?: string
+  tin_id?: string
+  philhealth_id?: string
+  sss_id?: string
+  agency_id?: string
+  mobile_numbers: {
+    number: number
+  }[]
+
 }
 
 export type TGEducation = {
+  id: number
   level: number
-  education_levels: { name: string }
+  education_level: { name: string }
   school: string
   degree: string
   from: Date

@@ -109,8 +109,14 @@
                             </AppSelect>
                         </div>
 
+                        <div class="col-span-3">
+                            <AppInput v-model="$register.params.address_barangay" placeholder="Barangay" name="address_barangay" :errors="errors"/>
+                        </div>
+                        <div class="col-span-3">
+                            <AppInput v-model="$register.params.address_street" placeholder="Street" name="address_street" :errors="errors"/>
+                        </div>
                         <div class="col-span-6">
-                            <AppInput v-model="$register.params.address" placeholder="Address (Street, Purok)" name="address" :errors="errors"/>
+                            <AppInput v-model="$register.params.address" placeholder="Address (Purok)" name="address" :errors="errors"/>
                         </div>
 
                         <div class="col-span-6">
@@ -122,7 +128,7 @@
             </div>
 
             <div class="flex justify-end mt-8 gap-1">
-                <AppButton type="submit" color='success' :disabled="Object.keys(errors).length != 0">Register</AppButton>
+                <AppButton type="submit" color='success' :disabled="Object.keys(errors).length != 0" :loading="$register.config.buttonLoading">Register</AppButton>
                 <!-- <AppButton @click="$user.ChangeForm()" color="white">Cancel</AppButton> -->
             </div>
 

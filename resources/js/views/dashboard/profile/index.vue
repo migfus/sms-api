@@ -131,8 +131,33 @@
                 </AppSelect>
             </div>
 
-            <div class="col-span-12">
-                <AppInput v-model="$person.params.address" placeholder="Address (Street, Purok)" name="address" :errors="errors"/>
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.address_barangay" placeholder="Barangay" name="address_barangay" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.address_street" placeholder="Street" name="address_street" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.address" placeholder="Address (Purok)" name="address" :errors="errors"/>
+            </div>
+
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.gsis_id" placeholder="GSIS ID No." name="gsis_id" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.pagibig_id" placeholder="Pag-Ibig No." name="pagibig_id" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.philhealth_id" placeholder="PhilHealth No." name="philhealth_id" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.sss_id" placeholder="SSS No." name="sss_id" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.tin_id" placeholder="TIN No." name="tin_id" :errors="errors"/>
+            </div>
+            <div class="col-span-4">
+                <AppInput v-model="$person.params.agency_id" placeholder="Agency Employee No." name="agency_id" :errors="errors"/>
             </div>
           </div>
 

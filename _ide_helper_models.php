@@ -67,7 +67,7 @@ namespace App\Models{
  * @property string|null $honors
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\EducationLevel|null $education_levels
+ * @property-read \App\Models\EducationLevel|null $education_level
  * @method static \Illuminate\Database\Eloquent\Builder|Education newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Education newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Education query()
@@ -208,6 +208,7 @@ namespace App\Models{
  * @property int $is_government
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\SalaryType|null $salary_type
  * @property-read \App\Models\WorkStatus|null $work_status
  * @method static \Illuminate\Database\Eloquent\Builder|Experience newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Experience newQuery()
@@ -303,19 +304,29 @@ namespace App\Models{
  * @property string $height
  * @property string $weight
  * @property int $address_id
+ * @property string|null $address_barangay
+ * @property string|null $address_street
  * @property string $address specific address
  * @property string|null $gsis_id
+ * @property string|null $philhealth_id
+ * @property string|null $sss_id
+ * @property string|null $agency_id
  * @property string|null $pagibig_id
  * @property string|null $tin_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\BloodType|null $blood_type
  * @property-read \App\Models\CivilStatus|null $civil_status
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MobileNumber> $mobile_numbers
+ * @property-read int|null $mobile_numbers_count
  * @method static \Illuminate\Database\Eloquent\Builder|Info newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Info newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Info query()
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Info whereAddressBarangay($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereAddressId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Info whereAddressStreet($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Info whereAgencyId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereBirthDay($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereBirthPlaceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereBloodTypeId($value)
@@ -329,7 +340,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereMidName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info wherePagibigId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Info wherePhilhealthId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereSex($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Info whereSssId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereTinId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Info whereUserId($value)
@@ -692,6 +705,12 @@ namespace App\Models{
  * @property string|null $email
  * @property string|null $password
  * @property string|null $avatar
+ * @property int $notify_email_job
+ * @property int $notify_email_news
+ * @property int $notify_email_event
+ * @property int $notify_sms_job
+ * @property int $notify_sms_news
+ * @property int $notify_sms_event
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -716,6 +735,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNotifyEmailEvent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNotifyEmailJob($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNotifyEmailNews($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNotifySmsEvent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNotifySmsJob($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNotifySmsNews($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)

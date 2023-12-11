@@ -25,7 +25,15 @@ class Info extends Model
       'height',
       'weight',
       'address_id',
+      'address_barangay',
+      'address_street',
       'address',
+      'gsis_id',
+      'pag_ibig_id',
+      'tin_id',
+      'philhealth_id',
+      'sss_id',
+      'agency_id',
     ];
 
     public function civil_status() {
@@ -34,5 +42,9 @@ class Info extends Model
 
     public function blood_type() {
       return $this->belongsTo(BloodType::class, 'blood_type_id');
+    }
+
+    public function mobile_numbers() {
+      return $this->hasMany(MobileNumber::class);
     }
 }

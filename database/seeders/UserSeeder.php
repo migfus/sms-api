@@ -29,10 +29,15 @@ class UserSeeder extends Seeder
         'height' => 1.6,
         'weight' => 65.1,
         'address_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
-        'address' => 'Bonifacion Street, Poblacion',
+        'address_barangay' => 'Poblacion',
+        'address_street' => 'Laviña Ave.',
+        'address' => 'P5',
         'gsis_id' => null,
         'pagibig_id' => null,
         'tin_id' => null,
+        'philhealth_id' => null,
+        'sss_id' => null,
+        'agency_id' => null,
       ],
       [
         'id' => $_ENV['SEEDER_PERSON_APPLICANT_ID'], //applicant [first user],
@@ -49,10 +54,15 @@ class UserSeeder extends Seeder
         'height' => 1.6,
         'weight' => 65.1,
         'address_id' => DB::table('address_cities')->where('id', 258)->first()->id, // valencia city, bukidnon
-        'address' => 'Bonifacion Street, Poblacion',
+        'address_barangay' => 'Poblacion',
+        'address_street' => 'Laviña Ave.',
+        'address' => 'P5',
         'gsis_id' => null,
         'pagibig_id' => null,
         'tin_id' => null,
+        'philhealth_id' => null,
+        'sss_id' => null,
+        'agency_id' => null
       ],
     ];
 

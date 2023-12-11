@@ -13,7 +13,7 @@ class Education extends Model
   protected $fillable = [
     'info_id', 'level', 'school', 'degree', 'from', 'to', 'scholarship', 'honors'
   ];
-    public function education_levels() {
+    public function education_level() {
     return $this->belongsTo(EducationLevel::class, 'level');
   }
 }

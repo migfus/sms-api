@@ -109,8 +109,8 @@
                 <div class="block hover:bg-gray-50">
                   <div class="px-4 py-4 sm:px-6">
                     <div class="flex items-center justify-between">
-                      <p :class="['truncate text-sm font-medium text-primary-600', EducationLevel(row.education_levels.name)]">
-                        {{ row.education_levels.name }} - {{ row.school }}
+                      <p :class="['truncate text-sm font-medium text-primary-600', EducationLevel(row.education_level.name)]">
+                        {{ row.education_level.name }} - {{ row.school }}
                       </p>
                       <div class="ml-2 flex flex-shrink-0">
                         <AppButton @click="$educ.ChangeForm(row, 'update')" color='white' class="mr-2" size="sm">Edit</AppButton>

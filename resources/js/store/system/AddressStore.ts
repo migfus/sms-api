@@ -17,9 +17,62 @@ export const useAddressStore = defineStore(title, () => {
     }
   }
 
+  function addressIDToFull(id: number) {
+    for (let i = 0; content.value.length > i; i++) {
+      const province = content.value[i];
+      for (let f = 0; province.cities.length > f; f++) {
+        if (province.cities[f].id == id) {
+          return `${province.cities[f].name}, ${province.name}`;
+        }
+      }
+    }
+    return null;
+  }
+
+  function addressIDToName(id: number) {
+    for (let i = 0; content.value.length > i; i++) {
+      const province = content.value[i];
+      for (let f = 0; province.cities.length > f; f++) {
+        if (province.cities[f].id == id) {
+          return `${province.cities[f].name}`
+        }
+      }
+    }
+    return null;
+  }
+
+  function addressIDToProvinceName(id: number) {
+    for (let i = 0; content.value.length > i; i++) {
+      const province = content.value[i];
+      for (let f = 0; province.cities.length > f; f++) {
+        if (province.cities[f].id == id) {
+          return `${province.name}`
+        }
+      }
+    }
+    return null;
+  }
+
+  function addressIDToZip(id: number) {
+    for (let i = 0; content.value.length > i; i++) {
+      const province = content.value[i];
+      for (let f = 0; province.cities.length > f; f++) {
+        if (province.cities[f].id == id) {
+          return `${province.cities[f].zipcode}`
+        }
+      }
+    }
+    return null;
+  }
+
   return {
     content,
 
-    GetAPI
+    GetAPI,
+
+    addressIDToFull,
+    addressIDToName,
+    addressIDToProvinceName,
+    addressIDToZip
   }
 })
