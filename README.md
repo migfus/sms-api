@@ -37,3 +37,4 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## PHP Requirements
 - extension=zip, extension=gd
+# cmuid
