@@ -4,10 +4,9 @@ import axios from "axios"
 import { notify } from 'notiwind'
 import { useStorage, StorageSerializers } from '@vueuse/core'
 import ability from '@/Ability'
-import type { TGAuth } from "../GlobalType"
 
 interface TContent {
-  auth: TGAuth
+  auth: any
   ip: string
   permissions: Array<string>
   token: string
@@ -60,41 +59,6 @@ export const useAuthStore = defineStore(title, () => {
     config.loading = false
   }
 
-  async function RecoveryAPI(input: TInput) {
-    config.loading = true
-    try {
-      let { data: { data }} = await axios.post('/api/recovery', input)
-      config.status = data
-    }
-    catch(e) {
-      console.error('RecoveryAPI Error', '')
-    }
-    config.loading = false
-  }
-
-  async function ConfirmRecoveryAPI(input: TInput) {
-    try {
-      let { data: { data }} = await axios.post('/api/recovery-confirm', input)
-      config.confirm = data
-    }
-    catch(e) {
-      console.error('ConfirmRecoveryAPI Error', '')
-    }
-  }
-
-  async function ChangePasswordAPI(input: TInput) {
-    try {
-      let { data: { data }} = await axios.post('/api/change-password-recovery', input)
-      if(data) {
-        //@ts-ignore
-        this.router.push({name: 'login'})
-      }
-    }
-    catch(e) {
-      console.error('ChangePasswordAPI Error', '')
-    }
-  }
-
   // SECTION FUNC
   function Logout() {
     content.value = null
@@ -135,11 +99,9 @@ export const useAuthStore = defineStore(title, () => {
     config,
     token,
 
-    ConfirmRecoveryAPI,
-    ChangePasswordAPI,
     LoginAPI,
-    RecoveryAPI,
     Logout,
+
     UpdateData,
     UpdateAbility,
   }

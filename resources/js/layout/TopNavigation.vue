@@ -26,103 +26,9 @@
                 'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
                 ]"
             >
-              Home
+              Register
             </RouterLink>
 
-            <RouterLink to="/about" :class="[$route.name == 'about' ?
-              'border-primary-700 text-gray-900' :
-              'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-              'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-              ]"
-            >
-              About
-            </RouterLink>
-
-            <RouterLink :to="{ name: 'job-listing'}" :class="[$route.name == 'job-listing' ?
-              'border-primary-700 text-gray-900' :
-              'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-              'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-              ]"
-            >
-              Job Listing
-              <div v-if="$job.content.length > 0" class="relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-amber-300 rounded-full -top-2 right-1">{{ $job.content.length }}</div>
-            </RouterLink>
-
-            <RouterLink :to="{ name: 'calendar'}" :class="[$route.name == 'calendar' ?
-              'border-primary-700 text-gray-900' :
-              'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-              'hidden md:inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-              ]"
-            >
-              Calendar
-              <div class="relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">{{ $event.eventCount }}</div>
-            </RouterLink>
-
-            <RouterLink :to="{ name: 'faqs'}" :class="[$route.name == 'faqs' ?
-              'border-primary-700 text-gray-900' :
-              'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-              'hidden md:inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-              ]"
-            >
-              FAQs
-            </RouterLink>
-
-            <RouterLink :to="{ name: 'posts'}" :class="[$route.name == 'posts' ?
-              'border-primary-700 text-gray-900' :
-              'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-              'hidden lg:inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-              ]"
-            >
-              Posts
-            </RouterLink>
-
-            <RouterLink :to="{ name: 'download-documents'}" :class="[$route.name == 'download-documents' ?
-              'border-primary-700 text-gray-900' :
-              'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-              'hidden lg:inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
-              ]"
-            >
-              Download Documents
-            </RouterLink>
-
-            <Popover class="block lg:hidden relative border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 mt-5" v-slot="{ open }">
-              <PopoverButton :class="[
-                open ?
-                'text-gray-900' :
-                'text-gray-500',
-                'inline-flex items-center ']"
-              >
-                <span>More</span>
-                <ChevronDownIcon :class="[open ? 'text-gray-600' : 'text-gray-400', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" />
-                <div class="absolute hidden sm:inline-flex md:hidden items-center justify-center w-6 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 -right-3">{{  $event.eventCount }}</div>
-              </PopoverButton>
-
-              <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-                <PopoverPanel class="absolute left-1/2 z-10 mt-5 w-screen max-w-md -translate-x-1/2 transform">
-                  <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                    <div class="relative grid bg-white gap-4 p-4">
-
-                      <RouterLink :to="{name: 'calendar'}" class="md:hidden -m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
-                        <span class="text-base font-medium text-gray-900">Calendar</span>
-                        <div class="relative inline-flex items-center justify-center w-7 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">{{ $event.eventCount }}</div>
-                      </RouterLink>
-
-                      <RouterLink :to="{name: 'faqs'}" class="md:hidden -m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
-                        <span class="text-base font-medium text-gray-900">FAQs</span>
-                      </RouterLink>
-
-                      <RouterLink :to="{name: 'posts'}" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
-                        <span class="text-base font-medium text-gray-900">Posts</span>
-                      </RouterLink>
-
-                      <RouterLink :to="{name: 'download-documents'}" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
-                        <span class="text-base font-medium text-gray-900">Download Documents</span>
-                      </RouterLink>
-                    </div>
-                  </div>
-                </PopoverPanel>
-              </transition>
-            </Popover>
           </div>
         </div>
 
@@ -147,8 +53,6 @@
             ">
             <DisclosureButton style="width: 100%; text-align: left;">
               {{ row.name }}
-              <div v-if="row.link.name == 'job-listing' && $job.content.length > 0" class="relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-amber-400 rounded-full -top-2 right-1">{{ $job.content.length }}</div>
-              <div v-if="row.link.name == 'calendar'" class="relative inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-gradient-to-r from-primary-500 to-amber-200 rounded-full -top-2 right-1">20</div>
             </DisclosureButton>
 
         </RouterLink>
@@ -169,8 +73,6 @@ import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/vue/24/outline
 import { useNavigationStore } from '@/store/system/NavigationStore'
 import { useRoute } from 'vue-router'
 import { usePreLoader } from '@/store/system/PreLoader'
-import { useJobPublicStore } from '@/store/@public/JobPublicStore'
-import { useEventPublicStore } from '@/store/@public/EventPublicStore'
 
 import HeaderBanner from '@/layout/HeaderBanner.vue'
 import PreLoader from '@/layout/preloader/@PreLoader.vue'
@@ -180,6 +82,4 @@ import FooterLayout from './Footer.vue'
 const $nav = useNavigationStore()
 const $route = useRoute()
 const $preLoader = usePreLoader()
-const $job = useJobPublicStore()
-const $event = useEventPublicStore()
 </script>

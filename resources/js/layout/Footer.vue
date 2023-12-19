@@ -27,9 +27,9 @@
             <div class="mt-10 md:mt-0">
               <h3 class="text-sm font-semibold leading-6 text-gray-900">FAQs</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="row in $faqs.content" :key="row.id" class="truncate">
+                <!-- <li v-for="row in $faqs.content" :key="row.id" class="truncate">
                   <RouterLink to="/faqs" class="text-sm leading-6 text-gray-600 hover:text-gray-900 text-ellipsis">{{ row.question }}</RouterLink>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -37,9 +37,9 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Posts</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="row in $posts.content" :key="`${row.id}`" class="truncate">
+                <!-- <li v-for="row in $posts.content" :key="`${row.id}`" class="truncate">
                   <RouterLink :to="`/posts/${row.id}`" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ row.title }}</RouterLink>
-                </li>
+                </li> -->
               </ul>
             </div>
             <div class="mt-10 md:mt-0">
@@ -62,12 +62,8 @@
 
 <script setup lang="ts">
 import { useNavigationStore } from '@/store/system/NavigationStore'
-import { usePostPublicStore } from '@/store/@public/PostPublicStore'
-import { useFaqPublicStore } from  '@/store/@public/FaqPublicStore'
 
 const $nav =   useNavigationStore()
-const $posts = usePostPublicStore()
-const $faqs =  useFaqPublicStore()
 
 const $props = defineProps({
   sideBar: {
@@ -79,21 +75,21 @@ const $props = defineProps({
 const navigation = {
   pages: $nav.pages,
   support: [
-    { name: 'Pricing', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-    { name: 'API Status', href: '#' },
+    // { name: 'Pricing', href: '#' },
+    // { name: 'Documentation', href: '#' },
+    // { name: 'Guides', href: '#' },
+    // { name: 'API Status', href: '#' },
   ],
   company: [
-    { name: 'About', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Partners', href: '#' },
+    // { name: 'About', href: '#' },
+    // { name: 'Blog', href: '#' },
+    // { name: 'Jobs', href: '#' },
+    // { name: 'Press', href: '#' },
+    // { name: 'Partners', href: '#' },
   ],
   legal: [
-    { name: 'Terms & Agreement', href: 'terms-agreement' },
-    { name: 'Sitemap', href: 'sitemap' },
+    // { name: 'Terms & Agreement', href: 'terms-agreement' },
+    // { name: 'Sitemap', href: 'sitemap' },
   ],
 };
 </script>

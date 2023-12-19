@@ -32,19 +32,19 @@
                 <nav class="space-y-1 px-2">
 
                   <!-- SECTION MOBILE NAV -->
-                  <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Dashboard </AppSidebarNav>
+                  <!-- <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Dashboard </AppSidebarNav>
                   <AppSidebarNav linkName="profile"   :icon="UsersIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Prolife </AppSidebarNav>
-                  <AppSidebarNav linkName="account"   :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Account Settings </AppSidebarNav>
+                  <AppSidebarNav linkName="account"   :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Account Settings </AppSidebarNav> -->
 
                   <h3 class="mb-1 px-3 text-sm font-medium text-gray-100 mt-4" id="projects-headline">Pages</h3>
 
-                  <AppSidebarNav linkName="home" :icon="HomeIcon" @click="sidebarOpen = false"> Home </AppSidebarNav>
+                  <!-- <AppSidebarNav linkName="home" :icon="HomeIcon" @click="sidebarOpen = false"> Home </AppSidebarNav>
                   <AppSidebarNav linkName="about" :icon="InformationCircleIcon" @click="sidebarOpen = false"> About </AppSidebarNav>
                   <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)" @click="sidebarOpen = false"> Job Listing </AppSidebarNav>
                   <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)" @click="sidebarOpen = false"> Calendar </AppSidebarNav>
                   <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon" @click="sidebarOpen = false"> FAQs </AppSidebarNav>
                   <AppSidebarNav linkName="posts" :icon="MegaphoneIcon" @click="sidebarOpen = false"> Posts </AppSidebarNav>
-                  <AppSidebarNav linkName="download-documents" :icon="ArrowDownOnSquareIcon" @click="sidebarOpen = false"> Download Documents </AppSidebarNav>
+                  <AppSidebarNav linkName="download-documents" :icon="ArrowDownOnSquareIcon" @click="sidebarOpen = false"> Download Documents </AppSidebarNav> -->
 
                 </nav>
               </div>
@@ -69,19 +69,19 @@
           <nav class="flex-1 space-y-1 px-2 pb-4">
 
             <!-- SECTION DESKTOP NAV -->
-            <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Dashboard </AppSidebarNav>
+            <!-- <AppSidebarNav linkName="dashboard" :icon="WindowIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Dashboard </AppSidebarNav>
             <AppSidebarNav linkName="profile" :icon="UsersIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Profile </AppSidebarNav>
-            <AppSidebarNav linkName="account" :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Account Settings </AppSidebarNav>
+            <AppSidebarNav linkName="account" :icon="Cog6ToothIcon" :disabled="!can('index', 'profile')" @click="sidebarOpen = false"> Account Settings </AppSidebarNav> -->
 
             <h3 class="mb-1 px-3 text-sm font-medium text-gray-100 mt-4" id="projects-headline">Pages</h3>
 
-            <AppSidebarNav linkName="home" :icon="HomeIcon" @click="sidebarOpen = false"> Home </AppSidebarNav>
+            <!-- <AppSidebarNav linkName="home" :icon="HomeIcon" @click="sidebarOpen = false"> Home </AppSidebarNav>
             <AppSidebarNav linkName="about" :icon="InformationCircleIcon" @click="sidebarOpen = false"> About </AppSidebarNav>
             <AppSidebarNav linkName="job-listing" :icon="BriefcaseIcon" :span="Number($job.content.length)" @click="sidebarOpen = false"> Job Listing </AppSidebarNav>
             <AppSidebarNav linkName="calendar" :icon="CalendarIcon" :span="Number($event.eventCount)" @click="sidebarOpen = false"> Calendar </AppSidebarNav>
             <AppSidebarNav linkName="faqs" :icon="CheckCircleIcon" @click="sidebarOpen = false"> FAQs </AppSidebarNav>
             <AppSidebarNav linkName="posts" :icon="MegaphoneIcon" @click="sidebarOpen = false"> Posts </AppSidebarNav>
-            <AppSidebarNav linkName="download-documents" :icon="ArrowDownOnSquareIcon" @click="sidebarOpen = false"> Download Documents </AppSidebarNav>
+            <AppSidebarNav linkName="download-documents" :icon="ArrowDownOnSquareIcon" @click="sidebarOpen = false"> Download Documents </AppSidebarNav> -->
 
           </nav>
         </div>
@@ -160,8 +160,6 @@ import {
 } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { usePreLoader } from '@/store/system/PreLoader'
-import { useEventPublicStore } from '@/store/@public/EventPublicStore'
-import { useJobPublicStore } from '@/store/@public/JobPublicStore'
 import { useAbility } from '@casl/vue'
 
 import BreadCrumbs from '@/layout/BreadCrumbs.vue'
@@ -172,8 +170,6 @@ import FooterLayout from './Footer.vue'
 import AppSidebarNav from '@/components/AppSidebarNav.vue'
 
 const $preLoader = usePreLoader()
-const $event = useEventPublicStore()
-const $job = useJobPublicStore()
 const { can } =  useAbility();
 
 const sidebarOpen = ref(false);

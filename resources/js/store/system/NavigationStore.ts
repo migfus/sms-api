@@ -10,32 +10,8 @@ export const useNavigationStore = defineStore("system/NavigationStore", () => {
 
   const pages: Array<pagesInt> = [
     {
-      name: 'Home',
-      link: { name: 'home'},
-    },
-    {
-      name: 'About',
-      link: { name: 'about'}
-    },
-    {
-      name: 'Job Listing',
-      link: { name: 'job-listing'}
-    },
-    {
-      name: 'Calendar',
-      link: { name: 'calendar'}
-    },
-    {
-      name: 'FAQs',
-      link: { name: 'faqs'}
-    },
-    {
-      name: 'Posts',
-      link: { name: 'posts'}
-    },
-    {
-      name: 'Download Documents',
-      link: { name: 'download-documents'}
+      name: 'Register',
+      link: { name: 'register'},
     },
   ]
   // BUG
