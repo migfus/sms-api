@@ -53,19 +53,13 @@ class RoleAndPermissionsSeeder extends Seeder
     Permission::create(['name' => 'index profile']);
     Permission::create(['name' => 'update profile']);
 
-    $role = Role::create(['name' => 'Staff']);
+    $role = Role::create(['name' => 'Admin']);
     $role->givePermissionTo([
       // 'index user',     'store user',     'update user',
       // 'index post',     'store post',     'update post',
       // 'index faq',      'store faq',      'update faq',
       // 'index event',    'store event',    'update event',
       // 'index person',   'store person',   'update person',
-      // 'index dashboard','store dashboard','update dashboard','destroy dashboard',
-      'index profile', 'update profile'
-    ]);
-
-    $role = Role::create(['name' => 'Applicant']);
-    $role->givePermissionTo([
       // 'index dashboard','store dashboard','update dashboard','destroy dashboard',
       'index profile', 'update profile'
     ]);

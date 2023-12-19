@@ -57,120 +57,25 @@ class AuthController extends Controller
 
   public function Register(Request $req) {
     $val = Validator::make($req->all(), [
-      'email' => 'required|email|unique:users',
-      'password' => 'required|min:8',
-
       'last_name' => 'required',
       'first_name' => 'required',
-      'civil_status_id' => 'required',
-      'birth_day' => 'required',
-      'birth_place_id' => 'required',
-      'blood_type_id' => 'required',
+      'mid_name' => 'required',
+      'ext_name' => 'required',
 
-      'height' => 'required',
-      'weight' => 'required',
-      'address_id' => 'required',
-      'address_barangay' => '',
-      'address_street' => '',
-      'address' => '',
+      'college_id' => 'required', // main
+      'department_id' => 'required', // sub of college
+      'position' => 'required',
     ]);
 
     if($val->fails()) {
       return $this->G_ValidatorFailResponse($val);
     }
 
-    $user = User::create([
-      'email' => $req->email,
-      'password' => Hash::make($req->password),
-      'avatar' => 'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg'
-    ])->assignRole('applicant');
 
-    $info = Info::create([
-      'user_id' => $user->id,
-      'last_name' => $req->last_name,
-      'first_name' => $req->first_name,
-      'mid_name' => $req->mid_name == '' ? null : $req->mid_name,
-      'ext_name' => $req->ext_name == '' ? null : $req->ext_name,
-      'civil_status_id' => $req->civil_status_id,
-      'birth_day' => $req->birth_day,
-      'birth_place_id' => $req->birth_place_id,
-      'blood_type_id' => $req->blood_type_id,
-      'sex' => $req->sex ? true : false,
-      'height' => $req->height,
-      'weight' => $req->weight,
-      'address_id' => $req->address_id,
-      'address_barangay' => $req->address_barangay ?? null,
-      'address_street' => $req->address_street ?? null,
-      'address' => $req->address ?? null,
-    ]);
-
-    if($req->mobile) {
-      $mobile = MobileNumber::create([
-        'info_id' => $info->id,
-        'number' => $req->mobile,
-        'allow_notify' => 1,
-      ]);
-    }
 
     return response()->json([
       ...$this->G_ReturnDefault(),
       'data' => true,
     ], 200);
-  }
-
-  public function Forgot(Request $req) {
-    $val = Validator::make($req->all(), [
-      'email' => 'required|email|exists:users,email',
-    ]);
-
-    if($val->fails()) {
-      return $this->G_ValidatorFailResponse($val);
-    }
-
-    $code = rand(0, 9999);
-    User::where('email', $req->email)->update(['remember_token' => $code]);
-
-    Mail::to($req->email)->send(new ForgotPasswordMail($req->email, $code));
-
-    return response()->json([
-      ...$this->G_ReturnDefault(),
-      'data' => true,
-    ], 200);
-  }
-
-  public function Recovery(Request $req) {
-    $val = Validator::make($req->all(), [
-      'code' => 'required',
-      'password' => 'required',
-    ]);
-
-    if($val->fails()) {
-      return $this->G_ValidatorFailResponse($val);
-    }
-
-    $user = User::where('remember_token', $req->code)
-      ->update([
-        'password' => Hash::make($req->password),
-        'email_verified_at' => Carbon::now(),
-        'remember_token' => null
-      ]);
-
-
-
-    if(!$user) {
-      return response()->json([
-        ...$this->G_ReturnDefault(),
-        'data' => false,
-      ], 200);
-    }
-
-    return response()->json([
-      ...$this->G_ReturnDefault(),
-      'data' => true,
-    ], 200);
-
-    return response()->json([
-      ...$this->G_ReturnDefault()
-    ]);
   }
 }
