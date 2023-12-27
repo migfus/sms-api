@@ -35,6 +35,7 @@
         "heroicons": "^2.0.18",
         "inputmask": "^5.0.9-beta.45",
         "lodash": "^4.17.21",
+        "maska": "^2.1.10",
         "moment": "^2.29.4",
         "notiwind": "^2.0.1",
         "path": "^0.12.7",

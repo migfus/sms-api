@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 py-8 justify-items-center">
       <div class="sm:mx-auto sm:w-full sm:max-w-md mb-8">
         <!-- <object class="mx-auto h-40 w-auto" data="/images/logo-anim.svg" alt="Your Company" /> -->
-        <h2 class="text-center text-3xl font-bold tracking-tight text-gray-900">Register for CSC ID</h2>
+        <h2 class="text-center text-3xl font-bold tracking-tight text-gray-900">Confirmation</h2>
       </div>
 
       <Form v-slot="{ errors }" :validation-schema="schema" @submit="$register.RegisterAPI()" class="w-full md:max-w-7xl">
@@ -11,8 +11,6 @@
 
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
-
-                  <h1 class="text-gray-500 mb-1">*Recommended in a white background</h1>
 
                   <div class="mt-1 sm:col-span-2 sm:mt-0">
                     <div class="flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
@@ -23,35 +21,33 @@
                         <div class="flex text-sm text-gray-600">
                           <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium text-primary-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-offset-2 hover:text-primary-500">
                             <span>Upload a file</span>
-                            <input @change="AddPicture($event)" id="file-upload" name="file-upload" type="file" class="sr-only" />
+                            <input id="file-upload" name="file-upload" type="file" class="sr-only" />
                           </label>
                           <p class="pl-1">or drag and drop</p>
                         </div>
                         <p class="text-xs text-gray-500">PNG, JPG, GIF up to 5MB</p>
                       </div>
                     </div>
-
-                    <img v-if="$register.params.picture" :src="preview" class="mt-2 rounded-xl shadow h-64 w-auto mb-2">
                   </div>
 
 
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">
 
-                    <div class="grid grid-cols-12 gap-6">
-                        <div class="col-span-12 sm:col-span-6">
+                    <div class="grid grid-cols-6 gap-6">
+                        <div class="col-span-6 sm:col-span-3">
                             <AppInput v-model="$register.params.last_name" placeholder="Last Name" name="last_name" :errors="errors"/>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6">
+                        <div class="col-span-6 sm:col-span-3">
                             <AppInput v-model="$register.params.first_name" placeholder="First Name" name="first_name" :errors="errors"/>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-3">
-                            <AppInput v-model="$register.params.mid_name" mask="*." placeholder="Middle Initial Name" name="mid_name" :errors="errors"/>
+                        <div class="col-span-6 sm:col-span-3">
+                            <AppInput v-model="$register.params.mid_name" placeholder="Middle Initial Name" name="mid_name" :errors="errors"/>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-3">
+                        <div class="col-span-6 sm:col-span-3">
                             <AppSelect v-model="$register.params.ext_name" placeholder="Extension Name" name="ext_name" :errors="errors">
                                 <option value="">n/a</option>
                                 <option value="JR">JR.</option>
@@ -62,12 +58,7 @@
                             </AppSelect>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6">
-                            <AppInput v-model="$register.params.position" placeholder="Position" name="position" :errors="errors"/>
-                        </div>
-
-
-                        <div class="col-span-12 sm:col-span-6">
+                        <div class="col-span-6 sm:col-span-3">
                           <AppSelect v-model="$register.params.department_id" placeholder="Department" name="department" :errors="errors">
                             <option :value="549717001907709">Engineering</option>
                             <option :value="549717001913612">Mathematics</option>
@@ -76,7 +67,7 @@
                           </AppSelect>
                         </div>
 
-                        <div class="col-span-12 sm:col-span-6">
+                        <div class="col-span-6 sm:col-span-3">
                           <AppSelect v-model="$register.params.unit_id" placeholder="Unit/College" name="unit" :errors="errors">
                             <option :value="549717001907709">Engineering</option>
                             <option :value="549717001913612">Mathematics</option>
@@ -85,11 +76,14 @@
                           </AppSelect>
                         </div>
 
-
-                        <div class="col-span-12 sm:col-span-6">
-                            <AppInput v-model="$register.params.mobile" placeholder="Email (Optional)" name="mobile" :errors="errors"/>
+                        <div class="col-span-6">
+                            <AppInput v-model="$register.params.position" placeholder="Position" name="position" :errors="errors"/>
                         </div>
-                        <div class="col-span-12 sm:col-span-6">
+
+                        <div class="col-span-6 sm:col-span-3">
+                            <AppInput v-model="$register.params.mobile" placeholder="Email" name="mobile" :errors="errors"/>
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
                             <AppInput v-model="$register.params.email" placeholder="Mobile Number" name="email" :errors="errors"/>
                         </div>
 
@@ -98,7 +92,8 @@
             </div>
 
             <div class="flex justify-end mt-8 gap-1">
-              <AppButton color='success' :disabled="Object.keys(errors).length != 0" :loading="$register.config.buttonLoading">Register</AppButton>
+                <AppButton type="submit" color='success' :disabled="Object.keys(errors).length != 0" :loading="$register.config.buttonLoading">Register</AppButton>
+                <!-- <AppButton @click="$user.ChangeForm()" color="white">Cancel</AppButton> -->
             </div>
 
         </div>
@@ -109,7 +104,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useRegisterStore } from '@/store/@auth/RegisterStore'
 import * as Yup from 'yup'
 import { Form, configure } from 'vee-validate'
@@ -125,23 +119,12 @@ configure({
 const $register = useRegisterStore()
 
 const schema = Yup.object({
-  last_name: Yup.string().required('Last name is required'),
-  first_name: Yup.string().required('First name is required'),
+    last_name: Yup.string().required('Last name is required'),
+    first_name: Yup.string().required('First name is required'),
 
-  department: Yup.string().required('Department/College is required'),
-  unit: Yup.string().required("Unit is required"),
-  position: Yup.string().required('Position is required'),
+    department: Yup.string().required('Department/College is required'),
+    unit: Yup.string().required("Unit is required"),
+    position: Yup.string().required('Position is required'),
+    email: Yup.string().email('Invalid email')
 })
-
-const preview = ref(null)
-
-function AddPicture(events) {
-  $register.params.picture = events.target.files[0]
-
-  const reader = new FileReader()
-  reader.onload = (e) => {
-    preview.value = e.target.result
-  }
-  reader.readAsDataURL($register.params.picture)
-}
 </script>
